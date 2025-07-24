@@ -471,6 +471,15 @@ C(T,S) = (S - K)^+
 <section id="note-2" class="level4">
 <h4 class="anchored" data-anchor-id="note-2">Note</h4>
 <p>The Black-Scholes pricing PDE does not depend on the drift <span class="math inline">\(\mu\)</span>.</p>
+<p><span class="math inline">\(C(T,S) = (S-K)^+\)</span> 表示欧式看涨期权在到期时(<span class="math inline">\(t= T\)</span>)的支付函数. 若股价高于执行价 <span class="math inline">\(K\)</span>, 则价值是差额; 否则归零.</p>
+<p>这里的 PDE 是通过 Feynamn-Kac 定理得到的:</p>
+<p><span class="math display">\[\begin{align*}
+{\rm d} S_t &amp;= r S_t {\rm d} t + \sigma S_t {\rm d} W_t \\
+C(t,s) &amp;= \Eof{e^{-r(T-t)} (S_T - K)^+ \mid S_t = s}
+\end{align*}\]</span></p>
+<p>那么 PDE 就是 <span class="math display">\[
+\frac{\partial C}{\partial t} + r S \frac{\partial C}{\partial S} + \frac{\sigma^2}{2} S^2 \frac{\partial^2 C}{\partial S^2} - r C = 0.
+\]</span></p>
 </section>
 </section>
 <section id="solving-black-scholes-pde" class="level2">
@@ -524,6 +533,33 @@ C = S e^{-d\tau} N(d_1) - K e^{-r\tau} N(d_2)
 <p><span class="math display">\[
 d_1 = \frac{\log\left(\frac{Se^{-d\tau}}{Ke^{-r\tau}}\right)}{\sigma\sqrt\tau}+ \frac{\sigma\sqrt\tau}2, \qquad d_2 = d_1 - \sigma \sqrt\tau
 \]</span></p>
+<p>注:</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Term</th>
+<th>Economic meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><span class="math inline">\(S e^{-d\tau} N(d_1)\)</span></td>
+<td>Dividend discounted stock price</td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(K e^{-r\tau}\)</span></td>
+<td>Present value of strike price</td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(N(d_2)\)</span></td>
+<td>The probability of the option expires in the money.</td>
+</tr>
+</tbody>
+</table>
+<p>注: in the money = 实值, at the money = 平值, out of the money = 虚值.</p>
+<p>in the money = the option is worth exercising at expiry, i.e., <span class="math inline">\(S_T &gt; K\)</span>.</p>
+<p>The <span class="math inline">\(N(d_1)\)</span> is the factor by which the present value of contingent(有条件的) receipt(收入) of the stock, contingent on exercise, exceeds the current value of the stock.</p>
+<p>The <span class="math inline">\(N(d_2)\)</span> is the risk-adjusted probability of exercise.</p>
 <ul>
 <li>For put option</li>
 </ul>
