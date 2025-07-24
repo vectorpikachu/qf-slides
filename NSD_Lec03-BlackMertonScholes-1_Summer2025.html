@@ -219,7 +219,7 @@ window.Quarto = {
   <ul class="collapse">
   <li><a href="#an-example-on-delta-hedge" id="toc-an-example-on-delta-hedge" class="nav-link" data-scroll-target="#an-example-on-delta-hedge">An example on delta hedge</a></li>
   </ul></li>
-  <li><a href="#an-exmaple-on-delta-gamma-hedge" id="toc-an-exmaple-on-delta-gamma-hedge" class="nav-link" data-scroll-target="#an-exmaple-on-delta-gamma-hedge">An exmaple on delta-gamma hedge</a></li>
+  <li><a href="#an-example-on-delta-gamma-hedge" id="toc-an-example-on-delta-gamma-hedge" class="nav-link" data-scroll-target="#an-example-on-delta-gamma-hedge">An example on delta-gamma hedge</a></li>
   <li><a href="#dynamical-hedging" id="toc-dynamical-hedging" class="nav-link" data-scroll-target="#dynamical-hedging">Dynamical hedging</a>
   <ul class="collapse">
   <li><a href="#an-example-on-dynamical-hedging" id="toc-an-example-on-dynamical-hedging" class="nav-link" data-scroll-target="#an-example-on-dynamical-hedging">An example on dynamical hedging</a></li>
@@ -827,21 +827,28 @@ P = K e^{-r\tau} N(-d_2) - S e^{-d\tau} N(-d_1).
 </section>
 <section id="subtlety-in-self-financing" class="level2">
 <h2 class="anchored" data-anchor-id="subtlety-in-self-financing">Subtlety in self-financing</h2>
+<p>注: Subtlety = 区别. 此处探讨两种情况之细微区别:</p>
+<ul>
+<li>投资者在每个时间步先调整投资组合</li>
+<li>投资者先观察市场价格变化后再调整</li>
+</ul>
 <p>Assume that all the tradings are done at the mid price <span class="math inline">\(S_t\)</span>, i.e., no bid-ask spread and transaction cost.</p>
-<p>In a discrete time setting, consider a portfolo consisting of holding <span class="math inline">\(H_t\)</span> shares of the underlying and <span class="math inline">\(K_t\)</span> dollars in the money/cash account at time <span class="math inline">\(t\)</span>, interest and dividend are assumed zero for simplicity.</p>
-<p>The monetary value <span class="math inline">\(V_t\)</span> of the porffolio, <em>marked to market value at the mid price</em>, is thus given by <span class="math inline">\(V_t = H_tS_t + K_t\)</span> (before the price of the underlying changes from <span class="math inline">\(S_t\)</span> to <span class="math inline">\(S_{t+1}\)</span>). At this point, the investor may decide to change his portfolio before he observes the price change of the underlying from <span class="math inline">\(S_t\)</span> to <span class="math inline">\(S_{t+1}\)</span> or after the price change.</p>
+<p>注: mid price = 中间价, 即买入价和卖出价的平均值. 在实际交易中, 由于存在买卖差价(bid-ask spread)和交易成本, mid price 是一个理想化的假设.</p>
+<p>In a discrete time setting, consider a portfolio consisting of holding <span class="math inline">\(H_t\)</span> shares of the underlying and <span class="math inline">\(K_t\)</span> dollars in the money/cash account at time <span class="math inline">\(t\)</span>, interest and dividend are assumed zero for simplicity.</p>
+<p>The monetary value <span class="math inline">\(V_t\)</span> of the portfolio, <em>marked to market value at the mid price</em>, is thus given by <span class="math inline">\(V_t = H_tS_t + K_t\)</span> (before the price of the underlying changes from <span class="math inline">\(S_t\)</span> to <span class="math inline">\(S_{t+1}\)</span>). At this point, the investor may decide to change his portfolio before he observes the price change of the underlying from <span class="math inline">\(S_t\)</span> to <span class="math inline">\(S_{t+1}\)</span> or after the price change.</p>
 <ul>
 <li><em>Before price change</em>. In this case, the self-financing condition reads <span class="math display">\[
 V_t = H_t S_t + K_t = H_{t+1} S_t + K_{t+1},
-\]</span> where apparently <span class="math inline">\(K_{t+1} = K_t + (H_t - H_{t+1}) S_t\)</span>. In other words, the investor simply moves his money from stock to money account (or the other way around) without pouring/withdrawing extra money/shares into/out of the portfolio. The value of the porfolio (after price change) at time <span class="math inline">\(t+1\)</span> is given by <span class="math inline">\(V_{t+1} = H_{t+1}S_{t+1} + K_{t+1}\)</span>. Hence, <span class="math display">\[\begin{equation}
-\begin{aligned}
-\Delta V_{t+1} &amp;= V_{t+1} - V_t \\
-               &amp;= H_{t+1} S_{t+1} + K_{t+1} - (H_t S_t + K_t) \\
-               &amp;= H_{t+1} S_{t+1} + K_{t+1} - (H_{t+1} S_t + K_{t+1}) \\
-               &amp;= H_{t+1} \Delta S_{t+1}.
-\end{aligned}
-\end{equation}\]</span></li>
+\]</span> where apparently <span class="math inline">\(K_{t+1} = K_t + (H_t - H_{t+1}) S_t\)</span>. In other words, the investor simply moves his money from stock to money account (or the other way around) without pouring/withdrawing extra money/shares into/out of the portfolio. The value of the portfolio (after price change) at time <span class="math inline">\(t+1\)</span> is given by <span class="math inline">\(V_{t+1} = H_{t+1}S_{t+1} + K_{t+1}\)</span>. Hence,</li>
 </ul>
+<p><span class="math display">\[
+\begin{aligned}
+  \Delta V_{t+1} &amp;= V_{t+1} - V_t \\
+                 &amp;= H_{t+1} S_{t+1} + K_{t+1} - (H_t S_t + K_t) \\
+                 &amp;= H_{t+1} S_{t+1} + K_{t+1} - (H_{t+1} S_t + K_{t+1}) \\
+                 &amp;= H_{t+1} \Delta S_{t+1}.
+\end{aligned}
+\]</span></p>
 <p>If we write <span class="math inline">\(H_{t+1} = H_t + \Delta H_{t+1}\)</span>, then</p>
 <p><span class="math display">\[
 \Delta V_{t+1} = H_t \Delta S_{t+1} + \Delta H_{t+1} \Delta S_{t+1}
@@ -849,16 +856,19 @@ V_t = H_t S_t + K_t = H_{t+1} S_t + K_{t+1},
 <ul>
 <li><em>After price change</em>. In this case, the self-financing condition becomes <span class="math display">\[
 V_{t+1} = H_t S_{t+1} + K_t = H_{t+1} S_{t+1} + K_{t+1},
-\]</span> where <span class="math inline">\(K_{t+1} = K_t + (H_t - H_{t+1}) S_{t+1}\)</span>. Hence, <span class="math display">\[\begin{equation}
+\]</span> where <span class="math inline">\(K_{t+1} = K_t + (H_t - H_{t+1}) S_{t+1}\)</span>. Hence, <span class="math display">\[
 \begin{aligned}
 \Delta V_{t+1} &amp;= V_{t+1} - V_t \\
                &amp;= H_{t+1} S_{t+1} + K_{t+1} - (H_t S_t + K_t) \\
                &amp;= H_{t+1} S_{t+1} + K_t + (H_t - H_{t+1}) S_{t+1} - (H_t S_t + K_t) \\
                &amp;= H_t \Delta S_{t+1}.
 \end{aligned}
-\end{equation}\]</span></li>
+\]</span></li>
 </ul>
-<p>The subtlety results from the investor’s decision to rebalance his position before or after he observes the price change. Moreover, the discrepancy between the two increments of portfolio values is exactly the covariation between the holdings <span class="math inline">\(H_t\)</span> and the price <span class="math inline">\(S_t\)</span> of the underlying. In the continuous time limit, the discrepancy becomes insignificent should the covariation vanishes in the continuous time limit. In a recent paper by Carmona and Webster, the authors argued that, in the high frequency trading regime, empirically this covariation is statistically significant. As a result, the process of holdings <span class="math inline">\(H_t\)</span> cannot be of finite variation, counterintuitive to common knowledge.</p>
+<p>The subtlety results from the investor’s decision to rebalance his position before or after he observes the price change. Moreover, the discrepancy between the two increments of portfolio values is exactly the covariation between the holdings <span class="math inline">\(H_t\)</span> and the price <span class="math inline">\(S_t\)</span> of the underlying. In the continuous time limit, the discrepancy becomes insignificant should the covariation vanishes in the continuous time limit. In a recent paper by Carmona and Webster, the authors argued that, in the high frequency trading regime, empirically this covariation is statistically significant. As a result, the process of holdings <span class="math inline">\(H_t\)</span> cannot be of finite variation, counterintuitive to common knowledge.</p>
+<blockquote class="blockquote">
+<p>即使在“无交易成本”的理想模型中, 投资者调仓的时机选择会对组合价值变化产生不同影响, 这种细微差异在连续时间极限中通常被忽略, 但在高频市场中却非常重要, 因为实际持仓路径和价格变动之间的协变并不为零.</p>
+</blockquote>
 </section>
 <section id="self-financing-with-traded-price" class="level2">
 <h2 class="anchored" data-anchor-id="self-financing-with-traded-price">Self-financing with traded price</h2>
@@ -866,26 +876,28 @@ V_{t+1} = H_t S_{t+1} + K_t = H_{t+1} S_{t+1} + K_{t+1},
 <ul>
 <li><p><em>Before price change</em>. <span class="math display">\[
 V_t = H_t S_t + K_t = H_{t+1} S_t + K_{t+1} ,
-\]</span> where <span class="math inline">\(K_{t+1} = K_t + (H_t - H_{t+1})S_t - c_t\)</span> and <span class="math inline">\(c_t &gt; 0\)</span> denotes the transaction cost at time <span class="math inline">\(t\)</span>. Hence, the increment of <span class="math inline">\(V\)</span> at time <span class="math inline">\(t+1\)</span> <span class="math display">\[\begin{equation}
+\]</span> where <span class="math inline">\(K_{t+1} = K_t + (H_t - H_{t+1})S_t - c_t\)</span> and <span class="math inline">\(c_t &gt; 0\)</span> denotes the transaction cost at time <span class="math inline">\(t\)</span>. Hence, the increment of <span class="math inline">\(V\)</span> at time <span class="math inline">\(t+1\)</span> <span class="math display">\[
 \begin{aligned}
 \Delta V_{t+1} &amp;= V_{t+1} - V_t \\
                &amp;= H_{t+1} S_{t+1} + K_t + (H_t - H_{t+1}) S_t - c_t - (H_t S_t + K_t) \\
                &amp;= H_{t+1} \Delta S_{t+1} - c_t \\
                &amp;= H_t \Delta S_{t+1} + \Delta H_{t+1} \Delta S_{t+1} - c_t.
 \end{aligned}
-\end{equation}\]</span></p></li>
-<li><p><em>After price change</em>. By the same token, in this case one can show that <span class="math display">\[\begin{equation}
+\]</span></p></li>
+<li><p><em>After price change</em>. By the same token, in this case one can show that <span class="math display">\[
 \Delta V_{t+1} = H_t \Delta S_{t+1} - c_{t+1}
-\end{equation}\]</span></p></li>
+\]</span></p></li>
 </ul>
 <p>where the transaction cost <span class="math inline">\(c_{t+1}\)</span> is incurred at time <span class="math inline">\(t+1\)</span>.</p>
 </section>
 <section id="delta-hedging" class="level2">
 <h2 class="anchored" data-anchor-id="delta-hedging">Delta hedging</h2>
 <p>The portfolio used in deriving the Black-Scholes PDE is called <em>delta-hedging</em>.</p>
+<p>利用 <a href="Greeks">Sensitivities of option prices in Black-Scholes model - the Greeks</a> 定义的 <span class="math inline">\(\Delta\)</span>, Delta Hedging 就是构建一个投资组合, 使得这个组合整体的 <span class="math inline">\(\Delta = 0\)</span>, 从而不受标的资产价格小幅变化影响.</p>
+<p>Example: 假设你卖出了一个欧式看涨期权, 其 <span class="math inline">\(\Delta = 0.6\)</span>; 那么你要 买入 0.6 股标的资产来进行对冲.</p>
 <section id="note-5" class="level4">
 <h4 class="anchored" data-anchor-id="note-5">Note</h4>
-<p>Rebalancing of hedging porfolio is done <em>after</em> the price change.</p>
+<p>Rebalancing of hedging portfolio is done <em>after</em> the price change.</p>
 </section>
 <section id="an-example-on-delta-hedge" class="level3">
 <h3 class="anchored" data-anchor-id="an-example-on-delta-hedge">An example on delta hedge</h3>
@@ -1098,16 +1110,18 @@ dict_values([0.25002448066930727, 0.28760290709660397, 0.2273127644037836])</cod
 </div>
 </section>
 </section>
-<section id="an-exmaple-on-delta-gamma-hedge" class="level2">
-<h2 class="anchored" data-anchor-id="an-exmaple-on-delta-gamma-hedge">An exmaple on delta-gamma hedge</h2>
+<section id="an-example-on-delta-gamma-hedge" class="level2">
+<h2 class="anchored" data-anchor-id="an-example-on-delta-gamma-hedge">An example on delta-gamma hedge</h2>
 <p><font color="blue"> Note </font></p>
 <p>The gammas of the underlying and forward are zero. To construct a delta-gamma hedge portfolio we need to add into the portfolio an instrument that has nonzero gamma, say, call or put options.</p>
-<p><span class="math inline">\(C\)</span></p>
-<p><span class="math inline">\(C_1\)</span></p>
+<blockquote class="blockquote">
+<p>Delta-Gamma Hedging 是构造一个组合, 使得它对标的资产价格的一阶和二阶变化都不敏感.</p>
+</blockquote>
+<p>现在假设有 <span class="math inline">\(-1\)</span> 单位的 <span class="math inline">\(C\)</span> (卖出 <span class="math inline">\(C\)</span>), <span class="math inline">\(x\)</span> 单位的 <span class="math inline">\(C_1\)</span> (对冲工具), <span class="math inline">\(y\)</span> 单位的标的资产.</p>
 <ul>
-<li><p><span class="math inline">\(\displaystyle -\Gamma_C +  x \Gamma_{C1} = 0  \Longrightarrow x = \frac{\Gamma_C}{\Gamma_{C1}}\)</span></p></li>
+<li><p><span class="math inline">\(\displaystyle -\Gamma_C +  x \Gamma_{C_1} = 0  \Longrightarrow x = \frac{\Gamma_C}{\Gamma_{C_1}}\)</span></p></li>
 <li><p><span class="math inline">\(\displaystyle C + x C_1 + y S\)</span></p></li>
-<li><p><span class="math inline">\(\displaystyle -\Delta_C + x \Delta_{C1} + y = 0 \Longrightarrow y = \Delta_C - x \Delta_{C1}\)</span></p></li>
+<li><p><span class="math inline">\(\displaystyle -\Delta_C + x \Delta_{C_1} + y = 0 \Longrightarrow y = \Delta_C - x \Delta_{C_1}\)</span></p></li>
 </ul>
 <div id="cell-37" class="cell" data-execution_count="17">
 <div class="sourceCode cell-code" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>r, sigma, K, s0 <span class="op">=</span> <span class="dv">0</span>, <span class="fl">0.3</span>, <span class="dv">11</span>, <span class="dv">10</span></span>
@@ -1321,7 +1335,7 @@ dict_values([0.25002448066930727, 0.28760290709660397, 0.2273127644037836])</cod
 </section>
 <section id="dynamical-hedging" class="level2">
 <h2 class="anchored" data-anchor-id="dynamical-hedging">Dynamical hedging</h2>
-<p>As market conditions evolve, to maintain the delta neutrality of the portfolio, ideally we should dynamically change the holdings in the porfolio. For example,</p>
+<p>As market conditions evolve, to maintain the delta neutrality of the portfolio, ideally we should dynamically change the holdings in the portfolio. For example,</p>
 <section id="note-6" class="level4">
 <h4 class="anchored" data-anchor-id="note-6">Note</h4>
 <ul>
@@ -1809,24 +1823,24 @@ dict_values([0.25002448066930727, 0.28760290709660397, 0.2273127644037836])</cod
 <section id="accounting-pl-formulation" class="level2">
 <h2 class="anchored" data-anchor-id="accounting-pl-formulation">Accounting P&amp;L formulation</h2>
 <p>For <span class="math inline">\(1 \leq i \leq n\)</span>, define the running reward gained at time <span class="math inline">\(i\)</span> as</p>
-<p><span class="math display">\[\begin{equation}
+<p><span class="math display">\[
 \begin{aligned}
   R_i &amp;= -C_i + C_{i-1} + H_{i-1} (S_i - S_{i-1}) - \kappa |S_i (H_i - H_{i-1})| \\
       &amp;= -\Delta C_i + \underbrace{H_{i-1} \Delta S_i}_{\text{marked to market}} - \underbrace{\kappa |S_i \Delta H_i|}_{\text{transaction cost}}.
 \end{aligned}
-\end{equation}\]</span></p>
+\]</span></p>
 <p>Note that this formulation is consistent with the self-financing condition with transaction cost that was discussed previously. To set up the hedging initially and liquidate the position at expiry of option, we add to the (undiscounted) cumulative rewards</p>
 <ul>
 <li>initial reward: <span class="math inline">\(-\kappa|S_0 H_0|\)</span></li>
 <li>terminal reward: <span class="math inline">\(-\kappa|S_n H_n|\)</span></li>
 </ul>
 <p>Thus, the performance criterion <span class="math inline">\(Y^A\)</span> for a given hedging strategy <span class="math inline">\((H_0, \cdots, H_n)\)</span> reads</p>
-<p><span class="math display">\[\begin{equation}
+<p><span class="math display">\[
 \begin{aligned}
   Y^A &amp;= -\kappa |S_0 H_0| + \sum_{i=1}^n R_i - \kappa |S_n H_n| \\
       &amp;= -\kappa |S_0 H_0| + C_0 - C_n + \sum_{i=1}^n H_{i-1} \Delta S_i - \kappa \sum_{i=1}^n |S_i \Delta H_i| - \kappa |S_n H_n|.
 \end{aligned}
-\end{equation}\]</span></p>
+\]</span></p>
 </section>
 <section id="cashflow-formulation" class="level2">
 <h2 class="anchored" data-anchor-id="cashflow-formulation">Cashflow formulation</h2>
@@ -1837,30 +1851,30 @@ R_i = S_i(H_{i-1} - H_i) - \kappa |S_i(H_i - H_{i-1})|
 \]</span></p>
 <p>with - initial cost for setting up a position: <span class="math inline">\(-S_0H_0 - \kappa|S_0 H_0|\)</span> - terminal cost for liquidate the position and payoff to call: <span class="math inline">\(S_nH_n - \kappa|S_n H_n| - C_n\)</span>.</p>
 <p>Thus, the performance criterion <span class="math inline">\(Y^C\)</span> for a given hedging strategy <span class="math inline">\((H_0, \cdots, H_n)\)</span> reads</p>
-<p><span class="math display">\[\begin{equation}
+<p><span class="math display">\[
 \begin{aligned}
   Y^C &amp;= -S_0 H_0 - \kappa |S_0 H_0| + \sum_{i=1}^n R_i + S_n H_n - \kappa |S_n H_n| - C_n \\
       &amp;= -S_0 H_0 - \kappa |S_0 H_0| - \sum_{i=1}^n S_i \Delta H_i - \kappa \sum_{i=1}^n |S_i \Delta H_i| + S_n H_n - \kappa |S_n H_n| - C_n.
 \end{aligned}
-\end{equation}\]</span></p>
+\]</span></p>
 </section>
 <section id="accounting-pl-vs-cashflow" class="level2">
 <h2 class="anchored" data-anchor-id="accounting-pl-vs-cashflow">Accounting P&amp;L vs cashflow</h2>
 <p>Recall that</p>
-<p><span class="math display">\[\begin{equation}
+<p><span class="math display">\[
 \begin{aligned}
   Y^A &amp;= -\kappa |S_0 H_0| + C_0 - C_n + \sum_{i=1}^n H_{i-1} \Delta S_i - \kappa \sum_{i=1}^n |S_i \Delta H_i| - \kappa |S_n H_n| \\
       &amp;= -\kappa |S_0 H_0| + C_0 - C_n + H_n S_n - H_0 S_0 - \sum_{i=1}^n S_i \Delta H_i - \kappa \sum_{i=1}^n |S_i \Delta H_i| - \kappa |S_n H_n|.
 \end{aligned}
-\end{equation}\]</span></p>
+\]</span></p>
 <p>where in the last equality we applied the following <em>summation by parts</em> formula</p>
-<p><span class="math display">\[\begin{equation}
+<p><span class="math display">\[
 \sum_{i=1}^n H_{i-1} \Delta S_i = H_n S_n - H_0 S_0 - \sum_{i=1}^n S_i \Delta H_i.
-\end{equation}\]</span></p>
+\]</span></p>
 <p>It follows that</p>
-<p><span class="math display">\[\begin{equation}
+<p><span class="math display">\[
 Y^A - Y^C = C_0.
-\end{equation}\]</span></p>
+\]</span></p>
 <p>The two formulations are basically the same.</p>
 </section>
 <section id="objective-functional-and-resulting-control-problem" class="level2">
