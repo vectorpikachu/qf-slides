@@ -212,7 +212,7 @@ window.Quarto = {
   <ul class="collapse">
   <li><a href="#note-3" id="toc-note-3" class="nav-link" data-scroll-target="#note-3">Note</a></li>
   </ul></li>
-  <li><a href="#sensitivities-of-option-prices-in-black-scholes-model---the-greeks" id="toc-sensitivities-of-option-prices-in-black-scholes-model---the-greeks" class="nav-link" data-scroll-target="#sensitivities-of-option-prices-in-black-scholes-model---the-greeks">Sensitivities of option prices in Black-Scholes model - the Greeks</a></li>
+  <li><a href="#the-greeks" id="toc-the-greeks" class="nav-link" data-scroll-target="#the-greeks">The Greeks</a></li>
   <li><a href="#subtlety-in-self-financing" id="toc-subtlety-in-self-financing" class="nav-link" data-scroll-target="#subtlety-in-self-financing">Subtlety in self-financing</a></li>
   <li><a href="#self-financing-with-traded-price" id="toc-self-financing-with-traded-price" class="nav-link" data-scroll-target="#self-financing-with-traded-price">Self-financing with traded price</a></li>
   <li><a href="#delta-hedging" id="toc-delta-hedging" class="nav-link" data-scroll-target="#delta-hedging">Delta hedging</a>
@@ -793,8 +793,9 @@ P = K e^{-r\tau} N(-d_2) - S e^{-d\tau} N(-d_1).
 </div>
 </section>
 </section>
-<section id="sensitivities-of-option-prices-in-black-scholes-model---the-greeks" class="level2">
-<h2 class="anchored" data-anchor-id="sensitivities-of-option-prices-in-black-scholes-model---the-greeks">Sensitivities of option prices in Black-Scholes model - the Greeks</h2>
+<section id="the-greeks" class="level2">
+<h2 class="anchored" data-anchor-id="the-greeks">The Greeks</h2>
+<p>Sensitivities of option prices in Black-Scholes model - the Greeks.</p>
 <p>Assume the dividend rate <span class="math inline">\(d = 0\)</span>.</p>
 <p>注: 股利率(dividend rate) 是指公司向股东支付的利润分配率, 在 Black-Scholes 模型中通常假设为 <span class="math inline">\(0\)</span>.</p>
 <ul>
@@ -893,7 +894,7 @@ V_t = H_t S_t + K_t = H_{t+1} S_t + K_{t+1} ,
 <section id="delta-hedging" class="level2">
 <h2 class="anchored" data-anchor-id="delta-hedging">Delta hedging</h2>
 <p>The portfolio used in deriving the Black-Scholes PDE is called <em>delta-hedging</em>.</p>
-<p>利用 <a href="Greeks">Sensitivities of option prices in Black-Scholes model - the Greeks</a> 定义的 <span class="math inline">\(\Delta\)</span>, Delta Hedging 就是构建一个投资组合, 使得这个组合整体的 <span class="math inline">\(\Delta = 0\)</span>, 从而不受标的资产价格小幅变化影响.</p>
+<p>利用 <a href="#the-greeks">The Greeks</a> 定义的 <span class="math inline">\(\Delta\)</span>, Delta Hedging 就是构建一个投资组合, 使得这个组合整体的 <span class="math inline">\(\Delta = 0\)</span>, 从而不受标的资产价格小幅变化影响.</p>
 <p>Example: 假设你卖出了一个欧式看涨期权, 其 <span class="math inline">\(\Delta = 0.6\)</span>; 那么你要 买入 0.6 股标的资产来进行对冲.</p>
 <section id="note-5" class="level4">
 <h4 class="anchored" data-anchor-id="note-5">Note</h4>
