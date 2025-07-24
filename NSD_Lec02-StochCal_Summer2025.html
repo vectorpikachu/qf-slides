@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" lang="zh-Hans" xml:lang="zh-Hans"><head>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
 <meta name="generator" content="quarto-1.7.32">
@@ -89,17 +89,17 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   ],
   "show-item-context": false,
   "language": {
-    "search-no-results-text": "没有结果",
-    "search-matching-documents-text": "匹配的文档",
-    "search-copy-link-title": "复制搜索链接",
-    "search-hide-matches-text": "隐藏其它匹配结果",
-    "search-more-match-text": "更多匹配结果",
-    "search-more-matches-text": "更多匹配结果",
-    "search-clear-button-title": "清除",
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
     "search-text-placeholder": "",
-    "search-detached-cancel-button-title": "取消",
-    "search-submit-button-title": "提交",
-    "search-label": "搜索"
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
   }
 }</script>
 
@@ -147,8 +147,8 @@ window.Quarto = {
     <span class="navbar-title">qf-slides</span>
     </a>
   </div>
-            <div id="quarto-search" class="" title="搜索"></div>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="展开或折叠导航栏" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
   <span class="navbar-toggler-icon"></span>
 </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
@@ -173,6 +173,14 @@ window.Quarto = {
     <a class="nav-link" href="./NSD_Lec03-BlackMertonScholes-1_Summer2025.html"> 
 <span class="menu-text">Lecture 03</span></a>
   </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./NSD_Lec04_Summer2025/NSD_Lec04-BlackMertonScholes-2_Summer2025.html"> 
+<span class="menu-text">Lecture 04</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./NSD_Lec05_Summer2025/NSD_Lec05-Volatility_Summer2025.html"> 
+<span class="menu-text">Lecture 05</span></a>
+  </li>  
 </ul>
           </div> <!-- /navcollapse -->
             <div class="quarto-navbar-tools">
@@ -186,7 +194,7 @@ window.Quarto = {
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">该页面内容</h2>
+    <h2 id="toc-title">On this page</h2>
    
   <ul>
   <li><a href="#lecture-2-crash-course-on-stochastic-calculus" id="toc-lecture-2-crash-course-on-stochastic-calculus" class="nav-link active" data-scroll-target="#lecture-2-crash-course-on-stochastic-calculus">Lecture 2: Crash course on stochastic calculus</a></li>
@@ -616,7 +624,7 @@ B_t = \sqrt{2} \sum_{n=1}^\infty \xi_n \frac{\sin \left(\left(n - \frac{1}{2}\ri
 <span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> scipy.stats <span class="im">import</span> norm</span>
 <span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> scipy.stats <span class="im">as</span> ss</span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span></code><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div id="cell-22" class="cell">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># set seed for reproducing the same result</span></span>
@@ -656,7 +664,7 @@ B_t = \sqrt{2} \sum_{n=1}^\infty \xi_n \frac{\sin \left(\left(n - \frac{1}{2}\ri
 <span id="cb2-35"><a href="#cb2-35" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb2-36"><a href="#cb2-36" aria-hidden="true" tabindex="-1"></a>plt.subplot(<span class="dv">2</span>, <span class="dv">2</span>, <span class="dv">3</span>)</span>
 <span id="cb2-37"><a href="#cb2-37" aria-hidden="true" tabindex="-1"></a>plotBM(<span class="dv">20_000</span>, color<span class="op">=</span><span class="st">'green'</span>)</span>
-<span id="cb2-38"><a href="#cb2-38" aria-hidden="true" tabindex="-1"></a>plt.legend()<span class="op">;</span></span></code><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb2-38"><a href="#cb2-38" aria-hidden="true" tabindex="-1"></a>plt.legend()<span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
@@ -726,7 +734,7 @@ B_t = \sqrt{2} \sum_{n=1}^\infty \xi_n \frac{\sin \left(\left(n - \frac{1}{2}\ri
 <span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a>plt.subplot(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">2</span>)</span>
 <span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a><span class="co">#plt.plot(t, BM/n_steps)</span></span>
 <span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a>plt.plot(t, BM<span class="op">/</span>np.sqrt(n_steps))</span>
-<span id="cb3-22"><a href="#cb3-22" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'$t$'</span>, fontsize<span class="op">=</span><span class="dv">18</span>)<span class="op">;</span></span></code><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb3-22"><a href="#cb3-22" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'$t$'</span>, fontsize<span class="op">=</span><span class="dv">18</span>)<span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
@@ -756,7 +764,7 @@ B_t = \sqrt{2} \sum_{n=1}^\infty \xi_n \frac{\sin \left(\left(n - \frac{1}{2}\ri
 <span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a><span class="co">#    dB = dB - dB.mean() # now dB has mean 0</span></span>
 <span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a><span class="co">#    dB = dB/dB.std()  # now dB has variance 1</span></span>
 <span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a>    dB <span class="op">=</span> np.sqrt(dt)<span class="op">*</span>dB</span>
-<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a>    B[:,i<span class="op">+</span><span class="dv">1</span>] <span class="op">=</span> B[:,i] <span class="op">+</span> dB </span></code><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a>    B[:,i<span class="op">+</span><span class="dv">1</span>] <span class="op">=</span> B[:,i] <span class="op">+</span> dB </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p><code>dB</code> 表示布朗运动增量, <span class="math inline">\(\Delta B \sim {\cal N}(0, \Delta t)\)</span>, 所以要乘以 <code>dt</code> 来构造满足这个条件的增量.</p>
 <p>上面注释的两行是为了创造一个 <span class="math inline">\(\Delta B \sim {\cal N}(0, 1)\)</span> 的增量. 但其实在大样本下, 自然已经接近标准正态分布了.</p>
@@ -799,7 +807,7 @@ B_t = \sqrt{2} \sum_{n=1}^\infty \xi_n \frac{\sin \left(\left(n - \frac{1}{2}\ri
 <span id="cb5-35"><a href="#cb5-35" aria-hidden="true" tabindex="-1"></a>plt.plot(t, B.std(axis<span class="op">=</span><span class="dv">0</span>), label<span class="op">=</span><span class="st">'sample std'</span>)</span>
 <span id="cb5-36"><a href="#cb5-36" aria-hidden="true" tabindex="-1"></a>plt.plot(t, np.sqrt(t), <span class="st">'r--'</span>, label<span class="op">=</span><span class="st">'sqrt t'</span>)</span>
 <span id="cb5-37"><a href="#cb5-37" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'$t$'</span>)</span>
-<span id="cb5-38"><a href="#cb5-38" aria-hidden="true" tabindex="-1"></a>plt.legend()<span class="op">;</span></span></code><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb5-38"><a href="#cb5-38" aria-hidden="true" tabindex="-1"></a>plt.legend()<span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
@@ -1022,7 +1030,7 @@ X_t = x + B_t + \int_0^t \mu_s \text{d}s \quad \Longleftrightarrow \quad \text{d
 <span id="cb6-40"><a href="#cb6-40" aria-hidden="true" tabindex="-1"></a>    </span>
 <span id="cb6-41"><a href="#cb6-41" aria-hidden="true" tabindex="-1"></a><span class="co"># histogram at terminal time</span></span>
 <span id="cb6-42"><a href="#cb6-42" aria-hidden="true" tabindex="-1"></a>plt.subplot(<span class="dv">2</span>, <span class="dv">2</span>, <span class="dv">3</span>)</span>
-<span id="cb6-43"><a href="#cb6-43" aria-hidden="true" tabindex="-1"></a>sns.histplot(X[:,<span class="op">-</span><span class="dv">1</span>], bins<span class="op">=</span><span class="dv">50</span>, stat<span class="op">=</span><span class="st">'density'</span>, color<span class="op">=</span><span class="st">'green'</span>, element<span class="op">=</span><span class="st">'step'</span>)<span class="op">;</span></span></code><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb6-43"><a href="#cb6-43" aria-hidden="true" tabindex="-1"></a>sns.histplot(X[:,<span class="op">-</span><span class="dv">1</span>], bins<span class="op">=</span><span class="dv">50</span>, stat<span class="op">=</span><span class="st">'density'</span>, color<span class="op">=</span><span class="st">'green'</span>, element<span class="op">=</span><span class="st">'step'</span>)<span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
@@ -1061,7 +1069,7 @@ X_t = x + B_t + \int_0^t \mu_s \text{d}s \quad \Longleftrightarrow \quad \text{d
 <span id="cb7-24"><a href="#cb7-24" aria-hidden="true" tabindex="-1"></a>    </span>
 <span id="cb7-25"><a href="#cb7-25" aria-hidden="true" tabindex="-1"></a><span class="co"># histogram at terminal time</span></span>
 <span id="cb7-26"><a href="#cb7-26" aria-hidden="true" tabindex="-1"></a>plt.subplot(<span class="dv">2</span>, <span class="dv">2</span>, <span class="dv">3</span>)</span>
-<span id="cb7-27"><a href="#cb7-27" aria-hidden="true" tabindex="-1"></a>sns.histplot(X[:,<span class="op">-</span><span class="dv">1</span>], bins<span class="op">=</span><span class="dv">50</span>, stat<span class="op">=</span><span class="st">'density'</span>, color<span class="op">=</span><span class="st">'green'</span>)<span class="op">;</span></span></code><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb7-27"><a href="#cb7-27" aria-hidden="true" tabindex="-1"></a>sns.histplot(X[:,<span class="op">-</span><span class="dv">1</span>], bins<span class="op">=</span><span class="dv">50</span>, stat<span class="op">=</span><span class="st">'density'</span>, color<span class="op">=</span><span class="st">'green'</span>)<span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
@@ -1433,7 +1441,7 @@ X_{t_{n+1}} = X_{t_n} + \mu(X_{t_n}) \Delta t + \sigma(X_{t_n}) \Delta B_{t_n}.
 <span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> n <span class="kw">in</span> <span class="bu">range</span>(N):</span>
 <span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>        dB <span class="op">=</span> np.random.normal(<span class="dv">0</span>, np.sqrt(dt))  <span class="co"># simulate dB_t</span></span>
 <span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>        X[n <span class="op">+</span> <span class="dv">1</span>] <span class="op">=</span> X[n] <span class="op">+</span> mu(X[n]) <span class="op">*</span> dt <span class="op">+</span> sigma(X[n]) <span class="op">*</span> dB</span>
-<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> X</span></code><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> X</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <section id="丸山儀四郎" class="level4">
 <h4 class="anchored" data-anchor-id="丸山儀四郎">丸山儀四郎</h4>
 <div style="text-align: center;">
@@ -1489,7 +1497,7 @@ X_{t_{n+1}} = X_{t_n} + \mu(X_{t_n}) \Delta t + \sigma(X_{t_n}) \Delta B_{t_n}.
 <span id="cb9-41"><a href="#cb9-41" aria-hidden="true" tabindex="-1"></a>plt.subplot(<span class="dv">2</span>, <span class="dv">2</span>, <span class="dv">3</span>)</span>
 <span id="cb9-42"><a href="#cb9-42" aria-hidden="true" tabindex="-1"></a>plt.plot(t, X.var(axis<span class="op">=</span><span class="dv">0</span>))</span>
 <span id="cb9-43"><a href="#cb9-43" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'$t$'</span>)</span>
-<span id="cb9-44"><a href="#cb9-44" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'sample variance'</span>)<span class="op">;</span></span></code><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb9-44"><a href="#cb9-44" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'sample variance'</span>)<span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
@@ -1499,7 +1507,7 @@ X_{t_{n+1}} = X_{t_n} + \mu(X_{t_n}) \Delta t + \sigma(X_{t_n}) \Delta B_{t_n}.
 </div>
 </div>
 <div id="cell-58" class="cell" data-execution_count="9">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>(np.sin(X[:, <span class="op">-</span><span class="dv">1</span>]<span class="op">**</span><span class="dv">2</span>)).mean()</span></code><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>(np.sin(X[:, <span class="op">-</span><span class="dv">1</span>]<span class="op">**</span><span class="dv">2</span>)).mean()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="9">
 <pre><code>np.float64(0.23676791974798134)</code></pre>
 </div>
@@ -1698,7 +1706,7 @@ A_t = \frac12 \int_0^t W_s \d Z_s - Z_s \d W_s
 <span id="cb12-16"><a href="#cb12-16" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb12-17"><a href="#cb12-17" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">10</span>, <span class="dv">6</span>))</span>
 <span id="cb12-18"><a href="#cb12-18" aria-hidden="true" tabindex="-1"></a>plt.plot(W, Z, lw<span class="op">=</span><span class="dv">1</span>)</span>
-<span id="cb12-19"><a href="#cb12-19" aria-hidden="true" tabindex="-1"></a>plt.plot([W[<span class="op">-</span><span class="dv">1</span>], W[<span class="dv">0</span>]], [Z[<span class="op">-</span><span class="dv">1</span>], Z[<span class="dv">0</span>]], <span class="st">'ro-'</span>, lw<span class="op">=</span><span class="dv">1</span>)<span class="op">;</span></span></code><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb12-19"><a href="#cb12-19" aria-hidden="true" tabindex="-1"></a>plt.plot([W[<span class="op">-</span><span class="dv">1</span>], W[<span class="dv">0</span>]], [Z[<span class="op">-</span><span class="dv">1</span>], Z[<span class="dv">0</span>]], <span class="st">'ro-'</span>, lw<span class="op">=</span><span class="dv">1</span>)<span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
@@ -2055,12 +2063,12 @@ V_t = \mathbb{E}^Q\left[{e^{-r(T-t)}\cdot \text{Payoff}(S_T) | \cF_t}\right],
       // flash "checked"
       button.classList.add('code-copy-button-checked');
       var currentTitle = button.getAttribute("title");
-      button.setAttribute("title", "已复制");
+      button.setAttribute("title", "Copied!");
       let tooltip;
       if (window.bootstrap) {
         button.setAttribute("data-bs-toggle", "tooltip");
         button.setAttribute("data-bs-placement", "left");
-        button.setAttribute("data-bs-title", "已复制");
+        button.setAttribute("data-bs-title", "Copied!");
         tooltip = new bootstrap.Tooltip(button, 
           { trigger: "manual", 
             customClass: "code-copy-button-tooltip",
