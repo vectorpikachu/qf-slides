@@ -1,0 +1,2437 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="zh-Hans" xml:lang="zh-Hans"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.7.32">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Topics in Quantitative Finance, Summer 2025 – qf-slides</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<script src="site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap-bb03f0ebc888f6eea39ad7b9fbf3907c.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "没有结果",
+    "search-matching-documents-text": "匹配的文档",
+    "search-copy-link-title": "复制搜索链接",
+    "search-hide-matches-text": "隐藏其它匹配结果",
+    "search-more-match-text": "更多匹配结果",
+    "search-more-matches-text": "更多匹配结果",
+    "search-clear-button-title": "清除",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "取消",
+    "search-submit-button-title": "提交",
+    "search-label": "搜索"
+  }
+}</script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="styles.css">
+</head>
+
+<body class="nav-fixed quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="./index.html">
+    <span class="navbar-title">qf-slides</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="搜索"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="展开或折叠导航栏" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="./index.html"> 
+<span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./about.html"> 
+<span class="menu-text">About</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./NSD_Lec01-FinancialEngineering_Summer2025.html"> 
+<span class="menu-text">Lecture 01</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link active" href="./NSD_Lec02-StochCal_Summer2025.html" aria-current="page"> 
+<span class="menu-text">Lecture 02</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./NSD_Lec03-BlackMertonScholes-1_Summer2025.html"> 
+<span class="menu-text">Lecture 03</span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">该页面内容</h2>
+   
+  <ul>
+  <li><a href="#lecture-2-crash-course-on-stochastic-calculus" id="toc-lecture-2-crash-course-on-stochastic-calculus" class="nav-link active" data-scroll-target="#lecture-2-crash-course-on-stochastic-calculus">Lecture 2: Crash course on stochastic calculus</a></li>
+  <li><a href="#outline-of-lecture-2" id="toc-outline-of-lecture-2" class="nav-link" data-scroll-target="#outline-of-lecture-2">Outline of Lecture 2</a></li>
+  <li><a href="#definition-of-brownian-motion" id="toc-definition-of-brownian-motion" class="nav-link" data-scroll-target="#definition-of-brownian-motion">Definition of Brownian motion</a>
+  <ul class="collapse">
+  <li><a href="#remark" id="toc-remark" class="nav-link" data-scroll-target="#remark">Remark</a></li>
+  </ul></li>
+  <li><a href="#kolmogorovs-continuity-criterion" id="toc-kolmogorovs-continuity-criterion" class="nav-link" data-scroll-target="#kolmogorovs-continuity-criterion">Kolmogorov’s continuity criterion</a></li>
+  <li><a href="#historical-note" id="toc-historical-note" class="nav-link" data-scroll-target="#historical-note">Historical note</a></li>
+  <li><a href="#андрей-николаевич-колмогоров" id="toc-андрей-николаевич-колмогоров" class="nav-link" data-scroll-target="#андрей-николаевич-колмогоров">Андре́й Никола́евич Колмого́ров</a></li>
+  <li><a href="#nobert-wiener" id="toc-nobert-wiener" class="nav-link" data-scroll-target="#nobert-wiener">Nobert Wiener</a></li>
+  <li><a href="#properties-of-brownian-motion" id="toc-properties-of-brownian-motion" class="nav-link" data-scroll-target="#properties-of-brownian-motion">Properties of Brownian motion</a></li>
+  <li><a href="#distributional-properties-of-brownian-motion" id="toc-distributional-properties-of-brownian-motion" class="nav-link" data-scroll-target="#distributional-properties-of-brownian-motion">Distributional properties of Brownian motion</a></li>
+  <li><a href="#review-gaussian-process" id="toc-review-gaussian-process" class="nav-link" data-scroll-target="#review-gaussian-process">Review: Gaussian process</a></li>
+  <li><a href="#carl-friedrich-gauss" id="toc-carl-friedrich-gauss" class="nav-link" data-scroll-target="#carl-friedrich-gauss">Carl Friedrich Gauss</a></li>
+  <li><a href="#variation-of-a-function" id="toc-variation-of-a-function" class="nav-link" data-scroll-target="#variation-of-a-function">Variation of a function</a></li>
+  <li><a href="#quadratic-variation-and-covariation" id="toc-quadratic-variation-and-covariation" class="nav-link" data-scroll-target="#quadratic-variation-and-covariation">Quadratic variation and covariation</a></li>
+  <li><a href="#quadratic-variation-of-brownian-motion" id="toc-quadratic-variation-of-brownian-motion" class="nav-link" data-scroll-target="#quadratic-variation-of-brownian-motion">Quadratic variation of Brownian motion</a></li>
+  <li><a href="#technical-note-convergence-in-lp" id="toc-technical-note-convergence-in-lp" class="nav-link" data-scroll-target="#technical-note-convergence-in-lp">Technical note: Convergence in <span class="math inline">\(L^p\)</span></a></li>
+  <li><a href="#local-properties-of-brownian-paths" id="toc-local-properties-of-brownian-paths" class="nav-link" data-scroll-target="#local-properties-of-brownian-paths">Local properties of Brownian paths</a></li>
+  <li><a href="#technical-note-lipschitz-and-hölder-continuity" id="toc-technical-note-lipschitz-and-hölder-continuity" class="nav-link" data-scroll-target="#technical-note-lipschitz-and-hölder-continuity">Technical note: Lipschitz and Hölder continuity</a></li>
+  <li><a href="#the-lévy-ciesielski-construction-of-brownian-motion" id="toc-the-lévy-ciesielski-construction-of-brownian-motion" class="nav-link" data-scroll-target="#the-lévy-ciesielski-construction-of-brownian-motion">The Lévy-Ciesielski construction of Brownian motion</a></li>
+  <li><a href="#paley-wiener-expansion-of-brownian-motion" id="toc-paley-wiener-expansion-of-brownian-motion" class="nav-link" data-scroll-target="#paley-wiener-expansion-of-brownian-motion">Paley-Wiener expansion of Brownian motion</a></li>
+  <li><a href="#donskers-invariance-principle" id="toc-donskers-invariance-principle" class="nav-link" data-scroll-target="#donskers-invariance-principle">Donsker’s invariance principle</a></li>
+  <li><a href="#technical-note-weak-convergence-or-convergence-in-distribution" id="toc-technical-note-weak-convergence-or-convergence-in-distribution" class="nav-link" data-scroll-target="#technical-note-weak-convergence-or-convergence-in-distribution">Technical note: Weak convergence or convergence in distribution</a></li>
+  <li><a href="#simulation-of-brownian-motion" id="toc-simulation-of-brownian-motion" class="nav-link" data-scroll-target="#simulation-of-brownian-motion">Simulation of Brownian motion</a></li>
+  <li><a href="#brownian-motion-with-drift" id="toc-brownian-motion-with-drift" class="nav-link" data-scroll-target="#brownian-motion-with-drift">Brownian motion with drift</a></li>
+  <li><a href="#wiener-integral" id="toc-wiener-integral" class="nav-link" data-scroll-target="#wiener-integral">Wiener integral</a></li>
+  <li><a href="#wiener-integral-is-normally-distributed" id="toc-wiener-integral-is-normally-distributed" class="nav-link" data-scroll-target="#wiener-integral-is-normally-distributed">Wiener integral is normally distributed</a></li>
+  <li><a href="#properties-of-wiener-integral" id="toc-properties-of-wiener-integral" class="nav-link" data-scroll-target="#properties-of-wiener-integral">Properties of Wiener integral</a></li>
+  <li><a href="#wiener-integral-defines-a-continuous-martingale" id="toc-wiener-integral-defines-a-continuous-martingale" class="nav-link" data-scroll-target="#wiener-integral-defines-a-continuous-martingale">Wiener integral defines a continuous martingale</a></li>
+  <li><a href="#an-illustrative-example-for-ito-integral" id="toc-an-illustrative-example-for-ito-integral" class="nav-link" data-scroll-target="#an-illustrative-example-for-ito-integral">An illustrative example for Ito integral</a></li>
+  <li><a href="#which-rule-rules" id="toc-which-rule-rules" class="nav-link" data-scroll-target="#which-rule-rules">Which rule rules?</a></li>
+  <li><a href="#simulation-of-stochastic-integral-left-endpoint-rule" id="toc-simulation-of-stochastic-integral-left-endpoint-rule" class="nav-link" data-scroll-target="#simulation-of-stochastic-integral-left-endpoint-rule">Simulation of stochastic integral: left endpoint rule</a></li>
+  <li><a href="#simulation-of-stochastic-integral-right-endpoint-rule" id="toc-simulation-of-stochastic-integral-right-endpoint-rule" class="nav-link" data-scroll-target="#simulation-of-stochastic-integral-right-endpoint-rule">Simulation of stochastic integral: right endpoint rule</a></li>
+  <li><a href="#伊藤-清-先生-itô-kiyoshi-sensei" id="toc-伊藤-清-先生-itô-kiyoshi-sensei" class="nav-link" data-scroll-target="#伊藤-清-先生-itô-kiyoshi-sensei">伊藤 清 先生 (Itô, Kiyoshi sensei)</a></li>
+  <li><a href="#ito-integral-of-simple-processes" id="toc-ito-integral-of-simple-processes" class="nav-link" data-scroll-target="#ito-integral-of-simple-processes">Ito integral of simple processes</a></li>
+  <li><a href="#integrand-for-ito-integral" id="toc-integrand-for-ito-integral" class="nav-link" data-scroll-target="#integrand-for-ito-integral">Integrand for Ito integral</a></li>
+  <li><a href="#properties-of-ito-integral" id="toc-properties-of-ito-integral" class="nav-link" data-scroll-target="#properties-of-ito-integral">Properties of Ito integral</a></li>
+  <li><a href="#ito-processes" id="toc-ito-processes" class="nav-link" data-scroll-target="#ito-processes">Ito processes</a></li>
+  <li><a href="#ito-integral-with-respect-to-ito-processes" id="toc-ito-integral-with-respect-to-ito-processes" class="nav-link" data-scroll-target="#ito-integral-with-respect-to-ito-processes">Ito integral with respect to Ito processes</a></li>
+  <li><a href="#itos-formula-for-brownian-motion" id="toc-itos-formula-for-brownian-motion" class="nav-link" data-scroll-target="#itos-formula-for-brownian-motion">Ito’s formula for Brownian motion</a></li>
+  <li><a href="#itos-formula-for-ito-process" id="toc-itos-formula-for-ito-process" class="nav-link" data-scroll-target="#itos-formula-for-ito-process">Ito’s formula for Ito process</a></li>
+  <li><a href="#review-fundamental-theorem-of-calculus-and-taylors-theorem" id="toc-review-fundamental-theorem-of-calculus-and-taylors-theorem" class="nav-link" data-scroll-target="#review-fundamental-theorem-of-calculus-and-taylors-theorem">Review: Fundamental theorem of calculus and Taylor’s theorem</a></li>
+  <li><a href="#applications-of-itos-formula-i-evaluating-stochastic-integral" id="toc-applications-of-itos-formula-i-evaluating-stochastic-integral" class="nav-link" data-scroll-target="#applications-of-itos-formula-i-evaluating-stochastic-integral">Applications of Ito’s formula I: Evaluating stochastic integral</a></li>
+  <li><a href="#examples-of-stochastic-integral-evaluation" id="toc-examples-of-stochastic-integral-evaluation" class="nav-link" data-scroll-target="#examples-of-stochastic-integral-evaluation">Examples of stochastic integral evaluation</a></li>
+  <li><a href="#applications-of-itos-formula-ii-solving-sdes" id="toc-applications-of-itos-formula-ii-solving-sdes" class="nav-link" data-scroll-target="#applications-of-itos-formula-ii-solving-sdes">Applications of Ito’s formula II: Solving SDEs</a>
+  <ul class="collapse">
+  <li><a href="#euler-maruyama-scheme" id="toc-euler-maruyama-scheme" class="nav-link" data-scroll-target="#euler-maruyama-scheme">Euler-Maruyama Scheme</a></li>
+  </ul></li>
+  <li><a href="#simulation-of-the-ornstein-uhlenbeck-process" id="toc-simulation-of-the-ornstein-uhlenbeck-process" class="nav-link" data-scroll-target="#simulation-of-the-ornstein-uhlenbeck-process">Simulation of the Ornstein-Uhlenbeck process</a></li>
+  <li><a href="#stochastic-differential-equation" id="toc-stochastic-differential-equation" class="nav-link" data-scroll-target="#stochastic-differential-equation">Stochastic differential equation</a></li>
+  <li><a href="#connection-to-partial-differential-equation" id="toc-connection-to-partial-differential-equation" class="nav-link" data-scroll-target="#connection-to-partial-differential-equation">Connection to partial differential equation</a>
+  <ul class="collapse">
+  <li><a href="#proof" id="toc-proof" class="nav-link" data-scroll-target="#proof">Proof</a></li>
+  </ul></li>
+  <li><a href="#the-feynman-kac-formula" id="toc-the-feynman-kac-formula" class="nav-link" data-scroll-target="#the-feynman-kac-formula">The Feynman-Kac formula</a>
+  <ul class="collapse">
+  <li><a href="#proof-of-feynman-kac-formula" id="toc-proof-of-feynman-kac-formula" class="nav-link" data-scroll-target="#proof-of-feynman-kac-formula">Proof of Feynman-Kac formula</a></li>
+  </ul></li>
+  <li><a href="#richard-phillips-feynman" id="toc-richard-phillips-feynman" class="nav-link" data-scroll-target="#richard-phillips-feynman">Richard Phillips Feynman</a></li>
+  <li><a href="#marek-kac" id="toc-marek-kac" class="nav-link" data-scroll-target="#marek-kac">Marek Kac</a></li>
+  <li><a href="#adding-nonhomogeneous-term" id="toc-adding-nonhomogeneous-term" class="nav-link" data-scroll-target="#adding-nonhomogeneous-term">Adding nonhomogeneous term</a></li>
+  <li><a href="#backward-second-order-parabolic-pdes" id="toc-backward-second-order-parabolic-pdes" class="nav-link" data-scroll-target="#backward-second-order-parabolic-pdes">Backward second order parabolic PDEs</a></li>
+  <li><a href="#lévy-area" id="toc-lévy-area" class="nav-link" data-scroll-target="#lévy-area">Lévy area</a></li>
+  <li><a href="#paul-lévy" id="toc-paul-lévy" class="nav-link" data-scroll-target="#paul-lévy">Paul Lévy</a></li>
+  <li><a href="#distribution-of-lévy-area" id="toc-distribution-of-lévy-area" class="nav-link" data-scroll-target="#distribution-of-lévy-area">Distribution of Lévy area</a></li>
+  <li><a href="#bessel-squared-process" id="toc-bessel-squared-process" class="nav-link" data-scroll-target="#bessel-squared-process">Bessel squared process</a></li>
+  <li><a href="#characteristic-function-of-lévy-area" id="toc-characteristic-function-of-lévy-area" class="nav-link" data-scroll-target="#characteristic-function-of-lévy-area">Characteristic function of Lévy area</a></li>
+  <li><a href="#solving-the-terminal-value-problem" id="toc-solving-the-terminal-value-problem" class="nav-link" data-scroll-target="#solving-the-terminal-value-problem">Solving the terminal value problem</a></li>
+  <li><a href="#characteristic-function-of-lévy-area-1" id="toc-characteristic-function-of-lévy-area-1" class="nav-link" data-scroll-target="#characteristic-function-of-lévy-area-1">Characteristic function of Lévy area</a></li>
+  <li><a href="#notes-of-the-lecture" id="toc-notes-of-the-lecture" class="nav-link" data-scroll-target="#notes-of-the-lecture">Notes of the Lecture</a>
+  <ul class="collapse">
+  <li><a href="#核心概念-随机积分-vs.-经典积分" id="toc-核心概念-随机积分-vs.-经典积分" class="nav-link" data-scroll-target="#核心概念-随机积分-vs.-经典积分">核心概念: 随机积分 vs.&nbsp;经典积分</a></li>
+  <li><a href="#itô-积分的金融意义" id="toc-itô-积分的金融意义" class="nav-link" data-scroll-target="#itô-积分的金融意义">Itô 积分的金融意义</a></li>
+  <li><a href="#itô-过程的本质与金融建模" id="toc-itô-过程的本质与金融建模" class="nav-link" data-scroll-target="#itô-过程的本质与金融建模">Itô 过程的本质与金融建模</a></li>
+  <li><a href="#itô-公式的金融直觉" id="toc-itô-公式的金融直觉" class="nav-link" data-scroll-target="#itô-公式的金融直觉">Itô 公式的金融直觉</a></li>
+  <li><a href="#股票价格的随机模型" id="toc-股票价格的随机模型" class="nav-link" data-scroll-target="#股票价格的随机模型">股票价格的随机模型</a></li>
+  <li><a href="#金融衍生品定价示例" id="toc-金融衍生品定价示例" class="nav-link" data-scroll-target="#金融衍生品定价示例">金融衍生品定价示例</a></li>
+  <li><a href="#风险中性定价" id="toc-风险中性定价" class="nav-link" data-scroll-target="#风险中性定价">风险中性定价</a></li>
+  <li><a href="#option-payoff" id="toc-option-payoff" class="nav-link" data-scroll-target="#option-payoff">Option Payoff</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Topics in Quantitative Finance, Summer 2025</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="lecture-2-crash-course-on-stochastic-calculus" class="level2">
+<h2 class="anchored" data-anchor-id="lecture-2-crash-course-on-stochastic-calculus">Lecture 2: Crash course on stochastic calculus</h2>
+<p><br> <br></p>
+<center>
+<font size="5," color="darkblue"> Tai-Ho Wang (王 太和)</font>
+</center>
+<br>
+<center>
+<p><br></p>
+<p><span class="math display">\[
+\renewcommand{\d}{\text{d} }
+\newcommand{\bea}{\begin{align}}
+\newcommand{\eea}{\end{align}}
+\newcommand{\supp}{\mathrm{supp}}
+\newcommand{\F}{\mathcal{F} }
+\newcommand{\cF}{\mathcal{F} }
+\newcommand{\E}{\mathbb{E} }
+\newcommand{\Eof}[1]{\mathbb{E}\left[ #1 \right]}
+\def\Cov{{ \text{Cov} }}
+\def\Var{{ \text{Var} }}
+\newcommand{\1}{\mathbb{1} }
+\newcommand{\p}{\partial}
+\renewcommand{\P}{\mathbb{P} }
+\newcommand{\PP}{\mathbb{P} }
+\newcommand{\Pof}[1]{\mathbb{P}\left[ #1 \right]}
+\newcommand{\QQ}{\mathbb{Q} }
+\renewcommand{\R}{\mathbb{R} }
+\newcommand{\DD}{\mathbb{D} }
+\newcommand{\HH}{\mathbb{H} }
+\newcommand{\spn}{\mathrm{span} }
+\newcommand{\cov}{\mathrm{cov} }
+\newcommand{\HS}{\mathcal{L}_{\mathrm{HS}} }
+\newcommand{\Hess}{\mathrm{Hess} }
+\newcommand{\trace}{\mathrm{trace} }
+\newcommand{\LL}{\mathcal{L} }
+\newcommand{\s}{\mathcal{S} }
+\newcommand{\ee}{\mathcal{E} }
+\newcommand{\ff}{\mathcal{F} }
+\newcommand{\hh}{\mathcal{H} }
+\newcommand{\bb}{\mathcal{B} }
+\newcommand{\dd}{\mathcal{D} }
+\newcommand{\g}{\mathcal{G} }
+\newcommand{\half}{\frac{1}{2} }
+\newcommand{\T}{\mathcal{T} }
+\newcommand{\bit}{\begin{itemize}}
+\newcommand{\eit}{\end{itemize}}
+\newcommand{\beq}{\begin{equation}}
+\newcommand{\eeq}{\end{equation}}
+\newcommand{\tr}{\text{tr}}
+\]</span></p>
+</center></section>
+<section id="outline-of-lecture-2" class="level2">
+<h2 class="anchored" data-anchor-id="outline-of-lecture-2">Outline of Lecture 2</h2>
+<ul>
+<li>Brownian motion</li>
+<li>Stochastic integral</li>
+<li>Ito’s formula</li>
+<li>Feynman-Kac formula
+<ul>
+<li>Characteristic function for Lévy area</li>
+</ul></li>
+</ul>
+</section>
+<section id="definition-of-brownian-motion" class="level2">
+<h2 class="anchored" data-anchor-id="definition-of-brownian-motion">Definition of Brownian motion</h2>
+<p>Let <span class="math inline">\((\Omega,\cF_t,\P)\)</span> be a filtered probability space.</p>
+<p>A stochastic process <span class="math inline">\(B_t\)</span> adapted to <span class="math inline">\(\cF_t\)</span> is called a (standard) <em>Brownian motion</em> or a <em>Wiener process</em> if it satisfies the following conditions</p>
+<ul>
+<li><p><span class="math inline">\(\P[\omega: B_0(\omega) = 0] = 1\)</span>, i.e., the process starts at zero almost surely.</p></li>
+<li><p>For any <span class="math inline">\(0 \leq s &lt; t\)</span>, the random variable <span class="math inline">\(B_t - B_s\)</span> is normally distributed with mean 0 and variance <span class="math inline">\(t-s\)</span>, i.e., for any <span class="math inline">\(a&lt;b\)</span>, <span class="math display">\[
+\P[a \leq B_t - B_s \leq b] = \frac{1}{\sqrt{2\pi(t-s)}}\int_a^b e^{-\frac{x^2}{2(t-s)}} {\rm d} x.
+\]</span></p></li>
+<li><p><span class="math inline">\(B_t\)</span> has independent increment, i.e., for any <span class="math inline">\(0\leq t_1 &lt; t_2 &lt; \cdots &lt; t_n\)</span>, the random variables <span class="math display">\[
+  B_{t_1}, \; B_{t_2} - B_{t_1},\; \cdots, \; B_{t_n} - B_{t_{n-1}}
+\]</span> are independent.</p></li>
+<li><p>Almost all sample paths of <span class="math inline">\(B_t\)</span> are continuous functions, i.e., <span class="math display">\[
+  \P[\omega:B_t(\omega) \text{ is continuous } ] = 1
+\]</span></p></li>
+</ul>
+<section id="remark" class="level3">
+<h3 class="anchored" data-anchor-id="remark">Remark</h3>
+<ul>
+<li>A Brownian motion is sometimes defined as a stochastic process satisfying only the first 3 conditions in the definition. Such a process always has continuous modification by applying Kolmogorov’s continuity criterion.</li>
+<li>The standard Brownian motion starts at 0. A Brownian motion starts at <span class="math inline">\(x\neq 0\)</span> is obtain by shifting <span class="math inline">\(x + B_t\)</span>.</li>
+<li><span class="math inline">\(X_t = x + \sigma B_t\)</span>, <span class="math inline">\(X_t\)</span> has mean <span class="math inline">\(x\)</span> and variance <span class="math inline">\(\sigma^2 t\)</span>, whereas <span class="math inline">\(X_t - X_s\)</span> has mean <span class="math inline">\(0\)</span> variance <span class="math inline">\(\sigma^2(t-s)\)</span>.</li>
+</ul>
+</section>
+</section>
+<section id="kolmogorovs-continuity-criterion" class="level2">
+<h2 class="anchored" data-anchor-id="kolmogorovs-continuity-criterion">Kolmogorov’s continuity criterion</h2>
+<section id="theorem" class="level4">
+<h4 class="anchored" data-anchor-id="theorem">Theorem</h4>
+<p>A process <span class="math inline">\(X\)</span>, for which there exist three constants <span class="math inline">\(\alpha\)</span>, <span class="math inline">\(\beta\)</span>, <span class="math inline">\(C &gt; 0\)</span> such that <span class="math display">\[
+  \Eof{|X_{t+h} - X_t|^{\alpha}} \leq C h^{1 + \beta}
+\]</span> for every <span class="math inline">\(t\)</span> and <span class="math inline">\(h\)</span>, has a modification which is almost surely continuous.</p>
+<p>注: Modification(修正), 设概率空间 <span class="math inline">\((\Omega, \cF, \P)\)</span> 上有两个指标集为 <span class="math inline">\(T\)</span> 的随机过程 <span class="math inline">\(X=\{X_t\}\)</span> 和 <span class="math inline">\(Y=\{Y_t\}\)</span>, 那么我们称 <span class="math inline">\(Y\)</span> 是 <span class="math inline">\(X\)</span> 的修正, 如果对于 <span class="math inline">\(\forall t \in T\)</span> 有: <span class="math display">\[
+\P[X_t = Y_t] = 1.
+\]</span> 之所以把上面的概念称作修正, 是因为 <span class="math inline">\(Y\)</span> 相当于是把原过程 <span class="math inline">\(X\)</span> 调整了极少量的点之后得来的.</p>
+<p>For Brownian motion <span class="math inline">\(B_t\)</span>, since the random variable <span class="math inline">\(B_{t+h} - B_t\)</span> is centered Gaussian with variance <span class="math inline">\(h\)</span>, we have</p>
+<p><span class="math display">\[
+   \Eof{(B_{t+h} - B_t)^4} = 3 h^2.
+\]</span></p>
+<p>Therefore, by taking <span class="math inline">\(\alpha=4\)</span>, <span class="math inline">\(\beta = 1\)</span>, and <span class="math inline">\(C=3\)</span>, the Kolmogorov’s continuity criterion applies.</p>
+</section>
+</section>
+<section id="historical-note" class="level2">
+<h2 class="anchored" data-anchor-id="historical-note">Historical note</h2>
+<p>Quotes from the <a href="https://en.wikipedia.org/wiki/Brownian_motion">Wikipage</a>:</p>
+<blockquote class="blockquote">
+<p>“Brownian motion or pedesis (from Greek: πήδησις /pɛ̌ːdɛːsis/”leaping”) is the random motion of particles suspended in a fluid (a liquid or a gas) resulting from their collision with the quick atoms or molecules in the gas or liquid.”</p>
+<p>“This transport phenomenon is named after the botanist Robert Brown. In 1827, while looking through a microscope at particles found in pollen grains in water, he noted that the particles moved through the water but was not able to determine the mechanisms that caused this motion.”</p>
+<p>“The first person to describe the mathematics behind Brownian motion was Thorvald N. Thiele in a paper on the method of least squares published in 1880. This was followed independently by Louis Bachelier in 1900 in his PhD thesis”The theory of speculation”, in which he presented a stochastic analysis of the stock and option markets. Albert Einstein (in one of his 1905 papers) and Marian Smoluchowski (1906) brought the solution of the problem to the attention of physicists, and presented it as a way to indirectly confirm the existence of atoms and molecules. Their equations describing Brownian motion were subsequently verified by the experimental work of Jean Baptiste Perrin in 1908.”</p>
+</blockquote>
+</section>
+<section id="андрей-николаевич-колмогоров" class="level2">
+<h2 class="anchored" data-anchor-id="андрей-николаевич-колмогоров">Андре́й Никола́евич Колмого́ров</h2>
+<h2 style="text-align: center;" class="anchored">
+<img src="https://cdn.britannica.com/08/10408-004-0BCEF6E8/Andrey-Nikolayevich-Kolmogorov-1966.jpg" align="middle" width="100">
+</h2>
+<p>Courtesy: Photo from <a href="https://www.britannica.com/biography/Andrey-Nikolayevich-Kolmogorov">Encyclopedia Britannica</a></p>
+<p>Quotes from the <a href="https://en.wikipedia.org/wiki/Andrey_Kolmogorov">Wikipage</a>:</p>
+<blockquote class="blockquote">
+<p>Andrey Nikolaevich Kolmogorov (Russian: Андре́й Никола́евич Колмого́ров), 25 April 1903 – 20 October 1987) was a Soviet mathematician who contributed to the mathematics of probability theory, topology, intuitionistic logic, turbulence, classical mechanics, algorithmic information theory and computational complexity.</p>
+</blockquote>
+</section>
+<section id="nobert-wiener" class="level2">
+<h2 class="anchored" data-anchor-id="nobert-wiener">Nobert Wiener</h2>
+<h2 style="text-align: center;" class="anchored">
+<img src="https://cdn.britannica.com/77/26877-050-B98008C8/Norbert-Wiener.jpg" align="middle" width="100">
+</h2>
+<p>Courtesy: Photo from <a href="https://www.britannica.com/biography/Norbert-Wiener">Encyclopedia Britannica</a></p>
+<p>Quotes from the <a href="https://en.wikipedia.org/wiki/Norbert_Wiener">Wikipage</a>:</p>
+<blockquote class="blockquote">
+<p>Norbert Wiener, November 26, 1894 – March 18, 1964, was an American mathematician and philosopher. He was a professor of mathematics at the Massachusetts Institute of Technology. A child prodigy, Wiener later became an early researcher in stochastic and mathematical noise processes, contributing work relevant to electronic engineering, electronic communication, and control systems.</p>
+</blockquote>
+</section>
+<section id="properties-of-brownian-motion" class="level2">
+<h2 class="anchored" data-anchor-id="properties-of-brownian-motion">Properties of Brownian motion</h2>
+<p>The following properties hold for Brownian motion <span class="math inline">\(B_t\)</span>.</p>
+<ul>
+<li><p><em>Time-homogeneity</em> For any <span class="math inline">\(s&gt;0\)</span>, the process <span class="math inline">\(B_{t+s} - B_s\)</span>, <span class="math inline">\(t\geq 0\)</span> is also a Brownian motion and is independent of the <span class="math inline">\(\sigma\)</span>-algebra <span class="math inline">\(\sigma(B_u, u\leq s)\)</span>.</p></li>
+<li><p><em>Symmetry</em> The process <span class="math inline">\(-B_t\)</span>, <span class="math inline">\(t\geq 0\)</span>, is a Brownian motion.</p></li>
+<li><p><em>Self-similarity</em> For every <span class="math inline">\(c &gt; 0\)</span>, the process <span class="math inline">\(cB_{t/c^2}\)</span>, <span class="math inline">\(t \geq 0\)</span>, is a Brownian motion.</p></li>
+<li><p><em>Time inversion</em> The process <span class="math inline">\(X\)</span> defined by <span class="math inline">\(X_0=0\)</span>, <span class="math inline">\(X_t = tB_{1/t}\)</span> for <span class="math inline">\(t&gt;0\)</span>, is a Brownian motion.</p></li>
+</ul>
+</section>
+<section id="distributional-properties-of-brownian-motion" class="level2">
+<h2 class="anchored" data-anchor-id="distributional-properties-of-brownian-motion">Distributional properties of Brownian motion</h2>
+<p>Brownian motion is a Gaussian process, it is fully characterized by the mean and the covariance functions.</p>
+<ul>
+<li><p><span class="math inline">\(\Eof{B_t} = 0\)</span> for all <span class="math inline">\(t\)</span></p></li>
+<li><p><span class="math inline">\(\cov(B_t,B_s) = \min\{s,t\}\)</span></p></li>
+</ul>
+<p>To calculate the covariance, without loss of generality, we assume <span class="math inline">\(s &lt; t\)</span>.</p>
+<p><span class="math display">\[\begin{align*}
+  \cov(B_t,B_s) &amp;= \Eof{B_t\, B_s} = \Eof{(B_t - B_s + B_s)B_s} = \Eof{(B_t - B_s)B_s} + s \\
+  &amp;= \Eof{B_t - B_s}\,\Eof{B_s} + s \quad (\because \text{ independent increment}) \\
+  &amp;= s = \min\{s,t\}.
+\end{align*}\]</span></p>
+</section>
+<section id="review-gaussian-process" class="level2">
+<h2 class="anchored" data-anchor-id="review-gaussian-process">Review: Gaussian process</h2>
+<p>A stochastic process <span class="math inline">\(X_t\)</span> is called a <em>Gaussian process</em> if all its finite dimensional distributions are multivariate normally distributed. Thus, a Gaussian process is fully characterized by its mean function <span class="math inline">\(\mu(t) = \Eof{X_t}\)</span> and (auto)covariance function <span class="math inline">\(\gamma(t,s) = \cov(X_t,X_s)\)</span>.</p>
+<section id="commonly-encountered-gaussian-processes" class="level4">
+<h4 class="anchored" data-anchor-id="commonly-encountered-gaussian-processes">Commonly encountered Gaussian processes</h4>
+<ul>
+<li>Brownian motion</li>
+<li>Brownian motion with deterministic drift</li>
+<li>Brownian bridge</li>
+<li>Ornstein-Uhlenbeck process</li>
+<li>fractional Brownian motion</li>
+</ul>
+</section>
+</section>
+<section id="carl-friedrich-gauss" class="level2">
+<h2 class="anchored" data-anchor-id="carl-friedrich-gauss">Carl Friedrich Gauss</h2>
+<h2 style="text-align: center;" class="anchored">
+<img src="https://upload.wikimedia.org/wikipedia/commons/e/ec/Carl_Friedrich_Gauss_1840_by_Jensen.jpg" align="center" width="100">
+</h2>
+<p>Courtesy: <a href="https://en.wikipedia.org/wiki/File:Carl_Friedrich_Gauss_1840_by_Jensen.jpg">Wikipedia</a></p>
+<p>Quote from the <a href="https://en.wikipedia.org/wiki/Carl_Friedrich_Gauss">Wikipage</a>:</p>
+<blockquote class="blockquote">
+<p>Johann Carl Friedrich Gauss (/ɡaʊs/; German: Gauß [kaʁl ˈfʁiːdʁɪç ˈɡaʊs]; Latin: Carolus Fridericus Gauss; 30 April 1777 – 23 February 1855) was a German mathematician and physicist who made significant contributions to many fields in mathematics and science. Sometimes referred to as the Princeps mathematicorum (Latin for ‘“the foremost of mathematicians”’) and “the greatest mathematician since antiquity”, Gauss had an exceptional influence in many fields of mathematics and science, and is ranked among history’s most influential mathematicians.</p>
+</blockquote>
+</section>
+<section id="variation-of-a-function" class="level2">
+<h2 class="anchored" data-anchor-id="variation-of-a-function">Variation of a function</h2>
+<p>Let <span class="math inline">\(f:[0,T] \to \R\)</span>. Let <span class="math inline">\(\Pi_n = \{0=t_0 &lt; t_1 &lt; \cdots &lt; t_n = T \}\)</span> be a sequence of partitions of the finite interval <span class="math inline">\([0,T]\)</span> and denote <span class="math inline">\(\displaystyle\|\Pi_n\| = \max_n\{ t_i - t_{i-1} \}\)</span>. The variation <span class="math inline">\(V_f(T)\)</span> of <span class="math inline">\(f\)</span> in <span class="math inline">\([0,T]\)</span> is defined as <span class="math display">\[
+  V_f(T) = \lim_{\|\Pi_n\|\to 0} \sum_{i=1}^n |f(t_i) - f(t_{i-1})|
+\]</span> provided the limit exists.</p>
+<section id="remark-1" class="level4">
+<h4 class="anchored" data-anchor-id="remark-1">Remark</h4>
+<p>An important property for functions of finite variation is that it can be uniquely written as the sum of an increasing function and a decreasing function.</p>
+<p>实际上记录了在 <span class="math inline">\(y\)</span> 轴上经历的路程.</p>
+<ul>
+<li>递增函数: Variation = 终值 - 初值.</li>
+</ul>
+</section>
+</section>
+<section id="quadratic-variation-and-covariation" class="level2">
+<h2 class="anchored" data-anchor-id="quadratic-variation-and-covariation">Quadratic variation and covariation</h2>
+<p>Let <span class="math inline">\(f,g:[0,T] \to \R\)</span>. Let <span class="math inline">\(\Pi_n = \{0=t_0 &lt; t_1 &lt; \cdots &lt; t_n = T\}\)</span> be a sequence of partitions of the finite interval <span class="math inline">\([0,T]\)</span> and denote <span class="math inline">\(\|\Pi_n\| = \max_n\{ t_i - t_{i-1} \}\)</span>.</p>
+<section id="quadratic-variation" class="level4">
+<h4 class="anchored" data-anchor-id="quadratic-variation">Quadratic variation</h4>
+<p>The quadratic variation of <span class="math inline">\(f\)</span>, denoted by <span class="math inline">\([f](T)\)</span>, in <span class="math inline">\([0,T]\)</span> is defined as</p>
+<p><span class="math display">\[
+  [f](T) = \lim_{\|\Pi_n\|\to 0} \sum_{i=1}^n |f(t_i) - f(t_{i-1})|^2
+\]</span></p>
+<p>provided the limit exists.</p>
+</section>
+<section id="quadratic-covariation" class="level4">
+<h4 class="anchored" data-anchor-id="quadratic-covariation">Quadratic covariation</h4>
+<p>The quadratic covariation of <span class="math inline">\(f\)</span> and <span class="math inline">\(g\)</span>, denoted by <span class="math inline">\([f,g](T)\)</span>, in <span class="math inline">\([0,T]\)</span> is defined as</p>
+<p><span class="math display">\[
+  [f,g](T) = \lim_{\|\Pi_n\|\to 0} \sum_{i=1}^n [f(t_i) - f(t_{i-1})][g(t_i) - g(t_{i-1})]
+\]</span></p>
+<p>provided the limit exists.</p>
+</section>
+<section id="remark-2" class="level4">
+<h4 class="anchored" data-anchor-id="remark-2">Remark</h4>
+<p>One can define even higher order variations, say, cubic variation. However, if the variation at some order is finite, all the higher order variations vanish. For example, the cubic variation of Brownian motion vanishes since it has finite quadratic variation.</p>
+</section>
+</section>
+<section id="quadratic-variation-of-brownian-motion" class="level2">
+<h2 class="anchored" data-anchor-id="quadratic-variation-of-brownian-motion">Quadratic variation of Brownian motion</h2>
+<p>Let <span class="math inline">\(\Delta_n = \{a=t_0 &lt; t_1 &lt; \cdots &lt; t_n = b \}\)</span> be a partition of a finite interval <span class="math inline">\([a,b]\)</span>. Then</p>
+<p><span class="math display">\[
+  \lim_{n\to\infty}\sum_{i=1}^n (B_{t_{i}} - B_{t_{i-1}})^2 = b-a \quad \text{ in } L^2(\Omega)
+\]</span></p>
+<p>as <span class="math inline">\(\|\Delta_n\| = \displaystyle\max_{1\leq i \leq n}(t_i - t_{i-1})\)</span> goes to <span class="math inline">\(0\)</span>.</p>
+<p>注: <span class="math inline">\(L^p\)</span> 空间实际上是 <span class="math inline">\(p\)</span> 次可积函数组成的空间. <a href="https://en.wikipedia.org/wiki/Lp_space"><span class="math inline">\(L^p\)</span> Space</a></p>
+<p>In other words, the quadratic variation <span class="math inline">\([B]_t\)</span> of Brownian motion <span class="math inline">\(B_t\)</span> in <span class="math inline">\([0,t]\)</span> is <span class="math inline">\([B]_t = t\)</span>.</p>
+<section id="remark-3" class="level4">
+<h4 class="anchored" data-anchor-id="remark-3">Remark</h4>
+<p>Almost sure convergence is guaranteed if the sequence <span class="math inline">\(\{\Delta_n\}\)</span> satisfies the condition</p>
+<p><span class="math display">\[
+  \Delta_1 \subset \Delta_2 \subset \cdots \subset \Delta_n
+  \subset \cdots.
+\]</span></p>
+<p>Almost sure convergence is also guaranteed when <span class="math inline">\(\{\Delta_n\}\)</span> satisfies <span class="math inline">\(\displaystyle\sum_{n=1}^\infty \| \Delta_n \| &lt; \infty\)</span>.</p>
+</section>
+</section>
+<section id="technical-note-convergence-in-lp" class="level2">
+<h2 class="anchored" data-anchor-id="technical-note-convergence-in-lp">Technical note: Convergence in <span class="math inline">\(L^p\)</span></h2>
+<p>A sequence of random variables <span class="math inline">\(X_n\)</span> defined on the probability space <span class="math inline">\((\Omega,\F,\P)\)</span> is called <em>convergent to</em> <span class="math inline">\(X\)</span> <em>in</em> <span class="math inline">\(L^p\)</span> if</p>
+<p><span class="math display">\[
+\lim_{n\to\infty} \|X_n - X\|_p = 0 \quad \text{ or equivalently } \quad \lim_{n\to\infty} \Eof{|X_n - X|^p} = 0
+\]</span></p>
+<p>where <span class="math inline">\(\|X\|_p = \sqrt[p]{\Eof{|X|^p}}\)</span> is the <span class="math inline">\(L^p\)</span>-norm of the random variable <span class="math inline">\(X\)</span>.</p>
+<section id="remark-4" class="level4">
+<h4 class="anchored" data-anchor-id="remark-4">Remark</h4>
+<p>Recall that we have the relationship among different types of convergence</p>
+<p><span class="math display">\[
+\begin{array}{ccccc}
+\text{in } L^p &amp; \Rightarrow &amp; \text{in probability} &amp; \Rightarrow &amp; \text{in distribution or weakly} \\
+&amp; &amp; \Uparrow &amp; &amp; \\
+&amp; &amp; \text{almost surely}
+\end{array}
+\]</span></p>
+</section>
+</section>
+<section id="local-properties-of-brownian-paths" class="level2">
+<h2 class="anchored" data-anchor-id="local-properties-of-brownian-paths">Local properties of Brownian paths</h2>
+<p>Let <span class="math inline">\(B_t\)</span> be a Brownian motion.</p>
+<ul>
+<li><p><span class="math inline">\(B_t\)</span> is locally Hölder continuous of order <span class="math inline">\(\alpha\)</span> for every <span class="math inline">\(\alpha &lt; \frac12\)</span>.</p></li>
+<li><p>The Brownian paths are almost surely of infinite variation on any interval.</p></li>
+<li><p>The Brownian paths are almost surely nowhere locally Hölder continuous of order <span class="math inline">\(\alpha\)</span> for <span class="math inline">\(\alpha &gt; \frac12\)</span>.</p></li>
+<li><p>Lévy’s modulus of continuity. Let <span class="math inline">\(h(t) = \sqrt{2 t \log(1/t) }\)</span>. Then</p></li>
+</ul>
+<p><span class="math display">\[
+\P\left[ \mathop{\overline{\lim}}_{\epsilon \to 0} \left( \sup_{0\leq t_1 &lt; t_2 \leq 1, \\ t_2 - t_1 \leq \epsilon}\frac{|B_{t_2} - B_{t_1}|}{h(\epsilon)} \right) = 1 \right] = 1
+\]</span></p>
+</section>
+<section id="technical-note-lipschitz-and-hölder-continuity" class="level2">
+<h2 class="anchored" data-anchor-id="technical-note-lipschitz-and-hölder-continuity">Technical note: Lipschitz and Hölder continuity</h2>
+<section id="definition-lipschitz-continuous" class="level4">
+<h4 class="anchored" data-anchor-id="definition-lipschitz-continuous">Definition (Lipschitz continuous)</h4>
+<p>A function <span class="math inline">\(f\)</span> is called Lipschitz or Lipschitz continuous on the interval <span class="math inline">\([a,b]\)</span> if there exists a constant <span class="math inline">\(L\)</span> such that</p>
+<p><span class="math display">\[
+|f(t) - f(s)| \leq L|t-s|
+\]</span></p>
+<p>for all <span class="math inline">\(t,s \in [a,b]\)</span>.</p>
+</section>
+<section id="definition-hölder-continuous" class="level4">
+<h4 class="anchored" data-anchor-id="definition-hölder-continuous">Definition (Hölder continuous)</h4>
+<p>A function <span class="math inline">\(f\)</span> is called Hölder continuous of order <span class="math inline">\(\alpha\)</span> on the interval <span class="math inline">\([a,b]\)</span> if there exists a constant <span class="math inline">\(K\)</span> such that</p>
+<p><span class="math display">\[
+|f(t) - f(s)| \leq K|t-s|^\alpha
+\]</span></p>
+<p>for all <span class="math inline">\(t,s \in [a,b]\)</span>.</p>
+</section>
+</section>
+<section id="the-lévy-ciesielski-construction-of-brownian-motion" class="level2">
+<h2 class="anchored" data-anchor-id="the-lévy-ciesielski-construction-of-brownian-motion">The Lévy-Ciesielski construction of Brownian motion</h2>
+<p>Let <span class="math inline">\(\{\psi_i\}\)</span> be a complete orthonormal basis for <span class="math inline">\(L^2[0,1]\)</span> and <span class="math inline">\(\xi_i\)</span>, <span class="math inline">\(i=1,2,\cdots\)</span>, an iid sequence of standard normal random variables defined on a probability space <span class="math inline">\((\Omega,\F,\P)\)</span>. Define <span class="math inline">\(\displaystyle \phi_i(t) = \int_0^t \psi_i(s) {\rm d}s\)</span>, for <span class="math inline">\(t\in[0,1]\)</span>. Then the stochastic process <span class="math inline">\(W\)</span> defined by</p>
+<p><span class="math display">\[
+  W_t = \sum_{i=1}^\infty \xi_i \phi_i(t)
+\]</span></p>
+<p>is a Brownian motion.</p>
+</section>
+<section id="paley-wiener-expansion-of-brownian-motion" class="level2">
+<h2 class="anchored" data-anchor-id="paley-wiener-expansion-of-brownian-motion">Paley-Wiener expansion of Brownian motion</h2>
+<p>The Paley-Wiener representation of a Brownian path in terms of a random Fourier series.</p>
+<p>Let <span class="math inline">\(\xi_n\)</span> be an iid sequence of standard normal variables. Then</p>
+<p><span class="math display">\[
+B_t=\xi_0 t+ \sqrt{2}\sum_{n=1}^\infty\xi_n\frac{\sin( n\pi t)}{n \pi}
+\]</span></p>
+<p>and</p>
+<p><span class="math display">\[
+B_t = \sqrt{2} \sum_{n=1}^\infty \xi_n \frac{\sin \left(\left(n - \frac{1}{2}\right) \pi t\right)}{ \left(n - \frac{1}{2}\right) \pi}
+\]</span></p>
+<p>represent a Brownian motion on <span class="math inline">\([0,1]\)</span>.</p>
+<div id="cell-21" class="cell" data-execution_count="1">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># import modules </span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np </span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> numpy <span class="im">import</span> exp, log, sqrt</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> scipy.stats <span class="im">import</span> norm</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> scipy.stats <span class="im">as</span> ss</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span></code><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="cell-22" class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># set seed for reproducing the same result</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>np.random.seed(<span class="dv">1414</span>)</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="co"># the following function plots the Brownian motion path by the Paley-Wiener expansion</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> plotBM(N, color<span class="op">=</span><span class="st">'blue'</span>, n_steps<span class="op">=</span><span class="dv">200</span>):</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""</span></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="co">    Plot the Brownian motion path using the Paley-Wiener expansion.</span></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a><span class="co">    Parameters:</span></span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a><span class="co">    N (int): Number of terms in the expansion.</span></span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a><span class="co">        That is, the number of random variables used.</span></span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a><span class="co">        That is, the ksi defined in the above section.</span></span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a><span class="co">    color (str): Color of the plot.</span></span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a><span class="co">    n_steps (int): Number of steps in the time grid.</span></span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a><span class="co">    """</span></span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a>    xi0, xi <span class="op">=</span> norm.rvs(size<span class="op">=</span><span class="dv">1</span>)[<span class="dv">0</span>], norm.rvs(size<span class="op">=</span>N)</span>
+<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a>    n <span class="op">=</span> np.arange(<span class="dv">1</span>, N<span class="op">+</span><span class="dv">1</span>)</span>
+<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a>    W <span class="op">=</span> <span class="kw">lambda</span> t: xi0<span class="op">*</span>t <span class="op">+</span> (sqrt(<span class="dv">2</span>)<span class="op">*</span><span class="bu">sum</span>(xi<span class="op">*</span>np.sin(n<span class="op">*</span>np.pi<span class="op">*</span>t)<span class="op">/</span>n<span class="op">/</span>np.pi))<span class="op">*</span>(N<span class="op">&gt;</span><span class="dv">0</span>)</span>
+<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a>    t <span class="op">=</span> np.linspace(<span class="dv">0</span>, <span class="dv">1</span>, n_steps)</span>
+<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a>    y <span class="op">=</span> [W(x) <span class="cf">for</span> x <span class="kw">in</span> t]</span>
+<span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a>    plt.plot(t, y, color<span class="op">=</span>color, label<span class="op">=</span><span class="ss">f'$N$ = </span><span class="sc">{</span>N<span class="sc">}</span><span class="ss">'</span>)</span>
+<span id="cb2-22"><a href="#cb2-22" aria-hidden="true" tabindex="-1"></a>    plt.xlabel(<span class="st">'$t$'</span>)</span>
+<span id="cb2-23"><a href="#cb2-23" aria-hidden="true" tabindex="-1"></a>    plt.ylabel(<span class="st">'BM'</span>)<span class="op">;</span>    </span>
+<span id="cb2-24"><a href="#cb2-24" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="va">None</span></span>
+<span id="cb2-25"><a href="#cb2-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-26"><a href="#cb2-26" aria-hidden="true" tabindex="-1"></a><span class="co"># plot</span></span>
+<span id="cb2-27"><a href="#cb2-27" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">12</span>, <span class="dv">8</span>))</span>
+<span id="cb2-28"><a href="#cb2-28" aria-hidden="true" tabindex="-1"></a>plt.subplot(<span class="dv">2</span>, <span class="dv">2</span>, <span class="dv">1</span>)</span>
+<span id="cb2-29"><a href="#cb2-29" aria-hidden="true" tabindex="-1"></a>plotBM(<span class="dv">20</span>)</span>
+<span id="cb2-30"><a href="#cb2-30" aria-hidden="true" tabindex="-1"></a>plt.legend()</span>
+<span id="cb2-31"><a href="#cb2-31" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-32"><a href="#cb2-32" aria-hidden="true" tabindex="-1"></a>plt.subplot(<span class="dv">2</span>, <span class="dv">2</span>, <span class="dv">2</span>)</span>
+<span id="cb2-33"><a href="#cb2-33" aria-hidden="true" tabindex="-1"></a>plotBM(<span class="dv">200</span>, color<span class="op">=</span><span class="st">'red'</span>)</span>
+<span id="cb2-34"><a href="#cb2-34" aria-hidden="true" tabindex="-1"></a>plt.legend()</span>
+<span id="cb2-35"><a href="#cb2-35" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-36"><a href="#cb2-36" aria-hidden="true" tabindex="-1"></a>plt.subplot(<span class="dv">2</span>, <span class="dv">2</span>, <span class="dv">3</span>)</span>
+<span id="cb2-37"><a href="#cb2-37" aria-hidden="true" tabindex="-1"></a>plotBM(<span class="dv">20_000</span>, color<span class="op">=</span><span class="st">'green'</span>)</span>
+<span id="cb2-38"><a href="#cb2-38" aria-hidden="true" tabindex="-1"></a>plt.legend()<span class="op">;</span></span></code><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="NSD_Lec02-StochCal_Summer2025_files/figure-html/cell-3-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="donskers-invariance-principle" class="level2">
+<h2 class="anchored" data-anchor-id="donskers-invariance-principle">Donsker’s invariance principle</h2>
+<ul>
+<li>Donsker’s invariance principle is also referred to as the Donsker’s theorem.</li>
+</ul>
+<p>Suppose <span class="math inline">\(\{X_i\}_{i=1}^\infty\)</span> is an iid sequence of random variables with mean <span class="math inline">\(0\)</span> and and variance <span class="math inline">\(1\)</span>. Let <span class="math inline">\(S_n = \sum_{i=1}^n X_i\)</span>. Define the function <span class="math inline">\(\mathfrak{S}_n\)</span> of <span class="math inline">\(t\)</span> by</p>
+<p><span class="math display">\[\begin{align*}
+\mathfrak{S}_n(t) &amp;= \frac1{\sqrt n}\sum_{i=1}^n\left[S_{i-1} + n \left( t-\frac{i-1}n \right) X_i \right]\,\1_{\left(\frac{i-1}n,\frac in\right]}(t).
+\end{align*}\]</span></p>
+<p>注: 设 <span class="math inline">\(S_n(t)\)</span> 是某个离散随机过程(如简单随机游走)的归一化形式, 那么当步数 <span class="math inline">\(n \to \infty\)</span> 时, 这个过程将弱收敛到布朗运动 <span class="math inline">\(B(t)\)</span>. 在数值模拟中, 我们通过高频率地取样并归一化, 让离散过程“逼近”布朗运动.</p>
+<p>In fact, <span class="math inline">\(\mathfrak{S}_n\)</span> is simply the linear interpolation of the scaled random walk <span class="math inline">\(\left\{\frac{S_1}{\sqrt n}, \frac{S_2}{\sqrt n}, \cdots, \frac{S_n}{\sqrt n} \right\}\)</span>.</p>
+<p>注: 我们只要求了 <span class="math inline">\(\Eof{X_i} = 0\)</span> 和 <span class="math inline">\(\Var[X_i] = 1\)</span>, 而没有要求它是什么分布.</p>
+<p>注: 随机游走(Random Walk) 是指在每个时间点上随机选择一个方向(正或负)并移动一个单位长度的过程.</p>
+<p>Then, <span class="math inline">\(\mathfrak{S}_n\Longrightarrow W\)</span> as <span class="math inline">\(n\to\infty\)</span>, where <span class="math inline">\(W\)</span> denotes a Brownian motion.</p>
+<p>In other words, as <span class="math inline">\(n\to\infty\)</span>, the linearly interpolated scaled random walk <span class="math inline">\(\mathfrak{S}_n\)</span> converges weakly to a Brownian motion.</p>
+</section>
+<section id="technical-note-weak-convergence-or-convergence-in-distribution" class="level2">
+<h2 class="anchored" data-anchor-id="technical-note-weak-convergence-or-convergence-in-distribution">Technical note: Weak convergence or convergence in distribution</h2>
+<p>A sequence of random variables <span class="math inline">\(X_n\)</span> is called convergent weakly or convergent in distribution to <span class="math inline">\(X\)</span> if it satisfies one of the following equivalent conditions.</p>
+<ul>
+<li><p><span class="math inline">\(\displaystyle\lim_{n\to\infty} \phi_{X_n}(u) = \phi_X(u)\)</span> for every <span class="math inline">\(u\)</span>, where <span class="math inline">\(\phi\)</span> is the characteristic function.</p></li>
+<li><p><span class="math inline">\(\displaystyle\lim_{n\to\infty} \Eof{f(X_n)} = \Eof{f(X)}\)</span> for all bounded continuous function <span class="math inline">\(f\)</span></p></li>
+<li><p><span class="math inline">\(\displaystyle\lim_{n\to\infty} F_n(x) = F(x)\)</span> for every <span class="math inline">\(x\)</span> at which <span class="math inline">\(F\)</span> is continuous. <span class="math inline">\(F_n\)</span> and <span class="math inline">\(F\)</span> are cdfs of <span class="math inline">\(X_n\)</span> and <span class="math inline">\(X\)</span> respectively.</p></li>
+</ul>
+<section id="remark-5" class="level4">
+<h4 class="anchored" data-anchor-id="remark-5">Remark</h4>
+<p>As opposed to the definition of convergence a.s., in <span class="math inline">\(L^p\)</span>, and in probability, in defining weak convergence, the random variables <span class="math inline">\(X_n\)</span>’s and <span class="math inline">\(X\)</span> need not to be defined on the same probability space.</p>
+</section>
+<section id="recap-t-distribution" class="level4">
+<h4 class="anchored" data-anchor-id="recap-t-distribution">Recap: <span class="math inline">\(t\)</span>-distribution</h4>
+<p><span class="math inline">\(X \sim {\cal N}(0,1)\)</span>, <span class="math inline">\(Y \sim \chi^2(n)\)</span>, then <span class="math inline">\(\displaystyle Z = \frac{X}{\sqrt{Y/n}} \sim t(n)\)</span>, here, <span class="math inline">\(n\)</span> is the degree of freedom (df).</p>
+<ul>
+<li>Expectation: <span class="math inline">\(\Eof{Z} = 0\)</span> for <span class="math inline">\(n &gt; 1\)</span>.</li>
+<li>Variance: <span class="math inline">\(\displaystyle \Var[Z] = \frac{n}{n-2}\)</span> for <span class="math inline">\(n &gt; 2\)</span>.</li>
+</ul>
+</section>
+<section id="simulate-random-walk" class="level4">
+<h4 class="anchored" data-anchor-id="simulate-random-walk">Simulate random walk</h4>
+<div id="cell-27" class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Simulate random walk</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="co">#np.random.seed(0)</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>n_steps, nu <span class="op">=</span> <span class="dv">1_000_000</span>, <span class="dv">11</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Choose t distribution with df = nu</span></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>X <span class="op">=</span> ss.t.rvs(size<span class="op">=</span>n_steps, df<span class="op">=</span>nu)<span class="op">/</span>sqrt(nu<span class="op">/</span>(nu<span class="op">-</span><span class="dv">2</span>))</span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Choose n_steps iid random variables from t distribution with df = nu</span></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>BM <span class="op">=</span> np.append(<span class="dv">0</span>, X.cumsum())</span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a><span class="co"># It's a random walk, 0, S_1, S_2, ..., S_n.</span></span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>t <span class="op">=</span> np.linspace(<span class="dv">0</span>, <span class="dv">1</span>, n_steps<span class="op">+</span><span class="dv">1</span>)</span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">10</span>, <span class="dv">6</span>))</span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a><span class="co"># plot random walk</span></span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>plt.subplot(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">1</span>)</span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a>plt.plot(t, BM, <span class="st">'g'</span>)</span>
+<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'$t$'</span>, fontsize<span class="op">=</span><span class="dv">18</span>)<span class="op">;</span></span>
+<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a><span class="co"># plot scaled random walk</span></span>
+<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a>plt.subplot(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">2</span>)</span>
+<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a><span class="co">#plt.plot(t, BM/n_steps)</span></span>
+<span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a>plt.plot(t, BM<span class="op">/</span>np.sqrt(n_steps))</span>
+<span id="cb3-22"><a href="#cb3-22" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'$t$'</span>, fontsize<span class="op">=</span><span class="dv">18</span>)<span class="op">;</span></span></code><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="NSD_Lec02-StochCal_Summer2025_files/figure-html/cell-4-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="simulation-of-brownian-motion" class="level2">
+<h2 class="anchored" data-anchor-id="simulation-of-brownian-motion">Simulation of Brownian motion</h2>
+<div id="cell-29" class="cell" data-execution_count="4">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Simulate BM by using the Donsker's invariance principle</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="co"># number of samples, number of steps, terminal time</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>n_sim, n_steps, T <span class="op">=</span> <span class="dv">10_000</span>, <span class="dv">1_000</span>, <span class="dv">1</span>  </span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>dt <span class="op">=</span> T<span class="op">/</span>n_steps</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="co"># initialize the Brownians</span></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a><span class="co"># n_sim: 几条布朗运动路径</span></span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a><span class="co"># n_steps+1: 每条路径的时间点个数</span></span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>B <span class="op">=</span> np.zeros([n_sim, n_steps<span class="op">+</span><span class="dv">1</span>])</span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a><span class="co"># simulation step</span></span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(n_steps):</span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>    dB <span class="op">=</span> norm.rvs(size<span class="op">=</span>n_sim)</span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a><span class="co">#    dB = dB - dB.mean() # now dB has mean 0</span></span>
+<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a><span class="co">#    dB = dB/dB.std()  # now dB has variance 1</span></span>
+<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a>    dB <span class="op">=</span> np.sqrt(dt)<span class="op">*</span>dB</span>
+<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a>    B[:,i<span class="op">+</span><span class="dv">1</span>] <span class="op">=</span> B[:,i] <span class="op">+</span> dB </span></code><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p><code>dB</code> 表示布朗运动增量, <span class="math inline">\(\Delta B \sim {\cal N}(0, \Delta t)\)</span>, 所以要乘以 <code>dt</code> 来构造满足这个条件的增量.</p>
+<p>上面注释的两行是为了创造一个 <span class="math inline">\(\Delta B \sim {\cal N}(0, 1)\)</span> 的增量. 但其实在大样本下, 自然已经接近标准正态分布了.</p>
+<p>最终, <code>B</code> 是一个大小为 (10000, 1001) 的矩阵, 表示 10,000 条布朗路径, 每条路径有 1001 个时间点.</p>
+<div id="cell-31" class="cell" data-execution_count="5">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># plot</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>t <span class="op">=</span> np.arange(<span class="dv">0</span>, T<span class="op">+</span>dt, dt)</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="co">#t = np.linspace(0, T, n_steps+1)</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">10</span>, <span class="dv">8</span>))</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a><span class="co"># sample path</span></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>path <span class="op">=</span> np.random.choice(n_sim)</span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>plt.subplot(<span class="dv">2</span>, <span class="dv">2</span>, <span class="dv">1</span>)</span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>plt.plot(t, B[path, :], label<span class="op">=</span><span class="ss">f'sample path #</span><span class="sc">{</span>path<span class="sc">}</span><span class="ss">'</span>)</span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'$t$'</span>)</span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'$B_t$ sample path'</span>)</span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>plt.legend()</span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a><span class="co"># histograms</span></span>
+<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a>plt.subplot(<span class="dv">2</span>, <span class="dv">2</span>, <span class="dv">2</span>)</span>
+<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a>time <span class="op">=</span> <span class="fl">0.2</span></span>
+<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a><span class="co"># plot histogram of B at time t</span></span>
+<span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a>sns.histplot(B[:,t<span class="op">==</span>time], bins<span class="op">=</span><span class="dv">50</span>, stat<span class="op">=</span><span class="st">'density'</span>, label<span class="op">=</span><span class="ss">f'$t=</span><span class="sc">{</span>time<span class="sc">}</span><span class="ss">$'</span>)</span>
+<span id="cb5-19"><a href="#cb5-19" aria-hidden="true" tabindex="-1"></a><span class="co"># plot histogram of B at time T</span></span>
+<span id="cb5-20"><a href="#cb5-20" aria-hidden="true" tabindex="-1"></a>sns.histplot(B[:,<span class="op">-</span><span class="dv">1</span>], bins<span class="op">=</span><span class="dv">50</span>, stat<span class="op">=</span><span class="st">'density'</span>, color<span class="op">=</span><span class="st">'orange'</span>, label<span class="op">=</span><span class="ss">f'$t=</span><span class="sc">{</span>T<span class="sc">}</span><span class="ss">$'</span>)</span>
+<span id="cb5-21"><a href="#cb5-21" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> np.linspace(B[:,<span class="op">-</span><span class="dv">1</span>].<span class="bu">min</span>(), B[:,<span class="op">-</span><span class="dv">1</span>].<span class="bu">max</span>(), <span class="dv">100</span>)</span>
+<span id="cb5-22"><a href="#cb5-22" aria-hidden="true" tabindex="-1"></a>plt.plot(x, norm.pdf(x), <span class="st">'r--'</span>, lw<span class="op">=</span><span class="dv">1</span>, label<span class="op">=</span><span class="st">'normal pdf'</span>)</span>
+<span id="cb5-23"><a href="#cb5-23" aria-hidden="true" tabindex="-1"></a>plt.plot(x, norm.pdf(x, scale<span class="op">=</span>sqrt(time)), <span class="st">'y--'</span>, lw<span class="op">=</span><span class="dv">1</span>, label<span class="op">=</span><span class="st">'normal pdf'</span>)</span>
+<span id="cb5-24"><a href="#cb5-24" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'$B$'</span>)</span>
+<span id="cb5-25"><a href="#cb5-25" aria-hidden="true" tabindex="-1"></a>plt.legend()<span class="op">;</span></span>
+<span id="cb5-26"><a href="#cb5-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-27"><a href="#cb5-27" aria-hidden="true" tabindex="-1"></a><span class="co"># sample mean</span></span>
+<span id="cb5-28"><a href="#cb5-28" aria-hidden="true" tabindex="-1"></a>plt.subplot(<span class="dv">2</span>, <span class="dv">2</span>, <span class="dv">3</span>)</span>
+<span id="cb5-29"><a href="#cb5-29" aria-hidden="true" tabindex="-1"></a>plt.plot(t, B.mean(axis<span class="op">=</span><span class="dv">0</span>))</span>
+<span id="cb5-30"><a href="#cb5-30" aria-hidden="true" tabindex="-1"></a>plt.hlines(y<span class="op">=</span><span class="dv">0</span>, xmin<span class="op">=</span><span class="dv">0</span>, xmax<span class="op">=</span>T, color<span class="op">=</span><span class="st">'red'</span>, ls<span class="op">=</span><span class="st">'dotted'</span>)</span>
+<span id="cb5-31"><a href="#cb5-31" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'$t$'</span>)</span>
+<span id="cb5-32"><a href="#cb5-32" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-33"><a href="#cb5-33" aria-hidden="true" tabindex="-1"></a><span class="co"># sample standard deviation</span></span>
+<span id="cb5-34"><a href="#cb5-34" aria-hidden="true" tabindex="-1"></a>plt.subplot(<span class="dv">2</span>, <span class="dv">2</span>, <span class="dv">4</span>)</span>
+<span id="cb5-35"><a href="#cb5-35" aria-hidden="true" tabindex="-1"></a>plt.plot(t, B.std(axis<span class="op">=</span><span class="dv">0</span>), label<span class="op">=</span><span class="st">'sample std'</span>)</span>
+<span id="cb5-36"><a href="#cb5-36" aria-hidden="true" tabindex="-1"></a>plt.plot(t, np.sqrt(t), <span class="st">'r--'</span>, label<span class="op">=</span><span class="st">'sqrt t'</span>)</span>
+<span id="cb5-37"><a href="#cb5-37" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'$t$'</span>)</span>
+<span id="cb5-38"><a href="#cb5-38" aria-hidden="true" tabindex="-1"></a>plt.legend()<span class="op">;</span></span></code><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="NSD_Lec02-StochCal_Summer2025_files/figure-html/cell-6-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="brownian-motion-with-drift" class="level2">
+<h2 class="anchored" data-anchor-id="brownian-motion-with-drift">Brownian motion with drift</h2>
+<p>Let <span class="math inline">\((\Omega,\F_t,\P)\)</span> be a filtered probability space and <span class="math inline">\(B_t\)</span> a Brownian motion on <span class="math inline">\(\Omega\)</span>. A stochastic process <span class="math inline">\(X\)</span> of the form</p>
+<p><span class="math display">\[
+X_t = x + B_t + \int_0^t \mu_s \text{d}s \quad \Longleftrightarrow \quad \text{d}X_t = \text{d}B_t + \mu_t \text{d}t
+\]</span></p>
+<p>is called a Brownian motion with drift <span class="math inline">\(\mu_t\)</span>, where <span class="math inline">\(\mu\)</span> is adapted to the filtration <span class="math inline">\(\F_t\)</span>.</p>
+<p><span class="math inline">\(\mu_t\)</span> is the velocity of the drift at time <span class="math inline">\(t\)</span> and <span class="math inline">\(x\)</span> is the initial value of the process at time <span class="math inline">\(t=0\)</span>.</p>
+<section id="remark-6" class="level4">
+<h4 class="anchored" data-anchor-id="remark-6">Remark</h4>
+<ul>
+<li><span class="math inline">\(X_t\)</span> is a Gaussian process if <span class="math inline">\(\mu_t\)</span> is deterministic. Apparently, the mean function is <span class="math inline">\(\displaystyle \Eof{X_t} = x + \int_0^t \mu_s \text{d}s\)</span> and the covariance function <span class="math inline">\(\gamma(t,s) = \cov(X_t,X_s) = \min\{t,s\}\)</span>.</li>
+<li>We can always transform a Brownian motion with drift into a standard Brownian motion by change of the underlying probability measure so long as the drift <span class="math inline">\(\mu_t\)</span> satisfies certain conditions, say, bounded.</li>
+</ul>
+</section>
+</section>
+<section id="wiener-integral" class="level2">
+<h2 class="anchored" data-anchor-id="wiener-integral">Wiener integral</h2>
+<ul>
+<li><p>Let <span class="math inline">\(f\)</span> be a (deterministic) step function defined by <span class="math inline">\(f = \sum_{i=1}^n a_i \1_{[t_{i-1}, t_i)}\)</span>, where <span class="math inline">\(t_0 = a\)</span> and <span class="math inline">\(t_n = b\)</span>, <span class="math inline">\(a_i \in \R\)</span>. The <em>Wiener integral</em> <span class="math inline">\(I(f)\)</span> of <span class="math inline">\(f\)</span> is defined by</p>
+<p><span class="math display">\[
+  I(f) = \int_a^b f(t) \text{d}B_t = \sum_{i=1}^n a_i \Delta B_{t_i}, \quad \Delta B_{t_i} = B_{t_i} - B_{t_{i-1}}.
+  \]</span></p></li>
+<li><p>Let <span class="math inline">\(f\in L^2[a,b]\)</span> and <span class="math inline">\(f_n\)</span> be a sequence of step functions such that <span class="math inline">\(f_n \to f\)</span> in <span class="math inline">\(L^2[a,b]\)</span>. The Wiener integral <span class="math inline">\(I(f)\)</span> of <span class="math inline">\(f\)</span> is defined by</p>
+<p><span class="math display">\[
+  I(f) = \int_a^b f(t) {\rm d}B_t = \lim_{n\to\infty} \int_a^b f_n(t) {\rm d}B_t, \quad \text{ in } L^2(\Omega).
+  \]</span></p></li>
+</ul>
+<p>A technical issue here: Is <span class="math inline">\(I(f)\)</span> well-defined?</p>
+<p>注: <span class="math inline">\(I(f)\)</span> 是一个随机变量, 因为 <span class="math inline">\({\rm d} B_t\)</span> 是一个正态分布的随机变量.</p>
+</section>
+<section id="wiener-integral-is-normally-distributed" class="level2">
+<h2 class="anchored" data-anchor-id="wiener-integral-is-normally-distributed">Wiener integral is normally distributed</h2>
+<section id="theorem-1" class="level4">
+<h4 class="anchored" data-anchor-id="theorem-1">Theorem</h4>
+<p>For each <span class="math inline">\(f\in L^2[a,b]\)</span>, the Wiener integral <span class="math inline">\(\displaystyle \int_a^b f(t)\text{d}B_t\)</span> is a Gaussian random variable with mean 0 and variance <span class="math inline">\(\displaystyle \|f\|_2^2 = \int_a^b f^2(t)\text{d}t\)</span>. In short,</p>
+<p><span class="math display">\[
+   \int_a^b f(s) \text{d} B_s \sim N(0,\|f\|_2^2).
+\]</span></p>
+<ul>
+<li><p>In particular, recall that if the integrand <span class="math inline">\(f\)</span> is the step function <span class="math inline">\(f(t) = \sum_{i=1}^n a_i \1_{[t_{i-1},t_i)}(t)\)</span>, apparently the Wiener integral <span class="math inline">\(I(f)\)</span> of <span class="math inline">\(f\)</span> is normally distributed</p>
+<p><span class="math display">\[
+  I(f) = \sum_{i=1}^n a_i \Delta B_i \sim N\left(0,\sum_{i=1}^n a_i^2 \Delta t_i \right)
+  \]</span></p>
+<p>since the <span class="math inline">\(\Delta B_i\)</span>’s are independent normal random variables.</p></li>
+<li><p>The proof for general <span class="math inline">\(f\in L^2[a,b]\)</span> is based on limiting process.</p></li>
+</ul>
+</section>
+<section id="example" class="level4">
+<h4 class="anchored" data-anchor-id="example">Example</h4>
+<p><span class="math display">\[
+  \int_0^t s \text{d}B_s \sim N\left(0,\frac{t^3}3\right)
+\]</span></p>
+</section>
+<section id="corollary" class="level4">
+<h4 class="anchored" data-anchor-id="corollary">Corollary</h4>
+<p>If <span class="math inline">\(f,g\in L^2[a,b]\)</span>, then</p>
+<p><span class="math display">\[
+  \E[I(f)I(g)] = \E\left[ \int_a^b f(s) \text{d}B_s \int_a^b g(s) \text{d}B_s\right] = \int_a^b f(t)g(t) \text{d}t.
+\]</span></p>
+<p>Proof: 我们可以发现 <span class="math inline">\(\Eof{{\rm d}B_s {\rm d}B_t} = 0 (s\neq t)\)</span>, <span class="math inline">\(\Eof{({\rm d}B_t)^2} = \Var[{\rm d}B_t] = {\rm d} t\)</span>. (这是根据布朗运动的定义, 以及布朗运动的独立增量性质.)</p>
+<p>Thus, the Wiener integral <span class="math inline">\(I:L^2[a,b] \to L^2(\Omega)\)</span> is an isometry(等距). In particular, if <span class="math inline">\(f\)</span> and <span class="math inline">\(g\)</span> are orthogonal, i.e., <span class="math inline">\(\displaystyle \int_a^b f g \text{d}x = 0\)</span>, then the Gaussian random variables <span class="math inline">\(I(f)\)</span> and <span class="math inline">\(I(g)\)</span> are independent.</p>
+</section>
+</section>
+<section id="properties-of-wiener-integral" class="level2">
+<h2 class="anchored" data-anchor-id="properties-of-wiener-integral">Properties of Wiener integral</h2>
+<p>Let <span class="math inline">\(f\)</span> and <span class="math inline">\(g\)</span> be deterministic <span class="math inline">\(L^2[a,b]\)</span> functions, <span class="math inline">\(\alpha\)</span> and <span class="math inline">\(\beta\)</span> are constants. Then</p>
+<ul>
+<li><p><span class="math inline">\(\displaystyle \int_a^b \left[\alpha f(t) + \beta g(t)\right] {\rm d}B_t = \alpha \int_a^b f(t) {\rm d}B_t + \beta \int_a^b g(t) {\rm d}B_t\)</span>.</p></li>
+<li><p><span class="math inline">\(\displaystyle \int_a^b f(t) {\rm d}B_t = \int_a^c f(t) {\rm d}B_t+ \int_c^b f(t) {\rm d}B_t\)</span>, for <span class="math inline">\(c\in[a,b]\)</span>.</p></li>
+</ul>
+<section id="integration-by-parts-formula" class="level4">
+<h4 class="anchored" data-anchor-id="integration-by-parts-formula">Integration by parts formula</h4>
+<p>Let <span class="math inline">\(f\)</span> be a continuous function of bounded variation. Then almost surely</p>
+<p><span class="math display">\[
+  \int_a^b f(t) \d B_t = f(t) B_t |_a^b - \int_a^b B_t \d f(t).
+\]</span></p>
+<ul>
+<li>Note that the integral on the left hand side is in the sense of Wiener, whereas on the right hand side is in the sense of Riemann-Stietjes.</li>
+</ul>
+</section>
+<section id="example-1" class="level4">
+<h4 class="anchored" data-anchor-id="example-1">Example</h4>
+<p>Determine the distribution of the random variable <span class="math inline">\(\displaystyle \int_0^1 B_t \d t\)</span>.</p>
+<p>解答: <span class="math display">\[\begin{align*}
+\int_0^1 B_t \d t &amp;= t B_t \Big|_0^1 - \int_0^1 t \d B_t = B_1 - \int_0^1 t \d B_t.
+\end{align*}\]</span> 那么再根据 Wiener Integral 是正态分布的, 且 Variance 为 <span class="math inline">\(\| f \|^2\)</span>, 我们知道:</p>
+<ul>
+<li><span class="math inline">\(\displaystyle \int_0^1 t \d B_t \sim N(0, \frac{1}{3})\)</span></li>
+<li><span class="math inline">\(\displaystyle B_1 \sim N(0,1)\)</span></li>
+</ul>
+<p>因此 <span class="math inline">\(\displaystyle \int_0^1 B_t \d t \sim N\left(0, 1 + \frac{1}{3}\right) = N\left(0, \frac{4}{3}\right)\)</span>. (布朗运动增量独立.)</p>
+</section>
+</section>
+<section id="wiener-integral-defines-a-continuous-martingale" class="level2">
+<h2 class="anchored" data-anchor-id="wiener-integral-defines-a-continuous-martingale">Wiener integral defines a continuous martingale</h2>
+<p>Let <span class="math inline">\(f\in L^2[a,b]\)</span>. Then the stochastic process <span class="math inline">\(M_t\)</span> obtained through Wiener integral</p>
+<p><span class="math display">\[
+  M_t = \int_a^t f(s) \d B_s, \quad a \leq t \leq b,
+\]</span></p>
+<p>is a martingale with respect to <span class="math inline">\(\F_s = \sigma(B_s; s \leq t)\)</span>.</p>
+<p>注: 过滤 (filtration)是一组随时间“增长”的 <span class="math inline">\(\sigma\)</span>-代数, 用来描述我们在每个时间点所知道的信息. 也就是一族集合 <span class="math inline">\(\{\cF_t\}_{t \geq 0}\)</span>, 其中: <span class="math display">\[
+\cF_s \subseteq \cF_t, \quad \text{ when } s\leq t.
+\]</span> 时间越往后, 信息越多.</p>
+<ul>
+<li><p>Don’t be confused with a continuous time martingale and a continuous martinagle.</p></li>
+<li><p>Since Wiener integral defines a Gaussian process, continuity of the process can be obtained by applying Kolmogorov’s continuity criterion.</p></li>
+</ul>
+<section id="technical-note-martingale-conditions" class="level4">
+<h4 class="anchored" data-anchor-id="technical-note-martingale-conditions">Technical note: martingale conditions</h4>
+<p>To show if the process <span class="math inline">\(M_t\)</span> is a martingale, we need to verify the three defining conditions</p>
+<ul>
+<li><span class="math inline">\(M_t\)</span> is adapted</li>
+<li><span class="math inline">\(M_t\)</span> is integrable for every <span class="math inline">\(t\)</span></li>
+<li>For every <span class="math inline">\(s &lt; t\)</span>, <span class="math inline">\(\Eof{M_t | \F_s} = M_s\)</span> almost surely</li>
+</ul>
+<p>注: Martingale 说明了当前的期望值就是将来的条件期望, 没有“预测性”或“趋势”.</p>
+</section>
+</section>
+<section id="an-illustrative-example-for-ito-integral" class="level2">
+<h2 class="anchored" data-anchor-id="an-illustrative-example-for-ito-integral">An illustrative example for Ito integral</h2>
+<p>Let’s start with defining the simple integral as</p>
+<p><span class="math display">\[
+  \int_0^t B_s \d B_s.
+\]</span></p>
+<p>As in the theory of Riemann-Stieltjes integral, we shall start with partitioning the interval <span class="math inline">\([0,t]\)</span> into, say, <span class="math inline">\(n\)</span> subintervals. Within each subinterval, we pick a point and evaluate the integrand at that point, multiply that value by the increment of the integrator in that subinterval. Then we sum up the results from each subinterval and take limit as the mesh of the partition approaches zero. Possible choices for selecting points from each subinterval may be, denoting <span class="math inline">\(\Delta B_{t_k} = B_{t_k} - B_{t_{k-1}}\)</span>:</p>
+<ul>
+<li>The right point rule: <span class="math display">\[
+  R_n = \sum_{k=1}^n B_{t_k} \Delta B_{t_k}
+  \]</span></li>
+<li>The left point rule: <span class="math display">\[
+  L_n = \sum_{k=1}^n B_{t_{k-1}} \Delta B_{t_k}
+  \]</span></li>
+<li>The midpoint rule: <span class="math display">\[
+  M_n = \sum_{k=1}^n B_{t_*} \Delta B_{t_k}, \quad \text{ where } t_* = \frac{t_k + t_{k-1}}2
+  \]</span></li>
+</ul>
+</section>
+<section id="which-rule-rules" class="level2">
+<h2 class="anchored" data-anchor-id="which-rule-rules">Which rule rules?</h2>
+<p>Question: Which rule yields convergent integral? in what sense? We knew that it can’t be pathwise because the integrator, in this case the Brownian motion, is not of finite variation (because it has nonzero second variation) almost surely.</p>
+<p>Note that the following identities hold. <span class="math display">\[\begin{align*}
+  &amp;&amp; R_n - L_n = \sum_{k=1}^n \left( \Delta B_{t_k} \right)^2,  \qquad
+  R_n + L_n = \sum_{k=1}^n \Delta B_{t_k}^2 = B_t^2.  \\
+\end{align*}\]</span> Hence, <span class="math display">\[\begin{align*}
+  &amp;&amp; R_n = \frac{B_t^2}2 + \frac12 \sum_{k=1}^n \left( \Delta B_{t_k} \right)^2,  \qquad
+   L_n = \frac{B_t^2}2 - \frac12 \sum_{k=1}^n \left( \Delta B_{t_k} \right)^2.
+\end{align*}\]</span> Notice that the first term in both expressions is independent of partitions and the second term, as we have seen in previous lecture, will converge to the quadratic variation of Brownian motion in <span class="math inline">\(L^2\)</span> as the mesh approaches zero! Consequently,</p>
+<p><span class="math display">\[\begin{align*}
+  &amp; \lim_{\|\Pi_n\|\to0} R_n = \frac{B_t^2}2 + \frac t2,  \qquad
+   \lim_{\|\Pi_n\|\to0} L_n = \frac{B_t^2}2 - \frac t2.
+\end{align*}\]</span></p>
+<p>So we learnt from this simple example that</p>
+<ul>
+<li>The right point rule and the left end point rule yield different “integrals”.</li>
+<li>The difference between the “right integral” and the “left integral” is exactly the quadratic variation.</li>
+<li>The convergence is in <span class="math inline">\(L^2\)</span> sense.</li>
+</ul>
+<section id="remark-7" class="level4">
+<h4 class="anchored" data-anchor-id="remark-7">Remark</h4>
+<ul>
+<li>We need to stick with one specific rule in order to have convergence.</li>
+<li>Ito picked the left end point rule because of adaptivity and martingality.</li>
+<li><span class="math inline">\(L_n\)</span> is a martingale whereas <span class="math inline">\(R_n\)</span> isn’t.</li>
+<li>The midpoint rule leads to the Stratonovich integral.</li>
+</ul>
+</section>
+</section>
+<section id="simulation-of-stochastic-integral-left-endpoint-rule" class="level2">
+<h2 class="anchored" data-anchor-id="simulation-of-stochastic-integral-left-endpoint-rule">Simulation of stochastic integral: left endpoint rule</h2>
+<div id="cell-40" class="cell" data-execution_count="6">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Simulate the stochastic integral int f(B) dB from 0 to t, for t in [0,1]</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Demonstrate the effect of Ito correction/term </span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="co"># number of samples, number of steps, terminal time</span></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>n_sim, n_steps, T <span class="op">=</span> <span class="dv">10_000</span>, <span class="dv">100</span>, <span class="dv">1</span>   </span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>dt <span class="op">=</span> T<span class="op">/</span>n_steps</span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>B <span class="op">=</span> np.zeros([n_sim, n_steps<span class="op">+</span><span class="dv">1</span>])</span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>dB <span class="op">=</span> np.zeros([n_sim, n_steps<span class="op">+</span><span class="dv">1</span>])</span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Simulate Browian paths</span></span>
+<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(n_steps):</span>
+<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a>    db <span class="op">=</span> norm.rvs(size<span class="op">=</span>n_sim)</span>
+<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a>    db <span class="op">=</span> db <span class="op">-</span> db.mean() <span class="co"># now db has mean 0</span></span>
+<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a>    db <span class="op">=</span> db<span class="op">/</span>db.std() <span class="co"># now db has variance 1</span></span>
+<span id="cb6-17"><a href="#cb6-17" aria-hidden="true" tabindex="-1"></a>    dB[:,i] <span class="op">=</span> np.sqrt(dt)<span class="op">*</span>db</span>
+<span id="cb6-18"><a href="#cb6-18" aria-hidden="true" tabindex="-1"></a>    B[:,i<span class="op">+</span><span class="dv">1</span>] <span class="op">=</span> B[:,i] <span class="op">+</span> dB[:,i]</span>
+<span id="cb6-19"><a href="#cb6-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-20"><a href="#cb6-20" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate the (discretized) stochastic integral using left endpoints</span></span>
+<span id="cb6-21"><a href="#cb6-21" aria-hidden="true" tabindex="-1"></a>f <span class="op">=</span> <span class="kw">lambda</span> x: x</span>
+<span id="cb6-22"><a href="#cb6-22" aria-hidden="true" tabindex="-1"></a>dX <span class="op">=</span> f(B)<span class="op">*</span>dB</span>
+<span id="cb6-23"><a href="#cb6-23" aria-hidden="true" tabindex="-1"></a>X <span class="op">=</span> dX.cumsum(axis<span class="op">=</span><span class="dv">1</span>)</span>
+<span id="cb6-24"><a href="#cb6-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-25"><a href="#cb6-25" aria-hidden="true" tabindex="-1"></a><span class="co"># plots</span></span>
+<span id="cb6-26"><a href="#cb6-26" aria-hidden="true" tabindex="-1"></a>t <span class="op">=</span> np.arange(<span class="dv">0</span>, T<span class="op">+</span>dt, dt)</span>
+<span id="cb6-27"><a href="#cb6-27" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">12</span>, <span class="dv">8</span>))</span>
+<span id="cb6-28"><a href="#cb6-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-29"><a href="#cb6-29" aria-hidden="true" tabindex="-1"></a><span class="co"># evolution of mean</span></span>
+<span id="cb6-30"><a href="#cb6-30" aria-hidden="true" tabindex="-1"></a>plt.subplot(<span class="dv">2</span>, <span class="dv">2</span>, <span class="dv">1</span>)</span>
+<span id="cb6-31"><a href="#cb6-31" aria-hidden="true" tabindex="-1"></a>plt.plot(t, X.mean(axis<span class="op">=</span><span class="dv">0</span>))</span>
+<span id="cb6-32"><a href="#cb6-32" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'$t$'</span>)</span>
+<span id="cb6-33"><a href="#cb6-33" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'sample mean'</span>, fontsize<span class="op">=</span><span class="dv">12</span>)</span>
+<span id="cb6-34"><a href="#cb6-34" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb6-35"><a href="#cb6-35" aria-hidden="true" tabindex="-1"></a><span class="co"># evolution of variance</span></span>
+<span id="cb6-36"><a href="#cb6-36" aria-hidden="true" tabindex="-1"></a>plt.subplot(<span class="dv">2</span>, <span class="dv">2</span>, <span class="dv">2</span>)</span>
+<span id="cb6-37"><a href="#cb6-37" aria-hidden="true" tabindex="-1"></a>plt.plot(t,X.var(axis<span class="op">=</span><span class="dv">0</span>))</span>
+<span id="cb6-38"><a href="#cb6-38" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'$t$'</span>)</span>
+<span id="cb6-39"><a href="#cb6-39" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'sample variance'</span>, fontsize<span class="op">=</span><span class="dv">12</span>)</span>
+<span id="cb6-40"><a href="#cb6-40" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb6-41"><a href="#cb6-41" aria-hidden="true" tabindex="-1"></a><span class="co"># histogram at terminal time</span></span>
+<span id="cb6-42"><a href="#cb6-42" aria-hidden="true" tabindex="-1"></a>plt.subplot(<span class="dv">2</span>, <span class="dv">2</span>, <span class="dv">3</span>)</span>
+<span id="cb6-43"><a href="#cb6-43" aria-hidden="true" tabindex="-1"></a>sns.histplot(X[:,<span class="op">-</span><span class="dv">1</span>], bins<span class="op">=</span><span class="dv">50</span>, stat<span class="op">=</span><span class="st">'density'</span>, color<span class="op">=</span><span class="st">'green'</span>, element<span class="op">=</span><span class="st">'step'</span>)<span class="op">;</span></span></code><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="NSD_Lec02-StochCal_Summer2025_files/figure-html/cell-7-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="simulation-of-stochastic-integral-right-endpoint-rule" class="level2">
+<h2 class="anchored" data-anchor-id="simulation-of-stochastic-integral-right-endpoint-rule">Simulation of stochastic integral: right endpoint rule</h2>
+<div id="cell-42" class="cell" data-execution_count="7">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># What happens if we use right endpoints? </span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate the (discretized) stochastic integral using right endpoints</span></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>B <span class="op">=</span> B[:,<span class="dv">1</span>:]</span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>dB <span class="op">=</span> dB[:,:<span class="op">-</span><span class="dv">1</span>]</span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>dX <span class="op">=</span> f(B)<span class="op">*</span>dB</span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>X <span class="op">=</span> dX.cumsum(axis<span class="op">=</span><span class="dv">1</span>)</span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a><span class="co"># plots</span></span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>t <span class="op">=</span> np.arange(<span class="dv">0</span>, T, dt)</span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">12</span>, <span class="dv">8</span>))</span>
+<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a><span class="co"># evolution of mean</span></span>
+<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a>plt.subplot(<span class="dv">2</span>, <span class="dv">2</span>, <span class="dv">1</span>)</span>
+<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a>plt.plot(t,X.mean(axis<span class="op">=</span><span class="dv">0</span>))</span>
+<span id="cb7-16"><a href="#cb7-16" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'$t$'</span>)</span>
+<span id="cb7-17"><a href="#cb7-17" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'sample mean'</span>, fontsize<span class="op">=</span><span class="dv">12</span>)</span>
+<span id="cb7-18"><a href="#cb7-18" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb7-19"><a href="#cb7-19" aria-hidden="true" tabindex="-1"></a><span class="co"># evolution of variance</span></span>
+<span id="cb7-20"><a href="#cb7-20" aria-hidden="true" tabindex="-1"></a>plt.subplot(<span class="dv">2</span>, <span class="dv">2</span>, <span class="dv">2</span>)</span>
+<span id="cb7-21"><a href="#cb7-21" aria-hidden="true" tabindex="-1"></a>plt.plot(t,X.var(axis<span class="op">=</span><span class="dv">0</span>))</span>
+<span id="cb7-22"><a href="#cb7-22" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'$t$'</span>)</span>
+<span id="cb7-23"><a href="#cb7-23" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'sample variance'</span>, fontsize<span class="op">=</span><span class="dv">12</span>)</span>
+<span id="cb7-24"><a href="#cb7-24" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb7-25"><a href="#cb7-25" aria-hidden="true" tabindex="-1"></a><span class="co"># histogram at terminal time</span></span>
+<span id="cb7-26"><a href="#cb7-26" aria-hidden="true" tabindex="-1"></a>plt.subplot(<span class="dv">2</span>, <span class="dv">2</span>, <span class="dv">3</span>)</span>
+<span id="cb7-27"><a href="#cb7-27" aria-hidden="true" tabindex="-1"></a>sns.histplot(X[:,<span class="op">-</span><span class="dv">1</span>], bins<span class="op">=</span><span class="dv">50</span>, stat<span class="op">=</span><span class="st">'density'</span>, color<span class="op">=</span><span class="st">'green'</span>)<span class="op">;</span></span></code><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="NSD_Lec02-StochCal_Summer2025_files/figure-html/cell-8-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="伊藤-清-先生-itô-kiyoshi-sensei" class="level2">
+<h2 class="anchored" data-anchor-id="伊藤-清-先生-itô-kiyoshi-sensei">伊藤 清 先生 (Itô, Kiyoshi sensei)</h2>
+<h2 style="text-align: center;" class="anchored">
+<img src="http://upload.wikimedia.org/wikipedia/commons/c/c1/Kiyosi_Ito.jpg" align="center" width="100">
+</h2>
+<p>Courtesy: Photo from <a href="https://en.wikipedia.org/wiki/Kiyosi_It%C3%B4">Wikipedia</a></p>
+</section>
+<section id="ito-integral-of-simple-processes" class="level2">
+<h2 class="anchored" data-anchor-id="ito-integral-of-simple-processes">Ito integral of simple processes</h2>
+<section id="definition-simple-process" class="level4">
+<h4 class="anchored" data-anchor-id="definition-simple-process">Definition (simple process)</h4>
+<p>A process <span class="math inline">\(\varphi_t\)</span> is called <em>simple</em> if it is of the form</p>
+<p><span class="math display">\[
+\varphi_t(\omega) = \sum_{k=1}^n \xi_{k-1}(\omega) \1_{[t_{k-1},t_k)}(t),
+\]</span></p>
+<p>where <span class="math inline">\(\xi_k \in \F_{t_k}\)</span> for <span class="math inline">\(k=0,\cdots,n\)</span>.</p>
+<ul>
+<li><p>Basically, a simple process is simply a step function with random coefficients that are measurable with respect to the left endpoints.</p></li>
+<li><p>Simple process is defined as such for mimicking a) the step functions in the Wiener integral and b) the left endpoint rule in the Riemann integral.</p></li>
+<li><p>The left endpoint measurability is key to the martingality of Ito integral, as we expected.</p></li>
+</ul>
+<p>注: 和 Wiener Integral 相比, 它把被积函数 <span class="math inline">\(\varphi_t\)</span> 也随机化了.</p>
+</section>
+<section id="definition-ito-integral-of-a-simple-process" class="level4">
+<h4 class="anchored" data-anchor-id="definition-ito-integral-of-a-simple-process">Definition (Ito integral of a simple process)</h4>
+<p>The stochastic integral of a simple process <span class="math inline">\(\varphi_t\)</span> with respect to Brownian motion <span class="math inline">\(B_t\)</span> over <span class="math inline">\([0,T]\)</span> is defined by</p>
+<p><span class="math display">\[
+  \int_0^T \varphi_t \d B_t = \sum_{k=1}^n \xi_{k-1} \Delta B_{t_k}, \quad \text{ where } \Delta B_{t_k} = B_{t_k} - B_{t_{k-1}}.
+\]</span></p>
+</section>
+</section>
+<section id="integrand-for-ito-integral" class="level2">
+<h2 class="anchored" data-anchor-id="integrand-for-ito-integral">Integrand for Ito integral</h2>
+<section id="definition" class="level4">
+<h4 class="anchored" data-anchor-id="definition">Definition</h4>
+<p>We will use <span class="math inline">\(L^2_{ad}(\Omega\times[a,b])\)</span> to denote the space of all stochastic processes <span class="math inline">\(\varphi_t(\omega)\)</span>, <span class="math inline">\(a\leq t \leq b\)</span>, satisfying</p>
+<ul>
+<li><p><span class="math inline">\(\varphi_t\)</span> is adapted to the filtration <span class="math inline">\(\F_t\)</span>.</p></li>
+<li><p><span class="math inline">\(\displaystyle \int_a^b \Eof{|\varphi_t|^2} \d t &lt; \infty\)</span>.</p></li>
+</ul>
+<p>In other words, <span class="math inline">\(\varphi_t\)</span> is adatped and in <span class="math inline">\(L^2(\Omega\times[a,b])\)</span>. <br> Note that, for notational simplicity, we usually omit the reference to the sample space <span class="math inline">\(\Omega\)</span> and deonte the space as <span class="math inline">\(L^2_{ad}[a,b]\)</span>.</p>
+</section>
+<section id="lemma" class="level4">
+<h4 class="anchored" data-anchor-id="lemma">Lemma</h4>
+<p>Any <span class="math inline">\(L_{ad}^2\)</span> process is the <span class="math inline">\(L^2\)</span> limit of a sequence of simple processes. Precisely, let <span class="math inline">\(\varphi_t \in L^2_{\rm ad}([a,b])\)</span>. Then there exists a sequence of simple processes <span class="math inline">\(\{\varphi^{(n)}_t\}\)</span> in <span class="math inline">\(L^2_{\rm ad}([a,b])\)</span> such that</p>
+<p><span class="math display">\[
+  \lim_{n\to\infty} \Eof{\int_a^b |\varphi^{(n)}_t - \varphi_t|^2 \d t} = 0.
+\]</span></p>
+<p>In other words, <span class="math inline">\(\varphi^{(n)}_t \to \varphi_t\)</span> in <span class="math inline">\(L^2_{\rm ad}([a,b])\)</span>.</p>
+</section>
+</section>
+<section id="properties-of-ito-integral" class="level2">
+<h2 class="anchored" data-anchor-id="properties-of-ito-integral">Properties of Ito integral</h2>
+<p>Let <span class="math inline">\(\varphi \in L^2_{ad}\)</span> and, for <span class="math inline">\(t \in [0,T]\)</span>,</p>
+<p><span class="math display">\[
+  X_t = \int_0^t \varphi_s \d B_s
+\]</span></p>
+<p>be the stochastic integral of <span class="math inline">\(\varphi_t\)</span> with respect to Brownian motion <span class="math inline">\(B_t\)</span> up to time <span class="math inline">\(t\)</span>. Then <span class="math inline">\(X_t\)</span> has the following properties.</p>
+<ul>
+<li><p><em>Adaptivity</em>: <span class="math inline">\(X_t \in \F_t\)</span> for each <span class="math inline">\(t\)</span>.</p></li>
+<li><p><em>Martingality</em>: <span class="math inline">\(X_t\)</span> is a martingale.</p></li>
+<li><p><em>Ito isometry</em>: <span class="math display">\[
+      \E[X_t^2] = \Eof{\int_0^t \varphi_s^2 \d s}\; \leftrightsquigarrow \; \Eof{\left[\int_0^t \varphi_s \d B_s\right]^2} = \int_0^t \Eof{\varphi_s^2} \d s.
+  \]</span></p></li>
+<li><p><em>Quadratic variation</em>: <span class="math inline">\(\displaystyle [X]_t = \int_0^t \varphi_s^2 {\rm d} s \leftrightsquigarrow d[X]_t = \varphi_t^2 \d t\)</span>.</p></li>
+<li><p><em>Continuity</em>: <span class="math inline">\(X_t\)</span> is continuous in <span class="math inline">\(t\)</span> a.s.</p></li>
+<li><p><em>Linearity</em>: Let <span class="math inline">\(\psi_t\)</span> be another adapted process with <span class="math inline">\(\displaystyle \Eof{\int_0^T \psi_t^2 \d t} &lt; \infty\)</span> and <span class="math inline">\(\alpha,\beta \in \R\)</span>. Then</p>
+<p><span class="math display">\[
+  \int_0^t (\alpha \varphi_s + \beta \psi_s) \d B_s = \alpha \int_0^t \varphi_s \d B_s + \beta \int_0^t \psi_s \d B_s.
+  \]</span></p></li>
+</ul>
+</section>
+<section id="ito-processes" class="level2">
+<h2 class="anchored" data-anchor-id="ito-processes">Ito processes</h2>
+<section id="definition-1" class="level4">
+<h4 class="anchored" data-anchor-id="definition-1">Definition</h4>
+<p>An adapted process <span class="math inline">\(X_t\)</span> is called an <em>Ito process</em> if it is of the form</p>
+<p><span class="math display">\[
+  X_t = x + \int_0^t \sigma_s \d B_s + \int_0^t b_s \d s,
+\]</span></p>
+<p>where <span class="math inline">\(\sigma_t\)</span> and <span class="math inline">\(b_s\)</span> are adapted processes. We also write it in differential form as</p>
+<p><span class="math display">\[
+  \d X_t = \sigma_t \d B_t + b_t \d t, \quad \text{with initial condition } X_0 = x.
+\]</span></p>
+<p>The coefficient <span class="math inline">\(b_t\)</span> is referred to as the <em>drift</em> (term) and <span class="math inline">\(\sigma_t\)</span> as the <em>diffusion</em> (term) of the Ito process <span class="math inline">\(X_t\)</span>.</p>
+<p>注: 非正式理解 <span class="math display">\[
+X_t = \text{初始值} + \text{“随机扰动”} + \text{“确定趋势”}
+\]</span></p>
+<p>注: <span class="math inline">\(\sigma_t\)</span>, <span class="math inline">\(b_t\)</span> 是适应的过程 (adapted process). 这意味着它们在每一时刻 <span class="math inline">\(t\)</span> 的值, 只能依赖于当前或过去的信息, 不能知道未来.</p>
+</section>
+<section id="lemma-1" class="level4">
+<h4 class="anchored" data-anchor-id="lemma-1">Lemma</h4>
+<p>The quadratic variation of the Ito process <span class="math inline">\(X_t\)</span> is</p>
+<p><span class="math display">\[
+  [X]_t = \int_0^t \sigma_s^2 \d s \quad \leftrightsquigarrow \quad \d [X]_t = \sigma_t^2 \d t.
+\]</span></p>
+<p>Note that</p>
+<ul>
+<li><p>though the quadratic variation of Brownian motion is deterministic (recall <span class="math inline">\([B]_t = t\)</span> a.s.), in general the quadratic variation of an Ito process is stochastic;</p></li>
+<li><p>the proof is very similar to that of Brownian and is left as an exercise.</p></li>
+</ul>
+</section>
+</section>
+<section id="ito-integral-with-respect-to-ito-processes" class="level2">
+<h2 class="anchored" data-anchor-id="ito-integral-with-respect-to-ito-processes">Ito integral with respect to Ito processes</h2>
+<p>Let <span class="math inline">\(X_t\)</span> be an Ito process with drift <span class="math inline">\(b_t\)</span> and diffusion <span class="math inline">\(\sigma_t\)</span>, i.e., <span class="math inline">\(X_t\)</span> is defined by</p>
+<p><span class="math display">\[
+  X_t = x + \int_0^t \sigma_s \d B_s + \int_0^t b_s \d s \quad \leftrightsquigarrow \quad \d X_t = \sigma_t \d B_t + b_t \d t, \; X_0 = x.
+\]</span></p>
+<p>and <span class="math inline">\(\varphi_t\)</span> be an adapted process. We define the stochastic integral of <span class="math inline">\(\varphi_t\)</span> with respect to <span class="math inline">\(X_t\)</span> as</p>
+<p><span class="math display">\[
+  \int_0^t \varphi_s \d X_s = \int_0^t \varphi_s \sigma_s \d B_s + \int_0^t \varphi_s b_s \d s
+\]</span></p>
+<p>provided the integrals on the right hand side are defined.</p>
+</section>
+<section id="itos-formula-for-brownian-motion" class="level2">
+<h2 class="anchored" data-anchor-id="itos-formula-for-brownian-motion">Ito’s formula for Brownian motion</h2>
+<section id="theorem-2" class="level4">
+<h4 class="anchored" data-anchor-id="theorem-2">Theorem</h4>
+<p>Let <span class="math inline">\(f(t,x)\)</span> be a function with continuous partial derivatives <span class="math inline">\(f_t\)</span>, <span class="math inline">\(f_x\)</span>, and <span class="math inline">\(f_{xx}\)</span>. Let <span class="math inline">\(W_t = W_0 + B_t\)</span> be a Brownian motion starting at <span class="math inline">\(W_0\)</span> (nonrandom). Then, for every <span class="math inline">\(T \geq 0\)</span>,</p>
+<p><span class="math display">\[
+  f(T,W_T) - f(0,W_0) = \int_0^T f_x(t,W_t) \d W_t + \int_0^T \left[f_t(t,W_t) + \frac12 f_{xx}(t,W_t) \right] \d t.
+\]</span></p>
+<p>Or equivalently in differential form</p>
+<p><span class="math display">\[
+  \d f(t,W_t) = f_x(t,W_t) \d W_t + \left[ f_t(t,W_t) + \frac12 f_{xx}(t,W_t) \right] \d t.
+\]</span></p>
+</section>
+<section id="remark-8" class="level4">
+<h4 class="anchored" data-anchor-id="remark-8">Remark</h4>
+<p>The idea is that we Taylor expand <span class="math inline">\(f(t,W_t)\)</span> to second order then formally apply the following rule:</p>
+<p><span class="math display">\[
+(\d B_t)^2 \rightsquigarrow \d t, \quad (\d t)^2 \rightsquigarrow 0, \quad \d B_t \d t \rightsquigarrow 0.
+\]</span></p>
+<p>注: Itô 引理其实说明了, 从 <span class="math inline">\(f(0, W_0)\)</span> 到 <span class="math inline">\(f(T, W_T)\)</span> 的变化有两个来源:</p>
+<ol type="1">
+<li>随着布朗运动波动的部分, <span class="math inline">\(\displaystyle \int f_x \d W_t\)</span>.</li>
+<li>时间推移和布朗运动“扩散”的影响, <span class="math inline">\(\displaystyle \int \left[ f_t + \frac12 f_{xx} \right] \d t\)</span>.</li>
+</ol>
+<p>注: 我们可以把 Itô 引理看成一个“随机链式法则”.</p>
+</section>
+<section id="recap-普通链式法则" class="level4">
+<h4 class="anchored" data-anchor-id="recap-普通链式法则">Recap: 普通链式法则</h4>
+<p><span class="math display">\[
+\d f = f_t \d t + f_x \d x.
+\]</span></p>
+<p>推导过程:</p>
+<p>首先, 对 <span class="math inline">\(f\)</span> 进行泰勒展开: <span class="math display">\[\begin{align*}
+f(t+\d t, x+\d x) - f(t,x) =\; &amp;f_t \d t + f_x \d x  \\
+&amp;+ \frac12 f_{xx} (\d x)^2 + \frac12 f_{tt} (\d t)^2 + f_{tx} \d t \d x + ...
+\end{align*}\]</span></p>
+<p>下面的二次项和高阶项都可以忽略, 因为它们的量级比 <span class="math inline">\(\d t\)</span> 和 <span class="math inline">\(\d x\)</span> 小得多.</p>
+</section>
+<section id="itô-引理推导" class="level4">
+<h4 class="anchored" data-anchor-id="itô-引理推导">Itô 引理推导</h4>
+<p>同理, 我们进行泰勒展开: <span class="math display">\[\begin{align*}
+f(t+\d t, W_t +\d W_t) - f(t,W_t) =\; &amp;f_t \d t + f_x \d W_t  \\
+&amp;+ \frac12 f_{xx} (\d W_t)^2 + \frac12 f_{tt} (\d t)^2 + f_{tx} \d t \d W_t + ...
+\end{align*}\]</span> 现在根据 <span class="math inline">\((\d B_t)^2 \rightsquigarrow \d t\)</span>(这是因为 Quadratic Variation of Brownian Motion is <span class="math inline">\([B]_t = t\)</span>, 那么 <span class="math inline">\([\d B_t]_t = \d t\)</span>), 而剩下的都趋向 <span class="math inline">\(0\)</span>, 我们就得到了 Itô 引理.</p>
+</section>
+</section>
+<section id="itos-formula-for-ito-process" class="level2">
+<h2 class="anchored" data-anchor-id="itos-formula-for-ito-process">Ito’s formula for Ito process</h2>
+<p>Let <span class="math inline">\(f(t,x)\)</span> be a function with continuous partial derivatives <span class="math inline">\(f_t\)</span>, <span class="math inline">\(f_x\)</span>, and <span class="math inline">\(f_{xx}\)</span>. Then for every <span class="math inline">\(T \geq 0\)</span>, <span class="math display">\[\begin{align*}
+  f(T,X_T) - f(0,x) &amp;= \int_0^T f_t(t,X_t) \d t + \int_0^T f_x(t,X_t) \d X_t + \frac12 \int_0^T f_{xx}(t,X_t) \d [X]_t  \\
+  &amp;= \int_0^T f_x(t,X_t) \sigma_t \d B_t + \int_0^T \left[f_t + \frac{\sigma_t^2}2 f_{xx} + b_t f_x \right] \d t.
+\end{align*}\]</span> Or in differential form</p>
+<p><span class="math display">\[\begin{align*}
+  \d f(t,X_t) &amp;= f_t(t,X_t) \d t + f_x(t,X_t) \d X_t + \frac12 f_{xx}(t,X_t) \d [X]_t   \\
+  &amp;= \sigma_t f_x \d B_t + \left[ f_t + \frac{\sigma_t^2}{2} f_{xx} + b_t f_x \right] \d t
+\end{align*}\]</span></p>
+<section id="remark-9" class="level4">
+<h4 class="anchored" data-anchor-id="remark-9">Remark</h4>
+<ul>
+<li><p>Ito’s formula naturally decomposes <span class="math inline">\(f(t,X_t)\)</span> into a drift/finite variation part plus a diffusion/martingale part; reminiscent of the Doob decomposition. Processes consist of a finite variation part and a martingale part are also referred to as <em>semi-martingales</em>.</p></li>
+<li><p>Note that the second order differential operator <span class="math inline">\(\displaystyle \frac{\sigma_t^2}2 \p_x^2 + b_t \p_x\)</span> in the drift part is the infinitesimal generator of the process <span class="math inline">\(X_t\)</span>.</p></li>
+</ul>
+</section>
+<section id="推导" class="level4">
+<h4 class="anchored" data-anchor-id="推导">推导</h4>
+<p><span class="math inline">\(f(t, X_t)\)</span> 的增量为:</p>
+<p><span class="math display">\[\begin{align*}
+\mathrm{d}f(t, X_t)
+&amp;= f_t(t, X_t) \, \mathrm{d}t + f_x(t, X_t) \, \mathrm{d}X_t + \frac{1}{2} f_{xx}(t, X_t) \, (\mathrm{d}X_t)^2
+\end{align*}\]</span></p>
+<p>注意这里我们只保留到二阶项, 是因为 <span class="math inline">\((\mathrm{d}X_t)^2\)</span> 是一阶(因为会出现 <span class="math inline">\((\mathrm{d}B_t)^2 = \mathrm{d}t\)</span>), 而更高阶项如 <span class="math inline">\((\mathrm{d}t)^2\)</span>、<span class="math inline">\(\mathrm{d}t \mathrm{d}B_t\)</span> 等都趋于 <span class="math inline">\(0\)</span>.</p>
+<p>接着代入 <span class="math inline">\(\mathrm{d}X_t\)</span>. 由定义, Itô 过程满足:</p>
+<p><span class="math display">\[
+\mathrm{d}X_t = \sigma_t \mathrm{d}B_t + b_t \mathrm{d}t.
+\]</span></p>
+<p>我们代入 <span class="math inline">\(\mathrm{d}X_t\)</span> 得:</p>
+<ul>
+<li><p>一阶项: <span class="math display">\[
+f_x(t,X_t)\mathrm{d}X_t = f_x(t,X_t)(\sigma_t \mathrm{d}B_t + b_t \mathrm{d}t)
+\]</span></p></li>
+<li><p>二阶项: 我们来计算 <span class="math inline">\((\mathrm{d}X_t)^2\)</span>:</p></li>
+</ul>
+<p><span class="math display">\[
+(\mathrm{d}X_t)^2 = (\sigma_t \mathrm{d}B_t + b_t \mathrm{d}t)^2 = \sigma_t^2 (\mathrm{d}B_t)^2 + 2\sigma_t b_t \mathrm{d}B_t \mathrm{d}t + b_t^2 (\mathrm{d}t)^2
+\]</span></p>
+<p>根据 Itô 规则:</p>
+<p><span class="math display">\[
+(\d B_t)^2 \rightsquigarrow \d t, \quad (\d t)^2 \rightsquigarrow 0, \quad \d B_t \d t \rightsquigarrow 0.
+\]</span></p>
+<p>所以有:</p>
+<p><span class="math display">\[
+(\mathrm{d}X_t)^2 = \sigma_t^2 \, \mathrm{d}t
+\]</span></p>
+<p>最后代入 Taylor 展开式, 合并所有项:</p>
+<p><span class="math display">\[\begin{align*}
+\mathrm{d}f(t, X_t)
+&amp;= f_t(t, X_t)\, \mathrm{d}t
++ f_x(t, X_t)\, (\sigma_t \mathrm{d}B_t + b_t \mathrm{d}t)
++ \frac{1}{2} f_{xx}(t, X_t) \cdot \sigma_t^2 \mathrm{d}t \\
+&amp;= f_x \sigma_t \, \mathrm{d}B_t + \left( f_t + b_t f_x + \frac{1}{2} \sigma_t^2 f_{xx} \right) \mathrm{d}t
+\end{align*}\]</span></p>
+<p><span class="math display">\[
+\boxed{
+\mathrm{d}f(t, X_t) = f_x(t,X_t) \sigma_t \, \mathrm{d}B_t
++ \left(f_t(t,X_t) + b_t f_x(t,X_t) + \frac{1}{2} \sigma_t^2 f_{xx}(t,X_t) \right)\mathrm{d}t
+}
+\]</span></p>
+</section>
+</section>
+<section id="review-fundamental-theorem-of-calculus-and-taylors-theorem" class="level2">
+<h2 class="anchored" data-anchor-id="review-fundamental-theorem-of-calculus-and-taylors-theorem">Review: Fundamental theorem of calculus and Taylor’s theorem</h2>
+<section id="fundamental-theorem-of-calculus" class="level4">
+<h4 class="anchored" data-anchor-id="fundamental-theorem-of-calculus">Fundamental theorem of calculus</h4>
+<p>Let <span class="math inline">\(f\)</span> be a continuously differentiable function. Then <span class="math display">\[
+f(y) - f(x) = \int_x^y f'(\xi) \d\xi.
+\]</span></p>
+</section>
+<section id="taylors-theorem" class="level4">
+<h4 class="anchored" data-anchor-id="taylors-theorem">Taylor’s theorem</h4>
+<p>For a second differentiable function <span class="math inline">\(f\)</span>, there exists some <span class="math inline">\(\xi\)</span> between <span class="math inline">\(y\)</span> and <span class="math inline">\(x\)</span> such that</p>
+<p><span class="math display">\[\begin{align*}
+&amp;&amp; f(y) - f(x) = f'(x) (y - x) + \frac{f''(\xi)}2 (y-x)^2.
+\end{align*}\]</span></p>
+<p>Notice that the equation is exact, however in general it is not possible to specify what <span class="math inline">\(\xi\)</span> is.</p>
+</section>
+<section id="taylors-expansion-up-to-2nd-order-with-2-variables" class="level4">
+<h4 class="anchored" data-anchor-id="taylors-expansion-up-to-2nd-order-with-2-variables">Taylor’s expansion up to 2nd order with 2 variables</h4>
+<p>The Taylor expansion of <span class="math inline">\(f\)</span> (expanded about <span class="math inline">\((x,t)=(a,b)\)</span>) is:</p>
+<p><span class="math display">\[\begin{align*}
+f(x,t) = &amp;f(a,b) + f_x(a,b)(x-a) + f_t(a,b)(t-b) \\
+&amp;+ \frac{f_{xx}(a,b)}2 (x-a)^2 + f_{xt}(a,b)(x-a)(t-b) + \frac{f_{tt}(a,b)}2 (t-b)^2 + \cdots
+\end{align*}\]</span></p>
+</section>
+</section>
+<section id="applications-of-itos-formula-i-evaluating-stochastic-integral" class="level2">
+<h2 class="anchored" data-anchor-id="applications-of-itos-formula-i-evaluating-stochastic-integral">Applications of Ito’s formula I: Evaluating stochastic integral</h2>
+<p>In classical calculus, we barely evaluate an integral from the definitioin <em>per se</em>, i.e., partition the integrating interval, form Riemann sum, then take limit as the mesh of the partition approaches zero. Instead, we evaluate an integral by applying the Fundamental Theorem of Calculus. Though in stochastic calculus the Fundamental Theorem of Calculus does not really exist, we evaluate stochastic integrals by applying Ito’s formula.</p>
+<section id="theorem-3" class="level4">
+<h4 class="anchored" data-anchor-id="theorem-3">Theorem</h4>
+<p><span class="math display">\[
+\int_a^b f(B_t) \d B_t = F(B_t)\Big|_{t=a}^b - \frac12 \int_a^b f'(B_t) \d t,
+\]</span></p>
+<p>where <span class="math inline">\(F\)</span> is an anti-derivative of <span class="math inline">\(f\)</span>, i.e., <span class="math inline">\(F'=f\)</span>.</p>
+</section>
+<section id="theorem-4" class="level4">
+<h4 class="anchored" data-anchor-id="theorem-4">Theorem</h4>
+<p><span class="math display">\[
+\int_a^b f(t,B_t) \d B_t = F(t,B_t)\Big|_{t=a}^b - \int_a^b \left[F_t(t,B_t) + \frac12 f_x(t,B_t)\right] \d t,
+\]</span></p>
+<p>where <span class="math inline">\(F_x = f\)</span>, i.e., <span class="math inline">\(F\)</span> is an anti-derivative of <span class="math inline">\(f\)</span> with respect to <span class="math inline">\(x\)</span>.</p>
+<ul>
+<li>The idea is, we find an anti-derivative of <span class="math inline">\(f\)</span> (with respect to <span class="math inline">\(x\)</span>), say, <span class="math inline">\(F\)</span>; apply Ito’s formula to <span class="math inline">\(F\)</span>, then rearrange terms.</li>
+<li>However, the price we pay is that in general the last (Riemann) integral on the right hand side usually has no simple analytical expression.</li>
+</ul>
+</section>
+</section>
+<section id="examples-of-stochastic-integral-evaluation" class="level2">
+<h2 class="anchored" data-anchor-id="examples-of-stochastic-integral-evaluation">Examples of stochastic integral evaluation</h2>
+<ul>
+<li><p>Evaluate the stochastic integral <span class="math inline">\(\displaystyle \int_0^t B_s \d B_s\)</span>. <br> Note that in this case <span class="math inline">\(f(x) = x\)</span>. Hence an anti-derivative of <span class="math inline">\(f\)</span> is <span class="math inline">\(\displaystyle F(x) = \frac{x^2}2\)</span>. <br> Apply Ito’s formula to <span class="math inline">\(F\)</span> we have</p>
+<p><span class="math display">\[\begin{align*}
+  &amp; \d F(B_t) = \d\left(\frac{B_t^2}2\right) = B_t \d B_t + \frac12 \d t \\
+  &amp;\Longrightarrow \frac{B_T^2}2 - \frac{B_0^2}2 = \int_0^T B_t \d B_t + \frac12 \int_0^T \d t \\
+  &amp;\Longrightarrow \int_0^T B_t \d B_t = \frac12(B_T^2 - T)
+  \end{align*}\]</span></p></li>
+<li><p>Evaluate the stochastic integral <span class="math inline">\(\displaystyle \int_0^t se^{B_s} \d B_s\)</span>. <br> Note that in this case <span class="math inline">\(f(t,x) = t e^x\)</span>. Hence an anti-derivative <span class="math inline">\(F\)</span> of <span class="math inline">\(f\)</span> is <span class="math inline">\(F(t,x) = t e^x\)</span>. <br> Apply Ito’s formula to <span class="math inline">\(F\)</span> we have</p>
+<p><span class="math display">\[\begin{align*}
+  &amp; \d F(t,B_t) = \d\left(t e^{B_t} \right) = e^{B_t} \d t + te^{B_t} \d B_t + \frac12 te^{B_t} \d t \\
+  &amp;\Longrightarrow T e^{B_T} = \int_0^T t e^{B_t} \d B_t + \int_0^T e^{B_t} \left(1 + \frac t2 \right) \d t \\
+  &amp;\Longrightarrow \int_0^T t e^{B_t} \d B_t = T e^{B_T} - \int_0^T e^{B_t} \left(1 + \frac t2 \right) \d t
+  \end{align*}\]</span></p></li>
+</ul>
+</section>
+<section id="applications-of-itos-formula-ii-solving-sdes" class="level2">
+<h2 class="anchored" data-anchor-id="applications-of-itos-formula-ii-solving-sdes">Applications of Ito’s formula II: Solving SDEs</h2>
+<p>A stochastic differential equation (SDE) is an differential equation with random noise of the form</p>
+<p><span class="math display">\[
+\d X_t = \mu(X_t,t) \d t + \sigma (X_t,t) \d B_t
+\]</span></p>
+<p>注: ODE (Ordinary Differential Equation) 是指一微分方程的未知数是单一自变量的函数.</p>
+<p>In cases, we can solve SDEs by applying Ito’s formula to certain function of <span class="math inline">\(X_t\)</span>. We demonstrate the technique by solving the following two very important examples.</p>
+<ul>
+<li><p><em>Geometric Brownian motion/Black-Scholes model</em></p>
+<p><span class="math inline">\(\d X_t = \mu X_t \d t + \sigma X_t \d B_t\)</span>, where <span class="math inline">\(\mu\)</span> and <span class="math inline">\(\sigma\)</span> are constants.</p>
+<p>注: <span class="math inline">\(\sigma X_t \d B_t\)</span> 表示当前的 risk. <span class="math inline">\(\mu X_t \d t\)</span> 表示收益.</p>
+<p>To solve it, we apply Ito’s formula to <span class="math inline">\(\log X_t\)</span>.</p>
+<p><em>Solution</em>: 我们可以视作: <span class="math inline">\(f(t, X_t) = \log X_t\)</span>, 那么 <span class="math inline">\(f_t = 0\)</span>, <span class="math inline">\(\displaystyle f_x = \frac{1}{x}\)</span>, <span class="math inline">\(\displaystyle f_{xx} = - \frac{1}{x^2}\)</span>. <span class="math display">\[\begin{align*}
+  \d \log X_t &amp;=  \frac{\d X_t}{X_t} - \frac{1}{2 X_t^2} (\d X_t)^2 = \mu \d t + \sigma \d B_t - \frac{1}{2 X_t^2} (\d X_t)^2 \\
+  &amp;= \mu \d t + \sigma \d B_t - \frac{1}{2 X_t^2} (\sigma^2 X_t^2 \d t) = \left(\mu - \frac12 \sigma^2 \right) \d t + \sigma \d B_t \\
+  \end{align*}\]</span> 注: 最后一步别的高阶项都被舍弃了.</p>
+<p>两边同时进行积分, 得到: <span class="math display">\[\begin{align*}
+  \log X_t - \log X_0 &amp;= \left(\mu - \frac12 \sigma^2 \right) t + \int_0^t \sigma \d B_s \\
+  &amp;= \left(\mu - \frac12 \sigma^2 \right) t + (\sigma B_t) \Big|_{s=0}^t - \frac12 \int_0^t 0 \d s \\
+  &amp;= \left(\mu - \frac12 \sigma^2 \right) t + \sigma B_t.
+  \end{align*}\]</span></p>
+<p>所以: <span class="math display">\[
+  X_t = X_0 \exp\left( \left(\mu - \frac12 \sigma^2 \right) t + \sigma B_t \right).
+  \]</span></p>
+<p>注: 设投资组合回报率为 <span class="math inline">\(r_p\)</span>, 基准指数回报率为 <span class="math inline">\(r_b\)</span>, 那么:</p>
+<p><span class="math display">\[
+  \text{相对回报} = \frac{1 + r_p}{1 + r_b} \approx r_p - r_b.
+  \]</span></p>
+<ul>
+<li>绝对收益是指投资的费用后实际回报.</li>
+<li>相对收益就是绝对收益与某些基准收益之间的差. 一般在我们买入基金产品的时候, 基金产品会有一个基准作为比较, 比如上证综指、沪深300指数、中证1000指数等. 我们买入基金的绝对收益减去比较基准同样时间区间的绝对收益, 就是该基金相对于基准的相对收益.</li>
+</ul></li>
+<li><p><em>Ornstein-Uhlenbeck process/Vasicek model</em></p>
+<p><span class="math inline">\(\d X_t = \lambda(m - X_t) \d t + \sigma \d B_t\)</span>, where <span class="math inline">\(m\)</span>, <span class="math inline">\(\lambda\)</span>, and <span class="math inline">\(\sigma\)</span> are constants.</p>
+<p>To solve it, we apply Ito’s formula to <span class="math inline">\(e^{\lambda t} X_t\)</span>.</p>
+<p><em>Solution</em>: 我们可以视作: <span class="math inline">\(f(t, X_t) = e^{\lambda t} X_t\)</span>, 那么 <span class="math inline">\(f_t = \lambda e^{\lambda t} X_t\)</span>, <span class="math inline">\(f_x = e^{\lambda t}\)</span>, <span class="math inline">\(f_{xx} = 0\)</span>. <span class="math display">\[\begin{align*}
+  \d (e^{\lambda t} X_t) &amp;= \lambda e^{\lambda t} X_t \d t + e^{\lambda t} \d X_t + 0 \\
+  &amp;= \lambda e^{\lambda t} X_t \d t + e^{\lambda t} \left[ \lambda(m - X_t) \d t + \sigma \d B_t \right] \\
+  &amp;= \left[ \lambda e^{\lambda t} X_t + \lambda e^{\lambda t} (m - X_t) \right] \d t + e^{\lambda t} \sigma \d B_t \\
+  &amp;= \lambda m e^{\lambda t} \d t + e^{\lambda t} \sigma \d B_t.
+  \end{align*}\]</span></p>
+<p>两边同时进行积分, 得到: <span class="math display">\[\begin{align*}
+  e^{\lambda t} X_t - X_0 &amp;= \lambda m \int_0^t e^{\lambda s} \d s + \int_0^t e^{\lambda s} \sigma \d B_s \\
+  &amp;= \lambda m \frac{e^{\lambda t} - 1}{\lambda} + \sigma \int_0^t e^{\lambda s} \d B_s \\
+  &amp;= m (e^{\lambda t} - 1) + \sigma \int_0^t e^{\lambda s} \d B_s.
+  \end{align*}\]</span></p>
+<p>所以最后为: <span class="math display">\[
+  X_t = e^{-\lambda t} \left[ X_0 + m (e^{\lambda t} - 1) + \sigma \int_0^t e^{\lambda s} \d B_s \right].
+  \]</span></p></li>
+</ul>
+<section id="remark-10" class="level4">
+<h4 class="anchored" data-anchor-id="remark-10">Remark</h4>
+<p>Geometric Brownian motion and Ornstein-Uhlenbeck process are special cases of the so called <em>linear SDEs</em> which has the general form</p>
+<p><span class="math display">\[
+\d X_t = (\mu_1 X_t + \mu_0) \d t + (\sigma_1 X_t + \sigma_0) \d B_t.
+\]</span></p>
+<p>Such SDEs have “closed form” solutions.</p>
+</section>
+<section id="euler-maruyama-scheme" class="level3">
+<h3 class="anchored" data-anchor-id="euler-maruyama-scheme">Euler-Maruyama Scheme</h3>
+<p>现在我们考虑模拟 <span class="math inline">\(\d X_t = \mu(X_t) \d t + \sigma(X_t) \d B_t\)</span>.</p>
+<p>那么模拟的方法就是:</p>
+<p><span class="math display">\[
+X_{t_{n+1}} = X_{t_n} + \mu(X_{t_n}) \Delta t + \sigma(X_{t_n}) \Delta B_{t_n}.
+\]</span></p>
+<p>用代码表示就是:</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> euler_maruyama(X0, mu, sigma, T, N):</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>    dt <span class="op">=</span> T <span class="op">/</span> N</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>    X <span class="op">=</span> np.zeros(N <span class="op">+</span> <span class="dv">1</span>)</span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>    X[<span class="dv">0</span>] <span class="op">=</span> X0</span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> n <span class="kw">in</span> <span class="bu">range</span>(N):</span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>        dB <span class="op">=</span> np.random.normal(<span class="dv">0</span>, np.sqrt(dt))  <span class="co"># simulate dB_t</span></span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>        X[n <span class="op">+</span> <span class="dv">1</span>] <span class="op">=</span> X[n] <span class="op">+</span> mu(X[n]) <span class="op">*</span> dt <span class="op">+</span> sigma(X[n]) <span class="op">*</span> dB</span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> X</span></code><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<section id="丸山儀四郎" class="level4">
+<h4 class="anchored" data-anchor-id="丸山儀四郎">丸山儀四郎</h4>
+<div style="text-align: center;">
+<p><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/03/Gisiro_Maruyama.jpg/1280px-Gisiro_Maruyama.jpg" width="100"></p>
+</div>
+<p>当伊藤清在 1942 年发表一篇关于随机微分方程的论文时, 丸山立即认识到这项研究的重要性, 并立即发表了一系列关于随机微分方程和马尔可夫过程的论文. 丸山因其 1955 年关于随机微分方程数值解的微分近似的收敛性质的工作而闻名, 现在称为欧拉-丸山方法.</p>
+</section>
+</section>
+</section>
+<section id="simulation-of-the-ornstein-uhlenbeck-process" class="level2">
+<h2 class="anchored" data-anchor-id="simulation-of-the-ornstein-uhlenbeck-process">Simulation of the Ornstein-Uhlenbeck process</h2>
+<div id="cell-57" class="cell">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co">##### The code simulates the OU process dX = lambda (m - X) dt + sigma dB</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="co"># by Euler-Maruyama scheme</span></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Parameters of the OU process </span></span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>lmbda, m, sigma <span class="op">=</span> <span class="dv">5</span>, <span class="fl">0.5</span>, <span class="fl">0.2</span></span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>x0, T <span class="op">=</span> <span class="op">-</span><span class="dv">2</span>, <span class="dv">1</span></span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a><span class="co"># number of paths and number of time steps</span></span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>n_sim, n_steps <span class="op">=</span> <span class="dv">10_000</span>, <span class="dv">100</span></span>
+<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a><span class="co"># initialize X</span></span>
+<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a>X <span class="op">=</span> np.ones([n_sim, n_steps<span class="op">+</span><span class="dv">1</span>])<span class="op">*</span>x0</span>
+<span id="cb9-13"><a href="#cb9-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-14"><a href="#cb9-14" aria-hidden="true" tabindex="-1"></a><span class="co"># Euler-Maruyama scheme</span></span>
+<span id="cb9-15"><a href="#cb9-15" aria-hidden="true" tabindex="-1"></a>dt <span class="op">=</span> T<span class="op">/</span>n_steps</span>
+<span id="cb9-16"><a href="#cb9-16" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(n_steps):</span>
+<span id="cb9-17"><a href="#cb9-17" aria-hidden="true" tabindex="-1"></a>    db <span class="op">=</span> norm.rvs(size<span class="op">=</span>n_sim)</span>
+<span id="cb9-18"><a href="#cb9-18" aria-hidden="true" tabindex="-1"></a>    db <span class="op">=</span> db <span class="op">-</span> db.mean()</span>
+<span id="cb9-19"><a href="#cb9-19" aria-hidden="true" tabindex="-1"></a>    db <span class="op">=</span> db<span class="op">/</span>db.std()</span>
+<span id="cb9-20"><a href="#cb9-20" aria-hidden="true" tabindex="-1"></a>    <span class="co"># </span><span class="al">NOTE</span><span class="co">: db is a standard normal random variable, so we scale it by sqrt(dt)</span></span>
+<span id="cb9-21"><a href="#cb9-21" aria-hidden="true" tabindex="-1"></a>    X[:,i<span class="op">+</span><span class="dv">1</span>] <span class="op">=</span> X[:,i] <span class="op">+</span> lmbda<span class="op">*</span>(m <span class="op">-</span> X[:,i])<span class="op">*</span>dt <span class="op">+</span> sigma<span class="op">*</span>np.sqrt(dt)<span class="op">*</span>db</span>
+<span id="cb9-22"><a href="#cb9-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-23"><a href="#cb9-23" aria-hidden="true" tabindex="-1"></a><span class="co"># plot</span></span>
+<span id="cb9-24"><a href="#cb9-24" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">12</span>, <span class="dv">8</span>))</span>
+<span id="cb9-25"><a href="#cb9-25" aria-hidden="true" tabindex="-1"></a>t <span class="op">=</span> np.arange(<span class="dv">0</span>, T<span class="op">+</span>dt, dt)</span>
+<span id="cb9-26"><a href="#cb9-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-27"><a href="#cb9-27" aria-hidden="true" tabindex="-1"></a><span class="co"># histograms at different times</span></span>
+<span id="cb9-28"><a href="#cb9-28" aria-hidden="true" tabindex="-1"></a>plt.subplot(<span class="dv">2</span>, <span class="dv">2</span>, <span class="dv">1</span>)</span>
+<span id="cb9-29"><a href="#cb9-29" aria-hidden="true" tabindex="-1"></a>time <span class="op">=</span> <span class="fl">0.02</span> <span class="co"># 0.5, 0.8</span></span>
+<span id="cb9-30"><a href="#cb9-30" aria-hidden="true" tabindex="-1"></a>sns.histplot(X[:,t<span class="op">==</span>time], bins<span class="op">=</span><span class="dv">30</span>, stat<span class="op">=</span><span class="st">'density'</span>, label<span class="op">=</span><span class="ss">f'$t=</span><span class="sc">{</span>time<span class="sc">}</span><span class="ss">$'</span>, element<span class="op">=</span><span class="st">'step'</span>)</span>
+<span id="cb9-31"><a href="#cb9-31" aria-hidden="true" tabindex="-1"></a>sns.histplot(X[:,<span class="op">-</span><span class="dv">1</span>], bins<span class="op">=</span><span class="dv">30</span>, stat<span class="op">=</span><span class="st">'density'</span>, label<span class="op">=</span><span class="ss">f'$t=</span><span class="sc">{</span>T<span class="sc">}</span><span class="ss">$'</span>, color<span class="op">=</span><span class="st">'lightgreen'</span>, element<span class="op">=</span><span class="st">'step'</span>)</span>
+<span id="cb9-32"><a href="#cb9-32" aria-hidden="true" tabindex="-1"></a>plt.legend()</span>
+<span id="cb9-33"><a href="#cb9-33" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-34"><a href="#cb9-34" aria-hidden="true" tabindex="-1"></a><span class="co"># time evolution of mean</span></span>
+<span id="cb9-35"><a href="#cb9-35" aria-hidden="true" tabindex="-1"></a>plt.subplot(<span class="dv">2</span>, <span class="dv">2</span>, <span class="dv">2</span>)</span>
+<span id="cb9-36"><a href="#cb9-36" aria-hidden="true" tabindex="-1"></a>plt.plot(t, X.mean(axis<span class="op">=</span><span class="dv">0</span>))</span>
+<span id="cb9-37"><a href="#cb9-37" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'$t$'</span>)</span>
+<span id="cb9-38"><a href="#cb9-38" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'sample mean'</span>)</span>
+<span id="cb9-39"><a href="#cb9-39" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-40"><a href="#cb9-40" aria-hidden="true" tabindex="-1"></a><span class="co"># time evolution of variance</span></span>
+<span id="cb9-41"><a href="#cb9-41" aria-hidden="true" tabindex="-1"></a>plt.subplot(<span class="dv">2</span>, <span class="dv">2</span>, <span class="dv">3</span>)</span>
+<span id="cb9-42"><a href="#cb9-42" aria-hidden="true" tabindex="-1"></a>plt.plot(t, X.var(axis<span class="op">=</span><span class="dv">0</span>))</span>
+<span id="cb9-43"><a href="#cb9-43" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'$t$'</span>)</span>
+<span id="cb9-44"><a href="#cb9-44" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'sample variance'</span>)<span class="op">;</span></span></code><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="NSD_Lec02-StochCal_Summer2025_files/figure-html/cell-9-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<div id="cell-58" class="cell" data-execution_count="9">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>(np.sin(X[:, <span class="op">-</span><span class="dv">1</span>]<span class="op">**</span><span class="dv">2</span>)).mean()</span></code><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="9">
+<pre><code>np.float64(0.23676791974798134)</code></pre>
+</div>
+</div>
+</section>
+<section id="stochastic-differential-equation" class="level2">
+<h2 class="anchored" data-anchor-id="stochastic-differential-equation">Stochastic differential equation</h2>
+<p>Let <span class="math inline">\((\Omega,\cF_t,\P)\)</span> be a filtered probability space and <span class="math inline">\(W_t\)</span> a Brownian motion defined on it. A stochastic differential equation (SDE) driven by the Brownian motion <span class="math inline">\(W_t\)</span> is an equation of the form</p>
+<p><span class="math display">\[
+\d X_t = \mu(X_t,t) \d t + \sigma(X_t,t) \d W_t, \quad X_0 = x
+\]</span></p>
+<p>or in integral form</p>
+<p><span class="math display">\[
+X_t = x_0 + \int_0^t \mu(X_s,s) \d s + \int_0^t \sigma(X_s,s) \d W_s.
+\]</span></p>
+<p>As usual, <span class="math inline">\(\mu(x,t)\)</span> is referred to as the drift part and <span class="math inline">\(\sigma(x,t)\)</span> the diffusion part.</p>
+</section>
+<section id="connection-to-partial-differential-equation" class="level2">
+<h2 class="anchored" data-anchor-id="connection-to-partial-differential-equation">Connection to partial differential equation</h2>
+<p>Stochastic differential equation provides a way to numerically solve second order parabolic partial differential equations by Monte Carlo simulation. The key point is a stochastic representation of the solution to partial differential equations which we develop in the following.</p>
+<p>Let <span class="math inline">\(X_t\)</span> be the diffusion process driven by</p>
+<p><span class="math display">\[
+  \d X_t = \mu(X_t,t) \d t + \sigma(X_t,t) \d W_t.
+\]</span></p>
+<p>We shall suppress the dependence on <span class="math inline">\(x,t\)</span> of <span class="math inline">\(\mu\)</span> and <span class="math inline">\(\sigma\)</span> for notational simplicity.</p>
+<section id="theorem-5" class="level4">
+<h4 class="anchored" data-anchor-id="theorem-5">Theorem</h4>
+<p>Let <span class="math inline">\(u = u(x,t)\)</span> be the solution to the terminal value problem</p>
+<p><span class="math display">\[\begin{align*}
+  &amp; u_t + \frac{\sigma^2}2 u_{xx} + \mu u_x = 0, \quad t &lt; T, \\
+  &amp; u(x,T) = h(x).  
+\end{align*}\]</span></p>
+<p>Then <span class="math inline">\(u\)</span> has the representation</p>
+<p><span class="math display">\[
+  u(x,t) = \E_{t,x}\left[h(X_T)\right],
+\]</span></p>
+<p>where <span class="math inline">\(\E_{t,x}[\cdot]\)</span> denotes the conditional expectation <span class="math inline">\(\E[\cdot|X_t = x]\)</span>.</p>
+</section>
+<section id="proof" class="level3">
+<h3 class="anchored" data-anchor-id="proof">Proof</h3>
+<p>Applying Ito’s formula to <span class="math inline">\(u(X_t,t)\)</span> yields</p>
+<p><span class="math display">\[\begin{align*}
+  u(X_T,T) - u(X_t,t) &amp;= \int_t^T \sigma(X_s,s)u_x(X_s,s) \d W_s + \int_t^T \left[ u_t + \frac{\sigma^2}2 u_{xx} + \mu u_x \right]\d s  \\
+  &amp;= \int_t^T \sigma(X_s,s)u_x(X_s,s) \d W_s
+\end{align*}\]</span></p>
+<p>since <span class="math inline">\(u\)</span> satisfies the PDE</p>
+<p><span class="math display">\[
+u_t + \frac{\sigma^2}2 u_{xx} + \mu u_x = 0.
+\]</span></p>
+<p>Thus taking conditional expectation <span class="math inline">\(\E_{t,x}[\cdot]\)</span> on both sides and taking into account the terminal condition <span class="math inline">\(u(x,T) = h(x)\)</span> we end up with</p>
+<p><span class="math display">\[
+  u(x,t) = \E_{t,x}[h(X_T)].
+\]</span></p>
+</section>
+</section>
+<section id="the-feynman-kac-formula" class="level2">
+<h2 class="anchored" data-anchor-id="the-feynman-kac-formula">The Feynman-Kac formula</h2>
+<p>Let <span class="math inline">\(u = u(x,t)\)</span> be the solution to the terminal value problem</p>
+<p><span class="math display">\[\begin{align*}
+  &amp; u_t + \frac{\sigma^2}2 u_{xx} + \mu u_x = V(x,t) u, \quad t &lt; T,  \\
+  &amp; u(x,T) = h(x).  
+\end{align*}\]</span></p>
+<p>Then <span class="math inline">\(u\)</span> has the representation</p>
+<p><span class="math display">\[
+  u(x,t) = \E_{t,x}\left[e^{-\int_t^T V(X_s,s) \d s}h(X_T)\right],
+\]</span></p>
+<p>where <span class="math inline">\(\E_{t,x}[\cdot]\)</span> denotes the conditional expectation <span class="math inline">\(\E[\cdot|X_t = x]\)</span>. This is the celebrated <em>Feynman-Kac formula</em>.</p>
+<p>注: Feynman-Kac 公式将 PDE 的解转化为随机过程的期望. <span class="math inline">\(e^{-\int_t^T V(X_s,s) \d s}\)</span> 是对路径的贴现效应, <span class="math inline">\(h(X_T)\)</span> 是终端支付.</p>
+<p>贴现效应: 本质是货币时间价值的体现, 即未来资金在当前时点的折现. 其核心逻辑是“现在的钱比未来的钱更值钱”, 因此需通过扣除利息补偿资金的时间成本.</p>
+<p>终端支付: 指票据到期时, 持票人向付款人(或承兑人)提示票据并要求支付票面金额的行为.</p>
+<section id="proof-of-feynman-kac-formula" class="level3">
+<h3 class="anchored" data-anchor-id="proof-of-feynman-kac-formula">Proof of Feynman-Kac formula</h3>
+<p>Applying Ito’s formula to <span class="math inline">\(u(X_t,t)e^{-\int_0^t V(X_s,s)\d s}\)</span> yields</p>
+<p><span class="math display">\[\begin{align*}
+  &amp; \d \left[ u(X_t,t)e^{-\int_0^t V(X_s,s)\d s} \right] \\
+  &amp;= e^{-\int_0^t V(X_s,s)\d s}\left[ u_t(X_t,t) \d t - V(X_t,t) u(X_t,t) \d t + u_x(X_t,t) \d X_t + \frac12 u_{xx}(X_t,t) \d [X]_t \right]  \\
+  &amp;= e^{-\int_0^t V(X_s,s)\d s}\left[ \left\{ u_t(X_t,t) + \frac{\sigma^2(X_t,t)}2 u_{xx}(X_t,t) + \mu u_x(X_t,t) - V(X_t,t) u(X_t,t) \right\} \d t + \sigma(X_t,t) u_x(X_t,t) \d B_t \right]  \\
+  &amp;= e^{-\int_0^t V(X_s,s)\d s} \sigma(X_t,t) u_x(X_t,t) \d B_t
+\end{align*}\]</span></p>
+<p>since <span class="math inline">\(u\)</span> satisfies the PDE</p>
+<p><span class="math display">\[
+u_t + \frac{\sigma^2}2 u_{xx} + \mu u_x = V(x,t) u.
+\]</span></p>
+<p>In integral form</p>
+<p><span class="math display">\[\begin{align*}
+  u(X_T,T)e^{-\int_0^T V(X_s,s)\d s} - u(X_t,t)e^{-\int_0^t V(X_s,s)\d s} &amp;=&amp; \int_t^T e^{-\int_0^\tau V(X_s,s)\d s} \sigma(X_\tau,\tau) u_x(X_\tau,\tau) \d B_\tau
+\end{align*}\]</span></p>
+<p>therefore, by dividing on both sides the term <span class="math inline">\(e^{-\int_0^t V(X_s,s)\d s}\)</span> we have</p>
+<p><span class="math display">\[\begin{align*}
+  u(X_T,T)e^{-\int_t^T V(X_s,s)\d s} - u(X_t,t) &amp;=&amp; \int_t^T e^{-\int_t^\tau V(X_s,s)\d s} \sigma(X_\tau,\tau) u_x(X_\tau,\tau) \d B_\tau.
+\end{align*}\]</span></p>
+</section>
+</section>
+<section id="richard-phillips-feynman" class="level2">
+<h2 class="anchored" data-anchor-id="richard-phillips-feynman">Richard Phillips Feynman</h2>
+<h2 style="text-align: center;" class="anchored">
+<img src="http://upload.wikimedia.org/wikipedia/en/4/42/Richard_Feynman_Nobel.jpg" align="center" width="100">
+</h2>
+<p>Courtesy: Photo from <a href="https://en.wikipedia.org/wiki/Richard_Feynman">Wikipedia</a></p>
+</section>
+<section id="marek-kac" class="level2">
+<h2 class="anchored" data-anchor-id="marek-kac">Marek Kac</h2>
+<h2 style="text-align: center;" class="anchored">
+<img src="http://upload.wikimedia.org/wikipedia/commons/5/56/Mark_Kac.jpg" align="center" width="100">
+</h2>
+<p>Courtesy: Photo from <a href="https://en.wikipedia.org/wiki/Mark_Kac">Wikipedia</a></p>
+<p>Quoted from the <a href="https://en.wikipedia.org/wiki/Mark_Kac">Wikipage</a>:</p>
+<blockquote class="blockquote">
+<p>When Kac and Richard Feynman were both on the Cornell faculty he went to a lecture of Feynman’s and saw that the two of them were working on the same thing from different directions. The Feynman-Kac formula resulted, which proves rigorously the real case of Feynman’s path integrals. The complex case, which occurs when a particle’s spin is included, is still unproven.</p>
+</blockquote>
+</section>
+<section id="adding-nonhomogeneous-term" class="level2">
+<h2 class="anchored" data-anchor-id="adding-nonhomogeneous-term">Adding nonhomogeneous term</h2>
+<p>Let <span class="math inline">\(u = u(x,t)\)</span> be the solution to the terminal value problem</p>
+<p><span class="math display">\[\begin{align*}
+  &amp; u_t + \frac{\sigma^2}2 u_{xx} + \mu u_x = f(x,t), \quad t &lt; T,  \\
+  &amp; u(x,T) = h(x).  
+\end{align*}\]</span></p>
+<p>Then <span class="math inline">\(u\)</span> has the representation</p>
+<p><span class="math display">\[
+  u(x,t) = \E_{t,x}\left[h(X_T) - \int_t^T f(X_\tau,\tau) \d\tau\right],
+\]</span></p>
+<p>where <span class="math inline">\(\E_{t,x}[\cdot]\)</span> denotes the conditional expectation <span class="math inline">\(\E[\cdot|X_t = x]\)</span>.</p>
+</section>
+<section id="backward-second-order-parabolic-pdes" class="level2">
+<h2 class="anchored" data-anchor-id="backward-second-order-parabolic-pdes">Backward second order parabolic PDEs</h2>
+<p>Finally, we have the stochastic representation for any backward second order parabolic linear PDE with terminal condition as follows.</p>
+<section id="theorem-6" class="level4">
+<h4 class="anchored" data-anchor-id="theorem-6">Theorem</h4>
+<p>Let <span class="math inline">\(u = u(x,t)\)</span> be the solution to the terminal value problem</p>
+<p><span class="math display">\[\begin{align*}
+  &amp; u_t + \frac{\sigma^2}2 u_{xx} + \mu u_x = V(x,t) u + f(x,t), \quad t &lt; T,  \\
+  &amp; u(x,T) = h(x).  
+\end{align*}\]</span></p>
+<p>Then <span class="math inline">\(u\)</span> has the representation</p>
+<p><span class="math display">\[
+  u(x,t) = \E_{t,x}\left[e^{-\int_t^T V(X_s,s)\d s}h(X_T) - \int_t^T e^{-\int_t^\tau V(X_s,s)\d s} f(X_\tau,\tau) \d\tau\right],
+\]</span></p>
+<p>where <span class="math inline">\(\E_{t,x}[\cdot] = \E[\cdot|X_t = x]\)</span> is the conditional expectation. Recall that <span class="math inline">\(X_t\)</span> denotes the diffusion process driven by</p>
+<p><span class="math display">\[
+  \d X_t = \mu(X_t,t) \d t + \sigma(X_t,t) \d W_t.
+\]</span></p>
+</section>
+</section>
+<section id="lévy-area" class="level2">
+<h2 class="anchored" data-anchor-id="lévy-area">Lévy area</h2>
+<p>As an application of the Feynmann-Kac formula, we demonstrate how to calculate the characteristic function of the Lévy area. Let <span class="math inline">\((W_t, Z_t)\)</span> be a two-dimensional Brownian motion. The Lévy area <span class="math inline">\(A_t\)</span> is defined by</p>
+<p><span class="math display">\[
+A_t = \frac12 \int_0^t W_s \d Z_s - Z_s \d W_s
+\]</span></p>
+<p>which represents the (stochastic) area of the region enclosed by the two-dimensional Brownian motion <span class="math inline">\((W_t, Z_t)\)</span> and the radial cord.</p>
+<p>We are interested in calculating the characteristic function of the Lévy area <span class="math inline">\(A_t\)</span> at time <span class="math inline">\(T\)</span>, i.e,. the expectation</p>
+<p><span class="math display">\[
+\Eof{e^{i\xi A_T}}
+\]</span></p>
+<p>where <span class="math inline">\(i = \sqrt{-1}\)</span>.</p>
+<section id="characteristic-function" class="level4">
+<h4 class="anchored" data-anchor-id="characteristic-function">Characteristic function</h4>
+<p>The characteristic function is a way to describe a random variable <span class="math inline">\(X\)</span>. The characteristic function,</p>
+<p><span class="math display">\[
+\varphi_X(t) = \Eof{e^{itX}},
+\]</span></p>
+<p>a function of t, determines the behavior and properties of the probability distribution of <span class="math inline">\(X\)</span>. It is equivalent to a probability density function or cumulative distribution function, since knowing one of these functions allows computation of the others, but they provide different insights into the features of the random variable. In particular cases, one or another of these equivalent functions may be easier to represent in terms of simple standard functions.</p>
+</section>
+</section>
+<section id="paul-lévy" class="level2">
+<h2 class="anchored" data-anchor-id="paul-lévy">Paul Lévy</h2>
+<h2 style="text-align: center;" class="anchored">
+<img src="plevy.jpg" align="center" width="100">
+</h2>
+<p>Courtesy: Photo from <a href="https://opc.mfo.de/detail?photo_id=2531">The Oberwolfach Photo Collection</a>.</p>
+<p>Rama Cont in an article wrote:</p>
+<blockquote class="blockquote">
+<p>“He made major contributions to the study of Gaussian variables and processes, the law of large numbers, the central limit theorem, stable laws, infinitely divisible laws and pioneered the study of processes with independent and stationary increments, now known as Lévy processes.”</p>
+</blockquote>
+<p>Michael Loeve:</p>
+<blockquote class="blockquote">
+<p>“Paul Lévy was a painter in the probabilistic world. Like the very great painting geniuses, his palette was his own and his paintings transmuted forever our vision of reality… His three main, somewhat overlapping, periods were: the limit laws period, the great period of additive processes and of martingales painted in pathtime colours, and the Brownian pathfinder period.”</p>
+</blockquote>
+<div id="cell-70" class="cell">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co"># The code demonstrate the region enclosed by a 2-dim Brownian </span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="co"># motion and the radial cord</span></span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="co"># number of steps </span></span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>n_steps <span class="op">=</span> <span class="dv">10_000</span></span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a><span class="co">#10_000</span></span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a><span class="co"># terminal time</span></span>
+<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a>T <span class="op">=</span> <span class="dv">1</span>   </span>
+<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a>dt <span class="op">=</span> T<span class="op">/</span>n_steps</span>
+<span id="cb12-11"><a href="#cb12-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-12"><a href="#cb12-12" aria-hidden="true" tabindex="-1"></a>dW <span class="op">=</span> norm.rvs(size<span class="op">=</span>n_steps)<span class="op">*</span>np.sqrt(dt)</span>
+<span id="cb12-13"><a href="#cb12-13" aria-hidden="true" tabindex="-1"></a>dZ <span class="op">=</span> norm.rvs(size<span class="op">=</span>n_steps)<span class="op">*</span>np.sqrt(dt)</span>
+<span id="cb12-14"><a href="#cb12-14" aria-hidden="true" tabindex="-1"></a>W <span class="op">=</span> np.append(<span class="dv">0</span>, dW.cumsum())</span>
+<span id="cb12-15"><a href="#cb12-15" aria-hidden="true" tabindex="-1"></a>Z <span class="op">=</span> np.append(<span class="dv">0</span>, dZ.cumsum())</span>
+<span id="cb12-16"><a href="#cb12-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-17"><a href="#cb12-17" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">10</span>, <span class="dv">6</span>))</span>
+<span id="cb12-18"><a href="#cb12-18" aria-hidden="true" tabindex="-1"></a>plt.plot(W, Z, lw<span class="op">=</span><span class="dv">1</span>)</span>
+<span id="cb12-19"><a href="#cb12-19" aria-hidden="true" tabindex="-1"></a>plt.plot([W[<span class="op">-</span><span class="dv">1</span>], W[<span class="dv">0</span>]], [Z[<span class="op">-</span><span class="dv">1</span>], Z[<span class="dv">0</span>]], <span class="st">'ro-'</span>, lw<span class="op">=</span><span class="dv">1</span>)<span class="op">;</span></span></code><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="NSD_Lec02-StochCal_Summer2025_files/figure-html/cell-11-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="distribution-of-lévy-area" class="level2">
+<h2 class="anchored" data-anchor-id="distribution-of-lévy-area">Distribution of Lévy area</h2>
+<p>First notice that <span class="math inline">\(A_t\)</span> is a (continuous, Brownian) martingale with quadratic variation <span class="math inline">\([A]_t\)</span> given by</p>
+<p><span class="math display">\[
+\d [A]_t = \frac14 (W_t^2 + Z_t^2) \d t
+\]</span></p>
+<p>since <span class="math inline">\(W_t\)</span> and <span class="math inline">\(Z_t\)</span> are independent. Let <span class="math inline">\(R_t = W_t^2 + Z_t^2\)</span>. Hence,</p>
+<p><span class="math display">\[
+A_t \overset{d}{=} B_{\frac{1}{4} \int_0^t R_s \, \d s}
+\]</span></p>
+<p>where <span class="math inline">\(B_t\)</span> is a Brownian motion independent of <span class="math inline">\(R_t\)</span>. In other words, <span class="math inline">\(A_t\)</span> is distributed as a Brownian motion running in the random time <span class="math inline">\(\displaystyle \frac14 \int_0^t R_s \d s\)</span>.</p>
+</section>
+<section id="bessel-squared-process" class="level2">
+<h2 class="anchored" data-anchor-id="bessel-squared-process">Bessel squared process</h2>
+<p>Note that, by applying Ito’s formula we obtain that <span class="math inline">\(R_t\)</span> satisfies the SDE</p>
+<p><span class="math display">\[\begin{align*}
+\d R_t &amp;= 2W_t \d W_t + 2 Z_t \d Z_t + 2\d t \\
+&amp;= 2 \sqrt{R_t} \left( \frac{W_t}{\sqrt{R_t}} \d W_t + \frac{Z_t}{\sqrt{R_t}} \d Z_t \right) + 2 \d t \\
+&amp;= 2 \sqrt{R_t} \d M_t + 2 \d t,
+\end{align*}\]</span></p>
+<p>where <span class="math inline">\(\displaystyle \d M_t = \frac{W_t}{\sqrt{R_t}} \d W_t + \frac{Z_t}{\sqrt{R_t}} \d Z_t\)</span> is a Brownian motion.</p>
+<section id="note" class="level4">
+<h4 class="anchored" data-anchor-id="note">Note</h4>
+<p><span class="math inline">\(R_t\)</span> is known as the <em>Bessel squared</em> process.</p>
+</section>
+</section>
+<section id="characteristic-function-of-lévy-area" class="level2">
+<h2 class="anchored" data-anchor-id="characteristic-function-of-lévy-area">Characteristic function of Lévy area</h2>
+<p>It follows that the characteristic function <span class="math inline">\(A_t\)</span> is related to the process <span class="math inline">\(R_t\)</span> as</p>
+<p><span class="math display">\[\begin{align*}
+&amp; \Eof{e^{i\xi A_t}}
+= \Eof{e^{i\xi B_{\frac14 \int_0^t R_s \d s}}}
+= \Eof{e^{\frac{-\xi^2}8 \int_0^t R_s \d s}}.
+\end{align*}\]</span></p>
+<p>Thus, it is equivalent to determine the last expectation in the equation above. To that end, we shall apply the Feynman-Kac formula. Consider</p>
+<p><span class="math display">\[
+u(t, r) = \Eof{\left. e^{-\frac{\xi^2}8 \int_t^T R_s \d s} \right| R_t=r}.
+\]</span></p>
+<p>Feynman-Kac formula implies that <span class="math inline">\(u\)</span> satisfies the (backward) PDE</p>
+<p><span class="math display">\[
+u_t + 2 r u_{rr} + 2u_r = \frac{\xi^2}8 r u
+\]</span></p>
+<p>with terminal condition <span class="math inline">\(u(T, r) = 1\)</span>.</p>
+</section>
+<section id="solving-the-terminal-value-problem" class="level2">
+<h2 class="anchored" data-anchor-id="solving-the-terminal-value-problem">Solving the terminal value problem</h2>
+<p>Assume the ansatz for <span class="math inline">\(u\)</span></p>
+<p><span class="math display">\[
+u(t, r) = e^{H_1 r + H_0}.
+\]</span></p>
+<p>Since</p>
+<p><span class="math display">\[\begin{align*}
+&amp; u_t = \left(\dot H_1 r + \dot H_0\right)u \\
+&amp; u_r = H_1 u \\
+&amp; u_{rr} = H_1^2 u,
+\end{align*}\]</span></p>
+<p>plugging the ansatz into the PDE yields</p>
+<p><span class="math display">\[\begin{align*}
+&amp; \left(\dot H_1 r + \dot H_0 \right) + 2 r H_1^2 + 2 H_1 = \frac{\xi^2}8 r.
+\end{align*}\]</span></p>
+<p>By comparing the coefficients we obtain the system of ODEs</p>
+<p><span class="math display">\[\begin{align*}
+r &amp;: \dot H_1 + 2 H_1^2 = \frac{\xi^2}8 \\
+1 &amp;: \dot H_0 = -2H_1
+\end{align*}\]</span></p>
+<p>with terminal conditions <span class="math inline">\(H_1(T) = H_0(T) = 0\)</span>. The solution is given by</p>
+<p><span class="math display">\[\begin{align*}
+&amp; H_1(t) = -\frac\xi4 \tanh\left(\frac\xi2 (T - t)\right), \\
+&amp; H_0(t) = -\log\cosh\left(\frac\xi2(T - t) \right).
+\end{align*}\]</span></p>
+</section>
+<section id="characteristic-function-of-lévy-area-1" class="level2">
+<h2 class="anchored" data-anchor-id="characteristic-function-of-lévy-area-1">Characteristic function of Lévy area</h2>
+<p>Thus,</p>
+<p><span class="math display">\[\begin{align*}
+u(t, r) &amp;= e^{-\frac\xi4 \tanh\left(\frac\xi2 (T - t)\right)r - \log\cosh\left(\frac\xi2(T - t)\right)} \\
+&amp;= {\rm sech}\left(\frac\xi2(T - t)\right) e^{-\frac\xi4 \tanh\left(\frac\xi2 (T - t)\right)r}
+\end{align*}\]</span></p>
+<p>Finally, we obtain the characteristic function of <span class="math inline">\(A_T\)</span> as</p>
+<p><span class="math display">\[
+\Eof{e^{i\xi A_T}} = u(0, 0) = {\rm sech}\left(\frac\xi2 T\right).
+\]</span></p>
+</section>
+<section id="notes-of-the-lecture" class="level2">
+<h2 class="anchored" data-anchor-id="notes-of-the-lecture">Notes of the Lecture</h2>
+<p>Thanks to 刘弘锌 (Liú Hóng Xīn) for his lecture notes.</p>
+<section id="核心概念-随机积分-vs.-经典积分" class="level3">
+<h3 class="anchored" data-anchor-id="核心概念-随机积分-vs.-经典积分">核心概念: 随机积分 vs.&nbsp;经典积分</h3>
+<ol type="1">
+<li>问题背景
+<ol type="a">
+<li>在金融中, 计算资产价格路径的积分(如 PNL)需考虑随机性(如布朗运动).</li>
+<li>经典黎曼积分中, 选择左端点、右端点或中点不影响收敛结果; 但在随机积分中, 选择不同会导致本质差异.</li>
+</ol></li>
+</ol>
+<p>注: 资产价格路径(Asset Price Path):</p>
+<ul>
+<li>这是指某个资产(如股票、期权、债券)在一段时间内的价格变化轨迹;</li>
+<li>它通常被建模为一个随机过程, 因为未来价格存在不确定性;</li>
+<li>一般用 <span class="math inline">\(S_t\)</span> 表示表示某资产在时间 <span class="math inline">\(t\)</span> 的价格.</li>
+</ul>
+<p>注: PNL (Profit and Loss):</p>
+<ul>
+<li>PNL 是指某个投资组合或交易策略在一段时间内的利润和损失;</li>
+<li>PNL 可以表达为投资组合价值的变化 <span class="math display">\[
+\text{PNL} = \int_0^T \phi_t \d S_t,
+\]</span> 其中 <span class="math inline">\(\phi_t\)</span> 是持仓(投资组合中持有的资产数量), <span class="math inline">\(S_t\)</span> 是资产价格.</li>
+</ul>
+<ol start="2" type="1">
+<li>离散时间交易策略类比
+<ol type="a">
+<li>我们设时间点为 <span class="math inline">\(T_0, T_1, T_2, ...\)</span>, 价格 <span class="math inline">\(P_0, P_1, P_2, ...\)</span>, 时间间隔 <span class="math inline">\(\Delta t_i = T_i - T_{i-1}\)</span>.</li>
+<li>积分定义方式:
+<ol type="i">
+<li>左端点规则(Left Point Rule): <span class="math display">\[
+\int_{T_0}^{T_n} P_t \d t \approx \sum_{i=1}^n P_{i-1} \Delta t_i.
+\]</span> 金融意义: 在 <span class="math inline">\(T_{i-1}\)</span> 时刻, 根据当前已知价格 <span class="math inline">\(P_{i-1}\)</span> 决定持仓量.</li>
+<li>右端点规则(Right Point Rule): <span class="math display">\[
+   \int_{T_0}^{T_n} P_t \d t \approx \sum_{i=1}^n P_i \Delta t_i.
+   \]</span> 金融意义: 在 <span class="math inline">\(T_{i-1}\)</span> 时刻, 根据未来价格 <span class="math inline">\(P_i\)</span> 决定持仓量. 现实中不可行.</li>
+<li>中点规则(Mid Point Rule): <span class="math display">\[
+   \int_{T_0}^{T_n} P_t \d t \approx \sum_{i=1}^n P_{i-1/2} \Delta t_i,
+   \]</span> 其中 <span class="math inline">\(\displaystyle P_{i-1/2} = \frac{P_{i-1} + P_i}{2}\)</span>.</li>
+</ol></li>
+</ol></li>
+<li>关键结论: 随机积分必须固定选择左端点
+<ol type="a">
+<li>金融逻辑: 交易决策只能基于当前已知信息(历史价格), 无法依赖未来价格.</li>
+<li>数学逻辑: 右端点或中点规则会导致结果发散, 无法收敛到一致解. Refer to <a href="#which-rule-rules">Which rule rules?</a>.</li>
+</ol></li>
+</ol>
+</section>
+<section id="itô-积分的金融意义" class="level3">
+<h3 class="anchored" data-anchor-id="itô-积分的金融意义">Itô 积分的金融意义</h3>
+<ol type="1">
+<li>Itô 积分的必要性: 在资产定价中(如期权模型), 必须使用 Itô 积分以保证:
+<ol type="a">
+<li>交易策略可执行(无未来信息);</li>
+<li>结果符合无套利原则(鞅性质). Refer to <a href="#technical-note-martingale-conditions">Technical note: martingale conditions</a>.</li>
+</ol></li>
+<li>Itô 引理的根源: 经典链式法则在随机过程中失效, <span class="math inline">\(\d (P_t^2) \neq 2 P_t \d P_t\)</span>, 实际上为: <span class="math display">\[
+\d (P_t^2) 2 P_t \d P_t + (\d P_t)^2,
+\]</span> 额外项 <span class="math inline">\((\d P_t)^2\)</span> 来自二次变差. Refer to <a href="#itos-formula-for-brownian-motion">Ito’s formula for Brownian motion</a>.</li>
+</ol>
+</section>
+<section id="itô-过程的本质与金融建模" class="level3">
+<h3 class="anchored" data-anchor-id="itô-过程的本质与金融建模">Itô 过程的本质与金融建模</h3>
+<p>定义: <span class="math display">\[
+\d X_t = \sigma_t \d B_t + b_t \d t.
+\]</span></p>
+<ul>
+<li>扩散项 <span class="math inline">\(\sigma_t \d B_t\)</span> 代表随机波动, 如资产价格的随机性.</li>
+<li>漂移项 <span class="math inline">\(b_t \d t\)</span> 代表趋势或漂移, 如资产价格的长期增长趋势.</li>
+</ul>
+<p>关键性质: <span class="math display">\[
+\d [X]_t = \sigma_t^2 \d t.
+\]</span></p>
+<ul>
+<li>物理意义: 路径累积波动率.</li>
+<li>金融意义: 期权定价中的波动率参数 (如 VIX 指数).</li>
+<li>实际上在 <span class="math inline">\(\displaystyle \frac{\d S_t}{S_t} = \mu \d t + \sigma \d B_t\)</span> 模型中, <span class="math inline">\(\sigma\)</span> 就是波动率.</li>
+</ul>
+<p>注: VIX 指数 (恐慌指数, Volatility Index) 是衡量市场预期波动率的指标, 通常用于期权定价和风险管理.</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 20%">
+<col style="width: 40%">
+<col style="width: 40%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>过程</th>
+<th>随机微分方程</th>
+<th>金融应用</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>几何布朗运动</td>
+<td><span class="math inline">\(\d S_t = \mu S_t \d t + \sigma S_t \d B_t\)</span></td>
+<td>股票价格 (Black-Scholes)</td>
+</tr>
+<tr class="even">
+<td>Ornstein-Uhlenbeck</td>
+<td><span class="math inline">\(\d X_t = \lambda (\theta - X_t)\d t + \sigma \d B_t\)</span></td>
+<td>利率模型 (Vasicek)</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="itô-公式的金融直觉" class="level3">
+<h3 class="anchored" data-anchor-id="itô-公式的金融直觉">Itô 公式的金融直觉</h3>
+<p>公式: <span class="math display">\[\begin{align*}
+\d f(t, X_t) &amp;= f_t(t, X_t) \d t + f_x(t, X_t) \d X_t + \frac{1}{2} f_{xx}(t, X_t) (\d X_t)^2 \\
+&amp;= f_t(t, X_t) \d t + f_x(t, X_t) (\sigma_t \d B_t + b_t \d t) + \frac{1}{2} f_{xx}(t, X_t) \sigma_t^2 \d t.
+\end{align*}\]</span></p>
+<ul>
+<li>新漂移项: <span class="math display">\[f_t + b_t f_x + \frac{1}{2} \sigma^2 f_{xx}\]</span> 代表了时间变化、漂移和波动率对函数 <span class="math inline">\(f\)</span> 的影响.</li>
+<li>新扩散项​: <span class="math display">\[f_x \sigma_t \d B_t\]</span> 代表了随机波动对函数 <span class="math inline">\(f\)</span> 的影响. (风险暴露)</li>
+</ul>
+<p><span class="math display">\[
+\d f(t, X_t) = \underbrace{\left( f_t + b_t f_x + \frac{1}{2} \sigma_t^2 f_{xx} \right)}_{\text{确定性变化(漂移项)}} \d t
++ \underbrace{f_x \sigma_t}_{\text{风险暴露}} \d B_t
+\]</span></p>
+<section id="example-期权价格对股票价格" class="level4">
+<h4 class="anchored" data-anchor-id="example-期权价格对股票价格">Example: 期权价格对股票价格</h4>
+<p>设 <span class="math inline">\(X_t = S_t\)</span> 是股票价格, <span class="math inline">\(f(t, S_t)\)</span> 是欧式看涨期权的价格(如 Black-Scholes 期权价值):</p>
+<ul>
+<li><span class="math inline">\(\displaystyle f_x = \frac{\partial f}{\partial S}\)</span> 是期权对标的资产价格的敏感度，叫作 <strong>Delta</strong>;</li>
+<li><span class="math inline">\(\sigma \d B_t\)</span>：标的资产的波动部分;</li>
+</ul>
+<p>那么期权价格的随机波动项就是:</p>
+<p><span class="math display">\[
+\underbrace{f_x}_{\Delta} \cdot \underbrace{\sigma \d B_t}_{\text{股票的风险}}
+\quad = \quad \text{期权的风险暴露}
+\]</span></p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 9%">
+<col style="width: 28%">
+<col style="width: 13%">
+<col style="width: 48%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>概念</th>
+<th>数学形式</th>
+<th>金融意义</th>
+<th>解释</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Wiener 积分</strong></td>
+<td><span class="math inline">\(\displaystyle \int_0^T f(t) \, \d B_t\)</span></td>
+<td><strong>确定性策略的噪声暴露</strong></td>
+<td>表示一个固定策略 <span class="math inline">\(f(t)\)</span> 在布朗运动下受到的总“扰动影响”.这衡量了非自适应投资策略对市场波动的累计敏感度.</td>
+</tr>
+<tr class="even">
+<td><strong>Itô 积分</strong></td>
+<td><span class="math inline">\(\displaystyle \int_0^T \phi_t \, \d X_t\)</span></td>
+<td><strong>动态策略的盈亏分解</strong></td>
+<td>自适应策略 <span class="math inline">\(\phi_t\)</span> 持有某资产 <span class="math inline">\(X_t\)</span>, 这个积分即为投资策略的 PNL (收益), 是对金融交易最基本的建模方式.</td>
+</tr>
+<tr class="odd">
+<td><strong>Itô 过程</strong></td>
+<td><span class="math inline">\(\d X_t = \sigma_t \, \d B_t + b_t \, \d t\)</span></td>
+<td><strong>资产价格的趋势-噪声分离模型</strong></td>
+<td>描述资产价格如何受到系统性趋势 (<span class="math inline">\(b_t\)</span>) 和不确定波动 (<span class="math inline">\(\sigma_t\)</span>) 的共同影响.</td>
+</tr>
+<tr class="even">
+<td><strong>Itô 公式</strong></td>
+<td><span class="math inline">\(\d f = (\cdots)\, \d t + (\cdots) \, \d B_t\)</span></td>
+<td><strong>衍生品价值的风险-收益分解</strong></td>
+<td>当 <span class="math inline">\(f(t, X_t)\)</span> 是某种金融产品价值函数时, Itô 公式将其变动拆解为确定性收益和风险暴露两个部分, 体现风险定价的核心机制.</td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+<section id="股票价格的随机模型" class="level3">
+<h3 class="anchored" data-anchor-id="股票价格的随机模型">股票价格的随机模型</h3>
+<p>股票价格 <span class="math inline">\(S_t\)</span> 被建模为随机过程: <span class="math display">\[
+\d S_t = \mu S_t \d t + \sigma S_t \d B_t,
+\]</span> 其中:</p>
+<ul>
+<li>漂移项 <span class="math inline">\(\mu S_t \d t\)</span> 代表预期回报率 (Expected Return Rate);</li>
+<li>扩散项 <span class="math inline">\(\sigma S_t \d B_t\)</span> 代表随机波动 (Volatility).</li>
+<li>金融意义: 股票价格的动态变化由确定的预期回报和随机风险组成.</li>
+</ul>
+<p>假设我们有一个函数 <span class="math inline">\(f(S_t,t)\)</span> 光滑, 那么根据 Itô 公式: <span class="math display">\[
+\d f = \left( \frac{\partial f}{\partial t} + \mu S_t \frac{\partial f}{\partial S} + \frac{1}{2} \sigma^2 S_t^2 \frac{\partial^2 f}{\partial S^2} \right) \d t + \sigma S_t \frac{\partial f}{\partial S} \d B_t.
+\]</span></p>
+<ul>
+<li>核心思想: 将复杂函数的动态分解为漂移项(预期回报)和扩散项(风险).</li>
+<li>用于衍生品 (如期权、远期合约) 的定价与风险管理.</li>
+<li>推导期权的 Delta (<span class="math inline">\(\displaystyle \Delta = \frac{\partial f}{\partial S}\)</span>) 和 Gamma (<span class="math inline">\(\displaystyle \Gamma = \frac{\partial^2 f}{\partial S^2}\)</span>).</li>
+</ul>
+</section>
+<section id="金融衍生品定价示例" class="level3">
+<h3 class="anchored" data-anchor-id="金融衍生品定价示例">金融衍生品定价示例</h3>
+<p><strong>案例 1: 远期合约 (Forward Contract)</strong> 合约约定在时间 <span class="math inline">\(T\)</span> 支付 <span class="math inline">\(2S_T\)</span>, 其价值为 <span class="math inline">\(V_t = 2 S_t\)</span>.</p>
+<p><span class="math display">\[
+\d V_t = 2 \d S_t = 2 \mu S_t \d t + 2 \sigma S_t \d B_t.
+\]</span></p>
+<p><strong>案例 2: 欧式看涨期权 (European Call Option)</strong> 其价值为 <span class="math inline">\(C(t, S_t) = S_t N(d_1) - K e^{-r(T-t)} N(d_2)\)</span>, 其中 <span class="math inline">\(K\)</span> 是行权价, <span class="math inline">\(r\)</span> 是无风险利率.</p>
+</section>
+<section id="风险中性定价" class="level3">
+<h3 class="anchored" data-anchor-id="风险中性定价">风险中性定价</h3>
+<p>在风险中性世界中, 所有的资产的预期回报率等于无风险利率 <span class="math inline">\(r\)</span>.</p>
+<p>衍生品定价公式: <span class="math display">\[
+V_t = \mathbb{E}^Q\left[{e^{-r(T-t)}\cdot \text{Payoff}(S_T) | \cF_t}\right],
+\]</span> 这里的 <span class="math inline">\(\mathbb{E}^Q\)</span> 是风险中性测度下的期望值.</p>
+</section>
+<section id="option-payoff" class="level3">
+<h3 class="anchored" data-anchor-id="option-payoff">Option Payoff</h3>
+<p>An option payoff diagram is a graphical representation of the net Profit/Loss made by the option buyers and sellers.</p>
+<p>Call Option: 自身有一个价格, 设为 <span class="math inline">\(p\)</span>; 同时买方拥有在到期日之前 (或到期时) 以行权价 <span class="math inline">\(K\)</span> 买入标的资产的权利, 但没有义务 购买. 若到期时标的 <span class="math inline">\(S &gt; K\)</span>, 则有盈余, 等于 <span class="math inline">\(S−K\)</span>, 扣除买入时的溢价后才是真正盈利, 为 <span class="math inline">\(S- K -p\)</span>; 若 <span class="math inline">\(S \leq K\)</span>, 选择不行权, 损失仅限于初始溢价 <span class="math inline">\(p\)</span>.</p>
+<p>Put Option: 同样有一个价格, 设为 <span class="math inline">\(p\)</span>; 买方拥有在到期日之前 (或到期时) 以行权价 <span class="math inline">\(K\)</span> 卖出标的资产的权利, 但没有义务卖出. 若到期时标的 <span class="math inline">\(S &lt; K\)</span>, 则有盈余, 等于 <span class="math inline">\(K−S\)</span>, 扣除买入时的溢价后才是真正盈利, 为 <span class="math inline">\(K - S - p\)</span>; 若 <span class="math inline">\(S \geq K\)</span>, 选择不行权, 损失仅限于初始溢价 <span class="math inline">\(p\)</span>.</p>
+<p>我们有一些 option 的 Strategy:</p>
+<ul>
+<li><strong>Long Call</strong>: 买入看涨期权, 预期标的价格上涨.</li>
+<li><strong>Short Call</strong>: 卖出看涨期权, 预期标的价格下跌或持平.</li>
+<li><strong>Long Put</strong>: 买入看跌期权, 预期标的价格下跌.</li>
+<li><strong>Short Put</strong>: 卖出看跌期权, 预期标的价格上涨或持平.</li>
+<li><strong>Long Straddle</strong>: 同时买入看涨和看跌期权, 预期标的价格大幅波动.</li>
+<li><strong>Short Straddle</strong>: 同时卖出看涨和看跌期权, 预期标的价格稳定.</li>
+<li><strong>Long Strangle</strong>: 买入不同行权价的看涨和看跌期权, 预期标的价格大幅波动. Long strangles involve buying a call with a higher strike price and buying a put with a lower strike price.</li>
+<li><strong>Short Strangle</strong>: 卖出不同行权价的看涨和看跌期权, 预期标的价格稳定.</li>
+</ul>
+<div style="text-align: center;">
+<p><img src="./options/long-call.svg" alt="Long Call Option Payoff Diagram" width="500"> <img src="./options/short-call.svg" alt="Short Call Option Payoff Diagram" width="500"> <img src="./options/long-put.svg" alt="Long Put Option Payoff Diagram" width="500"> <img src="./options/short-put.svg" alt="Short Put Option Payoff Diagram" width="500"></p>
+</div>
+<div style="text-align: center;">
+<p><img src="./options/long-straddle.png" alt="Long Straddle Option Payoff Diagram" width="500"> <img src="./options/short-straddle.png" alt="Short Straddle Option Payoff Diagram" width="500"> <img src="./options/long-strangle.png" alt="Long Strangle Option Payoff Diagram" width="500"> <img src="./options/short-strangle.png" alt="Short Strangle Option Payoff Diagram" width="500"></p>
+</div>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "已复制");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "已复制");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+        const codeEl = trigger.previousElementSibling.cloneNode(true);
+        for (const childEl of codeEl.children) {
+          if (isCodeAnnotation(childEl)) {
+            childEl.remove();
+          }
+        }
+        return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>
