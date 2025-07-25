@@ -1,3 +1,210 @@
+@font-face {
+  font-family: 'FiraCode Nerd Font';
+  src: url('fonts/FiraCodeNerdFont-Regular.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'FiraCode Nerd Font';
+  src: url('fonts/FiraCodeNerdFont-Bold.woff2') format('woff2');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'FiraCode Nerd Font';
+  src: url('fonts/FiraCodeNerdFont-Light.woff2') format('woff2');
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'FiraCode Nerd Font';
+  src: url('fonts/FiraCodeNerdFont-Medium.woff2') format('woff2');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'FiraCode Nerd Font';
+  src: url('fonts/FiraCodeNerdFont-Retina.woff2') format('woff2');
+  font-weight: 450;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'FiraCode Nerd Font';
+  src: url('fonts/FiraCodeNerdFont-SemiBold.woff2') format('woff2');
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'FmlSong';
+  src: url('fonts/FmlSong-Black.woff2') format('woff2');
+  font-weight: 900;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'FmlSong';
+  src: url('fonts/FmlSong-BlackItalic.woff2') format('woff2');
+  font-weight: 900;
+  font-style: italic;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'FmlSong';
+  src: url('fonts/FmlSong-Italic.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Ysabeau';
+  src: url('fonts/Ysabeau-Black.woff2') format('woff2');
+  font-weight: 900;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Ysabeau';
+  src: url('fonts/Ysabeau-Bold.woff2') format('woff2');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Ysabeau';
+  src: url('fonts/Ysabeau-BoldItalic.woff2') format('woff2');
+  font-weight: 700;
+  font-style: italic;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Ysabeau';
+  src: url('fonts/Ysabeau-ExtraBlack.woff2') format('woff2');
+  font-weight: 950;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Ysabeau';
+  src: url('fonts/Ysabeau-ExtraBlackItalic.woff2') format('woff2');
+  font-weight: 950;
+  font-style: italic;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Ysabeau';
+  src: url('fonts/Ysabeau-ExtraBold.woff2') format('woff2');
+  font-weight: 800;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Ysabeau';
+  src: url('fonts/Ysabeau-ExtraBoldItalic.woff2') format('woff2');
+  font-weight: 800;
+  font-style: italic;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Ysabeau';
+  src: url('fonts/Ysabeau-ExtraLight.woff2') format('woff2');
+  font-weight: 200;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Ysabeau';
+  src: url('fonts/Ysabeau-ExtraLightItalic.woff2') format('woff2');
+  font-weight: 200;
+  font-style: italic;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Ysabeau';
+  src: url('fonts/Ysabeau-ExtraThinItalic.woff2') format('woff2');
+  font-weight: 100;
+  font-style: italic;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Ysabeau';
+  src: url('fonts/Ysabeau-Italic.woff2') format('woff2');
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Ysabeau';
+  src: url('fonts/Ysabeau-Light.woff2') format('woff2');
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Ysabeau';
+  src: url('fonts/Ysabeau-LightItalic.woff2') format('woff2');
+  font-weight: 300;
+  font-style: italic;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Ysabeau';
+  src: url('fonts/Ysabeau-Medium.woff2') format('woff2');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Ysabeau';
+  src: url('fonts/Ysabeau-MediumItalic.woff2') format('woff2');
+  font-weight: 500;
+  font-style: italic;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Ysabeau';
+  src: url('fonts/Ysabeau-Regular.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Ysabeau';
+  src: url('fonts/Ysabeau-SemiBold.woff2') format('woff2');
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Ysabeau';
+  src: url('fonts/Ysabeau-SemiBoldItalic.woff2') format('woff2');
+  font-weight: 600;
+  font-style: italic;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Ysabeau';
+  src: url('fonts/Ysabeau-Thin.woff2') format('woff2');
+  font-weight: 100;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Ysabeau';
+  src: url('fonts/Ysabeau-ThinItalic.woff2') format('woff2');
+  font-weight: 100;
+  font-style: italic;
+  font-display: swap;
+}
+
+
 code, pre, pre code {
   font-family: 'FiraCode Nerd Font', 'LXGW Wenkai Mono', 'Maple Mono NF CN', 'Courier New', monospace !important;
 }

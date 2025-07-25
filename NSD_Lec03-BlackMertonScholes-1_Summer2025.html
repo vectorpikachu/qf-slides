@@ -74,7 +74,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="site_libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-bb03f0ebc888f6eea39ad7b9fbf3907c.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-4b6435fdc9501383deb7926d212eef86.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -291,7 +291,7 @@ window.Quarto = {
 \newcommand{\PP}{\mathbb{P} }
 \newcommand{\Pof}[1]{\mathbb{P}\left[ #1 \right]}
 \newcommand{\QQ}{\mathbb{Q} }
-\renewcommand{\R}{\mathbb{R} }
+\newcommand{\R}{\mathbb{R} }
 \newcommand{\DD}{\mathbb{D} }
 \newcommand{\HH}{\mathbb{H} }
 \newcommand{\spn}{\mathrm{span} }
@@ -316,7 +316,7 @@ window.Quarto = {
 \newcommand{\tr}{\mbox{tr}}
 \newcommand{\inn}[2]{\left\langle #1, #2 \right\rangle}
 \newcommand{\bX}{\boldsymbol X}
-\renewcommand{\bm}{\boldsymbol m}
+\newcommand{\bm}{\boldsymbol m}
 \newcommand{\bx}{\boldsymbol x}
 \newcommand{\by}{\boldsymbol y}
 \newcommand{\bmu}{\boldsymbol\mu}
@@ -384,7 +384,7 @@ window.Quarto = {
 <h2 class="anchored" data-anchor-id="black-scholes-model">Black-Scholes model</h2>
 <p>Assume the price of the underlying asset follows the stochastic differential equation</p>
 <p><span class="math display">\[
-\frac{{\rm d}S_t}{S_t} = \mu {\rm d}t + \sigma {\rm d}W_t,
+\frac{\mathrm{d}S_t}{S_t} = \mu \mathrm{d}t + \sigma \mathrm{d}W_t,
 \]</span></p>
 <p>where</p>
 <ul>
@@ -417,15 +417,15 @@ S_t = S_0 e^{\left(\mu - \frac{\sigma^2}2 \right) t+ \sigma W_t}
 <li><p><font color="blue"> Self-financing strategy </font></p></li>
 </ul>
 <p><span class="math display">\[
-{\rm d} \Pi_t =  -{\rm d}C_t + \Delta {\rm d}S_t
+\mathrm{d} \Pi_t =  -\mathrm{d}C_t + \Delta \mathrm{d}S_t
 \]</span></p>
 <ul>
 <li>The change of call price is given by</li>
 </ul>
 <p><span class="math display">\[\begin{equation}
 \begin{aligned}
-  {\rm d}C(t, S_t) &amp;= C_t \, {\rm d}t + C_S \, {\rm d}S_t + \frac{1}{2} C_{SS} ({\rm d}S_t)^2 \\
-             &amp;= C_S \sigma S \, {\rm d}W_t + \left( C_t + \frac{1}{2} \sigma^2 S^2 C_{SS} + \mu S C_S \right) {\rm d}t
+  \mathrm{d}C(t, S_t) &amp;= C_t \, \mathrm{d}t + C_S \, \mathrm{d}S_t + \frac{1}{2} C_{SS} (\mathrm{d}S_t)^2 \\
+             &amp;= C_S \sigma S \, \mathrm{d}W_t + \left( C_t + \frac{1}{2} \sigma^2 S^2 C_{SS} + \mu S C_S \right) \mathrm{d}t
 \end{aligned}
 \end{equation}\]</span></p>
 <ul>
@@ -433,24 +433,24 @@ S_t = S_0 e^{\left(\mu - \frac{\sigma^2}2 \right) t+ \sigma W_t}
 </ul>
 <p><span class="math display">\[\begin{equation}
 \begin{aligned}
-  {\rm d} \Pi_t &amp;= -{\rm d}C_t + \Delta \, {\rm d}S_t \\
-          &amp;= -\left[ C_t + \frac{1}{2} \sigma^2 S^2 C_{SS} + \mu S (C_S - \Delta) \right] {\rm d}t - \sigma S (C_S - \Delta) \, {\rm d}W_t
+  \mathrm{d} \Pi_t &amp;= -\mathrm{d}C_t + \Delta \, \mathrm{d}S_t \\
+          &amp;= -\left[ C_t + \frac{1}{2} \sigma^2 S^2 C_{SS} + \mu S (C_S - \Delta) \right] \mathrm{d}t - \sigma S (C_S - \Delta) \, \mathrm{d}W_t
 \end{aligned}
 \end{equation}\]</span></p>
 <section id="note-1" class="level4">
 <h4 class="anchored" data-anchor-id="note-1">Note</h4>
-<p><span class="math inline">\(({\rm d}S_t)^2 = \sigma^2 S_t^2 {\rm d}t\)</span></p>
+<p><span class="math inline">\((\mathrm{d}S_t)^2 = \sigma^2 S_t^2 \mathrm{d}t\)</span></p>
 <ul>
 <li>Let <span class="math inline">\(\Delta = C_S\)</span>, i.e., hold this amount <span class="math inline">\(C_S(t,S_t)\)</span> of underlying assets in the portfolio <span class="math inline">\(\Pi\)</span>. Then the infinitesimal change of <span class="math inline">\(\Pi\)</span> becomes</li>
 </ul>
 <p><span class="math display">\[
-\displaystyle {\rm d}\Pi_t = -\left( C_t + \frac12 \sigma^2 S^2 C_{SS} \right) {\rm d}t
+\displaystyle {d}\Pi_t = -\left( C_t + \frac12 \sigma^2 S^2 C_{SS} \right) {d}t
 \]</span></p>
 <ul>
 <li>On the other hand, with this choice of <span class="math inline">\(\Delta\)</span>, <span class="math inline">\(\Pi\)</span> is riskless (non-random) hence must be like cash in bank account (Arbitrage Pricing Theory), i.e.,</li>
 </ul>
 <p><span class="math display">\[
-{\rm d}\Pi_t = r \Pi_t {\rm d}t = r(-C + \Delta S){\rm d}t = r(-C + C_S S) {\rm d}t,
+{d}\Pi_t = r \Pi_t {d}t = r(-C + \Delta S){d}t = r(-C + C_S S) {d}t,
 \]</span></p>
 <p>where <span class="math inline">\(r\)</span> is the interest rate.</p>
 </section>
@@ -482,7 +482,7 @@ C(T,S) = (S - K)^+
 <p><span class="math inline">\(C(T,S) = (S-K)^+\)</span> 表示欧式看涨期权在到期时(<span class="math inline">\(t= T\)</span>)的支付函数. 若股价高于执行价 <span class="math inline">\(K\)</span>, 则价值是差额; 否则归零.</p>
 <p>这里的 PDE 是通过 Feynamn-Kac 定理得到的:</p>
 <p><span class="math display">\[\begin{align*}
-{\rm d} S_t &amp;= r S_t {\rm d} t + \sigma S_t {\rm d} W_t \\
+\mathrm{d} S_t &amp;= r S_t \mathrm{d} t + \sigma S_t \mathrm{d} W_t \\
 C(t,s) &amp;= \Eof{e^{-r(T-t)} (S_T - K)^+ \mid S_t = s}
 \end{align*}\]</span></p>
 <p>那么 PDE 就是 <span class="math display">\[
@@ -597,7 +597,7 @@ P = K e^{-r\tau} N(-d_2) - S e^{-d\tau} N(-d_1).
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>norm.pdf <span class="co"># pdf for standard normal</span></span>
 <span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>norm.ppf <span class="co"># quantile funciton</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="2">
-<pre><code>&lt;bound method rv_continuous.ppf of &lt;scipy.stats._continuous_distns.norm_gen object at 0x00000164E2712660&gt;&gt;</code></pre>
+<pre><code>&lt;bound method rv_continuous.ppf of &lt;scipy.stats._continuous_distns.norm_gen object at 0x0000020A9875EE10&gt;&gt;</code></pre>
 </div>
 </div>
 <div id="cell-16" class="cell" data-execution_count="3">
@@ -1159,7 +1159,7 @@ dict_values([0.25002448066930727, 0.28760290709660397, 0.2273127644037836])</cod
 <blockquote class="blockquote">
 <p>Delta-Gamma Hedging 是构造一个组合, 使得它对标的资产价格的一阶和二阶变化都不敏感.</p>
 </blockquote>
-<p>现在假设有 <span class="math inline">\(-1\)</span> 单位的 <span class="math inline">\(C\)</span> (卖出 <span class="math inline">\(C\)</span>), <span class="math inline">\(x\)</span> 单位的 <span class="math inline">\(C_1\)</span> (对冲工具), <span class="math inline">\(y\)</span> 单位的标的资产.</p>
+<p>现在假设有 <span class="math inline">\(-1\)</span> 单位的 <span class="math inline">\(C\)</span> (卖出 <span class="math inline">\(C\)</span>), <span class="math inline">\(x\)</span> 单位的 <span class="math inline">\(C_1\)</span> (对冲工具), <span class="math inline">\(y\)</span> 单位的标的资产 (这里就是 stock).</p>
 <ul>
 <li><p><span class="math inline">\(\displaystyle -\Gamma_C +  x \Gamma_{C_1} = 0  \Longrightarrow x = \frac{\Gamma_C}{\Gamma_{C_1}}\)</span></p></li>
 <li><p><span class="math inline">\(\displaystyle C + x C_1 + y S\)</span></p></li>
@@ -1377,7 +1377,8 @@ dict_values([0.25002448066930727, 0.28760290709660397, 0.2273127644037836])</cod
 </section>
 <section id="dynamical-hedging" class="level2">
 <h2 class="anchored" data-anchor-id="dynamical-hedging">Dynamical hedging</h2>
-<p>As market conditions evolve, to maintain the delta neutrality of the portfolio, ideally we should dynamically change the holdings in the portfolio. For example,</p>
+<p>As market conditions evolve, to maintain the <em>delta neutrality</em> of the portfolio, ideally we should dynamically change the holdings in the portfolio.</p>
+<p><font color="blue"> Only <em>delta neutrality</em>, not <em>delta-gamma neutrality</em>.</font></p>
 <section id="note-6" class="level4">
 <h4 class="anchored" data-anchor-id="note-6">Note</h4>
 <ul>
@@ -1466,7 +1467,8 @@ dict_values([0.25002448066930727, 0.28760290709660397, 0.2273127644037836])</cod
 <span id="cb30-16"><a href="#cb30-16" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb30-17"><a href="#cb30-17" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb30-18"><a href="#cb30-18" aria-hidden="true" tabindex="-1"></a><span class="co"># display the result</span></span>
-<span id="cb30-19"><a href="#cb30-19" aria-hidden="true" tabindex="-1"></a>pd.DataFrame(np.array([port_value, s, c, y, x]).reshape(<span class="dv">1</span>, <span class="dv">5</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb30-19"><a href="#cb30-19" aria-hidden="true" tabindex="-1"></a>pd.DataFrame(np.array([port_value, s, c, y, x]).reshape(<span class="dv">1</span>, <span class="dv">5</span>),</span>
+<span id="cb30-20"><a href="#cb30-20" aria-hidden="true" tabindex="-1"></a>            columns<span class="op">=</span>[<span class="st">'portfolio value'</span>, <span class="st">'stock price'</span>, <span class="st">'call price'</span>, <span class="st">'shares'</span>, <span class="st">'cash'</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="21">
 <div>
 
@@ -1475,21 +1477,21 @@ dict_values([0.25002448066930727, 0.28760290709660397, 0.2273127644037836])</cod
 <thead>
 <tr class="header">
 <th data-quarto-table-cell-role="th"></th>
-<th data-quarto-table-cell-role="th">0</th>
-<th data-quarto-table-cell-role="th">1</th>
-<th data-quarto-table-cell-role="th">2</th>
-<th data-quarto-table-cell-role="th">3</th>
-<th data-quarto-table-cell-role="th">4</th>
+<th data-quarto-table-cell-role="th">portfolio value</th>
+<th data-quarto-table-cell-role="th">stock price</th>
+<th data-quarto-table-cell-role="th">call price</th>
+<th data-quarto-table-cell-role="th">shares</th>
+<th data-quarto-table-cell-role="th">cash</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">0</td>
-<td>-14.015141</td>
-<td>9.602172</td>
-<td>0.149623</td>
-<td>-1792.110966</td>
-<td>200.75864</td>
+<td>2.546886</td>
+<td>9.892218</td>
+<td>0.216479</td>
+<td>-2367.146177</td>
+<td>261.435023</td>
 </tr>
 </tbody>
 </table>
@@ -1517,7 +1519,7 @@ dict_values([0.25002448066930727, 0.28760290709660397, 0.2273127644037836])</cod
 <span id="cb31-17"><a href="#cb31-17" aria-hidden="true" tabindex="-1"></a>    <span class="co"># portfolio value before rebalance </span></span>
 <span id="cb31-18"><a href="#cb31-18" aria-hidden="true" tabindex="-1"></a>    port_value[i<span class="op">+</span><span class="dv">1</span>] <span class="op">=</span> shares[i]<span class="op">*</span>s[i<span class="op">+</span><span class="dv">1</span>] <span class="op">+</span> cash[i]<span class="op">*</span>exp(r<span class="op">*</span>dt) <span class="op">+</span> z<span class="op">*</span>calls[i<span class="op">+</span><span class="dv">1</span>]</span>
 <span id="cb31-19"><a href="#cb31-19" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb31-20"><a href="#cb31-20" aria-hidden="true" tabindex="-1"></a>    <span class="co"># rebalance (self-finacing) to delta neutral</span></span>
+<span id="cb31-20"><a href="#cb31-20" aria-hidden="true" tabindex="-1"></a>    <span class="co"># rebalance (self-financing) to delta neutral</span></span>
 <span id="cb31-21"><a href="#cb31-21" aria-hidden="true" tabindex="-1"></a>    shares[i<span class="op">+</span><span class="dv">1</span>] <span class="op">=</span> deltas[i<span class="op">+</span><span class="dv">1</span>]<span class="op">*</span>(<span class="op">-</span>z)</span>
 <span id="cb31-22"><a href="#cb31-22" aria-hidden="true" tabindex="-1"></a>    cash[i<span class="op">+</span><span class="dv">1</span>] <span class="op">=</span> cash[i]<span class="op">*</span>exp(r<span class="op">*</span>dt) <span class="op">+</span> (shares[i] <span class="op">-</span> shares[i<span class="op">+</span><span class="dv">1</span>])<span class="op">*</span>s[i<span class="op">+</span><span class="dv">1</span>]</span>
 <span id="cb31-23"><a href="#cb31-23" aria-hidden="true" tabindex="-1"></a>    </span>
@@ -1545,249 +1547,249 @@ dict_values([0.25002448066930727, 0.28760290709660397, 0.2273127644037836])</cod
 <td data-quarto-table-cell-role="th">0</td>
 <td>0.000000</td>
 <td>10.000000</td>
-<td>0.149623</td>
-<td>200.758640</td>
-<td>-1792.110966</td>
+<td>0.216479</td>
+<td>261.435023</td>
+<td>-2367.146177</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">1</td>
-<td>-17.427621</td>
-<td>9.635278</td>
-<td>0.159682</td>
-<td>209.518291</td>
-<td>-1876.512634</td>
+<td>-1.685025</td>
+<td>9.942157</td>
+<td>0.233767</td>
+<td>274.561382</td>
+<td>-2497.650498</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">2</td>
-<td>-19.743216</td>
-<td>9.879387</td>
-<td>0.213143</td>
-<td>258.605690</td>
-<td>-2361.466038</td>
+<td>2.268928</td>
+<td>9.941718</td>
+<td>0.229692</td>
+<td>272.461998</td>
+<td>-2476.779020</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">3</td>
-<td>-19.518629</td>
-<td>9.705907</td>
-<td>0.168055</td>
-<td>219.414354</td>
-<td>-1981.078588</td>
+<td>6.211547</td>
+<td>9.932415</td>
+<td>0.223215</td>
+<td>268.327792</td>
+<td>-2435.716366</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">4</td>
-<td>-22.058641</td>
-<td>9.471260</td>
-<td>0.119110</td>
-<td>171.310927</td>
-<td>-1525.478513</td>
+<td>7.977730</td>
+<td>9.800739</td>
+<td>0.186117</td>
+<td>237.182288</td>
+<td>-2130.467417</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">5</td>
-<td>-19.713859</td>
-<td>9.402198</td>
-<td>0.104935</td>
-<td>156.570553</td>
-<td>-1386.886597</td>
+<td>11.198113</td>
+<td>9.743563</td>
+<td>0.169335</td>
+<td>222.740773</td>
+<td>-1989.755598</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">6</td>
-<td>-17.408770</td>
-<td>9.488928</td>
-<td>0.116209</td>
-<td>169.851260</td>
-<td>-1512.906275</td>
+<td>11.639786</td>
+<td>9.924673</td>
+<td>0.209234</td>
+<td>260.177939</td>
+<td>-2361.307222</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">7</td>
-<td>-16.502103</td>
-<td>9.649344</td>
-<td>0.142549</td>
-<td>198.540336</td>
-<td>-1789.737038</td>
+<td>8.445821</td>
+<td>9.679310</td>
+<td>0.148590</td>
+<td>204.653243</td>
+<td>-1823.866480</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">8</td>
-<td>-20.191266</td>
-<td>9.919250</td>
-<td>0.199826</td>
-<td>254.445814</td>
-<td>-2344.277469</td>
+<td>4.882468</td>
+<td>9.424510</td>
+<td>0.100008</td>
+<td>153.308707</td>
+<td>-1339.969360</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">9</td>
-<td>-17.655077</td>
-<td>9.814348</td>
-<td>0.170597</td>
-<td>228.536144</td>
-<td>-2089.990953</td>
+<td>5.726561</td>
+<td>9.286795</td>
+<td>0.078051</td>
+<td>127.580670</td>
+<td>-1101.038366</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">10</td>
-<td>-14.350273</td>
-<td>9.892156</td>
-<td>0.185074</td>
-<td>243.542111</td>
-<td>-2238.432316</td>
+<td>7.598509</td>
+<td>9.388071</td>
+<td>0.089100</td>
+<td>141.955984</td>
+<td>-1235.994839</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">11</td>
-<td>-19.861466</td>
-<td>9.608748</td>
-<td>0.121564</td>
-<td>180.343419</td>
-<td>-1631.171994</td>
+<td>10.324611</td>
+<td>9.406149</td>
+<td>0.088940</td>
+<td>142.546174</td>
+<td>-1241.546252</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">12</td>
-<td>-17.577465</td>
-<td>9.520467</td>
-<td>0.103359</td>
-<td>160.636633</td>
-<td>-1443.554186</td>
+<td>10.635569</td>
+<td>9.585027</td>
+<td>0.114127</td>
+<td>173.031658</td>
+<td>-1533.750432</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">13</td>
-<td>-18.422900</td>
-<td>9.326691</td>
-<td>0.073077</td>
-<td>124.001764</td>
-<td>-1101.872064</td>
+<td>10.375330</td>
+<td>9.783245</td>
+<td>0.148685</td>
+<td>211.536361</td>
+<td>-1910.451358</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">14</td>
-<td>-16.400700</td>
-<td>9.262272</td>
-<td>0.063067</td>
-<td>111.249547</td>
-<td>-983.757563</td>
+<td>9.859347</td>
+<td>9.595023</td>
+<td>0.109386</td>
+<td>169.590464</td>
+<td>-1507.979495</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">15</td>
-<td>-22.801306</td>
-<td>9.601059</td>
-<td>0.107157</td>
-<td>168.003464</td>
-<td>-1528.655258</td>
+<td>12.248389</td>
+<td>9.514560</td>
+<td>0.093351</td>
+<td>151.388201</td>
+<td>-1334.792971</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">16</td>
-<td>-21.978980</td>
-<td>9.455665</td>
-<td>0.081908</td>
-<td>137.864542</td>
-<td>-1243.671696</td>
+<td>7.022855</td>
+<td>9.221413</td>
+<td>0.054197</td>
+<td>99.998587</td>
+<td>-860.908107</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">17</td>
-<td>-19.693260</td>
-<td>9.550534</td>
-<td>0.092702</td>
-<td>152.487415</td>
-<td>-1383.327940</td>
+<td>9.182860</td>
+<td>9.267979</td>
+<td>0.056694</td>
+<td>104.264357</td>
+<td>-900.443174</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">18</td>
-<td>-16.696205</td>
-<td>9.529597</td>
-<td>0.086512</td>
-<td>145.614638</td>
-<td>-1317.833141</td>
+<td>11.500153</td>
+<td>9.296259</td>
+<td>0.057325</td>
+<td>105.861646</td>
+<td>-915.291984</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">19</td>
-<td>-19.278934</td>
-<td>9.292716</td>
-<td>0.054601</td>
-<td>102.567537</td>
-<td>-917.808672</td>
+<td>-2.567556</td>
+<td>9.746510</td>
+<td>0.119057</td>
+<td>186.474293</td>
+<td>-1700.983964</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">20</td>
-<td>-19.395107</td>
-<td>9.125778</td>
-<td>0.037595</td>
-<td>76.731246</td>
-<td>-682.032422</td>
+<td>1.108896</td>
+<td>9.776974</td>
+<td>0.121061</td>
+<td>190.090952</td>
+<td>-1736.343949</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">21</td>
-<td>-19.796585</td>
-<td>9.329379</td>
-<td>0.053619</td>
-<td>102.524881</td>
-<td>-922.671030</td>
+<td>3.292136</td>
+<td>9.669038</td>
+<td>0.098361</td>
+<td>163.857148</td>
+<td>-1482.688290</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">22</td>
-<td>-24.706482</td>
-<td>9.024074</td>
-<td>0.027228</td>
-<td>59.922954</td>
-<td>-538.228081</td>
+<td>-1.645460</td>
+<td>9.389589</td>
+<td>0.057509</td>
+<td>109.119273</td>
+<td>-968.722121</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">23</td>
-<td>-24.123633</td>
-<td>8.906827</td>
-<td>0.019619</td>
-<td>46.107735</td>
-<td>-415.178309</td>
+<td>0.884305</td>
+<td>9.384055</td>
+<td>0.054375</td>
+<td>105.194186</td>
+<td>-931.888885</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">24</td>
-<td>-22.873051</td>
-<td>8.905059</td>
-<td>0.018287</td>
-<td>43.827660</td>
-<td>-394.874107</td>
+<td>3.350541</td>
+<td>9.372953</td>
+<td>0.050741</td>
+<td>100.368375</td>
+<td>-886.656788</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">25</td>
-<td>-22.210152</td>
-<td>9.041282</td>
-<td>0.023594</td>
-<td>54.518863</td>
-<td>-491.536294</td>
+<td>5.651420</td>
+<td>9.440110</td>
+<td>0.055180</td>
+<td>108.085315</td>
+<td>-959.505545</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">26</td>
-<td>-21.396242</td>
-<td>9.178402</td>
-<td>0.030256</td>
-<td>67.351813</td>
-<td>-609.322271</td>
+<td>7.572448</td>
+<td>9.363605</td>
+<td>0.044990</td>
+<td>92.697566</td>
+<td>-815.420747</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">27</td>
-<td>-22.194932</td>
-<td>8.983764</td>
-<td>0.017945</td>
-<td>44.199816</td>
-<td>-401.330196</td>
+<td>9.973373</td>
+<td>9.384116</td>
+<td>0.044491</td>
+<td>92.648530</td>
+<td>-814.960587</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">28</td>
-<td>-21.353905</td>
-<td>8.904764</td>
-<td>0.013613</td>
-<td>35.390911</td>
-<td>-322.888977</td>
+<td>11.436208</td>
+<td>9.290807</td>
+<td>0.034383</td>
+<td>75.986501</td>
+<td>-660.156885</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">29</td>
-<td>-20.774534</td>
-<td>8.812108</td>
-<td>0.009754</td>
-<td>26.948927</td>
-<td>-248.497305</td>
+<td>13.356387</td>
+<td>9.365511</td>
+<td>0.038139</td>
+<td>83.349842</td>
+<td>-729.118332</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">30</td>
-<td>-19.901331</td>
-<td>8.859088</td>
-<td>0.010147</td>
-<td>28.120210</td>
-<td>-258.873804</td>
+<td>15.200208</td>
+<td>9.307130</td>
+<td>0.031429</td>
+<td>71.947088</td>
+<td>-622.991417</td>
 </tr>
 </tbody>
 </table>
@@ -1805,6 +1807,7 @@ dict_values([0.25002448066930727, 0.28760290709660397, 0.2273127644037836])</cod
 <li>Imperfect hedge, risk penalty</li>
 <li>Transaction cost, market order or limit order, etc</li>
 </ul>
+<p>注: Replication creates an asset or portfolio using a combination of another asset, portfolio, and/or derivative. The following combinations produce the equivalent single asset: Long asset + Short derivative = Long risk free asset.</p>
 </section>
 <section id="deep-hedging" class="level2">
 <h2 class="anchored" data-anchor-id="deep-hedging">Deep hedging</h2>
@@ -1947,9 +1950,9 @@ Y^A - Y^C = C_0.
 <p><strong>Step 1</strong> Initialize neural network of <span class="math inline">\(Q_1(s,a|\theta^{Q_1}), Q_2(s,a|\theta^{Q_2})\)</span> and policy function <span class="math inline">\(\mu(s|\theta^\mu)\)</span>. Set target networks <span class="math inline">\(Q_1' \leftarrow Q_1,Q_2' \leftarrow Q_2,\mu' \leftarrow \mu\)</span>. Create replay buffer <span class="math inline">\(R\)</span>.</p>
 <p><strong>Step 2</strong> Begin loop:</p>
 <p><strong>for</strong> episode <span class="math inline">\(= 1\)</span> to n_path:</p>
-<p>Generate random process <span class="math inline">\({N_i}, i = 0, 1, ..., m\)</span> for action exploration. <br> Get initial state: <span class="math inline">\(s_0 = [S_0\)</span>(stock price), <span class="math inline">\(V_0\)</span>(option price), <span class="math inline">\(H_{-1} = 0\)</span>(holding), <span class="math inline">\(\tau_0 = T = m\, dt\)</span>(time to maturity)<span class="math inline">\(]\)</span>.</p>
+<p>Generate random process <span class="math inline">\({N_i}, i = 0, 1, ..., m\)</span> for action exploration. <br> Get initial state: <span class="math inline">\(s_0 = [S_0\)</span>(stock price), <span class="math inline">\(V_0\)</span>(option price), <span class="math inline">\(H_{-1} = 0\)</span>(holding), <span class="math inline">\(\tau_0 = T = m\, \mathrm{d}t\)</span>(time to maturity)<span class="math inline">\(]\)</span>.</p>
 <p><strong>for</strong> <span class="math inline">\(i = 0\)</span> to <span class="math inline">\(m\)</span> (<span class="math inline">\(m\)</span> time intervals):</p>
-<p><strong>Step 2.1</strong> Calculate action: <span class="math inline">\(a_i = (1-\epsilon_i)\mu(s_i|\theta^\mu) + \epsilon_i N_i,\,\, s_i = [S_i, V_i, H_{i-1}, \tau_i = (m-i)dt]\)</span> <br> <strong>Step 2.2</strong> Execute <span class="math inline">\(a_i\)</span>. Get <span class="math inline">\(r_i = -(V_{i+1} - V_i) + H_i(S_{i+1} - S_i) - \kappa |S_ia_i|,\,\, 0\leqslant i&lt;m\)</span> <br> <span class="math inline">\(\hspace{4.2 cm} r_m = - \kappa|S_mH_{m-1}|\)</span> <br> <strong>Step 2.3</strong> Observe new state: <span class="math inline">\(s_{i+1} = [S_{i+1}, V_{i+1}, H_i = H_{i-1}+a_i, \tau_{i+1} = (m-i-1)dt]\)</span> <br> <strong>Step 2.4</strong> Store <span class="math inline">\((s_i, a_i, r_i, s_{i+1})\)</span> in the replay buffer <span class="math inline">\(R\)</span>. <br> <strong>Step 2.5</strong> Sample <span class="math inline">\(J\)</span> transitions from <span class="math inline">\(R\)</span>, mark as <span class="math inline">\((s_j, a_j, r_j, s_{j+1}), \,\, j = 1 \sim N/ J?\)</span> <br> <span class="math inline">\(\hspace{1.6 cm}y_j^{(1)} = r_j + \gamma Q_1'(s_{i+1}, \mu'(s_{i+1}|\theta^{\mu'})|\theta^{Q'})\)</span></p>
+<p><strong>Step 2.1</strong> Calculate action: <span class="math inline">\(a_i = (1-\epsilon_i)\mu(s_i|\theta^\mu) + \epsilon_i N_i,\,\, s_i = [S_i, V_i, H_{i-1}, \tau_i = (m-i)\mathrm{d}t]\)</span> <br> <strong>Step 2.2</strong> Execute <span class="math inline">\(a_i\)</span>. Get <span class="math inline">\(r_i = -(V_{i+1} - V_i) + H_i(S_{i+1} - S_i) - \kappa |S_ia_i|,\,\, 0\leqslant i&lt;m\)</span> <br> <span class="math inline">\(\hspace{4.2 cm} r_m = - \kappa|S_mH_{m-1}|\)</span> <br> <strong>Step 2.3</strong> Observe new state: <span class="math inline">\(s_{i+1} = [S_{i+1}, V_{i+1}, H_i = H_{i-1}+a_i, \tau_{i+1} = (m-i-1)\mathrm{d}t]\)</span> <br> <strong>Step 2.4</strong> Store <span class="math inline">\((s_i, a_i, r_i, s_{i+1})\)</span> in the replay buffer <span class="math inline">\(R\)</span>. <br> <strong>Step 2.5</strong> Sample <span class="math inline">\(J\)</span> transitions from <span class="math inline">\(R\)</span>, mark as <span class="math inline">\((s_j, a_j, r_j, s_{j+1}), \,\, j = 1 \sim N/ J?\)</span> <br> <span class="math inline">\(\hspace{1.6 cm}y_j^{(1)} = r_j + \gamma Q_1'(s_{i+1}, \mu'(s_{i+1}|\theta^{\mu'})|\theta^{Q'})\)</span></p>
 <p>$y_j^{(2)} = r_j^2 + ^2 Q_2’(s_{i+1}, ‘(s_{i+1}|<sup>{’})|</sup>{Q’}) + 2 r_j Q_1’(s_{i+1}, ‘(s_{i+1}|<sup>{’})|</sup>{Q’}) $</p>
 <p><span class="math inline">\(\hspace{1.4 cm}\)</span> Update <span class="math inline">\(Q_{1,2}\)</span>: <span class="math inline">\(Q_{1,2} = \underset{Q_{1,2}}{\mathrm{argmin}}\left\{\frac{1}{J}\sum_j\left(y_j^{(1,2)} - Q_{1,2}(s_j,a_j|\theta^{Q_{1,2}})\right)^2\right\}\)</span> <br> <span class="math inline">\(\hspace{1.4 cm}\)</span> Update <span class="math inline">\(\mu\)</span> using gradient descent: <span class="math inline">\(\nabla_{\theta^{\mu}}G = \frac{1}{J}\sum_j\nabla_aF(s_j, a_j|\theta^{Q_{1,2}})\nabla_{\theta^{\mu}}\mu(s_j|\theta^{\mu}),\,\, \theta^\mu = \theta^\mu - \nabla_{\theta^\mu}G \times \text{step}\)</span></p>
 <p><strong>Step 2.6</strong> Update the target networks: <span class="math inline">\(\theta^{Q'_{1,2}} \leftarrow \tau\theta^{Q_{1,2}} + (1-\tau)\theta^{Q'_{1,2}}, \,\,\theta^{\mu'} \leftarrow \tau\theta^\mu + (1-\tau)\theta^{\mu'}\)</span></p>
@@ -2060,7 +2063,7 @@ Y^A - Y^C = C_0.
 <span id="cb36-81"><a href="#cb36-81" aria-hidden="true" tabindex="-1"></a>    </span>
 <span id="cb36-82"><a href="#cb36-82" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> actor_model</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="cell-63" class="cell" data-execution_count="33">
+<div id="cell-63" class="cell" data-execution_count="26">
 <div class="sourceCode cell-code" id="cb37"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="co"># function for plotting optimal policy </span></span>
 <span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> mpl_toolkits.mplot3d <span class="im">import</span> Axes3D</span>
 <span id="cb37-3"><a href="#cb37-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -2138,14 +2141,14 @@ Y^A - Y^C = C_0.
 </div>
 </div>
 <div class="cell-output cell-output-stdout">
-<pre><code>CPU times: total: 2.83 s
-Wall time: 18.5 s</code></pre>
+<pre><code>CPU times: total: 3.03 s
+Wall time: 23.8 s</code></pre>
 </div>
 </div>
 </section>
 <section id="what-does-the-optimal-action-look-like" class="level2">
 <h2 class="anchored" data-anchor-id="what-does-the-optimal-action-look-like">What does the optimal action look like?</h2>
-<div id="cell-67" class="cell" data-execution_count="34">
+<div id="cell-67" class="cell" data-execution_count="28">
 <div class="sourceCode cell-code" id="cb41"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a>plotAction(weekly)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div>
@@ -2158,7 +2161,7 @@ Wall time: 18.5 s</code></pre>
 </section>
 <section id="one-month-option-tridaily-hedging" class="level2">
 <h2 class="anchored" data-anchor-id="one-month-option-tridaily-hedging">One-month option, tridaily hedging</h2>
-<div id="cell-69" class="cell" data-execution_count="35">
+<div id="cell-69" class="cell" data-execution_count="29">
 <div class="sourceCode cell-code" id="cb42"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>time</span>
 <span id="cb42-2"><a href="#cb42-2" aria-hidden="true" tabindex="-1"></a><span class="co"># one month option, tridaily hedging</span></span>
 <span id="cb42-3"><a href="#cb42-3" aria-hidden="true" tabindex="-1"></a>T, m <span class="op">=</span> <span class="dv">1</span><span class="op">/</span><span class="dv">12</span>, <span class="dv">10</span></span>
@@ -2187,11 +2190,11 @@ Wall time: 18.5 s</code></pre>
 </div>
 </div>
 <div class="cell-output cell-output-stdout">
-<pre><code>CPU times: total: 7.08 s
-Wall time: 50 s</code></pre>
+<pre><code>CPU times: total: 7.06 s
+Wall time: 53.4 s</code></pre>
 </div>
 </div>
-<div id="cell-70" class="cell" data-execution_count="36">
+<div id="cell-70" class="cell" data-execution_count="30">
 <div class="sourceCode cell-code" id="cb45"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a><span class="co"># plot tridaily action function </span></span>
 <span id="cb45-2"><a href="#cb45-2" aria-hidden="true" tabindex="-1"></a>plotAction(tridaily)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
@@ -2205,7 +2208,7 @@ Wall time: 50 s</code></pre>
 </section>
 <section id="month-option-weekly-hedging" class="level2">
 <h2 class="anchored" data-anchor-id="month-option-weekly-hedging">3-month option, weekly hedging</h2>
-<div id="cell-72" class="cell" data-execution_count="37">
+<div id="cell-72" class="cell" data-execution_count="31">
 <div class="sourceCode cell-code" id="cb46"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>time</span>
 <span id="cb46-2"><a href="#cb46-2" aria-hidden="true" tabindex="-1"></a><span class="co"># 3 months option, weekly hedging</span></span>
 <span id="cb46-3"><a href="#cb46-3" aria-hidden="true" tabindex="-1"></a>T, m <span class="op">=</span> <span class="dv">3</span><span class="op">/</span><span class="dv">12</span>, <span class="dv">4</span></span>
@@ -2234,11 +2237,11 @@ Wall time: 50 s</code></pre>
 </div>
 </div>
 <div class="cell-output cell-output-stdout">
-<pre><code>CPU times: total: 4.3 s
-Wall time: 19.9 s</code></pre>
+<pre><code>CPU times: total: 2.89 s
+Wall time: 19.6 s</code></pre>
 </div>
 </div>
-<div id="cell-73" class="cell" data-execution_count="38">
+<div id="cell-73" class="cell" data-execution_count="32">
 <div class="sourceCode cell-code" id="cb49"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a>plotAction(weekly_3m)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div>
