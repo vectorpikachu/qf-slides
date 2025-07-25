@@ -242,6 +242,14 @@ window.Quarto = {
   <li><a href="#one-month-option-tridaily-hedging" id="toc-one-month-option-tridaily-hedging" class="nav-link" data-scroll-target="#one-month-option-tridaily-hedging">One-month option, tridaily hedging</a></li>
   <li><a href="#month-option-weekly-hedging" id="toc-month-option-weekly-hedging" class="nav-link" data-scroll-target="#month-option-weekly-hedging">3-month option, weekly hedging</a></li>
   <li><a href="#concluding-remarks-on-deep-hedging" id="toc-concluding-remarks-on-deep-hedging" class="nav-link" data-scroll-target="#concluding-remarks-on-deep-hedging">Concluding remarks on deep hedging</a></li>
+  <li><a href="#lecture-notes" id="toc-lecture-notes" class="nav-link" data-scroll-target="#lecture-notes">Lecture Notes</a>
+  <ul class="collapse">
+  <li><a href="#black-scholes-model-1" id="toc-black-scholes-model-1" class="nav-link" data-scroll-target="#black-scholes-model-1">Black-Scholes Model</a></li>
+  <li><a href="#option-pricing-with-the-black-scholes-model" id="toc-option-pricing-with-the-black-scholes-model" class="nav-link" data-scroll-target="#option-pricing-with-the-black-scholes-model">Option Pricing with the Black-Scholes Model</a></li>
+  <li><a href="#期权定价与对冲" id="toc-期权定价与对冲" class="nav-link" data-scroll-target="#期权定价与对冲">期权定价与对冲</a></li>
+  <li><a href="#black-scholes-模型与隐含波动率" id="toc-black-scholes-模型与隐含波动率" class="nav-link" data-scroll-target="#black-scholes-模型与隐含波动率">Black-Scholes 模型与隐含波动率</a></li>
+  <li><a href="#jump-trading" id="toc-jump-trading" class="nav-link" data-scroll-target="#jump-trading">Jump Trading</a></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
@@ -444,13 +452,13 @@ S_t = S_0 e^{\left(\mu - \frac{\sigma^2}2 \right) t+ \sigma W_t}
 <li>Let <span class="math inline">\(\Delta = C_S\)</span>, i.e., hold this amount <span class="math inline">\(C_S(t,S_t)\)</span> of underlying assets in the portfolio <span class="math inline">\(\Pi\)</span>. Then the infinitesimal change of <span class="math inline">\(\Pi\)</span> becomes</li>
 </ul>
 <p><span class="math display">\[
-\displaystyle {d}\Pi_t = -\left( C_t + \frac12 \sigma^2 S^2 C_{SS} \right) {d}t
+\displaystyle \mathrm{d}\Pi_t = -\left( C_t + \frac12 \sigma^2 S^2 C_{SS} \right) \mathrm{d}t
 \]</span></p>
 <ul>
 <li>On the other hand, with this choice of <span class="math inline">\(\Delta\)</span>, <span class="math inline">\(\Pi\)</span> is riskless (non-random) hence must be like cash in bank account (Arbitrage Pricing Theory), i.e.,</li>
 </ul>
 <p><span class="math display">\[
-{d}\Pi_t = r \Pi_t {d}t = r(-C + \Delta S){d}t = r(-C + C_S S) {d}t,
+\mathrm{d}\Pi_t = r \Pi_t \mathrm{d}t = r(-C + \Delta S) \mathrm{d}t = r(-C + C_S S) \mathrm{d}t,
 \]</span></p>
 <p>where <span class="math inline">\(r\)</span> is the interest rate.</p>
 </section>
@@ -2259,8 +2267,100 @@ Wall time: 19.6 s</code></pre>
 <li><p>As is mentioned in the original paper, the impact of trading costs (or transaction cost) is to under-hedge relative to delta hedging in some situations and over-hedge in other situations. By hedging short European call option position, we observe under-hedge relative to delta hedging.</p></li>
 <li><p>One may be able to reduce the variance of hedging cost in the DDPG Algorithm by adding more paths for training. In the code, we used 5000 training paths for each model while renewing the model after each episode. However, using too many paths in the training stage may result in overfitting.</p></li>
 </ul>
+</section>
+<section id="lecture-notes" class="level2">
+<h2 class="anchored" data-anchor-id="lecture-notes">Lecture Notes</h2>
+<p>Thanks to 段凤仪 (Duàn Fèng Yí) for her lecture notes.</p>
+<section id="black-scholes-model-1" class="level3">
+<h3 class="anchored" data-anchor-id="black-scholes-model-1">Black-Scholes Model</h3>
+<ul>
+<li>Revolutionary Concept: The Black-Scholes model, developed 24 years ago, introduced groundbreaking ideas that transformed option pricing. <em>It challenged traditional static hedging approaches with dynamic hedging, emphasizing continuous position adjustment</em>.</li>
+<li>New Ideas: Key concepts include delta hedging, where the number of shares held (<span class="math inline">\(\Delta\)</span>) equals the partial derivative of the option price with respect to the stock price (<span class="math inline">\(\displaystyle \frac{\partial C}{\partial S}\)</span>). <font color="red">This approach aims to make the portfolio risk-free.</font></li>
+</ul>
+<p>模型假设:</p>
+<ul>
+<li>Stock Price Movement: The model assumes that <font color="green">stock prices</font> follow a <font color="blue">geometric Brownian motion</font>, where the return (change in price over price) follows a normal distribution. This assumption simplifies the pricing process.</li>
+<li>Risk-Neutral Pricing: When pricing options, the model assumes a risk-neutral environment, where <font color="red">the expected return on the stock is equal to the risk-free interest rate</font>. This assumption allows for consistent pricing across different market conditions.</li>
+</ul>
+</section>
+<section id="option-pricing-with-the-black-scholes-model" class="level3">
+<h3 class="anchored" data-anchor-id="option-pricing-with-the-black-scholes-model">Option Pricing with the Black-Scholes Model</h3>
+<section id="pricing-formula" class="level4">
+<h4 class="anchored" data-anchor-id="pricing-formula">Pricing Formula</h4>
+<ul>
+<li>Call Option Price: The formula for call option price is</li>
+</ul>
+<p><span class="math display">\[
+C = S e^{-D \tau} N(d_1) - K e^{-r \tau} N(d_2),
+\]</span></p>
+<p>where <span class="math inline">\(S\)</span> is the stock price, <span class="math inline">\(K\)</span> is the strike price, <span class="math inline">\(D\)</span> is the dividend rate, <span class="math inline">\(r\)</span> is the risk-free interest rate, <span class="math inline">\(\tau\)</span> is the time to expiration, and <span class="math inline">\(N(d_1)\)</span> and <span class="math inline">\(N(d_2)\)</span> are the cumulative distribution functions of the standard normal distribution.</p>
+<ul>
+<li>Put Option Price: The put option price formula is</li>
+</ul>
+<p><span class="math display">\[
+P = K e^{-r \tau} N(-d_2) - S e^{-D \tau} N(-d_1).
+\]</span></p>
+</section>
+<section id="parameter-estimation" class="level4">
+<h4 class="anchored" data-anchor-id="parameter-estimation">Parameter Estimation</h4>
+<ul>
+<li>Volatility: Volatility (<span class="math inline">\(\sigma\)</span>) is a crucial parameter in the Black-Scholes model. It represents the degree of price fluctuation of the underlying asset. Estimating volatility accurately is challenging but essential for option pricing.</li>
+<li>Other Parameters: Other parameters such as stock price, strike price, interest rate, and time to expiration are usually observable in the market. However, dividend rate may require estimation based on historical data or company announcements.</li>
+</ul>
+</section>
+</section>
+<section id="期权定价与对冲" class="level3">
+<h3 class="anchored" data-anchor-id="期权定价与对冲">期权定价与对冲</h3>
+<p>Example:</p>
+<blockquote class="blockquote">
+<ul>
+<li>有家公司持续卖出虚值看涨期权十多年 (此时买方行权无利可图), 赚取权利金, 但某次市场大幅上涨导致巨额亏损 (大量买方要求行权), CEO 公开道歉. 说明即使概率很小, 卖方面临的潜在损失是无限的.</li>
+<li>买入期权最多损失期权费; 而卖出看涨期权若未对冲, 损失可能极大. 因此大规模机构 (如对冲基金) 必须对冲.</li>
+</ul>
+</blockquote>
+<section id="delta-hedging-1" class="level4">
+<h4 class="anchored" data-anchor-id="delta-hedging-1">Delta Hedging</h4>
+<p>构建方法: 通过计算资产组合中股票、现金和期权的 delta, 使组合总 delta 为 0. 例如, 卖出一个 call 期权后, 持有相应数量的股票可以实现 delta 中性.</p>
+</section>
+<section id="delta-gamma-hedging" class="level4">
+<h4 class="anchored" data-anchor-id="delta-gamma-hedging">Delta-Gamma Hedging</h4>
+<p>概念介绍: 除了 delta 中性, 还使组合的 gamma 也为 0. 由于股票 gamma 为 0, 需要额外引入另一个期权来中和 gamma.</p>
+</section>
+</section>
+<section id="black-scholes-模型与隐含波动率" class="level3">
+<h3 class="anchored" data-anchor-id="black-scholes-模型与隐含波动率">Black-Scholes 模型与隐含波动率</h3>
+<p>历史背景: Black-Scholes 模型自 1973 年起被广泛使用, 人们最初通过历史波动率来计算期权价格.</p>
+<p>现实缺陷: 实际市场中, 用市场价格倒推出的隐含波动率发现其在不同行权价和期限上并不一致, 说明模型与现实存在差距.</p>
+<p><strong>隐含波动率的重要性</strong></p>
+<ul>
+<li>市场情绪指标: 隐含波动率代表市场对未来波动的预期, 是投资者情绪的反映.</li>
+<li>模型改进方向: 隐含波动率的发现也推动了模型的改进, 比如局部波动率模型、随机波动率模型等, 使模型更贴合实际.</li>
+</ul>
+</section>
+<section id="jump-trading" class="level3">
+<h3 class="anchored" data-anchor-id="jump-trading">Jump Trading</h3>
+<ol type="1">
+<li><p>公司发展与交易策略</p>
+<ul>
+<li>科技驱动: 1999 年创立于芝加哥交易所, 致力于电子交易, 从传统套利逐步转型.</li>
+<li>多频率交易: 涵盖高频、中频、低频交易, 利用线性回归、机器学习、AI 等策略.</li>
+<li>技术投入: 拥有高性能 C++ 系统、自研硬件和超级计算集群, 在网络传输方面投入巨大.</li>
+</ul></li>
+<li><p>公司文化与价值观</p>
+<ul>
+<li>扁平结构: 组织层级少, 决策快速, 员工有自由提出和实现想法.</li>
+<li>按能力奖励: 鼓励创新, 好的点子不论出自谁都能被采纳.</li>
+<li>文化活动丰富: 如公司提供早餐、午餐、下午茶, 举办全球扑克牌比赛、乒乓赛等，营造轻松氛围.</li>
+</ul></li>
+<li><p>招聘信息</p>
+<ul>
+<li>实习项目: 夏季 10 周, 包括 3 周培训与轮岗, 真实参与项目, 导师每周反馈.</li>
+<li>全职机会: 表现好的实习生可直接获得正式工作邀请.</li>
+</ul></li>
+</ol>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->
