@@ -899,10 +899,38 @@ V_t = H_t S_t + K_t = H_{t+1} S_t + K_{t+1} ,
 <section id="note-5" class="level4">
 <h4 class="anchored" data-anchor-id="note-5">Note</h4>
 <p>Rebalancing of hedging portfolio is done <em>after</em> the price change.</p>
+<p>我们设 portfolio 为 <span class="math inline">\(\pi = (s,c,o)\)</span>, 也就是 stock, cash, option.</p>
+<p><span class="math display">\[
+\pi^{\text{naked}} = (0,0,-1).
+\]</span></p>
+<p>那么这个 naked portfolio 的价值为 <span class="math inline">\(V(\pi^{\text{naked}})=-C\)</span>.</p>
+<p>所以:</p>
+<p><span class="math display">\[
+\text{PNL}_{\text{naked}} = V(\pi^{\text{naked}}_{\text{tomorrow}}) - V(\pi^{\text{naked}}_{\text{today}}) = -C_{\text{tomorrow}} + C_{\text{today}}.
+\]</span></p>
+<p>至于 delta hedging portfolio, 我们设 <span class="math inline">\(\pi^{\text{delta}} = (x,0,-1)\)</span>.</p>
+<p>那么:</p>
+<p><span class="math display">\[
+\Delta_{\pi^{\text{delta}}} = x - 0 - \Delta_C = x - N(d_1).
+\]</span></p>
+<p>由于 <span class="math inline">\(\Delta_{\pi^{\text{delta}}} = 0\)</span>, 所以 <span class="math inline">\(x = N(d_1)\)</span>.</p>
+<p><span class="math display">\[\begin{align*}
+V(\pi^{\text{delta}}_{\text{today}}) &amp;= N(d_1) S_{\text{today}} - C_{\text{today}} \\
+V(\pi^{\text{delta}}_{\text{tomorrow}}) &amp;= N(d_1) S_{\text{tomorrow}} - C_{\text{tomorrow}} \\
+\text{PNL}_{\text{delta}} &amp;= V(\pi^{\text{delta}}_{\text{tomorrow}}) - V(\pi^{\text{delta}}_{\text{today}}) \\
+\end{align*}\]</span></p>
+<p>一个数值例子: 设 <span class="math inline">\(\pi = (250, 10000, -200)\)</span>.</p>
+<p><span class="math display">\[
+V_{\pi} = 250 S + 10000 - 200 C = 250 \times 10 + 10000 - 200 \times 0.25 = 12450.
+\]</span></p>
+<p><span class="math display">\[
+\Delta_{\pi} = 250 + 0 - 200 \times 29\% = 192.
+\]</span></p>
+<p>这就意味着你需要卖出 192 的股票.</p>
 </section>
 <section id="an-example-on-delta-hedge" class="level3">
 <h3 class="anchored" data-anchor-id="an-example-on-delta-hedge">An example on delta hedge</h3>
-<div id="cell-29" class="cell" data-execution_count="11">
+<div id="cell-31" class="cell" data-execution_count="11">
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>r, sigma <span class="op">=</span> <span class="dv">0</span>, <span class="fl">0.3</span> </span>
 <span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>s0, K <span class="op">=</span> <span class="dv">10</span>, <span class="dv">11</span></span>
 <span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>dt <span class="op">=</span> <span class="dv">1</span><span class="op">/</span><span class="dv">252</span> <span class="co"># one day </span></span>
@@ -921,7 +949,7 @@ V_t = H_t S_t + K_t = H_{t+1} S_t + K_{t+1} ,
  'gamma': 0.2273127644037836}</code></pre>
 </div>
 </div>
-<div id="cell-30" class="cell" data-execution_count="12">
+<div id="cell-32" class="cell" data-execution_count="12">
 <div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(bs_call(s0, K, sigma, t, r))</span>
 <span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(bs_call(s0, K, sigma, t, r).values())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -929,7 +957,7 @@ V_t = H_t S_t + K_t = H_{t+1} S_t + K_{t+1} ,
 dict_values([0.25002448066930727, 0.28760290709660397, 0.2273127644037836])</code></pre>
 </div>
 </div>
-<div id="cell-31" class="cell" data-execution_count="13">
+<div id="cell-33" class="cell" data-execution_count="13">
 <div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="co"># a range of underlying prices one day later</span></span>
 <span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>s <span class="op">=</span> s0 <span class="op">+</span> np.linspace(<span class="op">-</span><span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">21</span>)</span>
 <span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(s)</span>
@@ -944,7 +972,7 @@ dict_values([0.25002448066930727, 0.28760290709660397, 0.2273127644037836])</cod
 <pre><code>2.6260045902967324</code></pre>
 </div>
 </div>
-<div id="cell-32" class="cell" data-execution_count="14">
+<div id="cell-34" class="cell" data-execution_count="14">
 <div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>pnl_naked <span class="op">=</span> c <span class="op">-</span> bs_call(s, K, sigma, t<span class="op">-</span>dt, r)[<span class="st">'c'</span>]</span>
 <span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>pnl_delta <span class="op">=</span> delta<span class="op">*</span>s <span class="op">-</span> bs_call(s, K, sigma, t<span class="op">-</span>dt, r)[<span class="st">'c'</span>] <span class="op">-</span> (delta<span class="op">*</span>s0 <span class="op">-</span> c)</span>
 <span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>pd.DataFrame({<span class="st">'naked'</span>: pnl_naked, <span class="st">'delta_hedged'</span>: pnl_delta})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -1072,7 +1100,7 @@ dict_values([0.25002448066930727, 0.28760290709660397, 0.2273127644037836])</cod
 </div>
 </div>
 </div>
-<div id="cell-33" class="cell" data-execution_count="15">
+<div id="cell-35" class="cell" data-execution_count="15">
 <div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="co"># plot</span></span>
 <span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">9</span>, <span class="dv">6</span>))</span>
 <span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>plt.plot(s, pnl_naked, <span class="st">'o-'</span>, label<span class="op">=</span><span class="st">'Naked call'</span>)</span>
@@ -1090,7 +1118,7 @@ dict_values([0.25002448066930727, 0.28760290709660397, 0.2273127644037836])</cod
 </div>
 </div>
 </div>
-<div id="cell-34" class="cell" data-execution_count="16">
+<div id="cell-36" class="cell" data-execution_count="16">
 <div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="co"># zoom into the interval [9.5, 10.5]</span></span>
 <span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">9</span>, <span class="dv">6</span>))</span>
 <span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>plt.plot(s, pnl_naked, <span class="st">'o-'</span>, label<span class="op">=</span><span class="st">'Naked call'</span>)</span>
@@ -1113,6 +1141,19 @@ dict_values([0.25002448066930727, 0.28760290709660397, 0.2273127644037836])</cod
 </section>
 <section id="an-example-on-delta-gamma-hedge" class="level2">
 <h2 class="anchored" data-anchor-id="an-example-on-delta-gamma-hedge">An example on delta-gamma hedge</h2>
+<p>Delta-gamma neutral: <span class="math inline">\(\displaystyle \Delta = \frac{\partial C}{\partial S} = 0, \Gamma = \frac{\partial^2 C}{\partial S^2} = 0\)</span>.</p>
+<p><span class="math display">\[
+\Gamma_{\pi^{\text{naked}}} = -\frac{\partial^2 C}{\partial S^2} = -\Gamma_{\text{call}}.
+\]</span></p>
+<p>为了保证 <span class="math inline">\(\Gamma = 0\)</span>, 我们必须引入另一个用来对冲的 option.</p>
+<p><span class="math display">\[
+\pi = (\overset{\text{stock}}{x}, \overset{\text{cash}}{y}, \overset{\text{option}}{z}, \overset{\text{hedging option}}{w}).
+\]</span></p>
+<p><span class="math display">\[\begin{align*}
+0 = \Delta_{\pi} &amp;= x + 0 + z \Delta_{\text{call}} + w \Delta_{\text{hedge}} \\
+0 = \Gamma_{\pi} &amp;= 0 + 0 + z \Gamma_{\text{call}} + w \Gamma_{\text{hedge}}.
+\end{align*}\]</span></p>
+<p>所以, 我们就有: <span class="math inline">\(\displaystyle w = - \frac{\Gamma_{\text{call}}}{\Gamma_{\text{hedge}}}z\)</span>.</p>
 <p><font color="blue"> Note </font></p>
 <p>The gammas of the underlying and forward are zero. To construct a delta-gamma hedge portfolio we need to add into the portfolio an instrument that has nonzero gamma, say, call or put options.</p>
 <blockquote class="blockquote">
@@ -1124,7 +1165,7 @@ dict_values([0.25002448066930727, 0.28760290709660397, 0.2273127644037836])</cod
 <li><p><span class="math inline">\(\displaystyle C + x C_1 + y S\)</span></p></li>
 <li><p><span class="math inline">\(\displaystyle -\Delta_C + x \Delta_{C_1} + y = 0 \Longrightarrow y = \Delta_C - x \Delta_{C_1}\)</span></p></li>
 </ul>
-<div id="cell-37" class="cell" data-execution_count="17">
+<div id="cell-39" class="cell" data-execution_count="17">
 <div class="sourceCode cell-code" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>r, sigma, K, s0 <span class="op">=</span> <span class="dv">0</span>, <span class="fl">0.3</span>, <span class="dv">11</span>, <span class="dv">10</span></span>
 <span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>dt, t <span class="op">=</span> <span class="dv">1</span><span class="op">/</span><span class="dv">252</span>, <span class="dv">1</span><span class="op">/</span><span class="dv">4</span></span>
 <span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -1294,7 +1335,7 @@ dict_values([0.25002448066930727, 0.28760290709660397, 0.2273127644037836])</cod
 </div>
 </div>
 </div>
-<div id="cell-38" class="cell" data-execution_count="18">
+<div id="cell-40" class="cell" data-execution_count="18">
 <div class="sourceCode cell-code" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="co"># plot</span></span>
 <span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">9</span>, <span class="dv">6</span>))</span>
 <span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a>plt.plot(s, pnl_naked, <span class="st">'o-'</span>, label<span class="op">=</span><span class="st">'Naked call'</span>)</span>
@@ -1313,7 +1354,7 @@ dict_values([0.25002448066930727, 0.28760290709660397, 0.2273127644037836])</cod
 </div>
 </div>
 </div>
-<div id="cell-39" class="cell" data-execution_count="19">
+<div id="cell-41" class="cell" data-execution_count="19">
 <div class="sourceCode cell-code" id="cb28"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="co"># zoom into the interval [9.5, 10.5]</span></span>
 <span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">9</span>, <span class="dv">6</span>))</span>
 <span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a>plt.plot(s, pnl_naked, <span class="st">'o-'</span>, label<span class="op">=</span><span class="st">'Naked call'</span>)</span>
@@ -1345,7 +1386,7 @@ dict_values([0.25002448066930727, 0.28760290709660397, 0.2273127644037836])</cod
 </section>
 <section id="an-example-on-dynamical-hedging" class="level3">
 <h3 class="anchored" data-anchor-id="an-example-on-dynamical-hedging">An example on dynamical hedging</h3>
-<div id="cell-42" class="cell" data-execution_count="20">
+<div id="cell-44" class="cell" data-execution_count="20">
 <div class="sourceCode cell-code" id="cb29"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="co"># parameters</span></span>
 <span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>r, sigma <span class="op">=</span> <span class="dv">0</span>, <span class="fl">0.3</span></span>
 <span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a>s0, K <span class="op">=</span> <span class="dv">10</span>, <span class="dv">11</span></span>
@@ -1406,7 +1447,7 @@ dict_values([0.25002448066930727, 0.28760290709660397, 0.2273127644037836])</cod
 </div>
 </div>
 </div>
-<div id="cell-43" class="cell" data-execution_count="21">
+<div id="cell-45" class="cell" data-execution_count="21">
 <div class="sourceCode cell-code" id="cb30"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 1 day later</span></span>
 <span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a>i <span class="op">=</span> <span class="dv">1</span></span>
 <span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a>s_new <span class="op">=</span> s0<span class="op">*</span>exp((r <span class="op">-</span> sigma<span class="op">**</span><span class="dv">2</span><span class="op">/</span><span class="dv">2</span>)<span class="op">*</span>dt <span class="op">+</span> sigma<span class="op">*</span>sqrt(dt)<span class="op">*</span>norm.rvs()) <span class="co"># sample a new stock price</span></span>
@@ -1456,7 +1497,7 @@ dict_values([0.25002448066930727, 0.28760290709660397, 0.2273127644037836])</cod
 </div>
 </div>
 </div>
-<div id="cell-44" class="cell" data-execution_count="22">
+<div id="cell-46" class="cell" data-execution_count="22">
 <div class="sourceCode cell-code" id="cb31"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Let's see how it works for 30 days forward</span></span>
 <span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a><span class="co"># initialize data</span></span>
 <span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a>port_value <span class="op">=</span> np.zeros(days_forward<span class="op">+</span><span class="dv">1</span>)</span>
@@ -1912,7 +1953,7 @@ Y^A - Y^C = C_0.
 <p>$y_j^{(2)} = r_j^2 + ^2 Q_2’(s_{i+1}, ‘(s_{i+1}|<sup>{’})|</sup>{Q’}) + 2 r_j Q_1’(s_{i+1}, ‘(s_{i+1}|<sup>{’})|</sup>{Q’}) $</p>
 <p><span class="math inline">\(\hspace{1.4 cm}\)</span> Update <span class="math inline">\(Q_{1,2}\)</span>: <span class="math inline">\(Q_{1,2} = \underset{Q_{1,2}}{\mathrm{argmin}}\left\{\frac{1}{J}\sum_j\left(y_j^{(1,2)} - Q_{1,2}(s_j,a_j|\theta^{Q_{1,2}})\right)^2\right\}\)</span> <br> <span class="math inline">\(\hspace{1.4 cm}\)</span> Update <span class="math inline">\(\mu\)</span> using gradient descent: <span class="math inline">\(\nabla_{\theta^{\mu}}G = \frac{1}{J}\sum_j\nabla_aF(s_j, a_j|\theta^{Q_{1,2}})\nabla_{\theta^{\mu}}\mu(s_j|\theta^{\mu}),\,\, \theta^\mu = \theta^\mu - \nabla_{\theta^\mu}G \times \text{step}\)</span></p>
 <p><strong>Step 2.6</strong> Update the target networks: <span class="math inline">\(\theta^{Q'_{1,2}} \leftarrow \tau\theta^{Q_{1,2}} + (1-\tau)\theta^{Q'_{1,2}}, \,\,\theta^{\mu'} \leftarrow \tau\theta^\mu + (1-\tau)\theta^{\mu'}\)</span></p>
-<div id="cell-57" class="cell" data-execution_count="23">
+<div id="cell-59" class="cell" data-execution_count="23">
 <div class="sourceCode cell-code" id="cb32"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>pip show DDPG</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Note: you may need to restart the kernel to use updated packages.</code></pre>
@@ -1921,7 +1962,7 @@ Y^A - Y^C = C_0.
 <pre><code>WARNING: Package(s) not found: DDPG</code></pre>
 </div>
 </div>
-<div id="cell-58" class="cell" data-execution_count="24">
+<div id="cell-60" class="cell" data-execution_count="24">
 <div class="sourceCode cell-code" id="cb35"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="co"># import DDPG and other related packages</span></span>
 <span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
@@ -1935,7 +1976,7 @@ Y^A - Y^C = C_0.
 </section>
 <section id="performance-of-deep-hedging-vs-delta-hedging" class="level2">
 <h2 class="anchored" data-anchor-id="performance-of-deep-hedging-vs-delta-hedging">Performance of deep hedging vs delta hedging</h2>
-<div id="cell-60" class="cell" data-execution_count="25">
+<div id="cell-62" class="cell" data-execution_count="25">
 <div class="sourceCode cell-code" id="cb36"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="co"># python function to implement the trained model </span></span>
 <span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> DDPG(n_path<span class="op">=</span><span class="dv">5000</span>, m<span class="op">=</span><span class="dv">4</span>, T<span class="op">=</span><span class="dv">1</span><span class="op">/</span><span class="dv">12</span>, r<span class="op">=</span><span class="dv">0</span>, q<span class="op">=</span><span class="dv">0</span>, sigma<span class="op">=</span><span class="fl">0.2</span>, S0<span class="op">=</span><span class="dv">100</span>, K<span class="op">=</span><span class="dv">100</span>, model_path<span class="op">=</span><span class="st">""</span>):</span>
 <span id="cb36-3"><a href="#cb36-3" aria-hidden="true" tabindex="-1"></a>    stock_price, call_price, call_delta <span class="op">=</span> GenerateBSPath(n_path<span class="op">=</span>n_path, <span class="op">\</span></span>
@@ -2019,7 +2060,7 @@ Y^A - Y^C = C_0.
 <span id="cb36-81"><a href="#cb36-81" aria-hidden="true" tabindex="-1"></a>    </span>
 <span id="cb36-82"><a href="#cb36-82" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> actor_model</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="cell-61" class="cell" data-execution_count="33">
+<div id="cell-63" class="cell" data-execution_count="33">
 <div class="sourceCode cell-code" id="cb37"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="co"># function for plotting optimal policy </span></span>
 <span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> mpl_toolkits.mplot3d <span class="im">import</span> Axes3D</span>
 <span id="cb37-3"><a href="#cb37-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -2059,7 +2100,7 @@ Y^A - Y^C = C_0.
 </section>
 <section id="one-month-option-weekly-hedging" class="level2">
 <h2 class="anchored" data-anchor-id="one-month-option-weekly-hedging">One-month option, weekly hedging</h2>
-<div id="cell-63" class="cell" data-execution_count="27">
+<div id="cell-65" class="cell" data-execution_count="27">
 <div class="sourceCode cell-code" id="cb38"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>time</span>
 <span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a><span class="co"># model paramters</span></span>
 <span id="cb38-3"><a href="#cb38-3" aria-hidden="true" tabindex="-1"></a>r, q, sigma, S0, K <span class="op">=</span> <span class="dv">0</span>, <span class="dv">0</span>, <span class="fl">0.2</span>, <span class="dv">100</span>, <span class="dv">100</span></span>
@@ -2104,7 +2145,7 @@ Wall time: 18.5 s</code></pre>
 </section>
 <section id="what-does-the-optimal-action-look-like" class="level2">
 <h2 class="anchored" data-anchor-id="what-does-the-optimal-action-look-like">What does the optimal action look like?</h2>
-<div id="cell-65" class="cell" data-execution_count="34">
+<div id="cell-67" class="cell" data-execution_count="34">
 <div class="sourceCode cell-code" id="cb41"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a>plotAction(weekly)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div>
@@ -2117,7 +2158,7 @@ Wall time: 18.5 s</code></pre>
 </section>
 <section id="one-month-option-tridaily-hedging" class="level2">
 <h2 class="anchored" data-anchor-id="one-month-option-tridaily-hedging">One-month option, tridaily hedging</h2>
-<div id="cell-67" class="cell" data-execution_count="35">
+<div id="cell-69" class="cell" data-execution_count="35">
 <div class="sourceCode cell-code" id="cb42"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>time</span>
 <span id="cb42-2"><a href="#cb42-2" aria-hidden="true" tabindex="-1"></a><span class="co"># one month option, tridaily hedging</span></span>
 <span id="cb42-3"><a href="#cb42-3" aria-hidden="true" tabindex="-1"></a>T, m <span class="op">=</span> <span class="dv">1</span><span class="op">/</span><span class="dv">12</span>, <span class="dv">10</span></span>
@@ -2150,7 +2191,7 @@ Wall time: 18.5 s</code></pre>
 Wall time: 50 s</code></pre>
 </div>
 </div>
-<div id="cell-68" class="cell" data-execution_count="36">
+<div id="cell-70" class="cell" data-execution_count="36">
 <div class="sourceCode cell-code" id="cb45"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a><span class="co"># plot tridaily action function </span></span>
 <span id="cb45-2"><a href="#cb45-2" aria-hidden="true" tabindex="-1"></a>plotAction(tridaily)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
@@ -2164,7 +2205,7 @@ Wall time: 50 s</code></pre>
 </section>
 <section id="month-option-weekly-hedging" class="level2">
 <h2 class="anchored" data-anchor-id="month-option-weekly-hedging">3-month option, weekly hedging</h2>
-<div id="cell-70" class="cell" data-execution_count="37">
+<div id="cell-72" class="cell" data-execution_count="37">
 <div class="sourceCode cell-code" id="cb46"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>time</span>
 <span id="cb46-2"><a href="#cb46-2" aria-hidden="true" tabindex="-1"></a><span class="co"># 3 months option, weekly hedging</span></span>
 <span id="cb46-3"><a href="#cb46-3" aria-hidden="true" tabindex="-1"></a>T, m <span class="op">=</span> <span class="dv">3</span><span class="op">/</span><span class="dv">12</span>, <span class="dv">4</span></span>
@@ -2197,7 +2238,7 @@ Wall time: 50 s</code></pre>
 Wall time: 19.9 s</code></pre>
 </div>
 </div>
-<div id="cell-71" class="cell" data-execution_count="38">
+<div id="cell-73" class="cell" data-execution_count="38">
 <div class="sourceCode cell-code" id="cb49"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a>plotAction(weekly_3m)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div>
