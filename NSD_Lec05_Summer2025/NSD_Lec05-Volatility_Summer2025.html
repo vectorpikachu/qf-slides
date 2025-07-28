@@ -241,7 +241,7 @@ window.Quarto = {
   <ul class="collapse">
   <li><a href="#note-1" id="toc-note-1" class="nav-link" data-scroll-target="#note-1">Note</a></li>
   </ul></li>
-  <li><a href="#formula-of-finanical-engineering" id="toc-formula-of-finanical-engineering" class="nav-link" data-scroll-target="#formula-of-finanical-engineering">“Formula of finanical engineering”</a></li>
+  <li><a href="#formula-of-financial-engineering" id="toc-formula-of-financial-engineering" class="nav-link" data-scroll-target="#formula-of-financial-engineering">“Formula of financial engineering”</a></li>
   <li><a href="#example---log-contract" id="toc-example---log-contract" class="nav-link" data-scroll-target="#example---log-contract">Example - log contract</a>
   <ul class="collapse">
   <li><a href="#note-2" id="toc-note-2" class="nav-link" data-scroll-target="#note-2">Note</a></li>
@@ -4997,34 +4997,95 @@ Wall time: 9.85 s</code></pre>
 <li>VXN</li>
 <li>VVIX: VIX of VIX.</li>
 </ul>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>指数</th>
+<th>标的资产</th>
+<th>期限</th>
+<th>用途</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>VIX9D</td>
+<td>标普 500</td>
+<td>9 天</td>
+<td>短期市场波动对冲</td>
+</tr>
+<tr class="even">
+<td>VIX3M</td>
+<td>标普 500</td>
+<td>3 个月</td>
+<td>中长期波动管理</td>
+</tr>
+<tr class="odd">
+<td>VIX6M</td>
+<td>标普 500</td>
+<td>6 个月</td>
+<td>长期波动对冲</td>
+</tr>
+<tr class="even">
+<td>VOX</td>
+<td>纳斯达克 100</td>
+<td>30 天</td>
+<td>科技股波动监测</td>
+</tr>
+<tr class="odd">
+<td>VXD</td>
+<td>道琼斯工业平均指数</td>
+<td>30 天</td>
+<td>蓝筹股波动监测</td>
+</tr>
+<tr class="even">
+<td>RVX</td>
+<td>房地产投资信托 (REITs)</td>
+<td>30 天</td>
+<td>房地产市场波动监测</td>
+</tr>
+<tr class="odd">
+<td>VXN</td>
+<td>纳斯达克综合指数</td>
+<td>30 天</td>
+<td>科技股及小型股波动监测</td>
+</tr>
+<tr class="even">
+<td>VVIX</td>
+<td>VIX 指数本身</td>
+<td>30 天</td>
+<td>波动率的波动性 (市场恐慌指标)</td>
+</tr>
+</tbody>
+</table>
 <section id="note-1" class="level3">
 <h3 class="anchored" data-anchor-id="note-1">Note</h3>
 <p>More volatility indices published by CBOE can be found in <a href="http://www.cboe.com/Volatility">this link</a>.</p>
 </section>
 </section>
-<section id="formula-of-finanical-engineering" class="level2">
-<h2 class="anchored" data-anchor-id="formula-of-finanical-engineering">“Formula of finanical engineering”</h2>
+<section id="formula-of-financial-engineering" class="level2">
+<h2 class="anchored" data-anchor-id="formula-of-financial-engineering">“Formula of financial engineering”</h2>
+<p>Engineering: “Build something new out of something that is not.”</p>
 <p>Notice that all payoffs we saw before can be expressed as a combination of payoffs from calls and puts, even the underlying itself since it can be regarded as a call struck at zero. A natural question to ask is, to what extent, can a given payoff function be represented as a combination of calls and puts?</p>
 <p>The answer is surprisingly “all the payoffs”! The following formula shows how.</p>
 <p>Let <span class="math inline">\(\varphi\)</span> be a payoff function, we have</p>
 <p><span class="math display">\[
-\varphi(s) = \varphi(f) + \varphi'(f)(s - f) + \int_f^\infty (s - k)^+ \varphi''(k) dk + \int_0^f (k - s)^+ \varphi''(k)dk.
+\varphi(s) = \varphi(f) + \varphi'(f)(s - f) + \int_f^\infty (s - k)^+ \varphi''(k) \mathrm{d}k + \int_0^f (k - s)^+ \varphi''(k)\mathrm{d}k.
 \]</span></p>
 <p>Let <span class="math inline">\(\delta\)</span> denote the Dirac delta function and <span class="math inline">\(\theta\)</span> the Heaviside function. Note that heuristically <span class="math inline">\(\theta' = \delta\)</span>, i.e., the Dirac delta can be regarded as the derivative of the Heaviside function.</p>
 <p>The payoff <span class="math inline">\(\varphi(s)\)</span> at time <span class="math inline">\(T\)</span> can be written as</p>
 <span class="math display">\[\begin{aligned}
-\varphi(s) &amp;= \int_0^\infty \varphi(k) \delta(s - k)\,dk \\
-&amp;= \int_0^f \varphi(k) \delta(s - k)\,dk + \int_f^\infty \varphi(k) \delta(s - k)\,dk \\
-&amp;= \varphi(f) - \int_0^f \varphi'(k) \theta(k - s)\,dk + \int_f^\infty \varphi'(k) \theta(s - k)\,dk \\
-&amp;= \varphi(f) + \varphi'(f) (s - f) + \int_0^f \varphi''(k) (k - s)^+\,dk + \int_f^\infty \varphi''(k) (s - k)^+\,dk.
+\varphi(s) &amp;= \int_0^\infty \varphi(k) \delta(s - k)\,\mathrm{d}k \\
+&amp;= \int_0^f \varphi(k) \delta(s - k)\,\mathrm{d}k + \int_f^\infty \varphi(k) \delta(s - k)\,\mathrm{d}k \\
+&amp;= \varphi(f) - \int_0^f \varphi'(k) \theta(k - s)\,\mathrm{d}k + \int_f^\infty \varphi'(k) \theta(s - k)\,\mathrm{d}k \\
+&amp;= \varphi(f) + \varphi'(f) (s - f) + \int_0^f \varphi''(k) (k - s)^+\,\mathrm{d}k + \int_f^\infty \varphi''(k) (s - k)^+\,\mathrm{d}k.
 \end{aligned}\]</span>
 <p>Thus,</p>
 <p><span class="math display">\[
-\varphi(S_T) = \varphi(f) + \varphi'(f) (S_T - f) + \int_0^f \varphi''(k) (k - S_T)^+ dk + \int_f^\infty \varphi''(k) (S_T - k)^+ dk.
+\varphi(S_T) = \varphi(f) + \varphi'(f) (S_T - f) + \int_0^f \varphi''(k) (k - S_T)^+ \mathrm{d}k + \int_f^\infty \varphi''(k) (S_T - k)^+ \mathrm{d}k.
 \]</span></p>
 <p>With <span class="math inline">\(f = \Eof{S_T}\)</span> and taking expectation on both sides, we end up</p>
 <span class="math display">\[\begin{aligned}
-\E[\varphi(S_T)] &amp;= \varphi(f) + \int_0^f \varphi''(k) P(k)\, dk + \int_f^\infty \varphi''(k) C(k)\, dk.
+\E[\varphi(S_T)] &amp;= \varphi(f) + \int_0^f \varphi''(k) P(k)\, \mathrm{d}k + \int_f^\infty \varphi''(k) C(k)\, \mathrm{d}k.
 \end{aligned}\]</span>
 <ul>
 <li>The price of any European style contingent claim can be expressed in terms of strips of out-of-money European options.</li>
@@ -5032,29 +5093,29 @@ Wall time: 9.85 s</code></pre>
 </section>
 <section id="example---log-contract" class="level2">
 <h2 class="anchored" data-anchor-id="example---log-contract">Example - log contract</h2>
-<p>Consider the log contract <span class="math inline">\(\varphi(s) = \log s\)</span>. Since <span class="math inline">\(\varphi'(s) = \frac1s\)</span> and <span class="math inline">\(\varphi''(s) = -\frac1{s^2}\)</span>, we obtain</p>
+<p>Consider the log contract <span class="math inline">\(\displaystyle \varphi(s) = \log s\)</span>. Since <span class="math inline">\(\displaystyle \varphi'(s) = \frac1s\)</span> and <span class="math inline">\(\displaystyle \varphi''(s) = -\frac1{s^2}\)</span>, we obtain</p>
 <p><span class="math display">\[
-\log s = \log f + \frac{s - f}{f} - \int_0^f \frac{(k - s)^+}{k^2} dk - \int_f^\infty \frac{(s - k)^+}{k^2} dk.
+\log s = \log f + \frac{s - f}{f} - \int_0^f \frac{(k - s)^+}{k^2} \mathrm{d}k - \int_f^\infty \frac{(s - k)^+}{k^2} \mathrm{d}k.
 \]</span></p>
 <p>Thus,</p>
 <p><span class="math display">\[
-\Eof{\log S_T} = \log f - \int_0^f \, \frac{P(k)}{k^2} \,dk - \int_f^\infty\, \frac{C(k)}{k^2} \,dk.
+\Eof{\log S_T} = \log f - \int_0^f \, \frac{P(k)}{k^2} \,\mathrm{d}k - \int_f^\infty\, \frac{C(k)}{k^2} \,\mathrm{d}k.
 \]</span></p>
 <p>On the other hand, assume <span class="math inline">\(S_t\)</span> satisfies the SDE under risk neutral probability with zero interest and dividend rates</p>
 <p><span class="math display">\[
-\frac{dS_t}{S_t} = \sigma_t dW_t,
+\frac{\mathrm{d}S_t}{S_t} = \sigma_t \mathrm{d}W_t,
 \]</span></p>
 <p>by applying Ito’s formula to <span class="math inline">\(\log S_t\)</span>, we obtain</p>
 <p><span class="math display">\[
-\log S_T = \log S_0 + \int_0^T \sigma_t \, dW_t - \frac{1}{2} \int_0^T \sigma_t^2 \, dt.
+\log S_T = \log S_0 + \int_0^T \sigma_t \, \mathrm{d}W_t - \frac{1}{2} \int_0^T \sigma_t^2 \, \mathrm{d}t.
 \]</span></p>
 <p>It follows by taking expectation on both sides that</p>
 <p><span class="math display">\[
-\Eof{\log S_T} = \log S_0 - \frac12 \Eof{\int_0^T \sigma_t^2 dt}
+\Eof{\log S_T} = \log S_0 - \frac12 \Eof{\int_0^T \sigma_t^2 \mathrm{d}t}
 \]</span></p>
 <p>Compare the two identities we obtain</p>
 <p><span class="math display">\[
-\frac1T \Eof{\int_0^T \sigma_t^2 dt} = \frac2T \int_0^f \, \frac{P(k)}{k^2} \,dk + \frac2T \int_f^\infty\, \frac{C(k)}{k^2} \,dk.
+\frac1T \Eof{\int_0^T \sigma_t^2 \mathrm{d}t} = \frac2T \int_0^f \, \frac{P(k)}{k^2} \,\mathrm{d}k + \frac2T \int_f^\infty\, \frac{C(k)}{k^2} \,\mathrm{d}k.
 \]</span></p>
 <section id="note-2" class="level3">
 <h3 class="anchored" data-anchor-id="note-2">Note</h3>
@@ -5283,15 +5344,15 @@ N \times \left(\sqrt{\frac1T \int_0^T \sigma_t^2 dt} - K \right)
 <h2 class="anchored" data-anchor-id="calculating-volatility-swap-fair-strike-from-mgf">Calculating volatility swap fair strike from MGF</h2>
 <p>By applying the following formula</p>
 <p><span class="math display">\[
-\sqrt x = \frac1{2\sqrt\pi}\int_0^\infty s^{-\frac32}\left(1 - e^{-xs}\right) ds,
+\sqrt x = \frac1{2\sqrt\pi}\int_0^\infty s^{-\frac32}\left(1 - e^{-xs}\right) \mathrm{d}s,
 \]</span></p>
 <p>we obtain</p>
 <p><span class="math display">\[
-\Eof{\sqrt{\frac1T \int_0^T \sigma_t^2 dt}} = \frac1{2\sqrt\pi}\int_0^\infty s^{-\frac32}\left(1 - \Eof{e^{-xs}}\right) ds
+\Eof{\sqrt{\frac1T \int_0^T \sigma_t^2 \mathrm{d}t}} = \frac1{2\sqrt\pi}\int_0^\infty s^{-\frac32}\left(1 - \Eof{e^{-xs}}\right) \mathrm{d}s
 \]</span></p>
 <p>where apparently,</p>
 <p><span class="math display">\[
-x = \frac1T \int_0^T \sigma_t^2 dt
+x = \frac1T \int_0^T \sigma_t^2 \mathrm{d}t
 \]</span></p>
 <p>and <span class="math inline">\(\Eof{e^{-xs}}\)</span> the moment generating function for realized variance.</p>
 </section>
@@ -5736,9 +5797,8 @@ There are 29 days to expiry</code></pre>
 <h3 class="anchored" data-anchor-id="assumption">Assumption</h3>
 <p>The log price <span class="math inline">\(X_t\)</span> follows the Ito process</p>
 <p><span class="math display">\[
-dX_t = \mu_t dt + \sigma_t dW_t,
-\]</span></p>
-<p>where <span class="math inline">\(W_t\)</span> is a Brownian motion. Under the assumption, <span class="math inline">\(\angl{X}_t = \int_0^t \sigma_\tau^2 d\tau\)</span>.</p>
+\mathrm{d}X_t = \mu_t \mathrm{d}t + \sigma_t \mathrm{d}W_t,
+\]</span> nd where <span class="math inline">\(W_t\)</span> is a Brownian motion. Uer the assumption, <span class="math inline">\(\angl{X}_t = \int_0^t \sigma_\tau^2 \mathrm{d}\tau\)</span>.</p>
 </section>
 </section>
 <section id="integrated-variance-or-quadratic-variation" class="level2">
@@ -5749,11 +5809,11 @@ dX_t = \mu_t dt + \sigma_t dW_t,
 \angl{X}_T:= \lim_{\|\Pi_n\| \to 0} \sum_{{t_i} \in \Pi_n} |\Delta X_{t_i}|^2
 \]</span></p>
 <p>provided the limit exist (in probability).</p>
-<p>Thus, the goal is to estimate the quadratic variation of the efficient log price from the transacted log price, i.e., tick data. However, the subtlety is that efficient price is not directly observable and is contaminated by market microstructure noises.</p>
+<p>Thus, the goal is to estimate the quadratic variation of the efficient log price from the transacted log price, i.e., tick data. However, the subtlety is that efficient is not directly observable and is contaminated by market microstructure noises.</p>
 <section id="note-3" class="level4">
 <h4 class="anchored" data-anchor-id="note-3">Note</h4>
 <ul>
-<li><p>If the process <span class="math inline">\(X\)</span> has jumps, the quadratic variation <span class="math inline">\(\angl{X}\)</span> becomes</p>
+<li><p>If the process <span class="math inline">\(X\)</span> has jumps, the quadratic variation <span class="math inline">\(\angl{X}\)</span> becomes price</p>
 <span class="math display">\[\begin{aligned}
   \langle X \rangle_t &amp;= \langle X^c \rangle_t + \sum_{0 &lt; s \leq t} |\Delta X_s|^2,
   \end{aligned}\]</span>
@@ -5775,14 +5835,14 @@ dX_t = \mu_t dt + \sigma_t dW_t,
 \end{aligned}\]</span>
 <section id="note-4" class="level4">
 <h4 class="anchored" data-anchor-id="note-4">Note</h4>
-<p>The difference between <span class="math inline">\([X]_T\)</span> and <span class="math inline">\(\angl{X}_T\)</span> is referred to as the <em>discretization error</em>, which is usually controled by the integrated quarticity <span class="math inline">\(\int_0^T \sigma_t^4 dt\)</span>.</p>
+<p>The difference between <span class="math inline">\([X]_T\)</span> and <span class="math inline">\(\angl{X}_T\)</span> is referred to as the <em>discretization error</em>, which is usually controled by the integrated quarticity <span class="math inline">\(\int_0^T \sigma_t^4 \mathrm{d}t\)</span>.</p>
 </section>
 </section>
 <section id="asymptotic-result" class="level3">
 <h3 class="anchored" data-anchor-id="asymptotic-result">Asymptotic result</h3>
 <p>A more detailed, but more technical, asymptotic analysis shown in [Zhang, Mykland and Aït-Sahalia]<sup id="cite_ref-ZMA" class="reference"><a href="#cite_note-ZMA">[9]</a></sup> yields that as <span class="math inline">\(n \to \infty\)</span></p>
 <p><span class="math display">\[
-[Y]^{\Pi}_T \mathop{\approx}^{\mathcal L} \angl{X}_T + 2 \, n \, \text{var}[\epsilon] + \sqrt{ 4 n \Eof{\epsilon^4} + \frac{2T}{n} \int_0^T \sigma_t^4 dt} \; Z,
+[Y]^{\Pi}_T \mathop{\approx}^{\mathcal L} \angl{X}_T + 2 \, n \, \text{var}[\epsilon] + \sqrt{ 4 n \Eof{\epsilon^4} + \frac{2T}{n} \int_0^T \sigma_t^4 \mathrm{d}t} \; Z,
 \]</span></p>
 <p>where <span class="math inline">\(Z \sim N(0,1)\)</span>.</p>
 <section id="note-5" class="level4">
@@ -5821,7 +5881,7 @@ dX_t = \mu_t dt + \sigma_t dW_t,
 <p>We denote by <span class="math inline">\([Y]_T^{\Pi^{(k)}}\)</span> the RV estimate of <span class="math inline">\(Y\)</span> using the subsamples that are sampled from the sampling times in <span class="math inline">\(\Pi^{(k)}\)</span>, for <span class="math inline">\(1 \leq k \leq K\)</span>.</p>
 <p>By the same token, we have the following asymptotics for each subsample <span class="math inline">\(k \in \{1, \cdots, K\}\)</span></p>
 <p><span class="math display">\[
-[Y]^{\Pi^{(k)}}_T \mathop{\approx}^{\mathcal L} \angl{X}_T + 2 \, n_k \, \text{var}[\epsilon] + \sqrt{ 4 n_k \Eof{\epsilon^4} + \frac{2T}{n_k} \int_0^T \sigma_t^4 dt} \; Z_k
+[Y]^{\Pi^{(k)}}_T \mathop{\approx}^{\mathcal L} \angl{X}_T + 2 \, n_k \, \text{var}[\epsilon] + \sqrt{ 4 n_k \Eof{\epsilon^4} + \frac{2T}{n_k} \int_0^T \sigma_t^4 \mathrm{d}t} \; Z_k
 \]</span></p>
 <p>where <span class="math inline">\(Z_k \sim N(0,1)\)</span>.</p>
 </section>
@@ -5830,7 +5890,7 @@ dX_t = \mu_t dt + \sigma_t dW_t,
 <p>We can boost the RV estimator by averaging over the “weak learners” <span class="math inline">\([Y]_T^{\Pi^{(k)}}\)</span></p>
 <span class="math display">\[\begin{aligned}
 [Y]_T^{\text{avg}} &amp;= \frac{1}{K} \sum_{k=1}^K [Y]_T^{\Pi^{(k)}} \\
-&amp;\approx \langle X \rangle_T + 2 \, \bar{n}_K \, \text{var}[\epsilon] + \sqrt{ 4 \frac{\bar{n}_K}{K} \E[\epsilon^4] + \frac{4T}{3 \bar{n}_K} \int_0^T \sigma_t^4 \, dt} \, Z.
+&amp;\approx \langle X \rangle_T + 2 \, \bar{n}_K \, \text{var}[\epsilon] + \sqrt{ 4 \frac{\bar{n}_K}{K} \E[\epsilon^4] + \frac{4T}{3 \bar{n}_K} \int_0^T \sigma_t^4 \, \mathrm{d}t} \, Z.
 \end{aligned}\]</span>
 <p>where $n_K := 1K _k n_k $ is the average number of ticks in each subsample, roughly equal to <span class="math inline">\(\frac nK\)</span>.</p>
 <section id="note-6" class="level4">
@@ -5838,7 +5898,7 @@ dX_t = \mu_t dt + \sigma_t dW_t,
 <ul>
 <li>Boosting reduces biasedness and variance by a factor of <span class="math inline">\(K\)</span>, but is unable to completely remove the biasedness.</li>
 <li>The optimal average subsample size <span class="math inline">\(\bar n^*\)</span> is given by <span class="math display">\[
-\bar n^* = \sqrt[3]{\frac T{6\text{var}^2[\epsilon]} \int_0^T \sigma_t^4 dt}.
+\bar n^* = \sqrt[3]{\frac T{6\text{var}^2[\epsilon]} \int_0^T \sigma_t^4 \mathrm{d}t}.
 \]</span></li>
 </ul>
 <p>Thus, the whole sample set is splitted into roughly <span class="math inline">\(K^* \approx \frac n{\bar n^*}\)</span> sets of subsamples.</p>
@@ -5861,11 +5921,11 @@ dX_t = \mu_t dt + \sigma_t dW_t,
 \]</span></p>
 <p>Moreover, we have the asymptotic behavior for <span class="math inline">\([Y]_T^{ZMA}\)</span> as</p>
 <p><span class="math display">\[
-[Y]_T^{ZMA} \approx \angl{X}_T + \frac1{\sqrt[6]n}\sqrt{\frac8{c^2}\text{var}^2[\epsilon] + c \frac{4T}3 \int_0^T \sigma_t^4 dt} \; Z
+[Y]_T^{ZMA} \approx \angl{X}_T + \frac1{\sqrt[6]n}\sqrt{\frac8{c^2}\text{var}^2[\epsilon] + c \frac{4T}3 \int_0^T \sigma_t^4 \mathrm{d}t} \; Z
 \]</span></p>
 <p>where <span class="math inline">\(Z \sim N(0,1)\)</span>. The optimal constant <span class="math inline">\(c^*\)</span> is given by</p>
 <p><span class="math display">\[
-c^* = \left(\frac T{12 \, \text{var}^2[\epsilon]} \int_0^T \sigma_t^4 dt \right)^{-\frac13}.
+c^* = \left(\frac T{12 \, \text{var}^2[\epsilon]} \int_0^T \sigma_t^4 \mathrm{d}t \right)^{-\frac13}.
 \]</span></p>
 <section id="note-7" class="level4">
 <h4 class="anchored" data-anchor-id="note-7">Note</h4>
@@ -6729,6 +6789,10 @@ dtype: float64</code></pre>
 <li>At-the-Money: 行权后无利可图.</li>
 <li>Out-of-the-Money: 行权后会亏损.</li>
 </ul>
+<p>公式:</p>
+<p><span class="math display">\[
+\text{Moneyness} = \frac{K e^{-r \tau}}{S e^{-d\tau}}.
+\]</span></p>
 
 
 </section>
