@@ -74,7 +74,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="../site_libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-247ab3540652b161ae74986f4e2fd575.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-709121ecd247d9427ecc0064bdf97120.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -946,8 +946,15 @@ k(x, y) = A e^{-\frac{|x-y|^2}{2\ell^2}}
 </section>
 <section id="resolutions-to-smile" class="level2">
 <h2 class="anchored" data-anchor-id="resolutions-to-smile">Resolutions to smile</h2>
-<p>Approaches to resolve the skew/smile problem - Local volatility model - Assume the volatility is a function of the underlying asset and time. - Market is complete. - Volatility function is recoverable from the market data (Dupire formula) - easy to calibrate. - Dupire (diffusion model), Derman-Kani(Markov chain model)</p>
+<p>Approaches to resolve the skew/smile problem</p>
 <ul>
+<li>Local volatility model
+<ul>
+<li>Assume the volatility is a function of the underlying asset and time.</li>
+<li>Market is complete.</li>
+<li>Volatility function is recoverable from the market data (Dupire formula) - easy to calibrate.</li>
+<li>Dupire (diffusion model), Derman-Kani(Markov chain model)</li>
+</ul></li>
 <li>Stochastic volatility model
 <ul>
 <li>Assume the volatility itself follows another stochastic process.</li>
@@ -962,14 +969,14 @@ k(x, y) = A e^{-\frac{|x-y|^2}{2\ell^2}}
 <section id="local-volatility-model" class="level2">
 <h2 class="anchored" data-anchor-id="local-volatility-model">Local volatility model</h2>
 <p>The local volatility model assumes that the evolution of the price <span class="math inline">\(S_t\)</span> of the underlying under risk neutral probability (with zero interest rate) is governed by the SDE <span class="math display">\[
-\frac{dS_t}{S_t} =  \sigma_\ell (S_t,t) dW_t.
+\frac{\mathrm{d}S_t}{S_t} =  \sigma_\ell (S_t,t) \mathrm{d}W_t.
 \]</span></p>
 <p><span class="math inline">\(\sigma_\ell\)</span> is referred to as the <em>local volatility function</em>. In other words, rather than taking the volatility as a constant as in the Black-Scholes model, the local volatility model allows the volatility to depend on, and only on, the underlying price <span class="math inline">\(s\)</span> and time <span class="math inline">\(t\)</span>.</p>
 <p>The associated pricing equation for the local volatility model (assume interest rate <span class="math inline">\(r=0\)</span>) is given by</p>
 <p><span class="math display">\[
 \frac{\p u}{\p t} + \frac{\sigma_\ell^2(s,t)}{2}s^2\frac{\p^2 u}{\p s^2} = 0.
 \]</span></p>
-<p>In addition to being a complete market, one fascinating feature of the local volatility model is that the local volatility function <span class="math inline">\(\sigma_\ell\)</span> ideally can be read off from the marekt data of vanilla calls by applying the Dupire’s formula</p>
+<p>In addition to being a complete market, one fascinating feature of the local volatility model is that the local volatility function <span class="math inline">\(\sigma_\ell\)</span> ideally can be read off from the market data of vanilla calls by applying the Dupire’s formula</p>
 <p><span class="math display">\[
 \sigma^2_\ell(K,T) = \frac{\frac{\p C}{\p T}}{\frac12 K^2 \frac{\p^2 C}{\p K^2}}
 \]</span></p>
@@ -979,20 +986,20 @@ k(x, y) = A e^{-\frac{|x-y|^2}{2\ell^2}}
 <h2 class="anchored" data-anchor-id="example---bachelier-model">Example - Bachelier model</h2>
 <p>The Bachelier model can be regarded as a local volatility model with the local volatility function given by <span class="math inline">\(\sigma_\ell(s) = \frac{\sigma}s\)</span>. Hence, the model reads</p>
 <p><span class="math display">\[
-dS_t = \sigma dW_t \quad \Longleftrightarrow \quad S_t = S_0 + \sigma W_t.
+\mathrm{d}S_t = \sigma \mathrm{d}W_t \quad \Longleftrightarrow \quad S_t = S_0 + \sigma W_t.
 \]</span></p>
 <p>In other words, the price of the underlying evolves as a (shifted and rescaled) Brownian motion. The associated pricing equation in the Bachelier model reads</p>
 <p><span class="math display">\[
 \frac{\p u}{\p t} + \frac{\sigma^2}{2} \frac{\p^2 u}{\p s^2} = 0,
 \]</span></p>
-<p>which is the classcial (backward) heat equation, and the premium <span class="math inline">\(c\)</span> of call struck at <span class="math inline">\(K\)</span> with time-to-expiry <span class="math inline">\(\tau\)</span> is given by</p>
+<p>which is the classical (backward) heat equation, and the premium <span class="math inline">\(c\)</span> of call struck at <span class="math inline">\(K\)</span> with time-to-expiry <span class="math inline">\(\tau\)</span> is given by</p>
 <p><span class="math display">\[
 c = \frac{\sigma\sqrt\tau}{\sqrt{2\pi}} \, e^{-\frac{(s - K)^2}{2\sigma^2\tau}} + (s - K) \, N\left(\frac{s - K}{\sigma\sqrt\tau}\right).
 \]</span></p>
 </section>
 <section id="louis-bachelier" class="level2">
 <h2 class="anchored" data-anchor-id="louis-bachelier">Louis Bachelier</h2>
-<h2 class="anchored">
+<h2 style="text-align: center;" class="anchored">
 <img src="https://upload.wikimedia.org/wikipedia/commons/3/3b/LouisBachelier.jpg" align="center" width="160">
 </h2>
 <p><br> Courtesy: Photo from Wikipedia <br></p>
@@ -1008,7 +1015,7 @@ c = \frac{\sigma\sqrt\tau}{\sqrt{2\pi}} \, e^{-\frac{(s - K)^2}{2\sigma^2\tau}} 
 <h2 class="anchored" data-anchor-id="example---cev-model">Example - CEV model</h2>
 <p>The constant elasticity of variance (CEV) model is a local volatility model with the local volatility function given by a power function in the price of the underlying. Specifically, the CEV model reads</p>
 <p><span class="math display">\[
-\frac{dS_t}{S_t} = \alpha S_t^\beta dW_t
+\frac{\mathrm{d}S_t}{S_t} = \alpha S_t^\beta \mathrm{d}W_t
 \]</span></p>
 <p>with <span class="math inline">\(\alpha &gt; 0\)</span> and <span class="math inline">\(\beta &gt; -1\)</span>. The associated pricing equation in the CEV model reads</p>
 <p><span class="math display">\[
@@ -1028,8 +1035,8 @@ c = \frac{\sigma\sqrt\tau}{\sqrt{2\pi}} \, e^{-\frac{(s - K)^2}{2\sigma^2\tau}} 
 <p>Stochastic volatility models impose that the volatility (or equivalently the variance) <em>per se</em> is a stochastic process which may or may not be correlated to the driving Brownian motion of the underlying. A generic stochastic volatility model is of the form</p>
 <p><span class="math display">\[\begin{equation}
 \begin{aligned}
-   \frac{dS_t}{S_t} &amp;= \sqrt{v_t} \, dW_t, \\
-   dv_t &amp;= a(t, v_t) \, dt + b(t, v_t) \, dZ_t,
+   \frac{\mathrm{d}S_t}{S_t} &amp;= \sqrt{v_t} \, \mathrm{d}W_t, \\
+   \mathrm{d}v_t &amp;= a(t, v_t) \, \mathrm{d}t + b(t, v_t) \, \mathrm{d}Z_t,
 \end{aligned}
 \end{equation}\]</span></p>
 <p>where <span class="math inline">\(W_t\)</span> and <span class="math inline">\(Z_t\)</span> are correlated Brownian motions with correlation <span class="math inline">\(\rho\)</span>. The process <span class="math inline">\(v_t\)</span> is usually referred to as the <em>instantaneous variance</em> and its square root <span class="math inline">\(\sigma_t := \sqrt{v_t}\)</span> the <em>instantaneous volatility</em> of the underlying at time <span class="math inline">\(t\)</span>.</p>
@@ -1071,9 +1078,9 @@ c = \frac{\sigma\sqrt\tau}{\sqrt{2\pi}} \, e^{-\frac{(s - K)^2}{2\sigma^2\tau}} 
 <p>The dynamic of Heston’s model under risk neutral probability with zero interest rate reads</p>
 <p><span class="math display">\[\begin{equation}
 \begin{aligned}
-   \frac{d S_t}{S_t} &amp;= \sqrt{v_t} \, dB_t,  \\
-   dv_t &amp;= \lambda(m - v_t) \, dt + \eta \sqrt{v_t} \, dZ_t, \\
-   \mathbb{E}[dB_t \, dZ_t] &amp;= \rho \, dt.
+   \frac{\mathrm{d} S_t}{S_t} &amp;= \sqrt{v_t} \, \mathrm{d}B_t,  \\
+   \mathrm{d}v_t &amp;= \lambda(m - v_t) \, \mathrm{d}t + \eta \sqrt{v_t} \, \mathrm{d}Z_t, \\
+   \mathbb{E}[\mathrm{d}B_t \, \mathrm{d}Z_t] &amp;= \rho \, \mathrm{d}t.
 \end{aligned}
 \end{equation}\]</span></p>
 <p>The pricing equation in Heston’s model reads</p>
@@ -1086,7 +1093,7 @@ c = K \,\left\{ e^x \,P_1(x,v,\tau ) - P_0(x ,v ,\tau)\right\},
 \]</span></p>
 <p>where <span class="math inline">\(x = \log s - \log K\)</span> and</p>
 <p><span class="math display">\[
-    P_j (x,v,\tau ) =\frac{1}{2} + \frac{1}{\pi }\,\int_0^\infty \,\mathop{Re} \left\{ {\frac{{\exp \{ C_j (u,\tau )\,\bar v + D_j(u,\tau )\,v + i\,u\,x\} }}{{i\,u}}} \right\} \, du, \quad j = 0,1.
+    P_j (x,v,\tau ) =\frac{1}{2} + \frac{1}{\pi }\,\int_0^\infty \,\mathop{Re} \left\{ {\frac{{\exp \{ C_j (u,\tau )\,\bar v + D_j(u,\tau )\,v + i\,u\,x\} }}{{i\,u}}} \right\} \, \mathrm{d}u, \quad j = 0,1.
 \]</span></p>
 <section id="note-8" class="level3">
 <h3 class="anchored" data-anchor-id="note-8">Note</h3>
@@ -1095,7 +1102,7 @@ c = K \,\left\{ e^x \,P_1(x,v,\tau ) - P_0(x ,v ,\tau)\right\},
 <li>Technical note: call premium from characteristic function</li>
 </ul>
 <p><span class="math display">\[
-c = S - \frac{\sqrt{SK}}\pi \, \int_0^\infty Re\left\{ e^{-iuk} \phi\left(u - \frac i2 \right) \right\} \frac{du}{u^2 + \frac14},
+c = S - \frac{\sqrt{SK}}\pi \, \int_0^\infty Re\left\{ e^{-iuk} \phi\left(u - \frac i2 \right) \right\} \frac{\mathrm{d}u}{u^2 + \frac14},
 \]</span></p>
 <p>where <span class="math inline">\(\phi\)</span> is the characteristic function of <span class="math inline">\(\log(S_T/S_0)\)</span>, <span class="math inline">\(k = \log(K/S_0)\)</span> denotes the logmoneyness, and <span class="math inline">\(i = \sqrt{-1}\)</span>.</p>
 <div id="cell-34" class="cell" data-execution_count="14">
@@ -1177,35 +1184,35 @@ c = S - \frac{\sqrt{SK}}\pi \, \int_0^\infty Re\left\{ e^{-iuk} \phi\left(u - \f
 <p>Denote by <span class="math inline">\(X_t = \log S_t - \log S_0\)</span> the logarithmic return. Then the Heston model can be recast as</p>
 <p><span class="math display">\[\begin{equation}
 \begin{aligned}
-   dX_t &amp;= \sqrt{v_t} \, dB_t - \frac{1}{2} v_t \, dt, \\
-   dv_t &amp;= \lambda(m - v_t) \, dt + \eta \sqrt{v_t} \, dZ_t,
+   \mathrm{d}X_t &amp;= \sqrt{v_t} \, \mathrm{d}B_t - \frac{1}{2} v_t \, \mathrm{d}t, \\
+   \mathrm{d}v_t &amp;= \lambda(m - v_t) \, \mathrm{d}t + \eta \sqrt{v_t} \, \mathrm{d}Z_t,
 \end{aligned}
 \end{equation}\]</span></p>
 <p>where <span class="math inline">\(B_t = \rho Z_t + \bar\rho W_t\)</span> and <span class="math inline">\(W_t\)</span>, <span class="math inline">\(Z_t\)</span> are independent Brownian motions. <span class="math inline">\(\bar\rho = \sqrt{1 - \rho^2}\)</span>.</p>
 </section>
 <section id="joint-characteristic-function-for-log-return-and-integrated-variance" class="level2">
 <h2 class="anchored" data-anchor-id="joint-characteristic-function-for-log-return-and-integrated-variance">Joint characteristic function for log return and integrated variance</h2>
-<p>We are interested in determining the joint characteristic function for the logarithmic return <span class="math inline">\(X_T\)</span> and the integrated variance <span class="math inline">\(\int_0^T v_t dt\)</span>. Namely,</p>
+<p>We are interested in determining the joint characteristic function for the logarithmic return <span class="math inline">\(X_T\)</span> and the integrated variance <span class="math inline">\(\int_0^T v_t \mathrm{d}t\)</span>. Namely,</p>
 <p><span class="math display">\[
-\Eof{e^{iu_1 X_T + iu_2 \int_0^T v_t dt}},
+\Eof{e^{iu_1 X_T + iu_2 \int_0^T v_t \mathrm{d}t}},
 \]</span></p>
 <p>where <span class="math inline">\(u_1, u_2 \in \R\)</span> are parameters.</p>
 <p>Notice that we have</p>
 <p><span class="math display">\[\begin{equation}
 \begin{aligned}
-   X_T &amp;= X_t + \rho \int_t^T \sqrt{v_\tau} \, dZ_\tau + \bar{\rho} \int_t^T \sqrt{v_\tau} \, dW_\tau - \frac{1}{2} \int_t^T v_\tau \, d\tau  \\
-       &amp;= X_t + \frac{\rho}{\eta} \left\{v_T - v_t - \int_t^T \lambda(m - v_\tau) \, d\tau \right\} + \bar{\rho} \int_t^T \sqrt{v_\tau} \, dW_\tau - \frac{1}{2} \int_t^T v_\tau \, d\tau \\
-       &amp;= X_t - \frac{\rho}{\eta} \{v_t + \lambda m (T - t)\} + \frac{\rho}{\eta} v_T + \int_t^T \left(\frac{\lambda \rho}{\eta} - \frac{1}{2}\right) v_\tau \, d\tau + \bar{\rho} \int_t^T \sqrt{v_\tau} \, dW_\tau.
+   X_T &amp;= X_t + \rho \int_t^T \sqrt{v_\tau} \, \mathrm{d}Z_\tau + \bar{\rho} \int_t^T \sqrt{v_\tau} \, \mathrm{d}W_\tau - \frac{1}{2} \int_t^T v_\tau \, \mathrm{d}\tau  \\
+       &amp;= X_t + \frac{\rho}{\eta} \left\{v_T - v_t - \int_t^T \lambda(m - v_\tau) \, \mathrm{d}\tau \right\} + \bar{\rho} \int_t^T \sqrt{v_\tau} \, \mathrm{d}W_\tau - \frac{1}{2} \int_t^T v_\tau \, \mathrm{d}\tau \\
+       &amp;= X_t - \frac{\rho}{\eta} \{v_t + \lambda m (T - t)\} + \frac{\rho}{\eta} v_T + \int_t^T \left(\frac{\lambda \rho}{\eta} - \frac{1}{2}\right) v_\tau \, \mathrm{d}\tau + \bar{\rho} \int_t^T \sqrt{v_\tau} \, \mathrm{d}W_\tau.
 \end{aligned}
 \end{equation}\]</span></p>
 <p>Thus,</p>
 <p><span class="math display">\[\begin{equation}
 \begin{aligned}
-   &amp;\mathbb{E}\left[ \left. e^{iu_1 X_T + iu_2\int_t^T v_\tau \, d\tau} \right| X_t = x, v_t = v \right] \\
-   &amp;= \mathbb{E}\left[ \left. e^{iu_1 \left\{ X_t - \frac{\rho}{\eta} \{v_t + \lambda m (T - t)\} + \frac{\rho}{\eta} v_T + \int_t^T \left(\frac{\lambda \rho}{\eta} - \frac{1}{2}\right) v_\tau \, d\tau + \bar{\rho} \int_t^T \sqrt{v_\tau} \, dW_\tau \right\} + iu_2 \int_t^T v_\tau \, d\tau} \right| v_t = v \right] \\
-   &amp;= e^{iu_1\left(x - \frac{\rho}{\eta} \{v + \lambda m (T - t)\}\right)} \mathbb{E}\left[ \left. e^{iu_1 \left\{\frac{\rho}{\eta} v_T + \int_t^T \left(\frac{\lambda \rho}{\eta} - \frac{1}{2}\right) v_\tau \, d\tau + \bar{\rho} \int_t^T \sqrt{v_\tau} \, dW_\tau \right\} + iu_2 \int_t^T v_\tau \, d\tau} \right| v_t = v \right] \\
-   &amp;= e^{iu_1\left(x - \frac{\rho}{\eta} \{v + \lambda m (T - t)\}\right)} \mathbb{E}\left[ \left. e^{iu_1 \left\{\frac{\rho}{\eta} v_T + \int_t^T \left(\frac{\lambda \rho}{\eta} - \frac{1}{2} + \frac{\bar{\rho}^2}{2}\right) v_\tau \, d\tau \right\} + iu_2 \int_t^T v_\tau \, d\tau} \right| v_t = v \right] \\
-   &amp;= e^{iu_1\left(x - \frac{\rho}{\eta} \{v + \lambda m (T - t)\}\right)} \mathbb{E}\left[ \left. e^{ iu_1 \frac{\rho}{\eta} v_T + \int_t^T \left\{iu_1 \left(\frac{\lambda \rho}{\eta} - \frac{\rho^2}{2}\right) + iu_2 \right\} v_\tau \, d\tau} \right| v_t = v \right]
+   &amp;\mathbb{E}\left[ \left. e^{iu_1 X_T + iu_2\int_t^T v_\tau \, \mathrm{d}\tau} \right| X_t = x, v_t = v \right] \\
+   &amp;= \mathbb{E}\left[ \left. e^{iu_1 \left\{ X_t - \frac{\rho}{\eta} \{v_t + \lambda m (T - t)\} + \frac{\rho}{\eta} v_T + \int_t^T \left(\frac{\lambda \rho}{\eta} - \frac{1}{2}\right) v_\tau \, \mathrm{d}\tau + \bar{\rho} \int_t^T \sqrt{v_\tau} \, \mathrm{d}W_\tau \right\} + iu_2 \int_t^T v_\tau \, \mathrm{d}\tau} \right| v_t = v \right] \\
+   &amp;= e^{iu_1\left(x - \frac{\rho}{\eta} \{v + \lambda m (T - t)\}\right)} \mathbb{E}\left[ \left. e^{iu_1 \left\{\frac{\rho}{\eta} v_T + \int_t^T \left(\frac{\lambda \rho}{\eta} - \frac{1}{2}\right) v_\tau \, \mathrm{d}\tau + \bar{\rho} \int_t^T \sqrt{v_\tau} \, \mathrm{d}W_\tau \right\} + iu_2 \int_t^T v_\tau \, \mathrm{d}\tau} \right| v_t = v \right] \\
+   &amp;= e^{iu_1\left(x - \frac{\rho}{\eta} \{v + \lambda m (T - t)\}\right)} \mathbb{E}\left[ \left. e^{iu_1 \left\{\frac{\rho}{\eta} v_T + \int_t^T \left(\frac{\lambda \rho}{\eta} - \frac{1}{2} + \frac{\bar{\rho}^2}{2}\right) v_\tau \, \mathrm{d}\tau \right\} + iu_2 \int_t^T v_\tau \, \mathrm{d}\tau} \right| v_t = v \right] \\
+   &amp;= e^{iu_1\left(x - \frac{\rho}{\eta} \{v + \lambda m (T - t)\}\right)} \mathbb{E}\left[ \left. e^{ iu_1 \frac{\rho}{\eta} v_T + \int_t^T \left\{iu_1 \left(\frac{\lambda \rho}{\eta} - \frac{\rho^2}{2}\right) + iu_2 \right\} v_\tau \, \mathrm{d}\tau} \right| v_t = v \right]
 \end{aligned}
 \end{equation}\]</span></p>
 </section>
@@ -1214,7 +1221,7 @@ c = S - \frac{\sqrt{SK}}\pi \, \int_0^\infty Re\left\{ e^{-iuk} \phi\left(u - \f
 <p>We proceed by applying the Feynman-Kac formula to evaluate the expectation.</p>
 <p>Let</p>
 <p><span class="math display">\[
-u(t, v) = \Eof{\left. e^{ c_1 v_T - \int_t^T c_2 v_\tau d\tau} \right|v_t=v},
+u(t, v) = \Eof{\left. e^{ c_1 v_T - \int_t^T c_2 v_\tau \mathrm{d}\tau} \right|v_t=v},
 \]</span></p>
 <p>where <span class="math inline">\(c_1 = iu_1\frac\rho\eta\)</span> and <span class="math inline">\(c_2 = -i\left\{u_1\left(\frac{\lambda\rho}\eta - \frac{\rho^2}2\right) + u_2\right\}\)</span>. Then <span class="math inline">\(u\)</span> is a solution to the (backward) PDE</p>
 <p><span class="math display">\[\begin{equation}

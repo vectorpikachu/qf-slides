@@ -50,6 +50,30 @@
 }
 
 @font-face {
+  font-family:'LXGWWenKai';
+  src: url('fonts/LXGWWenKai-Regular.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-stretch: normal;
+}
+
+@font-face {
+  font-family:'LXGWWenKai';
+  src: url('fonts/LXGWWenKai-Light.woff2') format('woff2');
+  font-weight: 300;
+  font-style: normal;
+  font-stretch: normal;
+}
+
+@font-face {
+  font-family:'LXGWWenKai';
+  src: url('fonts/LXGWWenKai-Medium.woff2') format('woff2');
+  font-weight: 500;
+  font-style: normal;
+  font-stretch: normal;
+}
+
+@font-face {
   font-family: 'FmlSong';
   src: url('fonts/FmlSong-Black.woff2') format('woff2');
   font-weight: 900;
