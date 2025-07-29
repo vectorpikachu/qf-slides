@@ -18,7 +18,7 @@
     "href": "NSD_Lec06-OptimalOrderExecution_Summer2025.html#agenda",
     "title": "Topics in Quantitative Finance, Summer 2025",
     "section": "Agenda",
-    "text": "Agenda\n\nMarket impact of meta orders\n\nImpact profile\n\nEmpirical market impact profiles\nOptimal execution as variational and control problems\n\nrisk neutral\nmean-qv optimization\n\nThe Almgren-Chriss model and the Almgren-Chriss optimal liquidation strategy\nThe Obizhaeva-Wang model\nCombining Almgren-Chriss and Obizhaeva-Wang: the ACOW model\n\nNumerical examples"
+    "text": "Agenda\n\nMarket impact of meta orders\n\nImpact profile\n\nEmpirical market impact profiles\nOptimal execution as variational and control problems\n\nrisk neutral\nmean-qv optimization\n\nThe Almgren-Chriss model and the Almgren-Chriss optimal liquidation strategy (Almgren and Chriss 2001)\nThe Obizhaeva-Wang model (Obizhaeva and Wang 2013)\nCombining Almgren-Chriss and Obizhaeva-Wang: the ACOW model\n\nNumerical examples"
   },
   {
     "objectID": "NSD_Lec06-OptimalOrderExecution_Summer2025.html#what-is-market-or-price-impact",
@@ -32,7 +32,7 @@
     "href": "NSD_Lec06-OptimalOrderExecution_Summer2025.html#the-square-root-formula-for-market-impact",
     "title": "Topics in Quantitative Finance, Summer 2025",
     "section": "The square-root formula for market impact",
-    "text": "The square-root formula for market impact\n\nFor many years, traders have used the simple sigma-root-liquidity model described for example by Grinold and Kahn in 1994.\nSoftware incorporating this model includes:\n\nSalomon Brothers, StockFacts Pro since around 1991\nBarra, Market Impact Model since around 1998\nBloomberg, TCA function since 2005\n\nThe model is always of the rough form\n\\[\\Delta P = \\text{Spread cost} +\\alpha\\,\\sigma\\,\\sqrt{\\frac Q V}\\] where \\(\\sigma\\) is daily dollar volatility, \\(V\\) is daily volume, \\(Q\\) is the number of shares to be traded and \\(\\alpha\\) is a constant pre-factor of order one."
+    "text": "The square-root formula for market impact\n\nFor many years, traders have used the simple sigma-root-liquidity model described for example by Grinold and Kahn in 1994.\nSoftware incorporating this model includes:\n\nSalomon Brothers, StockFacts Pro since around 1991\nBarra, Market Impact Model since around 1998\nBloomberg, TCA function since 2005\n\nThe model is always of the rough form\n\\[\\Delta P = \\text{Spread cost} +\\alpha\\,\\sigma\\,\\sqrt{\\frac Q V}\\] where \\(\\sigma\\) is daily dollar volatility, \\(V\\) is daily volume, \\(Q\\) is the number of shares to be traded and \\(\\alpha\\) is a constant pre-factor of order one.\n\n注: Spread. 在金融市场中, 资产通常有两个报价:\n\nBid price (买入价): 交易者愿意支付的价格\nAsk price (卖出价): 交易者愿意接受的价格\n\n这两者之间的差额就是 Spread (点差).\n注: Spread cost. 无论你买入还是卖出, 你都会吃掉一半的 spread. \\[\n\\text{Spread cost} = \\frac{1}{2} \\times \\text{Spread}\n\\]"
   },
   {
     "objectID": "NSD_Lec06-OptimalOrderExecution_Summer2025.html#commonly-applied-algorithms",

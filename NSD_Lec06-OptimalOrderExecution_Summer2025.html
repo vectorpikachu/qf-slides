@@ -390,8 +390,8 @@ window.Quarto = {
 <li>risk neutral</li>
 <li>mean-qv optimization</li>
 </ul></li>
-<li>The Almgren-Chriss model and the Almgren-Chriss optimal liquidation strategy</li>
-<li>The Obizhaeva-Wang model</li>
+<li>The Almgren-Chriss model and the Almgren-Chriss optimal liquidation strategy <span class="citation" data-cites="OptimalExecutionPortfolio2001">(<a href="#ref-OptimalExecutionPortfolio2001" role="doc-biblioref">Almgren and Chriss 2001</a>)</span></li>
+<li>The Obizhaeva-Wang model <span class="citation" data-cites="obizhaevaOptimalTradingStrategy2013">(<a href="#ref-obizhaevaOptimalTradingStrategy2013" role="doc-biblioref">Obizhaeva and Wang 2013</a>)</span></li>
 <li>Combining Almgren-Chriss and Obizhaeva-Wang: the ACOW model
 <ul>
 <li>Numerical examples</li>
@@ -416,6 +416,15 @@ window.Quarto = {
 <li><p>The model is always of the rough form<br>
 <span class="math display">\[\Delta P = \text{Spread cost} +\alpha\,\sigma\,\sqrt{\frac Q V}\]</span> where <span class="math inline">\(\sigma\)</span> is daily dollar volatility, <span class="math inline">\(V\)</span> is daily volume, <span class="math inline">\(Q\)</span> is the number of shares to be traded and <span class="math inline">\(\alpha\)</span> is a constant pre-factor of order one.</p></li>
 </ul>
+<p>注: Spread. 在金融市场中, 资产通常有两个报价:</p>
+<ul>
+<li>Bid price (买入价): 交易者愿意支付的价格</li>
+<li>Ask price (卖出价): 交易者愿意接受的价格</li>
+</ul>
+<p>这两者之间的差额就是 Spread (点差).</p>
+<p>注: Spread cost. 无论你买入还是卖出, 你都会吃掉一半的 spread. <span class="math display">\[
+\text{Spread cost} = \frac{1}{2} \times \text{Spread}
+\]</span></p>
 </section>
 <section id="commonly-applied-algorithms" class="level2">
 <h2 class="anchored" data-anchor-id="commonly-applied-algorithms">Commonly applied algorithms</h2>
@@ -1485,8 +1494,14 @@ Elia Zarinelli, Michele Treccani, J. Doyne Farmer, and Fabrizio Lillo, Beyond th
 </section>
 
 <div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography" id="quarto-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
+<div id="ref-OptimalExecutionPortfolio2001" class="csl-entry" role="listitem">
+Almgren, Robert, and Neil Chriss. 2001. <span>“Optimal Execution of Portfolio Transactions.”</span> <em>Journal of Risk</em> 3 (2): 5–39. <a href="https://doi.org/10.21314/JOR.2001.041">https://doi.org/10.21314/JOR.2001.041</a>.
+</div>
 <div id="ref-bacry2014marketimpactslifecycle" class="csl-entry" role="listitem">
 Bacry, Emmanuel, Adrian Iuga, Matthieu Lasnier, and Charles-Albert Lehalle. 2014. <span>“Market Impacts and the Life Cycle of Investors Orders.”</span> <a href="https://arxiv.org/abs/1412.0217">https://arxiv.org/abs/1412.0217</a>.
+</div>
+<div id="ref-obizhaevaOptimalTradingStrategy2013" class="csl-entry" role="listitem">
+Obizhaeva, Anna A., and Jiang Wang. 2013. <span>“Optimal Trading Strategy and Supply/Demand Dynamics.”</span> <em>Journal of Financial Markets</em> 16 (1): 1–32. <a href="https://doi.org/10.1016/j.finmar.2012.09.001">https://doi.org/10.1016/j.finmar.2012.09.001</a>.
 </div>
 <div id="ref-zarinelli2014squarerootevidencelogarithmic" class="csl-entry" role="listitem">
 Zarinelli, Elia, Michele Treccani, J. Doyne Farmer, and Fabrizio Lillo. 2014. <span>“Beyond the Square Root: Evidence for Logarithmic Dependence of Market Impact on Size and Participation Rate.”</span> <a href="https://arxiv.org/abs/1412.2152">https://arxiv.org/abs/1412.2152</a>.
