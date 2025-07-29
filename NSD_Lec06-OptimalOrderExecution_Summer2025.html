@@ -1,0 +1,1899 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.7.32">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Topics in Quantitative Finance, Summer 2025 – Topics in QF</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+  margin-bottom: 0em;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<script src="site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap-b82b626913fb92a8b9be04cecd5320fa.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="styles.css">
+</head>
+
+<body class="nav-fixed quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="./index.html">
+    <span class="navbar-title">Topics in QF</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="./index.html"> 
+<span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./about.html"> 
+<span class="menu-text">About</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./NSD_Lec01-FinancialEngineering_Summer2025.html"> 
+<span class="menu-text">Lecture 01</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./NSD_Lec02-StochCal_Summer2025.html"> 
+<span class="menu-text">Lecture 02</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./NSD_Lec03-BlackMertonScholes-1_Summer2025.html"> 
+<span class="menu-text">Lecture 03</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./NSD_Lec04_Summer2025/NSD_Lec04-BlackMertonScholes-2_Summer2025.html"> 
+<span class="menu-text">Lecture 04</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./NSD_Lec05_Summer2025/NSD_Lec05-Volatility_Summer2025.html"> 
+<span class="menu-text">Lecture 05</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link active" href="./NSD_Lec06-OptimalOrderExecution_Summer2025.html" aria-current="page"> 
+<span class="menu-text">Lecture 06</span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#lecture-6-optimal-execution-under-price-impact" id="toc-lecture-6-optimal-execution-under-price-impact" class="nav-link active" data-scroll-target="#lecture-6-optimal-execution-under-price-impact">Lecture 6: Optimal execution under price impact</a></li>
+  <li><a href="#agenda" id="toc-agenda" class="nav-link" data-scroll-target="#agenda">Agenda</a></li>
+  <li><a href="#what-is-market-or-price-impact" id="toc-what-is-market-or-price-impact" class="nav-link" data-scroll-target="#what-is-market-or-price-impact">What is market or price impact?</a></li>
+  <li><a href="#the-square-root-formula-for-market-impact" id="toc-the-square-root-formula-for-market-impact" class="nav-link" data-scroll-target="#the-square-root-formula-for-market-impact">The square-root formula for market impact</a></li>
+  <li><a href="#commonly-applied-algorithms" id="toc-commonly-applied-algorithms" class="nav-link" data-scroll-target="#commonly-applied-algorithms">Commonly applied algorithms</a></li>
+  <li><a href="#terminology" id="toc-terminology" class="nav-link" data-scroll-target="#terminology">Terminology</a></li>
+  <li><a href="#schematic-of-impact-profile" id="toc-schematic-of-impact-profile" class="nav-link" data-scroll-target="#schematic-of-impact-profile">Schematic of impact profile</a></li>
+  <li><a href="#stylized-features-of-impact-profile" id="toc-stylized-features-of-impact-profile" class="nav-link" data-scroll-target="#stylized-features-of-impact-profile">Stylized features of impact profile</a></li>
+  <li><a href="#empirical-market-impact-profiles-from-bacry2014marketimpactslifecycle" id="toc-empirical-market-impact-profiles-from-bacry2014marketimpactslifecycle" class="nav-link" data-scroll-target="#empirical-market-impact-profiles-from-bacry2014marketimpactslifecycle">Empirical market impact profiles from <span class="citation" data-cites="bacry2014marketimpactslifecycle">(Bacry et al. 2014)</span></a></li>
+  <li><a href="#empirical-market-impact-profiles-from-zarinelli2014squarerootevidencelogarithmic" id="toc-empirical-market-impact-profiles-from-zarinelli2014squarerootevidencelogarithmic" class="nav-link" data-scroll-target="#empirical-market-impact-profiles-from-zarinelli2014squarerootevidencelogarithmic">Empirical market impact profiles from <span class="citation" data-cites="zarinelli2014squarerootevidencelogarithmic">(Zarinelli et al. 2014)</span></a></li>
+  <li><a href="#notations" id="toc-notations" class="nav-link" data-scroll-target="#notations">Notations</a></li>
+  <li><a href="#almgren-and-chriss" id="toc-almgren-and-chriss" class="nav-link" data-scroll-target="#almgren-and-chriss">Almgren and Chriss</a></li>
+  <li><a href="#the-price-impact-model-of-almgren-and-chriss" id="toc-the-price-impact-model-of-almgren-and-chriss" class="nav-link" data-scroll-target="#the-price-impact-model-of-almgren-and-chriss">The price impact model of Almgren and Chriss</a>
+  <ul class="collapse">
+  <li><a href="#note" id="toc-note" class="nav-link" data-scroll-target="#note">Note</a></li>
+  </ul></li>
+  <li><a href="#impact-profile-in-the-almgren-and-chriss-model" id="toc-impact-profile-in-the-almgren-and-chriss-model" class="nav-link" data-scroll-target="#impact-profile-in-the-almgren-and-chriss-model">Impact profile in the Almgren and Chriss model</a></li>
+  <li><a href="#inconsistency-with-empirical-observation" id="toc-inconsistency-with-empirical-observation" class="nav-link" data-scroll-target="#inconsistency-with-empirical-observation">Inconsistency with empirical observation</a></li>
+  <li><a href="#pl-and-cost-of-trading-of-a-trading-strategy" id="toc-pl-and-cost-of-trading-of-a-trading-strategy" class="nav-link" data-scroll-target="#pl-and-cost-of-trading-of-a-trading-strategy">P&amp;L and cost of trading of a trading strategy</a></li>
+  <li><a href="#pl-in-almgren-chriss-model" id="toc-pl-in-almgren-chriss-model" class="nav-link" data-scroll-target="#pl-in-almgren-chriss-model">P&amp;L in Almgren-Chriss model</a></li>
+  <li><a href="#expected-cost-of-twap-in-the-almgren-and-chriss-model" id="toc-expected-cost-of-twap-in-the-almgren-and-chriss-model" class="nav-link" data-scroll-target="#expected-cost-of-twap-in-the-almgren-and-chriss-model">Expected cost of TWAP in the Almgren and Chriss model</a></li>
+  <li><a href="#optimal-strategy-of-a-risk-neutral-trader" id="toc-optimal-strategy-of-a-risk-neutral-trader" class="nav-link" data-scroll-target="#optimal-strategy-of-a-risk-neutral-trader">Optimal strategy of a risk neutral trader</a></li>
+  <li><a href="#variational-problem" id="toc-variational-problem" class="nav-link" data-scroll-target="#variational-problem">Variational problem</a></li>
+  <li><a href="#risk-neutral-trader-twap-is-optimal-in-almgren-chriss" id="toc-risk-neutral-trader-twap-is-optimal-in-almgren-chriss" class="nav-link" data-scroll-target="#risk-neutral-trader-twap-is-optimal-in-almgren-chriss">Risk neutral trader: TWAP is optimal in Almgren-Chriss</a></li>
+  <li><a href="#penalty-by-quadratric-variation" id="toc-penalty-by-quadratric-variation" class="nav-link" data-scroll-target="#penalty-by-quadratric-variation">Penalty by quadratric variation</a></li>
+  <li><a href="#mean-qv-trader-the-almgren-chriss-strategy" id="toc-mean-qv-trader-the-almgren-chriss-strategy" class="nav-link" data-scroll-target="#mean-qv-trader-the-almgren-chriss-strategy">Mean-QV trader: The Almgren-Chriss strategy</a>
+  <ul class="collapse">
+  <li><a href="#note-1" id="toc-note-1" class="nav-link" data-scroll-target="#note-1">Note</a></li>
+  </ul></li>
+  <li><a href="#applications-of-the-almgren-chriss-framework" id="toc-applications-of-the-almgren-chriss-framework" class="nav-link" data-scroll-target="#applications-of-the-almgren-chriss-framework">Applications of the Almgren-Chriss framework</a></li>
+  <li><a href="#summary-on-the-almgren-chriss-model" id="toc-summary-on-the-almgren-chriss-model" class="nav-link" data-scroll-target="#summary-on-the-almgren-chriss-model">Summary on the Almgren-Chriss model</a></li>
+  <li><a href="#transient-impact-models" id="toc-transient-impact-models" class="nav-link" data-scroll-target="#transient-impact-models">Transient impact models</a></li>
+  <li><a href="#pl-and-cost-of-trading-in-transient-impact-model" id="toc-pl-and-cost-of-trading-in-transient-impact-model" class="nav-link" data-scroll-target="#pl-and-cost-of-trading-in-transient-impact-model">P&amp;L and cost of trading in transient impact model</a></li>
+  <li><a href="#the-optimal-strategy-of-a-risk-neutral-trader" id="toc-the-optimal-strategy-of-a-risk-neutral-trader" class="nav-link" data-scroll-target="#the-optimal-strategy-of-a-risk-neutral-trader">The optimal strategy of a risk neutral trader</a></li>
+  <li><a href="#lagrange-multiplier" id="toc-lagrange-multiplier" class="nav-link" data-scroll-target="#lagrange-multiplier">Lagrange multiplier</a></li>
+  <li><a href="#euler-lagrange-equation" id="toc-euler-lagrange-equation" class="nav-link" data-scroll-target="#euler-lagrange-equation">Euler-Lagrange equation</a></li>
+  <li><a href="#the-obizhaeva-and-wang-model" id="toc-the-obizhaeva-and-wang-model" class="nav-link" data-scroll-target="#the-obizhaeva-and-wang-model">The Obizhaeva and Wang model</a></li>
+  <li><a href="#impact-profile-in-the-obizhaeva-and-wang-model" id="toc-impact-profile-in-the-obizhaeva-and-wang-model" class="nav-link" data-scroll-target="#impact-profile-in-the-obizhaeva-and-wang-model">Impact profile in the Obizhaeva and Wang model</a></li>
+  <li><a href="#optimal-strategy-in-obizhaeva-wang" id="toc-optimal-strategy-in-obizhaeva-wang" class="nav-link" data-scroll-target="#optimal-strategy-in-obizhaeva-wang">Optimal strategy in Obizhaeva-Wang</a></li>
+  <li><a href="#obizhaeva-wang-as-a-control-problem" id="toc-obizhaeva-wang-as-a-control-problem" class="nav-link" data-scroll-target="#obizhaeva-wang-as-a-control-problem">Obizhaeva-Wang as a control problem</a></li>
+  <li><a href="#value-function" id="toc-value-function" class="nav-link" data-scroll-target="#value-function">Value function</a></li>
+  <li><a href="#hjb-equation" id="toc-hjb-equation" class="nav-link" data-scroll-target="#hjb-equation">HJB equation</a></li>
+  <li><a href="#combining-almgren-chriss-and-obizhaeva-wang-the-acow-model" id="toc-combining-almgren-chriss-and-obizhaeva-wang-the-acow-model" class="nav-link" data-scroll-target="#combining-almgren-chriss-and-obizhaeva-wang-the-acow-model">Combining Almgren-Chriss and Obizhaeva-Wang: the ACOW model</a></li>
+  <li><a href="#impact-profile-under-the-model" id="toc-impact-profile-under-the-model" class="nav-link" data-scroll-target="#impact-profile-under-the-model">Impact profile under the model</a></li>
+  <li><a href="#control-problem" id="toc-control-problem" class="nav-link" data-scroll-target="#control-problem">Control problem</a></li>
+  <li><a href="#matrix-notations" id="toc-matrix-notations" class="nav-link" data-scroll-target="#matrix-notations">Matrix notations</a></li>
+  <li><a href="#lq-problem" id="toc-lq-problem" class="nav-link" data-scroll-target="#lq-problem">LQ problem</a></li>
+  <li><a href="#value-function-and-hjb-equation" id="toc-value-function-and-hjb-equation" class="nav-link" data-scroll-target="#value-function-and-hjb-equation">Value function and HJB equation</a></li>
+  <li><a href="#optimal-control" id="toc-optimal-control" class="nav-link" data-scroll-target="#optimal-control">Optimal control</a></li>
+  <li><a href="#ansatz" id="toc-ansatz" class="nav-link" data-scroll-target="#ansatz">Ansatz</a></li>
+  <li><a href="#matrix-riccati-equation" id="toc-matrix-riccati-equation" class="nav-link" data-scroll-target="#matrix-riccati-equation">Matrix Riccati equation</a></li>
+  <li><a href="#solution-to-the-riccati-equation" id="toc-solution-to-the-riccati-equation" class="nav-link" data-scroll-target="#solution-to-the-riccati-equation">Solution to the Riccati equation</a>
+  <ul class="collapse">
+  <li><a href="#numerical-examples" id="toc-numerical-examples" class="nav-link" data-scroll-target="#numerical-examples">Numerical examples</a></li>
+  <li><a href="#value-distribution" id="toc-value-distribution" class="nav-link" data-scroll-target="#value-distribution">Value distribution</a></li>
+  <li><a href="#create-a-python-class-for-evaluating-value-function-by-simulation" id="toc-create-a-python-class-for-evaluating-value-function-by-simulation" class="nav-link" data-scroll-target="#create-a-python-class-for-evaluating-value-function-by-simulation">Create a <code>python</code> class for evaluating value function by simulation</a>
+  <ul class="collapse">
+  <li><a href="#policy-1-twap" id="toc-policy-1-twap" class="nav-link" data-scroll-target="#policy-1-twap">Policy 1: TWAP</a></li>
+  <li><a href="#sample-path-of-running-reward" id="toc-sample-path-of-running-reward" class="nav-link" data-scroll-target="#sample-path-of-running-reward">Sample path of running reward</a></li>
+  <li><a href="#optimal-policy" id="toc-optimal-policy" class="nav-link" data-scroll-target="#optimal-policy">Optimal policy</a></li>
+  <li><a href="#put-together-the-histograms" id="toc-put-together-the-histograms" class="nav-link" data-scroll-target="#put-together-the-histograms">Put together the histograms</a></li>
+  <li><a href="#sample-path-of-liquidation" id="toc-sample-path-of-liquidation" class="nav-link" data-scroll-target="#sample-path-of-liquidation">Sample path of liquidation</a></li>
+  <li><a href="#sample-path-of-transient-impact" id="toc-sample-path-of-transient-impact" class="nav-link" data-scroll-target="#sample-path-of-transient-impact">Sample path of transient impact</a></li>
+  </ul></li>
+  <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references">References</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content column-page-left" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Topics in Quantitative Finance, Summer 2025</h1>
+</div>
+
+
+
+<div class="quarto-title-meta column-page-left">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="lecture-6-optimal-execution-under-price-impact" class="level2">
+<h2 class="anchored" data-anchor-id="lecture-6-optimal-execution-under-price-impact">Lecture 6: Optimal execution under price impact</h2>
+<p><br> <br></p>
+<center>
+<font size="5," color="darkblue"> Tai-Ho Wang (王 太和)</font> <br> <br> <img src="http://mfe.baruch.cuny.edu/wp-content/uploads/2016/04/MFE-Logo.jpg" align="center" width="450">
+</center>
+<p><span class="math display">\[
+\newcommand{\bea}{\begin{eqnarray}}
+\newcommand{\eea}{\end{eqnarray}}
+\newcommand{\supp}{\mathrm{supp}}
+\newcommand{\F}{\mathcal{F} }
+\newcommand{\cF}{\mathcal{F} }
+\newcommand{\cG}{\mathcal{G} }
+\newcommand{\E}{\mathbb{E} }
+\newcommand{\Eof}[1]{\mathbb{E}\left[ #1 \right]}
+\newcommand{\Etof}[1]{\mathbb{E}_t\left[ #1 \right]}
+\def\Cov{{ \text{Cov} }}
+\def\Var{{ \text{Var} }}
+\newcommand{\1}{\mathbf{1} }
+\newcommand{\p}{\partial}
+\newcommand{\PP}{\mathbb{P} }
+\newcommand{\Pof}[1]{\mathbb{P}\left[ #1 \right]}
+\newcommand{\QQ}{\mathbb{Q} }
+\renewcommand{\R}{\mathbb{R} }
+\newcommand{\DD}{\mathbb{D} }
+\newcommand{\HH}{\mathbb{H} }
+\newcommand{\spn}{\mathrm{span} }
+\newcommand{\cov}{\mathrm{cov} }
+\newcommand{\HS}{\mathcal{L}_{\mathrm{HS}} }
+\newcommand{\Hess}{\mathrm{Hess} }
+\newcommand{\trace}{\mathrm{trace} }
+\newcommand{\LL}{\mathcal{L} }
+\newcommand{\s}{\mathcal{S} }
+\newcommand{\ee}{\mathcal{E} }
+\newcommand{\ff}{\mathcal{F} }
+\newcommand{\hh}{\mathcal{H} }
+\newcommand{\bb}{\mathcal{B} }
+\newcommand{\dd}{\mathcal{D} }
+\newcommand{\g}{\mathcal{G} }
+\newcommand{\half}{\frac{1}{2} }
+\newcommand{\T}{\mathcal{T} }
+\newcommand{\bit}{\begin{itemize}}
+\newcommand{\eit}{\end{itemize}}
+\newcommand{\beq}{\begin{equation}}
+\newcommand{\eeq}{\end{equation}}
+\newcommand{\tr}{\text{tr}}
+\renewcommand{\underbar}{\underline}
+\newcommand{\mbA}{\mathbf A}
+\newcommand{\mbB}{\mathbf B}
+\newcommand{\mbP}{\mathbf P}
+\newcommand{\mbQ}{\mathbf Q}
+\newcommand{\mbR}{\mathbf R}
+\newcommand{\mbS}{\mathbf S}
+\newcommand{\bA}{\boldsymbol A}
+\newcommand{\bB}{\boldsymbol B}
+\newcommand{\bu}{\boldsymbol u}
+\newcommand{\bq}{\boldsymbol q}
+\newcommand{\bW}{\boldsymbol W}
+\newcommand{\bX}{\boldsymbol X}
+\newcommand{\bx}{\boldsymbol x}
+\newcommand{\bSigma}{\boldsymbol \Sigma}
+\newcommand{\tS}{\tilde S}
+\newcommand{\inn}[2]{\left\langle #1, #2 \right\rangle}
+\]</span></p>
+</section>
+<section id="agenda" class="level2">
+<h2 class="anchored" data-anchor-id="agenda">Agenda</h2>
+<ul>
+<li>Market impact of meta orders
+<ul>
+<li>Impact profile</li>
+</ul></li>
+<li>Empirical market impact profiles</li>
+<li>Optimal execution as variational and control problems
+<ul>
+<li>risk neutral</li>
+<li>mean-qv optimization</li>
+</ul></li>
+<li>The Almgren-Chriss model and the Almgren-Chriss optimal liquidation strategy</li>
+<li>The Obizhaeva-Wang model</li>
+<li>Combining Almgren-Chriss and Obizhaeva-Wang: the ACOW model
+<ul>
+<li>Numerical examples</li>
+</ul></li>
+</ul>
+</section>
+<section id="what-is-market-or-price-impact" class="level2">
+<h2 class="anchored" data-anchor-id="what-is-market-or-price-impact">What is market or price impact?</h2>
+<p>Empirically, in average a buy order pushes the price up whereas a sell order sends the price down. This empirically observed market phenomenon is referred to as <em>price impact</em> of transaction or trading.</p>
+<p>A price impact model is a model aiming at quantify the relationship between the transacted volume and price.</p>
+</section>
+<section id="the-square-root-formula-for-market-impact" class="level2">
+<h2 class="anchored" data-anchor-id="the-square-root-formula-for-market-impact">The square-root formula for market impact</h2>
+<ul>
+<li><p>For many years, traders have used the simple sigma-root-liquidity model described for example by Grinold and Kahn in 1994.</p></li>
+<li><p>Software incorporating this model includes:</p>
+<ul>
+<li>Salomon Brothers, StockFacts Pro since around 1991</li>
+<li>Barra, Market Impact Model since around 1998</li>
+<li>Bloomberg, TCA function since 2005</li>
+</ul></li>
+<li><p>The model is always of the rough form<br>
+<span class="math display">\[\Delta P = \text{Spread cost} +\alpha\,\sigma\,\sqrt{\frac Q V}\]</span> where <span class="math inline">\(\sigma\)</span> is daily dollar volatility, <span class="math inline">\(V\)</span> is daily volume, <span class="math inline">\(Q\)</span> is the number of shares to be traded and <span class="math inline">\(\alpha\)</span> is a constant pre-factor of order one.</p></li>
+</ul>
+</section>
+<section id="commonly-applied-algorithms" class="level2">
+<h2 class="anchored" data-anchor-id="commonly-applied-algorithms">Commonly applied algorithms</h2>
+<ul>
+<li>VWAP “Volume weighted average price”
+<ul>
+<li>Trades at constant rate in volume time</li>
+</ul></li>
+<li>POV “Percentage of volume”
+<ul>
+<li>Participate at a certain percentage of market volume</li>
+</ul></li>
+<li>TWAP “Time weighted average price”
+<ul>
+<li>Trades at constant rate in wall clock time</li>
+</ul></li>
+<li>IS “Implementation shortfall”
+<ul>
+<li>Trades faster at the beginning and more slowly at the end</li>
+<li>To balance the risk of a worse price against the benefit of better execution from being patient.</li>
+</ul></li>
+</ul>
+</section>
+<section id="terminology" class="level2">
+<h2 class="anchored" data-anchor-id="terminology">Terminology</h2>
+<ul>
+<li><em>Metaorder</em> means that a sufficiently large order that cannot be filled immediately without eating into the order book.
+<ul>
+<li>Such orders need to be split.</li>
+<li>Each component of a metaorder is referred to as a <em>child order</em>.</li>
+</ul></li>
+<li>The <font color="blue"> <em>impact profile</em> </font> refers to the average path of the stock price during and after execution of a metaorder.</li>
+<li><em>Completion</em> refers to the timestamp of the last executed child order.</li>
+</ul>
+</section>
+<section id="schematic-of-impact-profile" class="level2">
+<h2 class="anchored" data-anchor-id="schematic-of-impact-profile">Schematic of impact profile</h2>
+<div style="text-align: center;">
+<img src="https://mfe.baruch.cuny.edu/wp-content/uploads/2015/04/ShapiroPlot.png" align="center" width="500">
+<p>
+The impact profile
+</p>
+</div>
+</section>
+<section id="stylized-features-of-impact-profile" class="level2">
+<h2 class="anchored" data-anchor-id="stylized-features-of-impact-profile">Stylized features of impact profile</h2>
+<ul>
+<li><p>When a buy metaorder of length <span class="math inline">\(T\)</span> is sent, its immediate effect is to move the price upwards (to <span class="math inline">\(S_T\)</span> say).</p></li>
+<li><p>After completion, the price reverts to some price <span class="math inline">\(S_{\infty}\)</span> (which may be the starting price <span class="math inline">\(S_0\)</span>).</p></li>
+<li><p>Market impact thus has two components: one transient and one permanent.</p></li>
+<li><p>Knowledge of the metaorder impact profile is key to the derivation of optimal execution strategies.</p></li>
+</ul>
+</section>
+<section id="empirical-market-impact-profiles-from-bacry2014marketimpactslifecycle" class="level2">
+<h2 class="anchored" data-anchor-id="empirical-market-impact-profiles-from-bacry2014marketimpactslifecycle">Empirical market impact profiles from <span class="citation" data-cites="bacry2014marketimpactslifecycle">(<a href="#ref-bacry2014marketimpactslifecycle" role="doc-biblioref">Bacry et al. 2014</a>)</span></h2>
+<p><img src="https://mfe.baruch.cuny.edu/wp-content/uploads/2017/04/BacryFigure8.png" align="center" width="900"></p>
+</section>
+<section id="empirical-market-impact-profiles-from-zarinelli2014squarerootevidencelogarithmic" class="level2">
+<h2 class="anchored" data-anchor-id="empirical-market-impact-profiles-from-zarinelli2014squarerootevidencelogarithmic">Empirical market impact profiles from <span class="citation" data-cites="zarinelli2014squarerootevidencelogarithmic">(<a href="#ref-zarinelli2014squarerootevidencelogarithmic" role="doc-biblioref">Zarinelli et al. 2014</a>)</span></h2>
+<p><img src="https://mfe.baruch.cuny.edu/wp-content/uploads/2017/04/TreccaniFigure13.png" align="center" width="900"></p>
+</section>
+<section id="notations" class="level2">
+<h2 class="anchored" data-anchor-id="notations">Notations</h2>
+<p>The following notations will be used throughout.</p>
+<ul>
+<li><span class="math inline">\(S_t\)</span>: mid or efficient price</li>
+<li><span class="math inline">\(\tilde S_t\)</span>: transaction price. Thus, <span class="math inline">\(\tilde S_t = S_t + \text{spread}\)</span>.</li>
+<li><span class="math inline">\(\sigma\)</span>: volatility of stock.</li>
+<li><span class="math inline">\(Z_t\)</span>: Brownian motions</li>
+<li><span class="math inline">\(v_t\)</span>: trading rate at time <span class="math inline">\(t\)</span></li>
+<li><span class="math inline">\(X_t\)</span>: remaining orders to be executed at time <span class="math inline">\(t\)</span></li>
+</ul>
+</section>
+<section id="almgren-and-chriss" class="level2">
+<h2 class="anchored" data-anchor-id="almgren-and-chriss">Almgren and Chriss</h2>
+<ul>
+<li><p>Almgren and Chriss treats the execution of a meta order as a tradeoff between risk and execution cost.</p></li>
+<li><p>According to their formulation:</p>
+<ul>
+<li>The faster an order is executed, the higher the execution cost</li>
+<li>The faster an order is executed, the lower the risk (which is increasing in position size).</li>
+</ul></li>
+<li><p>Note that this is inconsistent with the empirical success of the square-root formula in describing the cost of meta orders.</p></li>
+</ul>
+</section>
+<section id="the-price-impact-model-of-almgren-and-chriss" class="level2">
+<h2 class="anchored" data-anchor-id="the-price-impact-model-of-almgren-and-chriss">The price impact model of Almgren and Chriss</h2>
+<p>For simplicity, we consider liquidation of an existing position <span class="math inline">\(X\)</span>. Denote the position at time <span class="math inline">\(t\)</span> by <span class="math inline">\(x_t\)</span> with <span class="math inline">\(x_0=X\)</span> and <span class="math inline">\(x_T=0\)</span>.</p>
+<p>Almgren and Chriss model market impact and slippage as follows.</p>
+<p><span class="math display">\[
+\tilde{S}_t = S_t + \eta v_t = s_0 + \sigma_S Z_t + \gamma(X_t - x_0) + \eta v_t,
+\]</span></p>
+<p>where <span class="math inline">\(X_t = x_0 + \int_0^t v_s ds\)</span>.</p>
+<section id="note" class="level3">
+<h3 class="anchored" data-anchor-id="note">Note</h3>
+<ul>
+<li><span class="math inline">\(\eta v_t\)</span>: temporary impact</li>
+<li><span class="math inline">\(\gamma (X_t - x_0)\)</span>: permanenty impact</li>
+<li><span class="math inline">\(X_t = x_0 + v t\)</span> if <span class="math inline">\(v_t \equiv v\)</span>, a constant.</li>
+</ul>
+</section>
+</section>
+<section id="impact-profile-in-the-almgren-and-chriss-model" class="level2">
+<h2 class="anchored" data-anchor-id="impact-profile-in-the-almgren-and-chriss-model">Impact profile in the Almgren and Chriss model</h2>
+<div id="cell-15" class="cell" data-execution_count="1">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="cell-16" class="cell" data-scrolled="true" data-execution_count="2">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>T <span class="op">=</span> <span class="dv">1</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>vwap_AC <span class="op">=</span> <span class="kw">lambda</span> t: t<span class="op">/</span>T<span class="op">*</span>(t <span class="op">&lt;=</span> T) <span class="op">+</span> T<span class="op">*</span>(t <span class="op">&gt;</span> T)</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>t <span class="op">=</span> np.linspace(<span class="dv">0</span>, <span class="dv">2</span>, <span class="dv">200</span>)</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="co">#plt.figure(figsize=(8, 6))</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>plt.plot(t, vwap_AC(t), color<span class="op">=</span><span class="st">'orange'</span>, label<span class="op">=</span><span class="st">'Almgren-Chriss'</span>)</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>plt.vlines(x<span class="op">=</span><span class="dv">1</span>, ymin<span class="op">=</span><span class="dv">0</span>, ymax<span class="op">=</span><span class="dv">2</span>, linewidth<span class="op">=</span><span class="fl">0.5</span>, ls<span class="op">=</span><span class="st">'dotted'</span>)</span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>plt.ylim([<span class="dv">0</span>, <span class="fl">1.5</span>])</span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="vs">r'</span><span class="dv">$</span><span class="vs">t</span><span class="dv">$</span><span class="vs">'</span>, fontsize<span class="op">=</span><span class="dv">15</span>)</span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="vs">r'</span><span class="dv">$\m</span><span class="vs">athbb{E}</span><span class="cf">|</span><span class="vs">S_t - S_0</span><span class="cf">|</span><span class="dv">$</span><span class="vs">'</span>, fontsize<span class="op">=</span><span class="dv">15</span>)</span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'Almgren-Chriss price path'</span>, fontsize<span class="op">=</span><span class="dv">18</span>)<span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="NSD_Lec06-OptimalOrderExecution_Summer2025_files/figure-html/cell-3-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="inconsistency-with-empirical-observation" class="level2">
+<h2 class="anchored" data-anchor-id="inconsistency-with-empirical-observation">Inconsistency with empirical observation</h2>
+<ul>
+<li>This price path is inconsistent with empirical observation:
+<ul>
+<li>The average price path during execution is linear.</li>
+<li>There is no price reversion after completion of the order.</li>
+</ul></li>
+</ul>
+</section>
+<section id="pl-and-cost-of-trading-of-a-trading-strategy" class="level2">
+<h2 class="anchored" data-anchor-id="pl-and-cost-of-trading-of-a-trading-strategy">P&amp;L and cost of trading of a trading strategy</h2>
+<p>Let <span class="math inline">\(x_t\)</span> be a trading strategy. The corresponding P&amp;L (up to time <span class="math inline">\(t\)</span>), denoted by <span class="math inline">\(\Pi_t(x)\)</span>, is identified as</p>
+<p><span class="math display">\[
+\Pi_t(x) := x_t (S_t - S_0) + \int_0^t (S_0 - \tilde S_\tau) d x_\tau.
+\]</span></p>
+<ul>
+<li><p>The first term represents the (fair) value of stock shares that are yet to be transacted.</p></li>
+<li><p>The second term corresponds to the monetary value collected from the shares that have been transacted up to time t.</p></li>
+<li><p>Obviously, should there be no trade in the time interval <span class="math inline">\([0,t]\)</span>, i.e., <span class="math inline">\(x_s = X\)</span> for all <span class="math inline">\(s \in [0,t]\)</span>, the P&amp;L reads <span class="math inline">\(\Pi_t(x) = X (S_t - S_0)\)</span>; reflecting the P&amp;L from the price movement of the stock.</p></li>
+</ul>
+<section id="implementation-shortfall-as-cost-of-trading" class="level4">
+<h4 class="anchored" data-anchor-id="implementation-shortfall-as-cost-of-trading"><font color="blue">Implementation shortfall as cost of trading </font></h4>
+<p>Negative P&amp;L is also referred to as the <em>implementation shortfall</em>, which will be used as the cost of trading, denoted by <span class="math inline">\(C\)</span> hereafter.</p>
+</section>
+</section>
+<section id="pl-in-almgren-chriss-model" class="level2">
+<h2 class="anchored" data-anchor-id="pl-in-almgren-chriss-model">P&amp;L in Almgren-Chriss model</h2>
+<p>Note that, at the end of execution period <span class="math inline">\(T\)</span>, the P&amp;L reads <span class="math display">\[
+  \Pi_T(x) = x_T (S_T - S_0) + \int_0^T (S_0 - \tilde S_u) d x_u,
+\]</span> should there be <span class="math inline">\(x_T\)</span> shares yet to be transacted. Hence, in Almgren-Chriss model</p>
+<p><span class="math display">\[\begin{align*}
+\Pi_T(x) &amp;= x_T (S_T - S_0) + \int_0^T (S_0 - \tilde S_u) d x_u \\
+&amp;= \int_0^T [- \gamma (x_u - X) - \sigma Z_u - \eta v_u] d x_u \quad (\text{note that } x_T = 0) \\
+&amp;= -\frac\gamma2 X^2 + \sigma \int_0^T x_u d Z_u - \eta \int_0^T v_u^2 du \quad (\text{Integration by parts}).
+\end{align*}\]</span> Therefore, the expected cost corresponding to the trading strategy <span class="math inline">\(x\)</span> is given by<br>
+<span class="math display">\[\begin{align*}
+&amp; \E\left[C_T(x)\right] = \E\left[-\Pi_T(x)\right] = \frac\gamma2 X^2 + \eta \int_0^T \Eof{v_u^2} du.
+\end{align*}\]</span></p>
+</section>
+<section id="expected-cost-of-twap-in-the-almgren-and-chriss-model" class="level2">
+<h2 class="anchored" data-anchor-id="expected-cost-of-twap-in-the-almgren-and-chriss-model">Expected cost of TWAP in the Almgren and Chriss model</h2>
+<p>For a TWAP, <span class="math inline">\(v_t = -\frac XT\)</span> where <span class="math inline">\(X\)</span> is the total trade size and <span class="math inline">\(T\)</span> is the duration of the order.</p>
+<p><span class="math display">\[\begin{align*}
+\E[C_T(x)] &amp;= \frac\gamma2 X^2 + \eta \int_0^T \left(\frac XT\right)^2 du \\
+&amp;= \frac\gamma2 X^2 + \eta \frac{X^2}T \\
+&amp;= \left(\frac\gamma2 + \frac\eta{T}\right)X^2.
+\end{align*}\]</span></p>
+<p>The cost per share <span class="math inline">\(\hat C\)</span> of executing an order using TWAP is therefore</p>
+<p><span class="math display">\[\hat{C}=\left(\frac\gamma2 + \frac\eta{T}\right)X\]</span></p>
+<p>which is linear in the trade size <span class="math inline">\(X\)</span> and inversely proportional to the duration of the order.</p>
+</section>
+<section id="optimal-strategy-of-a-risk-neutral-trader" class="level2">
+<h2 class="anchored" data-anchor-id="optimal-strategy-of-a-risk-neutral-trader">Optimal strategy of a risk neutral trader</h2>
+<p>For a risk neutral trader whose objective is to minimize the cost of trading, the optimal control problem reads</p>
+<p><span class="math display">\[\begin{align*}
+&amp; \min_{v} \E\left[C_T(x)\right] \\
+&amp;= \min_{v} \left\{\frac\gamma2 X^2 + \eta \int_0^T \Eof{v_u^2} du \right\} \\
+&amp;= \frac\gamma2 X^2 + \eta \min_v \int_0^T \Eof{v_u^2} du,
+\end{align*}\]</span></p>
+<p>where the state variable <span class="math inline">\(x_t\)</span> is driven by <span class="math inline">\(dx_t = v_t dt\)</span> with the constraints <span class="math inline">\(x_0 = X\)</span> and <span class="math inline">\(x_T = 0\)</span>.<br>
+Note that, since <span class="math inline">\(S_t\)</span> is not involved in the last expression, we end up with a deterministic control problem which can be solved by the solution to its assocated HJB equation or, due to the simplicity of the dynamics of <span class="math inline">\(x_t\)</span>, further reduced to a variational problem.</p>
+</section>
+<section id="variational-problem" class="level2">
+<h2 class="anchored" data-anchor-id="variational-problem">Variational problem</h2>
+<p><span class="math display">\[\min_x \int_0^T\,\dot x_t^2\,dt\]</span></p>
+<p>with <span class="math inline">\(v_t=\dot x_t\)</span> and <span class="math inline">\(x_0 = X\)</span>, <span class="math inline">\(x_T = 0\)</span>.</p>
+<p>The Euler-Lagrange equation is then</p>
+<p><span class="math display">\[\partial_t v_t=\partial_t^2 x_t=0\]</span></p>
+<p>with boundary conditions <span class="math inline">\(x_0=X\)</span> and <span class="math inline">\(x_T=0\)</span> and the solution is obviously</p>
+<p><span class="math display">\[v_t = -\frac{X}{T}; \, x_t=X\,\left(1-\frac{t}{T}\right)\]</span></p>
+</section>
+<section id="risk-neutral-trader-twap-is-optimal-in-almgren-chriss" class="level2">
+<h2 class="anchored" data-anchor-id="risk-neutral-trader-twap-is-optimal-in-almgren-chriss">Risk neutral trader: TWAP is optimal in Almgren-Chriss</h2>
+<p>As naive as the TWAP strategy may look, it is indeed optimal for a risk neutral trader in the Almgren-Chriss model.</p>
+</section>
+<section id="penalty-by-quadratric-variation" class="level2">
+<h2 class="anchored" data-anchor-id="penalty-by-quadratric-variation">Penalty by quadratric variation</h2>
+<p><a href="#almgren-and-chriss">Almgren and Chriss</a><sup id="cite_ref-AlmgrenChriss" class="reference"><a href="#cite_note-AlmgrenChriss"><span>[</span>2<span>]</span></a></sup> add a risk term that penalizes the approximate variance of the trading cost. They claim</p>
+<p><span class="math display">\[ \text{Var} \left[\int_0^T\,x_t\,dS_t\right] \approx \sigma^2\,\int_0^T\,x_t^2\,dt. \]</span></p>
+<p>In fact, by Itô’s isomety, it is an equality if <span class="math inline">\(x_t\)</span> is deterministic.</p>
+<p>The expected risk-adjusted cost is then given by (temporarily ignore the path independent term <span class="math inline">\(\frac\gamma2 X^2\)</span>)</p>
+<p><span class="math display">\[\eta\,\int_0^T\,{\dot x}_t^2\,dt + \lambda\,\sigma^2\,\int_0^T\,x_t^2\,dt\]</span></p>
+<p>for some price of risk <span class="math inline">\(\lambda\)</span>.</p>
+<ul>
+<li><p><span>Note the analogies to physics and portfolio theory.</span></p>
+<ul>
+<li><p><span>The first term looks like kinetic energy and the second term like potential energy.</span></p></li>
+<li><p><span>The expression looks like the objective in mean-variance portfolio optimization.</span></p></li>
+</ul></li>
+</ul>
+<p>The Euler-Lagrange equation becomes</p>
+<p><span class="math display">\[\ddot x- \kappa^2\,x=0\]</span></p>
+<p>with</p>
+<p><span class="math display">\[\kappa^2=\frac{\lambda\,\sigma^2}{\eta}.\]</span></p>
+<p>The solution is a linear combination of terms of the form <span class="math inline">\(e^{\pm \kappa t}\)</span> that satisfies the boundary conditions <span class="math inline">\(x_0=X\)</span>, <span class="math inline">\(x_T=0\)</span>.</p>
+</section>
+<section id="mean-qv-trader-the-almgren-chriss-strategy" class="level2">
+<h2 class="anchored" data-anchor-id="mean-qv-trader-the-almgren-chriss-strategy">Mean-QV trader: The Almgren-Chriss strategy</h2>
+<p>For risk averse traders, by using the quadratic vartion of P&amp;L during execution to penalize the terminal P&amp;L/trading cost, the following strategy, referred to as the Almgren-Chriss strategy, is optimal.</p>
+<p><span class="math display">\[
+x(t) = X\,\frac{\sinh \kappa (T-t)}{\sinh \kappa T},
+\]</span></p>
+<p>where <span class="math inline">\(\kappa = \sqrt{\frac{\lambda\sigma_S^2}\eta}\)</span>, <span class="math inline">\(\lambda\)</span> is the parameter that proxies the trader’s risk aversion.</p>
+<section id="note-1" class="level3">
+<h3 class="anchored" data-anchor-id="note-1">Note</h3>
+<ul>
+<li>The strategy is deterministic.</li>
+<li>Almgren-Chriss strategy gives an example of Implementation Shortfall type: trade fast at the beginning and more slowly towards the end.</li>
+</ul>
+<div id="cell-26" class="cell" data-execution_count="3">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># order execution horizon</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>T <span class="op">=</span> <span class="dv">1</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="co"># number of shares to execute</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>X <span class="op">=</span> <span class="dv">10_000</span></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="co"># the Almgren-Chriss strategy</span></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>opt_AC <span class="op">=</span> <span class="kw">lambda</span> t, kappa: X<span class="op">*</span>np.sinh(kappa<span class="op">*</span>(T <span class="op">-</span> t))<span class="op">/</span>np.sinh(kappa<span class="op">*</span>T)</span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a><span class="co"># plot</span></span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>t <span class="op">=</span> np.linspace(<span class="dv">0</span>, T, <span class="dv">100</span>)</span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">8</span>, <span class="dv">5</span>))</span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> kappa <span class="kw">in</span> np.arange(<span class="dv">1</span>, <span class="dv">6</span>):</span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>    plt.plot(t, opt_AC(t, kappa), label<span class="op">=</span><span class="ss">f'$</span><span class="er">\</span><span class="ss">kappa$=</span><span class="sc">{</span>kappa<span class="sc">}</span><span class="ss">'</span>)</span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'Almgren-Chriss strategy for various $</span><span class="er">\</span><span class="st">kappa$'</span>)</span>
+<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="vs">r'</span><span class="dv">$</span><span class="vs">t</span><span class="dv">$</span><span class="vs">'</span>)</span>
+<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="vs">r'</span><span class="dv">$</span><span class="vs">x</span><span class="dv">$</span><span class="vs">'</span>)</span>
+<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a>plt.legend()<span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="NSD_Lec06-OptimalOrderExecution_Summer2025_files/figure-html/cell-4-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="applications-of-the-almgren-chriss-framework" class="level2">
+<h2 class="anchored" data-anchor-id="applications-of-the-almgren-chriss-framework">Applications of the Almgren-Chriss framework</h2>
+<ul>
+<li><p>Although the Almgren and Chriss price process is not particularly realistic, it leads to a tractable framework for solving a number of interesting practical problems.</p></li>
+<li><p>Applications include:</p>
+<ul>
+<li><p>Portfolio liquidation</p></li>
+<li><p>Optimal liquidation with a dark pool (<span><em>e.g.</em></span> [Kratz and Schöneborn]<sup id="cite_ref-KratzSchoeneborn" class="reference"><a href="#cite_note-KratzSchoeneborn"><span>[</span>7<span>]</span></a></sup>)</p></li>
+<li><p>Optimal delta-hedging of options under transactions costs (<span><em>e.g.</em></span> [Li and Almgren]<sup id="cite_ref-LiAlmgren" class="reference"><a href="#cite_note-LiAlmgren"><span>[</span>8<span>]</span></a></sup>)</p></li>
+<li><p>Optimal liquidation in the presence of a trading signal (<span><em>e.g.</em></span> [Almgren(2012)]<sup id="cite_ref-AlmgrenSignal" class="reference"><a href="#cite_note-AlmgrenSignal"><span>[</span>3<span>]</span></a></sup>)</p></li>
+</ul></li>
+</ul>
+</section>
+<section id="summary-on-the-almgren-chriss-model" class="level2">
+<h2 class="anchored" data-anchor-id="summary-on-the-almgren-chriss-model">Summary on the Almgren-Chriss model</h2>
+<ul>
+<li><p>The Almgren-Chriss price process is in practice the most widely-used.</p></li>
+<li><p>It forms the basis for many of the algorithms and most of the thinking in algorithmic execution.</p>
+<ul>
+<li>despite the fact that it is unrealistic: market impact decays instantaneously and it is completely incompatible with the square-root law.</li>
+</ul></li>
+<li><p>Because of the analytical tractability of the Almgren-Chriss framework, there are closed-form or quasi-closed-form solutions for many problems of practical interest.</p></li>
+</ul>
+</section>
+<section id="transient-impact-models" class="level2">
+<h2 class="anchored" data-anchor-id="transient-impact-models">Transient impact models</h2>
+<p>The price process assumed in transient impact model is</p>
+<p><span class="math display">\[S_t = S_0 + \int_0^t\,h(v_s)\,G(t-s)\,ds+M_t, \quad \text{ where } M_t \text{ is a zero mean martingale/noise.}\]</span></p>
+<ul>
+<li><p><span class="math inline">\(h(v_s)\)</span> is referred to as the <em>instantaneous market impact function</em>, which represents the impact of trading at time <span class="math inline">\(s\)</span>, and <span class="math inline">\(G(t-s)\)</span> is a decay factor. Note that <span class="math inline">\(h(v) &gt; 0\)</span> if <span class="math inline">\(v &gt; 0\)</span>; whereas <span class="math inline">\(h(v) &lt; 0\)</span> if <span class="math inline">\(v &lt; 0\)</span>.</p></li>
+<li><p>The cumulative impact of (others’) trading is implicitly in <span class="math inline">\(S_0\)</span> and the noise term.</p></li>
+<li><p>The model is a generalization of processes due to Almgren, Bouchaud, and Obizhaeva and Wang.</p></li>
+</ul>
+</section>
+<section id="pl-and-cost-of-trading-in-transient-impact-model" class="level2">
+<h2 class="anchored" data-anchor-id="pl-and-cost-of-trading-in-transient-impact-model">P&amp;L and cost of trading in transient impact model</h2>
+<p>Note that, at the end of execution period <span class="math inline">\(T\)</span>, the P&amp;L reads <span class="math display">\[
+  \Pi_T(x) = x_T (S_T - S_0) + \int_0^T (S_0 - \tilde S_u) d x_u,
+\]</span> should there be <span class="math inline">\(x_T\)</span> shares yet to be transacted. Hence, in transient impact model (note that <span class="math inline">\(\tilde S_t = S_t\)</span>)</p>
+<p><span class="math display">\[\begin{align*}
+\Pi_T(x) &amp;= x_T (S_T - S_0) + \int_0^T (S_0 - \tilde S_u) d x_u \\
+&amp;= - \int_0^T \int_0^t h(v_u)G(t-u) du d x_t - \int_0^T M_t d x_t \quad (\text{since } x_T = 0) \\
+&amp;= - \int_0^T \int_0^t h(v_u)G(t-u) du d x_t - (M_T x_T - M_0 x_0) + \int_0^T x_t d M_t \quad (\text{Integration by parts}) \\
+&amp;= - \int_0^T \int_0^t h(v_u)G(t-u) du d x_t + \int_0^T x_t d M_t \quad (\text{since } x_T = 0 \text{ and } M_0 = 0).
+\end{align*}\]</span> Therefore, the expected cost corresponding to the trading strategy <span class="math inline">\(x\)</span> is given by<br>
+<span class="math display">\[\begin{align*}
+&amp; \E\left[C_T(x)\right] = \E\left[-\Pi_T(x)\right] = \Eof{\int_0^T \int_0^t h(v_u)G(t-u) du d x_t}.
+\end{align*}\]</span></p>
+</section>
+<section id="the-optimal-strategy-of-a-risk-neutral-trader" class="level2">
+<h2 class="anchored" data-anchor-id="the-optimal-strategy-of-a-risk-neutral-trader">The optimal strategy of a risk neutral trader</h2>
+<p>For a risk neutral trader whose objective is to minimize the expected cost of trading, the optimal control problem reads</p>
+<p><span class="math display">\[\begin{align*}
+&amp; \min_{v} \E\left[C_T(x)\right] = \min_v \int_0^T \int_0^t h(v_u)G(t-u) du d x_t,
+\end{align*}\]</span></p>
+<p>where the state variable <span class="math inline">\(x_t\)</span> is driven by <span class="math inline">\(dx_t = v_t dt\)</span> with the constraints <span class="math inline">\(x_0 = X\)</span> and <span class="math inline">\(x_T = 0\)</span>. It is equivalent to a variational problem.</p>
+<p><span class="math display">\[\begin{align*}
+&amp; \min_{v} \E\left[C_T(x)\right] = \min_v \left\{\int_0^T \int_0^t h(v_u)G(t-u) du v_t dt\right\},
+\end{align*}\]</span></p>
+<p>subject to the constraint <span class="math inline">\(\int_0^T v_t dt = X\)</span>.</p>
+</section>
+<section id="lagrange-multiplier" class="level2">
+<h2 class="anchored" data-anchor-id="lagrange-multiplier">Lagrange multiplier</h2>
+<p>To derive the Euler-Lagrange equation, consider the Lagrangian</p>
+<p><span class="math display">\[\begin{align*}
+  &amp; L(v,\lambda) = \int_0^T\int_0^t v_t G(t-s) h(v_s) ds dt - \lambda \left( \int_0^T v_t dt - X \right) \\
+  &amp;= \int_0^T \left[ \int_0^t G(t-s) h(v_s) ds - \lambda \right] v_t dt + \lambda X,
+\end{align*}\]</span></p>
+<p>where <span class="math inline">\(\lambda\)</span> is the Lagrange multiplier.</p>
+</section>
+<section id="euler-lagrange-equation" class="level2">
+<h2 class="anchored" data-anchor-id="euler-lagrange-equation">Euler-Lagrange equation</h2>
+<p>Let <span class="math inline">\(\varphi\)</span> be a perturbation. Consider the first order criterion for the Lagrangian <span class="math inline">\(L\)</span>:</p>
+<p><span class="math display">\[\begin{align*}
+  0 &amp;= \left.\frac{d}{d\epsilon}\right|_{\epsilon=0} L( v_t + \epsilon \varphi_t,\lambda) \\
+  &amp;= \left.\frac{d}{d\epsilon}\right|_{\epsilon=0} \int_0^T \left[ \int_0^t G(t-s) h(v_s + \epsilon \varphi_s) ds - \lambda \right] (v_t + \epsilon \varphi_t ) dt  \\
+  &amp;= \int_0^T \left[ \int_0^t G(t-s) h'(v_s) \varphi_s ds \right] v_t dt
+   + \int_0^T \left[ \int_0^t G(t-s) h(v_s) ds - \lambda \right] \varphi_t dt  \\
+  &amp;= \int_0^T \int_0^t G(t-s) h'(v_s) \varphi_s v_t ds dt + \int_0^T \left[ \int_0^t G(t-s) h(v_s) ds - \lambda \right] \varphi_t dt  \\
+%  &amp;= \int_0^T \int_s^T G(t-s) h'(v_s) \varphi_s v_t dt ds + \int_0^T \left[ \int_0^t G(t-s) h(v_s) ds + \lambda \right] \varphi_t dt  \\
+  &amp;= \int_0^T \left[ \int_t^T G(s-t) h'(v_t) v_s ds + \int_0^t G(t-s) h(v_s) ds - \lambda \right] \varphi_t dt.
+\end{align*}\]</span></p>
+<p>Since <span class="math inline">\(\varphi_t\)</span> is arbitrary (because the first order criterion must hold for any perturbation), we must have</p>
+<p><a name="eq:intEL-TH"></a>(2) <span class="math display">\[
+  \int_t^T G(s-t) h'(v_t) v_s ds + \int_0^t G(t-s) h(v_s) ds = \lambda
+\]</span></p>
+<p>for all <span class="math inline">\(0\leq t\leq T\)</span>. This is a generalized Fredholm integral equation of the first kind. The Lagrange multiplier <span class="math inline">\(\lambda\)</span> is determined by the constraint <span class="math inline">\(\int_0^T v_t dt = -X\)</span>.</p>
+</section>
+<section id="the-obizhaeva-and-wang-model" class="level2">
+<h2 class="anchored" data-anchor-id="the-obizhaeva-and-wang-model">The Obizhaeva and Wang model</h2>
+<p>The model in [Obizhaeva and Wang]<sup id="cite_ref-ObizhaevaWang" class="reference"><a href="#cite_note-ObizhaevaWang"><span>[</span>7<span>]</span></a></sup> is given by</p>
+<p><a name="eq:OWprocess"></a>(1) <span class="math display">\[S_t = S_0 + \eta\,\int_0^t\,v_s\,e^{-\rho\,(t-s)}\,ds + \sigma_S Z_t\]</span></p>
+<p>with <span class="math inline">\(v_t=\dot x_t\)</span>.</p>
+<ul>
+<li><p>Market impact decays exponentially, <em>i.e.</em>, <span class="math inline">\(G(\tau) = e^{-\rho\tau}\)</span></p></li>
+<li><p>Instantaneous market impact is linear in the rate of trading, <span class="math inline">\(h(v) = \eta v\)</span>.</p></li>
+</ul>
+<p>The expected cost of trading becomes: <span class="math display">\[\mathcal{C} =\eta\,\int_0^T\int_0^t\,{v}_s\,e^{-\rho\,(t-s)}\,ds\, v_tdt\]</span></p>
+</section>
+<section id="impact-profile-in-the-obizhaeva-and-wang-model" class="level2">
+<h2 class="anchored" data-anchor-id="impact-profile-in-the-obizhaeva-and-wang-model">Impact profile in the Obizhaeva and Wang model</h2>
+<div id="cell-36" class="cell" data-scrolled="true" data-execution_count="4">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>rhos <span class="op">=</span> [<span class="fl">0.6</span>, <span class="dv">1</span>, <span class="fl">1.4</span>]</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> twap_ow(t, rho):</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>    term1 <span class="op">=</span> (<span class="dv">1</span> <span class="op">-</span> np.exp(<span class="op">-</span>rho<span class="op">*</span>t))<span class="op">*</span>(t <span class="op">&lt;=</span> T) </span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>    term2 <span class="op">=</span> (<span class="dv">1</span> <span class="op">-</span> np.exp(<span class="op">-</span>rho<span class="op">*</span>T))<span class="op">*</span>np.exp(rho<span class="op">*</span>(T<span class="op">-</span>t))<span class="op">*</span>(t <span class="op">&gt;</span> T) </span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> (term1 <span class="op">+</span> term2)<span class="op">/</span>rho</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>t <span class="op">=</span> np.linspace(<span class="dv">0</span>, <span class="dv">2</span>, <span class="dv">200</span>)</span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a><span class="co">#plt.figure(figsize=(8, 5))</span></span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> rho <span class="kw">in</span> rhos:</span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>    plt.plot(t, twap_ow(t, rho), label<span class="op">=</span><span class="vs">fr'</span><span class="dv">$</span><span class="ch">\r</span><span class="vs">ho</span><span class="dv">$</span><span class="vs">=</span><span class="sc">{</span>rho<span class="sc">}</span><span class="vs">'</span>)</span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>plt.vlines(x<span class="op">=</span><span class="dv">1</span>, ymin<span class="op">=</span><span class="dv">0</span>, ymax<span class="op">=</span><span class="dv">2</span>, linewidth<span class="op">=</span><span class="fl">0.5</span>, ls<span class="op">=</span><span class="st">'dotted'</span>)</span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>plt.ylim([<span class="dv">0</span>, <span class="dv">1</span>])</span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="vs">r'</span><span class="dv">$</span><span class="vs">t</span><span class="dv">$</span><span class="vs">'</span>, fontsize<span class="op">=</span><span class="dv">15</span>)</span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="vs">r'</span><span class="dv">$</span><span class="ch">\t</span><span class="vs">ilde S_t</span><span class="dv">$</span><span class="vs">'</span>, fontsize<span class="op">=</span><span class="dv">15</span>)</span>
+<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'Impact profile in Obizhaeva-Wang model'</span>, fontsize<span class="op">=</span><span class="dv">18</span>)</span>
+<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a>plt.legend()<span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="NSD_Lec06-OptimalOrderExecution_Summer2025_files/figure-html/cell-5-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="optimal-strategy-in-obizhaeva-wang" class="level2">
+<h2 class="anchored" data-anchor-id="optimal-strategy-in-obizhaeva-wang">Optimal strategy in Obizhaeva-Wang</h2>
+<p>The Euler-Lagrange equation in this case reads:</p>
+<p><span class="math display">\[
+\eta \int_t^T\,v_s\,e^{-\rho\,(s-t)}\,ds + \eta \int_0^t\,v_s\,e^{-\rho\,(t-s)}\,ds  = \lambda.
+\]</span></p>
+<p>which may be rewritten as</p>
+<p><span class="math display">\[\int_0^T\,v_s\,e^{-\rho\,|t-s|}\,ds = \frac\lambda\eta\]</span></p>
+<p>which is a Fredholm integral equation of the first kind.</p>
+<p>The solution is</p>
+<p><span class="math display">\[v_t = \frac\lambda\eta \,\left\{\delta(t)+\rho+\delta(T-t)\right\}\]</span></p>
+<p>The Lagrange multiplier <span class="math inline">\(\lambda\)</span> is determined by</p>
+<p><span class="math display">\[-X = x_T - x_0 = \int_0^T\, v_t \,dt = \frac\lambda\eta \, \left(2+\rho\,T\right)\]</span></p>
+<p>Thus, <span class="math inline">\(\frac\lambda\eta = -\frac X{2 + \rho T}\)</span> and</p>
+<p><span class="math display">\[
+v_t = -\frac X{2 + \rho T}\left\{\delta(t)+\rho+\delta(T-t)\right\}.
+\]</span></p>
+<p>The optimal strategy consists of block trades at <span class="math inline">\(t=0\)</span> and <span class="math inline">\(t=T\)</span> and continuous trading at the constant rate <span class="math inline">\(\rho\)</span> between these two times.</p>
+<section id="note-2" class="level4">
+<h4 class="anchored" data-anchor-id="note-2">Note</h4>
+<ul>
+<li>The case <span class="math inline">\(\rho = 0\)</span> corresponds to the Almgren-Chriss model with only permanent impact. In this case, the strategy suggests a block trade of half of the total shares at the beginning and a block trade of the other in the end. In fact, in this case all strategies are optimal since the expected cost is a constant, independent of the strategies!</li>
+</ul>
+</section>
+</section>
+<section id="obizhaeva-wang-as-a-control-problem" class="level2">
+<h2 class="anchored" data-anchor-id="obizhaeva-wang-as-a-control-problem">Obizhaeva-Wang as a control problem</h2>
+<p>We may recast the optimal execution problem in the Obizhaeva-Wang model as a control problem as follows.</p>
+<p>Let</p>
+<p><span class="math display">\[
+Y_t = \eta \int_0^t e^{-\rho(t-s)} v_s ds.
+\]</span></p>
+<p>Thus, we can rewrite the dynamic for <span class="math inline">\(S_t\)</span> as <span class="math inline">\(S_t = s_0 + Y_t + \sigma_S Z_t\)</span>. It follows that the state equations are given by</p>
+<p><span class="math display">\[\begin{align*}
+&amp; dX_t = v_t dt, \quad X_0 = X \\
+&amp; dY_t = \left\{\eta v_t - \rho Y_t \right\}dt, \quad Y_0 = 0 \\
+\end{align*}\]</span></p>
+<p>Objective functional (the expected cost)</p>
+<p><span class="math display">\[\begin{align*}
+&amp; \int_0^T y_t v_t dt.
+\end{align*}\]</span></p>
+<p>Notice that we end up with a deterministic control problem.</p>
+</section>
+<section id="value-function" class="level2">
+<h2 class="anchored" data-anchor-id="value-function">Value function</h2>
+<p>As always, the value function <span class="math inline">\(J\)</span> is defined as</p>
+<p><span class="math display">\[
+J(t, x, y) = \min_v \int_t^T y_s v_s ds.
+\]</span></p>
+</section>
+<section id="hjb-equation" class="level2">
+<h2 class="anchored" data-anchor-id="hjb-equation">HJB equation</h2>
+<p>The value function will satisfy the following HJB equation.</p>
+<p><span class="math display">\[\begin{align*}
+&amp; J_t + \min_v\{yv + v J_x + (\eta v - \rho y)J_y \} \\
+&amp;= J_t - \rho y J_y + \min_v\{(y + J_x + \eta J_y) v\} \\
+&amp;= 0
+\end{align*}\]</span></p>
+<p>Turns out the control theory formulation of the optimal execution problem under Obizhaeva-Wang model is pretty tricky since</p>
+<p><span class="math display">\[
+\min_v\{(y + J_x + \eta J_y) v\} = \left\{\begin{array}{ll}
+- \infty &amp; \text{if } y + J_x + \eta J_y \neq 0, \\
+0 &amp; \text{if } y + J_x + \eta J_y = 0.
+\end{array}\right.
+\]</span></p>
+<p>Special treatment for this type of problems are required.</p>
+</section>
+<section id="combining-almgren-chriss-and-obizhaeva-wang-the-acow-model" class="level2">
+<h2 class="anchored" data-anchor-id="combining-almgren-chriss-and-obizhaeva-wang-the-acow-model">Combining Almgren-Chriss and Obizhaeva-Wang: the ACOW model</h2>
+<p>We add up the Almgren-Chriss model and the Obizhaeva-Wang model as</p>
+<p><span class="math display">\[\begin{align*}
+&amp; S_t = s_0 + \gamma (X_t - X_0) + Y_t + \sigma_S W_t, \\
+&amp; \tS_t = S_t + \eta v_t,
+\end{align*}\]</span></p>
+<p>where</p>
+<p><span class="math display">\[
+Y_t = \int_0^t e^{-\rho(t - s)} \phi v_s ds + \sigma \int_0^t e^{-\rho(t-s)} dZ_s
+\]</span></p>
+<p>be the price impact (due to trading). Then <span class="math inline">\(Y_t\)</span> satisfies the ODE</p>
+<p><span class="math display">\[
+d Y_t = \{\phi v_t - \rho Y_t\}dt + \sigma dZ_t, \quad Y_0 = 0.
+\]</span></p>
+<ul>
+<li><span class="math inline">\(S_t\)</span>: efficient/mid price</li>
+<li><span class="math inline">\(\tilde S_t\)</span>: traded price</li>
+<li><span class="math inline">\(Y_t\)</span>: (stochastic) impact to the efficient/mid price due to trading as in Obizhaeva-Wang</li>
+<li><span class="math inline">\(\phi v_t\)</span>: linear instantaneous impact</li>
+<li><span class="math inline">\(\eta v_t\)</span>: linear temporary impact</li>
+<li><span class="math inline">\(\gamma (X_t - X_0)\)</span>: linear permanent impact</li>
+</ul>
+<section id="note-3" class="level4">
+<h4 class="anchored" data-anchor-id="note-3">Note</h4>
+<ul>
+<li>Without the <span class="math inline">\(Y\)</span> term, the model reduces to Almgren-Chriss.</li>
+<li>If <span class="math inline">\(\gamma = \eta = \sigma = 0\)</span>, the model reduces to Obizhaeva-Wang.</li>
+<li>The rationale is that Almgren-Chriss takes care of the permanent impact component whereas the trasient impact component for Obizhaeva-Wang.</li>
+</ul>
+</section>
+</section>
+<section id="impact-profile-under-the-model" class="level2">
+<h2 class="anchored" data-anchor-id="impact-profile-under-the-model">Impact profile under the model</h2>
+<div id="cell-43" class="cell" data-tags="[]" data-execution_count="5">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> scipy.stats <span class="im">as</span> ss</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="cell-44" class="cell" data-execution_count="6">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>T <span class="op">=</span> <span class="dv">1</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>twap_AC <span class="op">=</span> <span class="kw">lambda</span> t: t<span class="op">/</span>T<span class="op">*</span>(t <span class="op">&lt;=</span> T) <span class="op">+</span> T<span class="op">*</span>(t <span class="op">&gt;</span> T)</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>rho <span class="op">=</span> <span class="fl">1.5</span></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>m <span class="op">=</span> <span class="dv">2</span><span class="op">/</span><span class="dv">3</span></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> twap_model(t):</span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>    term1 <span class="op">=</span> (<span class="dv">1</span> <span class="op">-</span> np.exp(<span class="op">-</span>rho<span class="op">*</span>t))<span class="op">*</span>(t <span class="op">&lt;=</span> T) </span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>    term2 <span class="op">=</span> (<span class="dv">1</span> <span class="op">-</span> np.exp(<span class="op">-</span>rho<span class="op">*</span>T))<span class="op">*</span>np.exp(rho<span class="op">*</span>(T<span class="op">-</span>t))<span class="op">*</span>(t <span class="op">&gt;</span> T) </span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>    invent <span class="op">=</span> m<span class="op">*</span>(term1 <span class="op">+</span> term2)<span class="op">/</span>rho</span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> invent <span class="op">+</span> twap_AC(t)</span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>t <span class="op">=</span> np.linspace(<span class="dv">0</span>, <span class="dv">2</span>, <span class="dv">200</span>)</span>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a><span class="co">#plt.figure(figsize=(8, 6))</span></span>
+<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a>plt.plot(t, twap_AC(t), ls<span class="op">=</span><span class="st">'dotted'</span>, color<span class="op">=</span><span class="st">'blue'</span>, label<span class="op">=</span><span class="st">'Almgren-Chriss'</span>)</span>
+<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a>plt.plot(t, twap_model(t), ls<span class="op">=</span><span class="st">'dashed'</span>, color<span class="op">=</span><span class="st">'blue'</span>, label<span class="op">=</span><span class="st">'ACOW'</span>)</span>
+<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a>plt.vlines(x<span class="op">=</span><span class="dv">1</span>, ymin<span class="op">=</span><span class="dv">0</span>, ymax<span class="op">=</span><span class="dv">2</span>, linewidth<span class="op">=</span><span class="fl">0.5</span>, ls<span class="op">=</span><span class="st">'dotted'</span>)</span>
+<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a>plt.ylim([<span class="dv">0</span>, <span class="fl">1.8</span>])</span>
+<span id="cb6-17"><a href="#cb6-17" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="vs">r'</span><span class="dv">$</span><span class="vs">t</span><span class="dv">$</span><span class="vs">'</span>, fontsize<span class="op">=</span><span class="dv">15</span>)</span>
+<span id="cb6-18"><a href="#cb6-18" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="vs">r'</span><span class="dv">$</span><span class="ch">\t</span><span class="vs">ilde S_t</span><span class="dv">$</span><span class="vs">'</span>, fontsize<span class="op">=</span><span class="dv">15</span>)</span>
+<span id="cb6-19"><a href="#cb6-19" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'Impact profile under TWAP'</span>, fontsize<span class="op">=</span><span class="dv">18</span>)</span>
+<span id="cb6-20"><a href="#cb6-20" aria-hidden="true" tabindex="-1"></a>plt.legend()<span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="NSD_Lec06-OptimalOrderExecution_Summer2025_files/figure-html/cell-7-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="control-problem" class="level2">
+<h2 class="anchored" data-anchor-id="control-problem">Control problem</h2>
+<p>State equations <span class="math display">\[\begin{align*}
+&amp; dX_t = v_t dt, \quad X_0 = X \\
+&amp; dY_t = \left\{\phi v_t - \rho Y_t \right\}dt + \sigma dZ_t, \quad Y_0 = 0, \\
+&amp; S_t = s_0 + \gamma (X_t - X_0) + Y_t + \sigma_S W_t \\
+&amp; s_0 - \tS_t = -\gamma (X_t - X_0) - Y_t - \sigma_S W_t - \eta v_t
+\end{align*}\]</span></p>
+<p>Objective functional (the expected P&amp;L, marked to the price <span class="math inline">\(s_0\)</span>)</p>
+<p><span class="math display">\[\begin{align*}
+&amp; \Eof{X_T(S_T - s_0) + \int_0^T (s_0 - \tS_t) dX_t} \\
+&amp;= \Eof{X_T \{\gamma (X_T - X_0) + Y_T + \sigma_S W_T\} - \int_0^T \left\{\gamma (X_t - X_0) + Y_t + \sigma_S W_t + \eta v_t \right\} dX_t}
+\end{align*}\]</span></p>
+<p>Note that, by applying integration by parts, we have</p>
+<p><span class="math display">\[\begin{align*}
+&amp; -\gamma \int_0^T (X_t - X_0) dX_t -\int_0^T (Y_t + \sigma_S W_t) dX_t - \eta \int_0^T v_t^2 dt \\
+&amp;= -\frac\gamma2 (X_T - X_0)^2 - X_T (Y_T + \sigma_S W_T) + X_0 (Y_0 + \sigma_S W_0) + \int_0^T X_t dY_t + \sigma_S \int_0^T X_t dW_t - \eta \int_0^T v_t^2 dt \\
+&amp;= -\frac\gamma2 (X_T - X_0)^2 -X_T (Y_T + \sigma_S W_T) + \int_0^T X_t \left\{\phi v_t - \rho Y_t \right\} dt + \sigma \int_0^T X_t dZ_t + \sigma_S \int_0^T X_t dW_t - \eta \int_0^T v_t^2 dt
+\end{align*}\]</span></p>
+<p>Thus,</p>
+<p><span class="math display">\[\begin{align*}
+&amp; \Eof{X_T \{\gamma (X_T - X_0) + Y_T + \sigma_S W_T)\} - \int_0^T \{\gamma (X_t - X_0) + Y_t + \sigma_S W_t + \eta v_t\} v_t dt} \\
+&amp;= \Eof{ \frac\gamma2 (X_T^2 + X_0^2) + \int_0^T X_t \left\{\phi v_t - \rho Y_t \right\} - \eta v_t^2 dt}
+\end{align*}\]</span></p>
+<p>Penalize the final block trade by <span class="math inline">\(-\beta X_T^2\)</span>. The objective functional reads</p>
+<p><span class="math display">\[\begin{align*}
+&amp;= \frac\gamma2 X_0^2 + \Eof{\left(\frac\gamma2 - \beta\right) X_T^2 + \phi \int_0^T X_s dX_s - \int_0^T \left(\rho X_s Y_s + \eta v_s^2\right) ds} \\
+&amp;= \frac{\gamma - \phi}2 X_0^2 + \Eof{\left(\frac{\gamma + \phi}2 -\beta\right) X_T^2 - \int_0^T \left(\rho X_s Y_s + \eta v_s^2\right) ds}.
+\end{align*}\]</span></p>
+</section>
+<section id="matrix-notations" class="level2">
+<h2 class="anchored" data-anchor-id="matrix-notations">Matrix notations</h2>
+<p>Rewrite the equation in matrix notations.</p>
+<p><span class="math display">\[\begin{align*}
+&amp; \bX = \left[\begin{array}{c} x \\ y \end{array}\right], \\
+&amp; \mbP = \left[\begin{array}{cc}
+\frac{\gamma + \phi}2 - \beta &amp; 0 \\
+0 &amp; 0
+\end{array}\right],
+\qquad
+\mbQ = \left[\begin{array}{cc}
+0 &amp; -\frac\rho2 \\
+-\frac\rho2 &amp; 0
+\end{array}\right],
+\qquad
+\mbS = \left[0 \quad 0\right],
+\qquad
+\mbR = -\eta, \\
+&amp; \mbA = \left[\begin{array}{cc}
+0 &amp; 0 \\
+0 &amp; -\rho
+\end{array}\right],
+\qquad
+\mbB = \left[\begin{array}{c}
+1 \\
+\phi
+\end{array}\right],
+\qquad
+\bSigma = \left[\begin{array}{c}
+0 \\
+\sigma
+\end{array}\right].
+\end{align*}\]</span></p>
+</section>
+<section id="lq-problem" class="level2">
+<h2 class="anchored" data-anchor-id="lq-problem">LQ problem</h2>
+<p>We obtain the following LQ control problem</p>
+<p><span class="math display">\[
+\max_u \Eof{\bX_T' \mbP \bX_T + \int_0^T \left(\bX_t' \mbQ \bX_t + \bu_t' \mbR \bu_t \right) dt},
+\]</span></p>
+<p>with the controlled SDE given by</p>
+<p><span class="math display">\[
+d\bX_t = (A \bX_t + \mbB v_t)dt + \bSigma dZ_t
+\]</span></p>
+</section>
+<section id="value-function-and-hjb-equation" class="level2">
+<h2 class="anchored" data-anchor-id="value-function-and-hjb-equation">Value function and HJB equation</h2>
+<p>Let <span class="math inline">\(V\)</span> be the value function</p>
+<p><span class="math display">\[
+V(t, \bx) = \max_{\bu} \Eof{\left. \bX_T' \mbP \bX_T + \int_t^T \left(\bX_s' \mbQ \bX_s + \bu_s' \mbR \bu_s \right) ds\right|\bX_t = \bx}.
+\]</span></p>
+<p><span class="math inline">\(V\)</span> satisfies the following HJB equation</p>
+<p><span class="math display">\[
+V_t + \frac12\tr(\bSigma\bSigma'\nabla^2 V) + \max_{\bu}\left\{(\mbA \bx + \mbB \bu)' \nabla V + \bx'\mbQ\bx + \bu_t' \mbR \bu_t \right\} = 0
+\]</span></p>
+<p>with terminal condition <span class="math inline">\(V(T, \bx) = \bx'\mbP\bx\)</span>.</p>
+<section id="note-4" class="level4">
+<h4 class="anchored" data-anchor-id="note-4">Note</h4>
+<ul>
+<li><span class="math inline">\(\mbR = -\eta\)</span> is negative definite since we have a maximization problem.</li>
+</ul>
+</section>
+</section>
+<section id="optimal-control" class="level2">
+<h2 class="anchored" data-anchor-id="optimal-control">Optimal control</h2>
+<p><span class="math display">\[
+\bu = - \frac12 \mbR^{-1} \mbB'\nabla V.
+\]</span></p>
+<p><span class="math display">\[\begin{align*}
+&amp; V_t + \frac12\tr(\bSigma\bSigma'\nabla^2 V) + \max_{\bu}\left\{(\mbA \bx + \mbB \bu)' \nabla V + \bx'\mbQ\bx + \bu'\mbR\bu \right\} \\
+&amp;= V_t + \frac12\tr(\bSigma\bSigma'\nabla^2 V) + \bx'\mbA' \nabla V + \bx'\mbQ\bx - \frac14 \nabla V' \mbB \mbR^{-1} \mbB' \nabla V
+\end{align*}\]</span></p>
+</section>
+<section id="ansatz" class="level2">
+<h2 class="anchored" data-anchor-id="ansatz">Ansatz</h2>
+<p>Assume the ansatz for value function <span class="math inline">\(V(t, \bx) = \bx' H_1 \bx + H_0\)</span>.</p>
+<p>The optimal (feedback) control <span class="math inline">\(\bu^*\)</span> becomes</p>
+<p><span class="math display">\[
+\bu^* = - \frac12 \mbR^{-1} \mbB'\nabla V = \frac1{\eta} \mbB' H_1 \bx
+\]</span></p>
+</section>
+<section id="matrix-riccati-equation" class="level2">
+<h2 class="anchored" data-anchor-id="matrix-riccati-equation">Matrix Riccati equation</h2>
+<p>Compare the coefficients and obtain the matrix Riccati equation</p>
+<p><span class="math display">\[\begin{align*}
+&amp; \dot H_1 - H_1\mbB\mbR^{-1}\mbB'H_1 + \mbA' H_1 + H_1 \mbA + \mbQ = 0 \\
+&amp; \dot H_0 + \tr(\bSigma\bSigma'H_1) = 0
+\end{align*}\]</span></p>
+<p>with terminal condition <span class="math inline">\(H_1(T) = \mbP\)</span> and <span class="math inline">\(H_0(T) = 0\)</span>.</p>
+<p><span class="math display">\[\begin{align*}
+&amp; \dot H_1 + \frac1\eta H_1\mbB\mbB'H_1 + \mbA' H_1 + H_1 \mbA + \mbQ = 0 \\
+&amp; \dot H_0 + \tr(\bSigma\bSigma'H_1) = 0
+\end{align*}\]</span></p>
+</section>
+<section id="solution-to-the-riccati-equation" class="level1">
+<h1>Solution to the Riccati equation</h1>
+<p>The solution to the matrix Riccati equation for <span class="math inline">\(H_1\)</span> can be characterized by the solution to the following linear system of equations</p>
+<p><span class="math display">\[
+H_1 = M N^{-1},
+\]</span></p>
+<p>where <span class="math inline">\(M\)</span>, <span class="math inline">\(N\)</span> satisfy the linear ODEs</p>
+<p><span class="math display">\[
+\frac{d}{dt} \left[\begin{array}{c} M \\ N \end{array}\right] =
+\left[\begin{array}{cc} -\mbA &amp; -\mbQ \\
+\frac1{\eta}\mbB \mbB' &amp; \mbA
+\end{array}\right] \,
+\left[\begin{array}{c} M \\ N \end{array}\right]
+\]</span></p>
+<p>with terminal conditions <span class="math inline">\(M_T = H_1(T) = \mbP\)</span> and <span class="math inline">\(N_T = I\)</span>.</p>
+<p>The solution to the linear system can be written as</p>
+<p><span class="math display">\[
+\left[\begin{array}{c} M \\ N\end{array}\right] =e^{-(T-t)\Psi} \,
+\left[\begin{array}{c} \mbP \\ I \end{array}\right]
+\]</span></p>
+<p>where</p>
+<p><span class="math display">\[
+\Psi = \left[\begin{array}{cc} -\mbA &amp; -\mbQ \\
+\frac1{\eta}\mbB \mbB' &amp; \mbA
+\end{array}\right] \,
+\left[\begin{array}{c} M \\ N \end{array}\right]
+\]</span></p>
+<p>The expected trading trajectory <span class="math inline">\(x_t = \Eof{X_t}\)</span> under optimal control <span class="math inline">\(\bu^*\)</span> satisfies</p>
+<p><span class="math display">\[\begin{align*}
+&amp; \dot x_t = \frac1{\eta} \mbB' H_1 \bx, \\
+&amp; \dot y_t = \frac\phi{\eta} \mbB' H_1 \bx - \rho y_t,
+\end{align*}\]</span></p>
+<p>where <span class="math inline">\(y_t = \Eof{Y_t}\)</span>.</p>
+<p>Note that we have</p>
+<p><span class="math display">\[
+\phi \dot x_t - (\dot y_t + \rho y_t) = 0
+\]</span></p>
+<p>Thus,</p>
+<p><span class="math display">\[
+e^{\rho t} y_t - y_0 = \phi (x_t - x_0) \quad \Longrightarrow \quad y_t = e^{-\rho t}y_0 + e^{-\rho t}\phi(x_t - x_0) = e^{-\rho t}\phi(x_t - x_0)
+\]</span></p>
+<p>since <span class="math inline">\(y_0 = 0\)</span>.</p>
+<section id="numerical-examples" class="level2">
+<h2 class="anchored" data-anchor-id="numerical-examples">Numerical examples</h2>
+<div id="cell-59" class="cell" data-execution_count="7">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> scipy.linalg <span class="im">import</span> expm</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> scipy.integrate <span class="im">import</span> odeint</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="cell-60" class="cell" data-execution_count="8">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># liquidation horizon</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>T <span class="op">=</span> <span class="dv">1</span></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="co"># number of shares to liquidate</span></span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>x0 <span class="op">=</span> <span class="dv">20_000</span></span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a><span class="co"># mean reverting rate rho</span></span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a><span class="co"># rho in the exponential decay kernel</span></span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>rho <span class="op">=</span> <span class="dv">10</span> <span class="co"># 1e-3</span></span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a><span class="co"># parameters for market impact from Almgren-Chriss</span></span>
+<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a>eta <span class="op">=</span> <span class="fl">2.5</span><span class="op">*</span><span class="fl">1e-6</span> <span class="co"># temporary impact coefficient</span></span>
+<span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a>gamma <span class="op">=</span> <span class="fl">2.5</span><span class="op">*</span><span class="fl">1e-7</span> <span class="co"># permanent impact coefficient</span></span>
+<span id="cb8-14"><a href="#cb8-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-15"><a href="#cb8-15" aria-hidden="true" tabindex="-1"></a><span class="co"># final block trade penalty</span></span>
+<span id="cb8-16"><a href="#cb8-16" aria-hidden="true" tabindex="-1"></a>beta <span class="op">=</span> <span class="dv">1000</span><span class="op">*</span>eta <span class="co">#, 100*eta, 1000*eta, 10_000*eta</span></span>
+<span id="cb8-17"><a href="#cb8-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-18"><a href="#cb8-18" aria-hidden="true" tabindex="-1"></a><span class="co"># coefficient for inventory cost</span></span>
+<span id="cb8-19"><a href="#cb8-19" aria-hidden="true" tabindex="-1"></a><span class="co"># coefficient for linear instantaneous impact function</span></span>
+<span id="cb8-20"><a href="#cb8-20" aria-hidden="true" tabindex="-1"></a>phi <span class="op">=</span> <span class="dv">50</span><span class="op">*</span>eta <span class="co"># eta, 5*eta, 10*eta, 100*eta</span></span>
+<span id="cb8-21"><a href="#cb8-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-22"><a href="#cb8-22" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f'(gamma + phi)/2 - beta is </span><span class="sc">{</span>(gamma<span class="op">+</span>phi)<span class="op">/</span><span class="dv">2</span> <span class="op">-</span> beta<span class="sc">}</span><span class="ss">.'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>(gamma + phi)/2 - beta is -0.0024373749999999994.</code></pre>
+</div>
+</div>
+<div id="cell-61" class="cell" data-execution_count="9">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># matrices</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>A <span class="op">=</span> np.array([<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="op">-</span>rho]).reshape(<span class="dv">2</span>, <span class="dv">2</span>)</span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>P <span class="op">=</span> np.array([(gamma <span class="op">+</span> phi)<span class="op">/</span><span class="dv">2</span> <span class="op">-</span> beta, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>]).reshape(<span class="dv">2</span>, <span class="dv">2</span>)</span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>Q <span class="op">=</span> np.array([<span class="dv">0</span>, <span class="op">-</span>rho<span class="op">/</span><span class="dv">2</span>, <span class="op">-</span>rho<span class="op">/</span><span class="dv">2</span>, <span class="dv">0</span>]).reshape(<span class="dv">2</span>, <span class="dv">2</span>)</span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>B <span class="op">=</span> np.array([<span class="dv">1</span>, phi]).reshape(<span class="dv">2</span>, <span class="dv">1</span>)</span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Psi</span></span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a>Psi <span class="op">=</span> np.array([[<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, rho<span class="op">/</span><span class="dv">2</span>], [<span class="dv">0</span>, rho, rho<span class="op">/</span><span class="dv">2</span>, <span class="dv">0</span>], [<span class="dv">1</span><span class="op">/</span>eta, phi<span class="op">/</span>eta, <span class="dv">0</span>, <span class="dv">0</span>], </span>
+<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a>                [phi<span class="op">/</span>eta, phi<span class="op">**</span><span class="dv">2</span><span class="op">/</span>eta, <span class="dv">0</span>, <span class="op">-</span>rho]])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="cell-62" class="cell" data-execution_count="10">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># solution H1</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> H1(t):</span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Matrix [P I]'</span></span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>    PI <span class="op">=</span> np.concatenate([P.reshape(<span class="dv">4</span>), np.identity(<span class="dv">2</span>).reshape(<span class="dv">4</span>)]).reshape(<span class="dv">4</span>, <span class="dv">2</span>)</span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>    <span class="co"># exponential Psi times [P I]'</span></span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>    ePsiPI <span class="op">=</span> <span class="kw">lambda</span> t: expm(<span class="op">-</span>(T<span class="op">-</span>t)<span class="op">*</span>Psi).dot(PI)    </span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a>    M, N <span class="op">=</span> ePsiPI(t)[:<span class="dv">2</span>], ePsiPI(t)[<span class="dv">2</span>:]</span>
+<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> M.dot(np.linalg.inv(N))</span>
+<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a><span class="co"># first order criterion for v</span></span>
+<span id="cb11-11"><a href="#cb11-11" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> v_opt(bx, t):</span>
+<span id="cb11-12"><a href="#cb11-12" aria-hidden="true" tabindex="-1"></a>    BtH <span class="op">=</span> B.transpose().dot(H1(t))</span>
+<span id="cb11-13"><a href="#cb11-13" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> BtH.dot(bx)<span class="op">/</span>eta</span>
+<span id="cb11-14"><a href="#cb11-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-15"><a href="#cb11-15" aria-hidden="true" tabindex="-1"></a><span class="co"># ODE for x and y</span></span>
+<span id="cb11-16"><a href="#cb11-16" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> f(bx, t):</span>
+<span id="cb11-17"><a href="#cb11-17" aria-hidden="true" tabindex="-1"></a>    x <span class="op">=</span> bx[<span class="dv">0</span>]</span>
+<span id="cb11-18"><a href="#cb11-18" aria-hidden="true" tabindex="-1"></a>    y <span class="op">=</span> bx[<span class="dv">1</span>]</span>
+<span id="cb11-19"><a href="#cb11-19" aria-hidden="true" tabindex="-1"></a>    dx <span class="op">=</span> v_opt(bx, t)</span>
+<span id="cb11-20"><a href="#cb11-20" aria-hidden="true" tabindex="-1"></a>    dy <span class="op">=</span> phi<span class="op">*</span>v_opt(bx, t) <span class="op">-</span> rho<span class="op">*</span>y</span>
+<span id="cb11-21"><a href="#cb11-21" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> np.array([dx, dy]).reshape(<span class="dv">2</span>)</span>
+<span id="cb11-22"><a href="#cb11-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-23"><a href="#cb11-23" aria-hidden="true" tabindex="-1"></a><span class="co"># solve optimal x and y numerically</span></span>
+<span id="cb11-24"><a href="#cb11-24" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> solve_opt_xy(n_steps<span class="op">=</span><span class="dv">500</span>): </span>
+<span id="cb11-25"><a href="#cb11-25" aria-hidden="true" tabindex="-1"></a>    t <span class="op">=</span> np.linspace(<span class="dv">0</span>, T, n_steps<span class="op">+</span><span class="dv">1</span>)</span>
+<span id="cb11-26"><a href="#cb11-26" aria-hidden="true" tabindex="-1"></a>    bx0 <span class="op">=</span> np.array([x0, <span class="dv">0</span>])</span>
+<span id="cb11-27"><a href="#cb11-27" aria-hidden="true" tabindex="-1"></a>    soln1 <span class="op">=</span> odeint(f, bx0, t)</span>
+<span id="cb11-28"><a href="#cb11-28" aria-hidden="true" tabindex="-1"></a>    x_opt <span class="op">=</span> soln1[:, <span class="dv">0</span>]</span>
+<span id="cb11-29"><a href="#cb11-29" aria-hidden="true" tabindex="-1"></a>    y_opt <span class="op">=</span> soln1[:, <span class="dv">1</span>]</span>
+<span id="cb11-30"><a href="#cb11-30" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> x_opt, y_opt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="cell-63" class="cell" data-execution_count="11">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>n_steps <span class="op">=</span> <span class="dv">200</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>t <span class="op">=</span> np.linspace(<span class="dv">0</span>, <span class="dv">1</span>, n_steps<span class="op">+</span><span class="dv">1</span>)</span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>x, y <span class="op">=</span> solve_opt_xy(n_steps)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="cell-64" class="cell" data-execution_count="12">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># plot optimal trajectory for x</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="co">#plt.figure(figsize=(8, 6))</span></span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>plt.plot(t, x)</span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="vs">r'</span><span class="dv">$</span><span class="vs">t</span><span class="dv">$</span><span class="vs">'</span>, fontsize<span class="op">=</span><span class="dv">15</span>)</span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="vs">r'</span><span class="dv">$</span><span class="vs">x</span><span class="dv">$</span><span class="vs">'</span>, fontsize<span class="op">=</span><span class="dv">15</span>)</span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>plt.hlines(y<span class="op">=</span><span class="dv">0</span>, xmin<span class="op">=</span><span class="dv">0</span>, xmax<span class="op">=</span><span class="dv">1</span>, ls<span class="op">=</span><span class="st">'dotted'</span>)<span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="NSD_Lec06-OptimalOrderExecution_Summer2025_files/figure-html/cell-13-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<div id="cell-65" class="cell" data-execution_count="13">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co"># plot trajectory for y under optimal policy</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="co">#plt.figure(figsize=(8, 6))</span></span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>plt.plot(t, y)</span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="vs">r'</span><span class="dv">$</span><span class="vs">t</span><span class="dv">$</span><span class="vs">'</span>, fontsize<span class="op">=</span><span class="dv">15</span>)</span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="vs">r'</span><span class="dv">$</span><span class="vs">y</span><span class="dv">$</span><span class="vs">'</span>, fontsize<span class="op">=</span><span class="dv">15</span>)</span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a>plt.hlines(y<span class="op">=</span><span class="dv">0</span>, xmin<span class="op">=</span><span class="dv">0</span>, xmax<span class="op">=</span><span class="dv">1</span>, ls<span class="op">=</span><span class="st">'dotted'</span>, color<span class="op">=</span><span class="st">'k'</span>)<span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="NSD_Lec06-OptimalOrderExecution_Summer2025_files/figure-html/cell-14-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<div id="cell-66" class="cell" data-execution_count="14">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># the optimal trading rate v</span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>v <span class="op">=</span>np.array([])</span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">len</span>(t)):</span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>    BtH <span class="op">=</span> B.transpose().dot(H1(t[i]))</span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>    v <span class="op">=</span> np.concatenate([v, BtH.dot([x[i], y[i]])<span class="op">/</span>eta])</span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a><span class="co"># plot optimal trajectory for v</span></span>
+<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a><span class="co">#plt.figure(figsize=(8, 6))</span></span>
+<span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a>plt.plot(t, v)</span>
+<span id="cb15-10"><a href="#cb15-10" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="vs">r'</span><span class="dv">$</span><span class="vs">t</span><span class="dv">$</span><span class="vs">'</span>, fontsize<span class="op">=</span><span class="dv">15</span>)</span>
+<span id="cb15-11"><a href="#cb15-11" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="vs">r'</span><span class="dv">$</span><span class="vs">v</span><span class="dv">$</span><span class="vs">'</span>, fontsize<span class="op">=</span><span class="dv">15</span>)<span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="NSD_Lec06-OptimalOrderExecution_Summer2025_files/figure-html/cell-15-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<div id="cell-67" class="cell" data-execution_count="15">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co"># in fact, v = dx/dt</span></span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>plt.plot(t[<span class="dv">1</span>:], np.diff(x)<span class="op">/</span>np.diff(t))<span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="NSD_Lec06-OptimalOrderExecution_Summer2025_files/figure-html/cell-16-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="value-distribution" class="level2">
+<h2 class="anchored" data-anchor-id="value-distribution">Value distribution</h2>
+<p>Let’s compare the performance of optimal trading strategy to TWAP and Almgren-Chriss in this setting.</p>
+</section>
+<section id="create-a-python-class-for-evaluating-value-function-by-simulation" class="level2">
+<h2 class="anchored" data-anchor-id="create-a-python-class-for-evaluating-value-function-by-simulation">Create a <code>python</code> class for evaluating value function by simulation</h2>
+<div id="cell-70" class="cell" data-execution_count="16">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> scipy.stats <span class="im">import</span> norm </span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> ValueDistribution:</span>
+<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a>    <span class="co">'''</span></span>
+<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a><span class="co">    x0: number of shares to liquidate/acquire</span></span>
+<span id="cb17-8"><a href="#cb17-8" aria-hidden="true" tabindex="-1"></a><span class="co">    T: liquidation/acquistion horizon</span></span>
+<span id="cb17-9"><a href="#cb17-9" aria-hidden="true" tabindex="-1"></a><span class="co">    gamma: permanent impact coefficient</span></span>
+<span id="cb17-10"><a href="#cb17-10" aria-hidden="true" tabindex="-1"></a><span class="co">    eta: temporary impact coefficient</span></span>
+<span id="cb17-11"><a href="#cb17-11" aria-hidden="true" tabindex="-1"></a><span class="co">    rho: mean reverting rate</span></span>
+<span id="cb17-12"><a href="#cb17-12" aria-hidden="true" tabindex="-1"></a><span class="co">    beta: final block trade penalty</span></span>
+<span id="cb17-13"><a href="#cb17-13" aria-hidden="true" tabindex="-1"></a><span class="co">    phi: transient impact coefficient</span></span>
+<span id="cb17-14"><a href="#cb17-14" aria-hidden="true" tabindex="-1"></a><span class="co">    sigma: volatility of transient impact</span></span>
+<span id="cb17-15"><a href="#cb17-15" aria-hidden="true" tabindex="-1"></a><span class="co">    '''</span></span>
+<span id="cb17-16"><a href="#cb17-16" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb17-17"><a href="#cb17-17" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, params, strategy, n_steps<span class="op">=</span><span class="dv">100</span>):</span>
+<span id="cb17-18"><a href="#cb17-18" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.T <span class="op">=</span> params[<span class="st">'T'</span>]</span>
+<span id="cb17-19"><a href="#cb17-19" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.x0 <span class="op">=</span> params[<span class="st">'x0'</span>]</span>
+<span id="cb17-20"><a href="#cb17-20" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.eta <span class="op">=</span> params[<span class="st">'eta'</span>]</span>
+<span id="cb17-21"><a href="#cb17-21" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.gamma <span class="op">=</span> params[<span class="st">'gamma'</span>]</span>
+<span id="cb17-22"><a href="#cb17-22" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.beta <span class="op">=</span> params[<span class="st">'beta'</span>]</span>
+<span id="cb17-23"><a href="#cb17-23" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.phi <span class="op">=</span> params[<span class="st">'phi'</span>]</span>
+<span id="cb17-24"><a href="#cb17-24" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.rho <span class="op">=</span> params[<span class="st">'rho'</span>]</span>
+<span id="cb17-25"><a href="#cb17-25" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.sigma <span class="op">=</span> params[<span class="st">'sigma'</span>]</span>
+<span id="cb17-26"><a href="#cb17-26" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.n_steps <span class="op">=</span> n_steps</span>
+<span id="cb17-27"><a href="#cb17-27" aria-hidden="true" tabindex="-1"></a>        </span>
+<span id="cb17-28"><a href="#cb17-28" aria-hidden="true" tabindex="-1"></a>        <span class="co"># strategy v as a function of x, y, t</span></span>
+<span id="cb17-29"><a href="#cb17-29" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.strategy <span class="op">=</span> strategy</span>
+<span id="cb17-30"><a href="#cb17-30" aria-hidden="true" tabindex="-1"></a>        </span>
+<span id="cb17-31"><a href="#cb17-31" aria-hidden="true" tabindex="-1"></a><span class="co">#        self.alpha = 2*self.eta/(2*self.beta - self.gamma)</span></span>
+<span id="cb17-32"><a href="#cb17-32" aria-hidden="true" tabindex="-1"></a>        </span>
+<span id="cb17-33"><a href="#cb17-33" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> simulate(<span class="va">self</span>, n_sim<span class="op">=</span><span class="dv">10_000</span>):</span>
+<span id="cb17-34"><a href="#cb17-34" aria-hidden="true" tabindex="-1"></a>        n_steps <span class="op">=</span> <span class="va">self</span>.n_steps</span>
+<span id="cb17-35"><a href="#cb17-35" aria-hidden="true" tabindex="-1"></a>        v <span class="op">=</span> <span class="va">self</span>.strategy</span>
+<span id="cb17-36"><a href="#cb17-36" aria-hidden="true" tabindex="-1"></a>        dt <span class="op">=</span> <span class="va">self</span>.T<span class="op">/</span><span class="va">self</span>.n_steps</span>
+<span id="cb17-37"><a href="#cb17-37" aria-hidden="true" tabindex="-1"></a>        gamma, phi, eta, beta, rho <span class="op">=</span> <span class="va">self</span>.gamma, <span class="va">self</span>.phi, <span class="va">self</span>.eta, <span class="va">self</span>.beta, <span class="va">self</span>.rho</span>
+<span id="cb17-38"><a href="#cb17-38" aria-hidden="true" tabindex="-1"></a>        </span>
+<span id="cb17-39"><a href="#cb17-39" aria-hidden="true" tabindex="-1"></a>        <span class="co"># initialize </span></span>
+<span id="cb17-40"><a href="#cb17-40" aria-hidden="true" tabindex="-1"></a>        y <span class="op">=</span> np.zeros([n_sim, n_steps<span class="op">+</span><span class="dv">1</span>])</span>
+<span id="cb17-41"><a href="#cb17-41" aria-hidden="true" tabindex="-1"></a>        x <span class="op">=</span> np.ones([n_sim, n_steps<span class="op">+</span><span class="dv">1</span>])<span class="op">*</span><span class="va">self</span>.x0</span>
+<span id="cb17-42"><a href="#cb17-42" aria-hidden="true" tabindex="-1"></a>        V0 <span class="op">=</span> np.zeros([n_sim, n_steps<span class="op">+</span><span class="dv">1</span>])</span>
+<span id="cb17-43"><a href="#cb17-43" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-44"><a href="#cb17-44" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> step <span class="kw">in</span> <span class="bu">range</span>(<span class="va">self</span>.n_steps):</span>
+<span id="cb17-45"><a href="#cb17-45" aria-hidden="true" tabindex="-1"></a>            dz <span class="op">=</span> norm.rvs(size<span class="op">=</span>n_sim)<span class="op">*</span>np.sqrt(dt)</span>
+<span id="cb17-46"><a href="#cb17-46" aria-hidden="true" tabindex="-1"></a>            dy <span class="op">=</span> (phi<span class="op">*</span>v(x[:,step], y[:,step], step<span class="op">*</span>dt) <span class="op">-</span> rho<span class="op">*</span>y[:,step])<span class="op">*</span>dt <span class="op">+</span> sigma<span class="op">*</span>dz</span>
+<span id="cb17-47"><a href="#cb17-47" aria-hidden="true" tabindex="-1"></a>            dx <span class="op">=</span> v(x[:,step], y[:,step], step<span class="op">*</span>dt)<span class="op">*</span>dt </span>
+<span id="cb17-48"><a href="#cb17-48" aria-hidden="true" tabindex="-1"></a>            dV0 <span class="op">=</span> <span class="op">-</span>(rho<span class="op">*</span>x[:,step]<span class="op">*</span>y[:,step] <span class="op">+</span> eta<span class="op">*</span>v(x[:,step], y[:,step], step<span class="op">*</span>dt)<span class="op">**</span><span class="dv">2</span>)<span class="op">*</span>dt</span>
+<span id="cb17-49"><a href="#cb17-49" aria-hidden="true" tabindex="-1"></a>            x[:,step<span class="op">+</span><span class="dv">1</span>] <span class="op">=</span> x[:,step] <span class="op">+</span> dx</span>
+<span id="cb17-50"><a href="#cb17-50" aria-hidden="true" tabindex="-1"></a>            y[:,step<span class="op">+</span><span class="dv">1</span>] <span class="op">=</span> y[:,step] <span class="op">+</span> dy</span>
+<span id="cb17-51"><a href="#cb17-51" aria-hidden="true" tabindex="-1"></a>            V0[:,step<span class="op">+</span><span class="dv">1</span>] <span class="op">=</span> V0[:,step] <span class="op">+</span> dV0</span>
+<span id="cb17-52"><a href="#cb17-52" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-53"><a href="#cb17-53" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.x, <span class="va">self</span>.y, <span class="va">self</span>.V0 <span class="op">=</span> x, y, V0</span>
+<span id="cb17-54"><a href="#cb17-54" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.V <span class="op">=</span> ((gamma <span class="op">+</span> phi)<span class="op">/</span><span class="dv">2</span> <span class="op">-</span> beta)<span class="op">*</span>x[:,<span class="op">-</span><span class="dv">1</span>]<span class="op">**</span><span class="dv">2</span> <span class="op">+</span> V0[:,<span class="op">-</span><span class="dv">1</span>]</span>
+<span id="cb17-55"><a href="#cb17-55" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="va">self</span>.V.mean()</span>
+<span id="cb17-56"><a href="#cb17-56" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb17-57"><a href="#cb17-57" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> V_hist(<span class="va">self</span>, bins<span class="op">=</span><span class="dv">50</span>, kde<span class="op">=</span><span class="va">True</span>, stat<span class="op">=</span><span class="st">'density'</span>, element<span class="op">=</span><span class="st">'step'</span>):</span>
+<span id="cb17-58"><a href="#cb17-58" aria-hidden="true" tabindex="-1"></a>        sns.histplot(<span class="va">self</span>.V, bins<span class="op">=</span>bins, kde<span class="op">=</span>kde, stat<span class="op">=</span>stat, element<span class="op">=</span>element)</span>
+<span id="cb17-59"><a href="#cb17-59" aria-hidden="true" tabindex="-1"></a>        plt.title(<span class="st">'Histogram of V'</span>, fontsize<span class="op">=</span><span class="dv">20</span>)<span class="op">;</span></span>
+<span id="cb17-60"><a href="#cb17-60" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="va">None</span></span>
+<span id="cb17-61"><a href="#cb17-61" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb17-62"><a href="#cb17-62" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__call__</span>(<span class="va">self</span>):</span>
+<span id="cb17-63"><a href="#cb17-63" aria-hidden="true" tabindex="-1"></a>        <span class="cf">pass</span>        </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<section id="policy-1-twap" class="level3">
+<h3 class="anchored" data-anchor-id="policy-1-twap">Policy 1: TWAP</h3>
+<div id="cell-72" class="cell" data-tags="[]" data-execution_count="17">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="co"># parameters</span></span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>sigma <span class="op">=</span> <span class="fl">0.1</span></span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>params <span class="op">=</span> {<span class="st">'T'</span>: T, <span class="st">'x0'</span>: x0, <span class="st">'eta'</span>: eta, <span class="st">'gamma'</span>: gamma, <span class="st">'rho'</span>: rho, <span class="st">'beta'</span>: beta, <span class="st">'phi'</span>: phi, <span class="st">'sigma'</span>:sigma}</span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a><span class="co"># A version of TWAP strategy</span></span>
+<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a>alpha <span class="op">=</span> <span class="dv">2</span><span class="op">*</span>eta<span class="op">/</span>(<span class="dv">2</span><span class="op">*</span>beta <span class="op">-</span> gamma)</span>
+<span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a>v_twap <span class="op">=</span> <span class="kw">lambda</span> x, y, t: <span class="op">-</span>x<span class="op">/</span>(T <span class="op">-</span> t <span class="op">+</span> alpha)</span>
+<span id="cb18-8"><a href="#cb18-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-9"><a href="#cb18-9" aria-hidden="true" tabindex="-1"></a><span class="co"># instantiate the class and simulate</span></span>
+<span id="cb18-10"><a href="#cb18-10" aria-hidden="true" tabindex="-1"></a>vd_twap <span class="op">=</span> ValueDistribution(params<span class="op">=</span>params, strategy<span class="op">=</span>v_twap, n_steps<span class="op">=</span>n_steps)</span>
+<span id="cb18-11"><a href="#cb18-11" aria-hidden="true" tabindex="-1"></a>vd_twap.simulate()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="17">
+<pre><code>19608.269295580816</code></pre>
+</div>
+</div>
+</section>
+<section id="sample-path-of-running-reward" class="level3">
+<h3 class="anchored" data-anchor-id="sample-path-of-running-reward">Sample path of running reward</h3>
+<div id="cell-74" class="cell" data-execution_count="18">
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>n_sim, n_steps <span class="op">=</span> <span class="dv">10_000</span>, <span class="dv">200</span></span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>dt <span class="op">=</span> T<span class="op">/</span>n_steps</span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>t <span class="op">=</span> np.arange(<span class="dv">0</span>, T<span class="op">+</span>dt, dt)</span>
+<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a>n_path <span class="op">=</span> np.random.choice(n_sim)</span>
+<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a>plt.plot(t, vd_twap.V0[n_path,:])<span class="op">;</span></span>
+<span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(n_path)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>3666</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="NSD_Lec06-OptimalOrderExecution_Summer2025_files/figure-html/cell-19-output-2.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<div id="cell-75" class="cell" data-execution_count="19">
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>vd_twap.V_hist()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="NSD_Lec06-OptimalOrderExecution_Summer2025_files/figure-html/cell-20-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="optimal-policy" class="level3">
+<h3 class="anchored" data-anchor-id="optimal-policy">Optimal policy</h3>
+<div id="cell-77" class="cell" data-execution_count="20">
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> v_opt(x, y, t):</span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>    bx <span class="op">=</span> np.column_stack([x, y])</span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>    HB <span class="op">=</span> H1(t).dot(B)</span>
+<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> bx.dot(HB).flatten()<span class="op">/</span>eta</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="cell-78" class="cell" data-execution_count="21">
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>vd_opt <span class="op">=</span> ValueDistribution(params<span class="op">=</span>params, strategy<span class="op">=</span>v_opt, n_steps<span class="op">=</span>n_steps)</span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>vd_opt.simulate()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="21">
+<pre><code>19744.088225206633</code></pre>
+</div>
+</div>
+<div id="cell-79" class="cell" data-tags="[]" data-execution_count="22">
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>vd_opt.V_hist()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="NSD_Lec06-OptimalOrderExecution_Summer2025_files/figure-html/cell-23-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="put-together-the-histograms" class="level3">
+<h3 class="anchored" data-anchor-id="put-together-the-histograms">Put together the histograms</h3>
+<div id="cell-81" class="cell" data-execution_count="23">
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>sns.histplot(vd_twap.V, bins<span class="op">=</span><span class="dv">50</span>, stat<span class="op">=</span><span class="st">'density'</span>, element<span class="op">=</span><span class="st">'step'</span>, kde<span class="op">=</span><span class="va">True</span>)<span class="op">;</span></span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>sns.histplot(vd_opt.V, bins<span class="op">=</span><span class="dv">50</span>, stat<span class="op">=</span><span class="st">'density'</span>, color<span class="op">=</span><span class="st">'orange'</span>, element<span class="op">=</span><span class="st">'step'</span>, kde<span class="op">=</span><span class="va">True</span>)<span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="NSD_Lec06-OptimalOrderExecution_Summer2025_files/figure-html/cell-24-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="sample-path-of-liquidation" class="level3">
+<h3 class="anchored" data-anchor-id="sample-path-of-liquidation">Sample path of liquidation</h3>
+<div id="cell-83" class="cell" data-execution_count="24">
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>n_path <span class="op">=</span> np.random.choice(n_sim)</span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>plt.plot(t, vd_opt.x[n_path,:])</span>
+<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a>plt.plot(t, vd_twap.x[n_path,:], color<span class="op">=</span><span class="st">'orange'</span>)<span class="op">;</span></span>
+<span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a>n_path</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="24">
+<pre><code>6185</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="NSD_Lec06-OptimalOrderExecution_Summer2025_files/figure-html/cell-25-output-2.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="sample-path-of-transient-impact" class="level3">
+<h3 class="anchored" data-anchor-id="sample-path-of-transient-impact">Sample path of transient impact</h3>
+<div id="cell-85" class="cell" data-execution_count="25">
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="co">#plt.figure(figsize=(12,6))</span></span>
+<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a>plt.subplot(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">1</span>)</span>
+<span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a>plt.plot(t, vd_opt.y[n_path,:])</span>
+<span id="cb30-4"><a href="#cb30-4" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'Transient impact under optimal strategy'</span>, fontsize<span class="op">=</span><span class="dv">15</span>)</span>
+<span id="cb30-5"><a href="#cb30-5" aria-hidden="true" tabindex="-1"></a>plt.subplot(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">2</span>)</span>
+<span id="cb30-6"><a href="#cb30-6" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'Transient impact under TWAP'</span>, fontsize<span class="op">=</span><span class="dv">15</span>)</span>
+<span id="cb30-7"><a href="#cb30-7" aria-hidden="true" tabindex="-1"></a>plt.plot(t, vd_twap.y[n_path,:])<span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="NSD_Lec06-OptimalOrderExecution_Summer2025_files/figure-html/cell-26-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="references" class="level2">
+<h2 class="anchored" data-anchor-id="references">References</h2>
+<p><br></p>
+<div class="reflist" style="list-style-type: decimal;">
+<ol>
+<li>
+Robert Almgren and Neil Chriss, Optimal execution of portfolio transactions, <i>Journal of Risk</i>, <b>3</b>, 5–40, (2001).
+</li>
+<li>
+Emanuel Bacry, Adrian Iuga, Matthieu Lasnier, and Charles-Albert Lehalle, Market impacts and the life cycle of investors orders, <i>Market Microstructure and Liquidity</i>, <b>1</b>(2), 1550009, (2015).
+</li>
+<li>
+Jim Gatheral, Lecture notes on market microstructure models, <i>Baruch MFE course </i>.
+</li>
+<li>
+Anna Obizhaeva and Jiang Wang, Optimal trading strategy and supply/demand dynamics, <i>Journal of Financial Markets</i>, <b>16</b>(1), 1–32, (2013).
+</li>
+<li>
+Elia Zarinelli, Michele Treccani, J. Doyne Farmer, and Fabrizio Lillo, Beyond the square root: Evidence for logarithmic dependence of market impact on size and participation rate, <i>Market Microstructure and Liquidity</i>, <b>1</b>(2), 1550004, (2015).
+</li>
+</ol>
+
+
+</div>
+
+</section>
+</section>
+
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography" id="quarto-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
+<div id="ref-bacry2014marketimpactslifecycle" class="csl-entry" role="listitem">
+Bacry, Emmanuel, Adrian Iuga, Matthieu Lasnier, and Charles-Albert Lehalle. 2014. <span>“Market Impacts and the Life Cycle of Investors Orders.”</span> <a href="https://arxiv.org/abs/1412.0217">https://arxiv.org/abs/1412.0217</a>.
+</div>
+<div id="ref-zarinelli2014squarerootevidencelogarithmic" class="csl-entry" role="listitem">
+Zarinelli, Elia, Michele Treccani, J. Doyne Farmer, and Fabrizio Lillo. 2014. <span>“Beyond the Square Root: Evidence for Logarithmic Dependence of Market Impact on Size and Participation Rate.”</span> <a href="https://arxiv.org/abs/1412.2152">https://arxiv.org/abs/1412.2152</a>.
+</div>
+</div></section></div></main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+        const codeEl = trigger.previousElementSibling.cloneNode(true);
+        for (const childEl of codeEl.children) {
+          if (isCodeAnnotation(childEl)) {
+            childEl.remove();
+          }
+        }
+        return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

@@ -185,6 +185,10 @@ window.Quarto = {
     <a class="nav-link" href="../NSD_Lec05_Summer2025/NSD_Lec05-Volatility_Summer2025.html"> 
 <span class="menu-text">Lecture 05</span></a>
   </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../NSD_Lec06-OptimalOrderExecution_Summer2025.html"> 
+<span class="menu-text">Lecture 06</span></a>
+  </li>  
 </ul>
           </div> <!-- /navcollapse -->
             <div class="quarto-navbar-tools">
@@ -1040,13 +1044,42 @@ c = \frac{\sigma\sqrt\tau}{\sqrt{2\pi}} \, e^{-\frac{(s - K)^2}{2\sigma^2\tau}} 
 \end{aligned}
 \end{equation}\]</span></p>
 <p>where <span class="math inline">\(W_t\)</span> and <span class="math inline">\(Z_t\)</span> are correlated Brownian motions with correlation <span class="math inline">\(\rho\)</span>. The process <span class="math inline">\(v_t\)</span> is usually referred to as the <em>instantaneous variance</em> and its square root <span class="math inline">\(\sigma_t := \sqrt{v_t}\)</span> the <em>instantaneous volatility</em> of the underlying at time <span class="math inline">\(t\)</span>.</p>
-<p>Commonly used stochastic volatility models include - Heston model - Hull-White model - Stochastic alpha-beta-rho (SABR) model</p>
+<p>Commonly used stochastic volatility models include</p>
+<ul>
+<li>Heston model</li>
+<li>Hull-White model</li>
+<li>Stochastic alpha-beta-rho (SABR) model</li>
+</ul>
 <section id="note-7" class="level3">
 <h3 class="anchored" data-anchor-id="note-7">Note</h3>
 <ul>
 <li>Incomplete market.</li>
 <li>Instantaneous volatility process is latent.</li>
 <li>Conditions on the functions <span class="math inline">\(a\)</span> and <span class="math inline">\(b\)</span> are required for the positivity of <span class="math inline">\(v_t\)</span>.</li>
+</ul>
+<div class="callout callout-style-default callout-note callout-titled" title="Complete market">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Complete market
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>In economics, a complete market is a market with two conditions:</p>
+<ul>
+<li>Negligible transaction costs and therefore also perfect information,</li>
+<li>Every asset in every possible state of the world has a price.</li>
+</ul>
+</div>
+</div>
+<p>为什么 Stochastic volatility models 不是 complete markets?</p>
+<ul>
+<li>因为 <span class="math inline">\(\sigma\)</span> 里有一个风险.</li>
+<li>市场上通常只有一个可交易资产 (如股票 <span class="math inline">\(S_t\)</span> 和一个无风险资产 (如债券).</li>
+<li>但市场有两个风险源 (股票价格的风险 + 波动率的风险), 而只能交易其中一个.</li>
+<li>我们没有足够多的可交易资产去完全对冲所有的不确定性.</li>
 </ul>
 </section>
 </section>
@@ -1072,6 +1105,7 @@ c = \frac{\sigma\sqrt\tau}{\sqrt{2\pi}} \, e^{-\frac{(s - K)^2}{2\sigma^2\tau}} 
 <li>Solution is up to an order of a small parameter, but in closed form</li>
 </ul></li>
 </ul>
+<p>现在: Machine learning 来解 PDE.</p>
 </section>
 <section id="example---the-heston-model" class="level2">
 <h2 class="anchored" data-anchor-id="example---the-heston-model">Example - the Heston model</h2>
