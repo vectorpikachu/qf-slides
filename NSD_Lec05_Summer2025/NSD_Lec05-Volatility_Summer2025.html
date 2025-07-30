@@ -1040,7 +1040,7 @@ memory usage: 87.4 KB</code></pre>
 <li><span class="math inline">\(c_i = \ln C_i - \ln O_i\)</span></li>
 </ul>
 <p>We make the calculation of these volatilties into a python <code>class</code>.</p>
-<div id="cell-33" class="cell" data-execution_count="19">
+<div id="cell-33" class="cell">
 <div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> Volatilities:</span>
 <span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, OHLC, n<span class="op">=</span><span class="dv">10</span>, N<span class="op">=</span><span class="dv">252</span>):</span>
 <span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.n <span class="op">=</span> n</span>
@@ -1068,9 +1068,9 @@ memory usage: 87.4 KB</code></pre>
 <span id="cb23-25"><a href="#cb23-25" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> np.sqrt(((log(H) <span class="op">-</span> log(L))<span class="op">**</span><span class="dv">2</span>).mean()<span class="op">/</span>log(<span class="dv">2</span>)<span class="op">/</span><span class="dv">4</span>)</span>
 <span id="cb23-26"><a href="#cb23-26" aria-hidden="true" tabindex="-1"></a>    </span>
 <span id="cb23-27"><a href="#cb23-27" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> cal_vol_gk(<span class="va">self</span>, O, H, L, C):</span>
-<span id="cb23-28"><a href="#cb23-28" aria-hidden="true" tabindex="-1"></a>        term1 <span class="op">=</span> ((log(O) <span class="op">-</span> log(L))<span class="op">**</span><span class="dv">2</span>).mean()<span class="op">/</span><span class="dv">2</span></span>
+<span id="cb23-28"><a href="#cb23-28" aria-hidden="true" tabindex="-1"></a>        term1 <span class="op">=</span> ((log(H) <span class="op">-</span> log(L))<span class="op">**</span><span class="dv">2</span>).mean()<span class="op">/</span><span class="dv">2</span></span>
 <span id="cb23-29"><a href="#cb23-29" aria-hidden="true" tabindex="-1"></a>        term2 <span class="op">=</span> (<span class="dv">2</span><span class="op">*</span>log(<span class="dv">2</span>) <span class="op">-</span> <span class="dv">1</span>)<span class="op">*</span>((log(C) <span class="op">-</span> log(O))<span class="op">**</span><span class="dv">2</span>).mean()</span>
-<span id="cb23-30"><a href="#cb23-30" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> np.sqrt(term1 <span class="op">+</span> term2)</span>
+<span id="cb23-30"><a href="#cb23-30" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> np.sqrt(term1 <span class="op">-</span> term2)</span>
 <span id="cb23-31"><a href="#cb23-31" aria-hidden="true" tabindex="-1"></a>    </span>
 <span id="cb23-32"><a href="#cb23-32" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> cal_vol_rs(<span class="va">self</span>, O, H, L, C):</span>
 <span id="cb23-33"><a href="#cb23-33" aria-hidden="true" tabindex="-1"></a>        u, d, c <span class="op">=</span> log(H) <span class="op">-</span> log(O), log(L) <span class="op">-</span> log(O), log(C) <span class="op">-</span> log(O)</span>
@@ -5084,6 +5084,12 @@ Wall time: 9.85 s</code></pre>
 <section id="note-1" class="level3">
 <h3 class="anchored" data-anchor-id="note-1">Note</h3>
 <p>More volatility indices published by CBOE can be found in <a href="http://www.cboe.com/Volatility">this link</a>.</p>
+<div style="text-align: center;">
+<img src="./VIX-real.svg" alt="VIX Real-time Chart" width="600">
+<p>
+VIX Chart from Investopedia
+</p>
+</div>
 </section>
 </section>
 <section id="formula-of-financial-engineering" class="level2">
@@ -5193,7 +5199,7 @@ Q_i(K_i)\,-\,\frac{1}{T}\,\left[\frac{F}{K_0}-1\right]^2
 </section>
 <section id="you-may-skip-this-part-if-you-encounter-an-error." class="level3">
 <h3 class="anchored" data-anchor-id="you-may-skip-this-part-if-you-encounter-an-error.">You may skip this part if you encounter an error.</h3>
-<div id="cell-102" class="cell" data-execution_count="63">
+<div id="cell-103" class="cell" data-execution_count="63">
 <div class="sourceCode cell-code" id="cb91"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb91-1"><a href="#cb91-1" aria-hidden="true" tabindex="-1"></a>start <span class="op">=</span> <span class="st">'2007-01-01'</span></span>
 <span id="cb91-2"><a href="#cb91-2" aria-hidden="true" tabindex="-1"></a>end <span class="op">=</span> <span class="st">'2022-07-29'</span></span>
 <span id="cb91-3"><a href="#cb91-3" aria-hidden="true" tabindex="-1"></a>vix <span class="op">=</span> yf.download(<span class="st">'^VIX'</span>, start<span class="op">=</span>start, end<span class="op">=</span>end)</span>
@@ -5317,7 +5323,7 @@ Q_i(K_i)\,-\,\frac{1}{T}\,\left[\frac{F}{K_0}-1\right]^2
 </div>
 </div>
 </div>
-<div id="cell-103" class="cell" data-execution_count="64">
+<div id="cell-104" class="cell" data-execution_count="64">
 <div class="sourceCode cell-code" id="cb93"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb93-1"><a href="#cb93-1" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">9</span>, <span class="dv">6</span>))</span>
 <span id="cb93-2"><a href="#cb93-2" aria-hidden="true" tabindex="-1"></a>vix[<span class="st">'Close'</span>].plot(label<span class="op">=</span><span class="st">'VIX'</span>)</span>
 <span id="cb93-3"><a href="#cb93-3" aria-hidden="true" tabindex="-1"></a><span class="co">#plt.plot(spx_vol*100, 'r-.', label='Historical Volatility')</span></span>
@@ -5334,7 +5340,7 @@ Q_i(K_i)\,-\,\frac{1}{T}\,\left[\frac{F}{K_0}-1\right]^2
 </div>
 </div>
 </div>
-<div id="cell-104" class="cell" data-execution_count="65">
+<div id="cell-105" class="cell" data-execution_count="65">
 <div class="sourceCode cell-code" id="cb95"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb95-1"><a href="#cb95-1" aria-hidden="true" tabindex="-1"></a><span class="co"># plot log(vix)</span></span>
 <span id="cb95-2"><a href="#cb95-2" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">9</span>, <span class="dv">6</span>))</span>
 <span id="cb95-3"><a href="#cb95-3" aria-hidden="true" tabindex="-1"></a>log(vix)[<span class="st">'Close'</span>].plot(label<span class="op">=</span><span class="st">'log ViX'</span>)</span>
@@ -5430,7 +5436,7 @@ x = \frac1T \int_0^T \sigma_t^2 \mathrm{d}t
 <p>Visit this <a href="https://finance.yahoo.com/quote/%5EVIX/options/">Yahoo Finance link for VIX option chain</a>.</p>
 <section id="you-may-skip-the-next-5-cells-if-you-encounter-an-error." class="level3">
 <h3 class="anchored" data-anchor-id="you-may-skip-the-next-5-cells-if-you-encounter-an-error.">You may skip the next 5 cells if you encounter an error.</h3>
-<div id="cell-113" class="cell" data-execution_count="66">
+<div id="cell-114" class="cell" data-execution_count="66">
 <div class="sourceCode cell-code" id="cb97"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb97-1"><a href="#cb97-1" aria-hidden="true" tabindex="-1"></a>vix <span class="op">=</span> yf.Ticker(<span class="st">'^VIX'</span>)</span>
 <span id="cb97-2"><a href="#cb97-2" aria-hidden="true" tabindex="-1"></a>vix_expiries <span class="op">=</span> vix.options</span>
 <span id="cb97-3"><a href="#cb97-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(vix_expiries)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -5438,7 +5444,7 @@ x = \frac1T \int_0^T \sigma_t^2 \mathrm{d}t
 <pre><code>('2025-07-30', '2025-08-06', '2025-08-13', '2025-08-20', '2025-08-27', '2025-09-17', '2025-10-22', '2025-11-19', '2025-12-17', '2026-01-21', '2026-02-18', '2026-03-18', '2026-04-15')</code></pre>
 </div>
 </div>
-<div id="cell-114" class="cell" data-execution_count="67">
+<div id="cell-115" class="cell" data-execution_count="67">
 <div class="sourceCode cell-code" id="cb99"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb99-1"><a href="#cb99-1" aria-hidden="true" tabindex="-1"></a><span class="co"># choose an expiry </span></span>
 <span id="cb99-2"><a href="#cb99-2" aria-hidden="true" tabindex="-1"></a>idx <span class="op">=</span> <span class="dv">4</span></span>
 <span id="cb99-3"><a href="#cb99-3" aria-hidden="true" tabindex="-1"></a>today <span class="op">=</span> dt.strftime(dt.now(), <span class="st">'%Y-%m-</span><span class="sc">%d</span><span class="st">'</span>)</span>
@@ -5452,7 +5458,7 @@ x = \frac1T \int_0^T \sigma_t^2 \mathrm{d}t
 There are 29 days to expiry</code></pre>
 </div>
 </div>
-<div id="cell-115" class="cell" data-execution_count="68">
+<div id="cell-116" class="cell" data-execution_count="68">
 <div class="sourceCode cell-code" id="cb101"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb101-1"><a href="#cb101-1" aria-hidden="true" tabindex="-1"></a><span class="co"># clean data</span></span>
 <span id="cb101-2"><a href="#cb101-2" aria-hidden="true" tabindex="-1"></a>vix_calls <span class="op">=</span> vix_calls.drop([<span class="st">'currency'</span>, <span class="st">'contractSize'</span>], axis <span class="op">=</span> <span class="dv">1</span>).dropna()</span>
 <span id="cb101-3"><a href="#cb101-3" aria-hidden="true" tabindex="-1"></a>vix_calls <span class="op">=</span> vix_calls[(vix_calls[<span class="st">'bid'</span>] <span class="op">&gt;</span> <span class="dv">0</span>) <span class="op">&amp;</span> (vix_calls[<span class="st">'ask'</span>] <span class="op">&gt;</span> <span class="dv">0</span>)]</span>
@@ -5516,7 +5522,7 @@ There are 29 days to expiry</code></pre>
 </div>
 </div>
 </div>
-<div id="cell-116" class="cell" data-execution_count="69">
+<div id="cell-117" class="cell" data-execution_count="69">
 <div class="sourceCode cell-code" id="cb102"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb102-1"><a href="#cb102-1" aria-hidden="true" tabindex="-1"></a>vix_puts <span class="op">=</span> vix_puts.drop([<span class="st">'currency'</span>, <span class="st">'contractSize'</span>], axis <span class="op">=</span> <span class="dv">1</span>).dropna()</span>
 <span id="cb102-2"><a href="#cb102-2" aria-hidden="true" tabindex="-1"></a>vix_puts <span class="op">=</span> vix_puts[(vix_puts[<span class="st">'bid'</span>] <span class="op">&gt;</span> <span class="dv">0</span>) <span class="op">&amp;</span> (vix_puts[<span class="st">'ask'</span>] <span class="op">&gt;</span> <span class="dv">0</span>)]</span>
 <span id="cb102-3"><a href="#cb102-3" aria-hidden="true" tabindex="-1"></a>vix_puts</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -5564,7 +5570,7 @@ There are 29 days to expiry</code></pre>
 </div>
 </div>
 </div>
-<div id="cell-117" class="cell" data-execution_count="70">
+<div id="cell-118" class="cell" data-execution_count="70">
 <div class="sourceCode cell-code" id="cb103"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb103-1"><a href="#cb103-1" aria-hidden="true" tabindex="-1"></a><span class="co"># save data</span></span>
 <span id="cb103-2"><a href="#cb103-2" aria-hidden="true" tabindex="-1"></a><span class="co">#vix_calls.to_csv('vixcall_07252022.csv', index=False)</span></span>
 <span id="cb103-3"><a href="#cb103-3" aria-hidden="true" tabindex="-1"></a><span class="co">#vix_puts.to_csv('vixput_07252022.csv', index=False)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -5572,12 +5578,12 @@ There are 29 days to expiry</code></pre>
 </section>
 <section id="you-may-start-from-here.-2" class="level3">
 <h3 class="anchored" data-anchor-id="you-may-start-from-here.-2">You may start from here.</h3>
-<div id="cell-119" class="cell" data-execution_count="71">
+<div id="cell-120" class="cell" data-execution_count="71">
 <div class="sourceCode cell-code" id="cb104"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb104-1"><a href="#cb104-1" aria-hidden="true" tabindex="-1"></a><span class="co"># read in saved data</span></span>
 <span id="cb104-2"><a href="#cb104-2" aria-hidden="true" tabindex="-1"></a>vix_calls <span class="op">=</span> pd.read_csv(<span class="st">'vixcall_07252022.csv'</span>)</span>
 <span id="cb104-3"><a href="#cb104-3" aria-hidden="true" tabindex="-1"></a>vix_puts <span class="op">=</span> pd.read_csv(<span class="st">'vixput_07252022.csv'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="cell-120" class="cell" data-execution_count="72">
+<div id="cell-121" class="cell" data-execution_count="72">
 <div class="sourceCode cell-code" id="cb105"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb105-1"><a href="#cb105-1" aria-hidden="true" tabindex="-1"></a>expiry, today <span class="op">=</span> <span class="st">'2022-08-24'</span>, <span class="st">'2022-07-25'</span></span>
 <span id="cb105-2"><a href="#cb105-2" aria-hidden="true" tabindex="-1"></a>vix_opt <span class="op">=</span> OptionAnalytics([vix_calls, vix_puts], expiry, today)</span>
 <span id="cb105-3"><a href="#cb105-3" aria-hidden="true" tabindex="-1"></a><span class="co">#vix_opt = OptionAnalytics([vix_calls, vix_puts], vix_expiries[idx], dt.now())</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -5586,7 +5592,7 @@ There are 29 days to expiry</code></pre>
   s_adj, pv = result.params[0], -result.params[1]</code></pre>
 </div>
 </div>
-<div id="cell-121" class="cell" data-execution_count="73">
+<div id="cell-122" class="cell" data-execution_count="73">
 <div class="sourceCode cell-code" id="cb107"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb107-1"><a href="#cb107-1" aria-hidden="true" tabindex="-1"></a>vix_opt.plot_arb()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div>
@@ -5596,7 +5602,7 @@ There are 29 days to expiry</code></pre>
 </div>
 </div>
 </div>
-<div id="cell-122" class="cell" data-execution_count="74">
+<div id="cell-123" class="cell" data-execution_count="74">
 <div class="sourceCode cell-code" id="cb108"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb108-1"><a href="#cb108-1" aria-hidden="true" tabindex="-1"></a>vix_opt.plot_parity()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div>
@@ -5606,7 +5612,7 @@ There are 29 days to expiry</code></pre>
 </div>
 </div>
 </div>
-<div id="cell-123" class="cell" data-execution_count="75">
+<div id="cell-124" class="cell" data-execution_count="75">
 <div class="sourceCode cell-code" id="cb109"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb109-1"><a href="#cb109-1" aria-hidden="true" tabindex="-1"></a>vix_opt.plot_imp_vols2(), vix_opt.plot_imp_vols1()<span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div>
@@ -5627,7 +5633,7 @@ There are 29 days to expiry</code></pre>
 </section>
 <section id="gpr-fit-for-vix-option-implied-volatility-curve" class="level2">
 <h2 class="anchored" data-anchor-id="gpr-fit-for-vix-option-implied-volatility-curve">GPR fit for VIX option implied volatility curve</h2>
-<div id="cell-125" class="cell" data-execution_count="76">
+<div id="cell-126" class="cell" data-execution_count="76">
 <div class="sourceCode cell-code" id="cb110"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb110-1"><a href="#cb110-1" aria-hidden="true" tabindex="-1"></a>imp_vols <span class="op">=</span> vix_opt.ivs[<span class="dv">1</span>:]</span>
 <span id="cb110-2"><a href="#cb110-2" aria-hidden="true" tabindex="-1"></a><span class="co">#imp_vols = vix_opt.ivs</span></span>
 <span id="cb110-3"><a href="#cb110-3" aria-hidden="true" tabindex="-1"></a>logmnyns <span class="op">=</span> np.log(vix_opt.ks[<span class="dv">1</span>:]<span class="op">/</span>vix_opt.s_adj)</span>
@@ -5743,7 +5749,7 @@ There are 29 days to expiry</code></pre>
 </div>
 </div>
 </div>
-<div id="cell-126" class="cell" data-execution_count="77">
+<div id="cell-127" class="cell" data-execution_count="77">
 <div class="sourceCode cell-code" id="cb111"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb111-1"><a href="#cb111-1" aria-hidden="true" tabindex="-1"></a><span class="co"># plot </span></span>
 <span id="cb111-2"><a href="#cb111-2" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">9</span>, <span class="dv">6</span>))</span>
 <span id="cb111-3"><a href="#cb111-3" aria-hidden="true" tabindex="-1"></a>plt.plot(x_is, y_is, <span class="st">'bo'</span>, label<span class="op">=</span><span class="st">'Market data'</span>)</span>
@@ -5760,7 +5766,7 @@ There are 29 days to expiry</code></pre>
 </div>
 </div>
 </div>
-<div id="cell-127" class="cell" data-execution_count="78">
+<div id="cell-128" class="cell" data-execution_count="78">
 <div class="sourceCode cell-code" id="cb112"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb112-1"><a href="#cb112-1" aria-hidden="true" tabindex="-1"></a><span class="co"># analysis on absolute errors </span></span>
 <span id="cb112-2"><a href="#cb112-2" aria-hidden="true" tabindex="-1"></a>abs_errs <span class="op">=</span> np.<span class="bu">abs</span>(iv_hat <span class="op">-</span> y_is)</span>
 <span id="cb112-3"><a href="#cb112-3" aria-hidden="true" tabindex="-1"></a>plt.plot(x_is, abs_errs, <span class="st">'bo'</span>)</span>
@@ -6017,10 +6023,10 @@ c^* = \left(\frac T{12 \, \text{var}^2[\epsilon]} \int_0^T \sigma_t^4 \mathrm{d}
 </section>
 <section id="spx-realized-variance" class="level2">
 <h2 class="anchored" data-anchor-id="spx-realized-variance">SPX realized variance</h2>
-<div id="cell-142" class="cell" data-execution_count="79">
+<div id="cell-143" class="cell" data-execution_count="79">
 <div class="sourceCode cell-code" id="cb113"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb113-1"><a href="#cb113-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> datetime <span class="im">import</span> datetime <span class="im">as</span> dt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="cell-143" class="cell" data-execution_count="80">
+<div id="cell-144" class="cell" data-execution_count="80">
 <div class="sourceCode cell-code" id="cb114"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb114-1"><a href="#cb114-1" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.read_csv(<span class="st">'OxfordManRealizedVolatilityIndices.csv'</span>, index_col<span class="op">=</span><span class="dv">0</span>, header<span class="op">=</span><span class="dv">2</span>)</span>
 <span id="cb114-2"><a href="#cb114-2" aria-hidden="true" tabindex="-1"></a>rv1 <span class="op">=</span> pd.DataFrame(index<span class="op">=</span>df.index)</span>
 <span id="cb114-3"><a href="#cb114-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> col <span class="kw">in</span> df.columns:</span>
@@ -6030,7 +6036,7 @@ c^* = \left(\frac T{12 \, \text{var}^2[\epsilon]} \int_0^T \sigma_t^4 \mathrm{d}
 <span id="cb114-7"><a href="#cb114-7" aria-hidden="true" tabindex="-1"></a><span class="co"># convert index into datetime</span></span>
 <span id="cb114-8"><a href="#cb114-8" aria-hidden="true" tabindex="-1"></a>rv1.index <span class="op">=</span> [dt.strptime(<span class="bu">str</span>(date), <span class="st">"%Y%m</span><span class="sc">%d</span><span class="st">"</span>) <span class="cf">for</span> date <span class="kw">in</span> rv1.index.values]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="cell-144" class="cell" data-execution_count="81">
+<div id="cell-145" class="cell" data-execution_count="81">
 <div class="sourceCode cell-code" id="cb115"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb115-1"><a href="#cb115-1" aria-hidden="true" tabindex="-1"></a>df</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="81">
 <div>
@@ -6359,7 +6365,7 @@ c^* = \left(\frac T{12 \, \text{var}^2[\epsilon]} \int_0^T \sigma_t^4 \mathrm{d}
 </div>
 </div>
 </div>
-<div id="cell-145" class="cell" data-execution_count="82">
+<div id="cell-146" class="cell" data-execution_count="82">
 <div class="sourceCode cell-code" id="cb116"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb116-1"><a href="#cb116-1" aria-hidden="true" tabindex="-1"></a>rv1</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="82">
 <div>
@@ -6664,7 +6670,7 @@ c^* = \left(\frac T{12 \, \text{var}^2[\epsilon]} \int_0^T \sigma_t^4 \mathrm{d}
 </div>
 </div>
 </div>
-<div id="cell-146" class="cell" data-execution_count="83">
+<div id="cell-147" class="cell" data-execution_count="83">
 <div class="sourceCode cell-code" id="cb117"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb117-1"><a href="#cb117-1" aria-hidden="true" tabindex="-1"></a><span class="co"># plot spx realized variance</span></span>
 <span id="cb117-2"><a href="#cb117-2" aria-hidden="true" tabindex="-1"></a><span class="co"># spx2.rk contains the rv calcuated by the realized kernel within 5-min bins</span></span>
 <span id="cb117-3"><a href="#cb117-3" aria-hidden="true" tabindex="-1"></a>spx_rv <span class="op">=</span> pd.DataFrame(rv1[<span class="st">'SPX2.rk'</span>])</span>
@@ -6697,10 +6703,10 @@ c^* = \left(\frac T{12 \, \text{var}^2[\epsilon]} \int_0^T \sigma_t^4 \mathrm{d}
 <ul>
 <li><span class="math inline">\(RV\)</span> denotes the logarithm of realized variance.</li>
 </ul>
-<div id="cell-148" class="cell" data-execution_count="84">
+<div id="cell-149" class="cell" data-execution_count="84">
 <div class="sourceCode cell-code" id="cb118"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb118-1"><a href="#cb118-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> statsmodels.formula.api <span class="im">as</span> sm</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="cell-149" class="cell" data-execution_count="85">
+<div id="cell-150" class="cell" data-execution_count="85">
 <div class="sourceCode cell-code" id="cb119"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb119-1"><a href="#cb119-1" aria-hidden="true" tabindex="-1"></a><span class="co"># take h = 1 in the HAR-RV model</span></span>
 <span id="cb119-2"><a href="#cb119-2" aria-hidden="true" tabindex="-1"></a><span class="co"># y = RV_{t+h}</span></span>
 <span id="cb119-3"><a href="#cb119-3" aria-hidden="true" tabindex="-1"></a><span class="co"># rv1 = RV_t</span></span>
@@ -6713,12 +6719,12 @@ c^* = \left(\frac T{12 \, \text{var}^2[\epsilon]} \int_0^T \sigma_t^4 \mathrm{d}
 <span id="cb119-10"><a href="#cb119-10" aria-hidden="true" tabindex="-1"></a>rv5 <span class="op">=</span> np.array(pd.DataFrame(spx1[<span class="dv">17</span>:]).rolling(<span class="dv">5</span>).mean()[<span class="dv">5</span><span class="op">-</span><span class="dv">1</span>:<span class="op">-</span><span class="dv">1</span>])</span>
 <span id="cb119-11"><a href="#cb119-11" aria-hidden="true" tabindex="-1"></a>rv22 <span class="op">=</span> np.array(pd.DataFrame(spx1[:]).rolling(<span class="dv">22</span>).mean()[<span class="dv">22</span><span class="op">-</span><span class="dv">1</span>:<span class="op">-</span><span class="dv">1</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="cell-150" class="cell" data-execution_count="86">
+<div id="cell-151" class="cell" data-execution_count="86">
 <div class="sourceCode cell-code" id="cb120"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb120-1"><a href="#cb120-1" aria-hidden="true" tabindex="-1"></a><span class="co"># regress y over rv1 + rv5 + rv22</span></span>
 <span id="cb120-2"><a href="#cb120-2" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> {<span class="st">'y'</span>: y, <span class="st">'rv1'</span>: rv1, <span class="st">'rv5'</span>: rv5, <span class="st">'rv22'</span>: rv22}</span>
 <span id="cb120-3"><a href="#cb120-3" aria-hidden="true" tabindex="-1"></a>fit_har <span class="op">=</span> sm.ols(<span class="st">'y ~ rv1 + rv5 + rv22'</span>, data<span class="op">=</span>data).fit()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="cell-151" class="cell" data-execution_count="87">
+<div id="cell-152" class="cell" data-execution_count="87">
 <div class="sourceCode cell-code" id="cb121"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb121-1"><a href="#cb121-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(fit_har.summary())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>                            OLS Regression Results                            
@@ -6752,7 +6758,7 @@ Notes:
 strong multicollinearity or other numerical problems.</code></pre>
 </div>
 </div>
-<div id="cell-152" class="cell" data-execution_count="88">
+<div id="cell-153" class="cell" data-execution_count="88">
 <div class="sourceCode cell-code" id="cb123"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb123-1"><a href="#cb123-1" aria-hidden="true" tabindex="-1"></a>fit_har.params</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="88">
 <pre><code>Intercept    0.000010
@@ -6762,7 +6768,7 @@ rv22         0.222093
 dtype: float64</code></pre>
 </div>
 </div>
-<div id="cell-153" class="cell" data-execution_count="89">
+<div id="cell-154" class="cell" data-execution_count="89">
 <div class="sourceCode cell-code" id="cb125"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb125-1"><a href="#cb125-1" aria-hidden="true" tabindex="-1"></a><span class="co"># convert fitted values into pd.DataFrame</span></span>
 <span id="cb125-2"><a href="#cb125-2" aria-hidden="true" tabindex="-1"></a>fitted <span class="op">=</span> pd.DataFrame({<span class="st">'fitted'</span>: np.array(fit_har.fittedvalues)}, index<span class="op">=</span>spx_rv[<span class="dv">22</span>:].index)</span>
 <span id="cb125-3"><a href="#cb125-3" aria-hidden="true" tabindex="-1"></a>fitted.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -6804,7 +6810,7 @@ dtype: float64</code></pre>
 </div>
 </div>
 </div>
-<div id="cell-154" class="cell" data-execution_count="90">
+<div id="cell-155" class="cell" data-execution_count="90">
 <div class="sourceCode cell-code" id="cb126"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb126-1"><a href="#cb126-1" aria-hidden="true" tabindex="-1"></a><span class="co"># log plot</span></span>
 <span id="cb126-2"><a href="#cb126-2" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">12</span>, <span class="dv">6</span>))</span>
 <span id="cb126-3"><a href="#cb126-3" aria-hidden="true" tabindex="-1"></a>plt.plot(spx_rv, color<span class="op">=</span><span class="st">'red'</span>, ls<span class="op">=</span><span class="st">'dotted'</span>, label<span class="op">=</span><span class="st">'Observed RV'</span>)</span>
