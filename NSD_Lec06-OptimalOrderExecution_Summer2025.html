@@ -693,7 +693,7 @@ L_{u} (t, u(t)) = 0.
 </section>
 <section id="mean-qv-trader-the-almgren-chriss-strategy" class="level2">
 <h2 class="anchored" data-anchor-id="mean-qv-trader-the-almgren-chriss-strategy">Mean-QV trader: The Almgren-Chriss strategy</h2>
-<p>For risk averse traders, by using the quadratic vartion of P&amp;L during execution to penalize the terminal P&amp;L/trading cost, the following strategy, referred to as the Almgren-Chriss strategy, is optimal.</p>
+<p>For risk averse traders, by using the quadratic variation of P&amp;L during execution to penalize the terminal P&amp;L/trading cost, the following strategy, referred to as the Almgren-Chriss strategy, is optimal.</p>
 <p><span class="math display">\[
 x(t) = X\,\frac{\sinh \kappa (T-t)}{\sinh \kappa T},
 \]</span></p>
@@ -761,7 +761,7 @@ x(t) = X\,\frac{\sinh \kappa (T-t)}{\sinh \kappa T},
 <section id="transient-impact-models" class="level2">
 <h2 class="anchored" data-anchor-id="transient-impact-models">Transient impact models</h2>
 <p>The price process assumed in transient impact model is</p>
-<p><span class="math display">\[S_t = S_0 + \int_0^t\,h(v_s)\,G(t-s)\,ds+M_t, \quad \text{ where } M_t \text{ is a zero mean martingale/noise.}\]</span></p>
+<p><span class="math display">\[S_t = S_0 + \int_0^t\,h(v_s)\,G(t-s)\,\mathrm{d}s+M_t, \quad \text{ where } M_t \text{ is a zero mean martingale/noise.}\]</span></p>
 <ul>
 <li><p><span class="math inline">\(h(v_s)\)</span> is referred to as the <em>instantaneous market impact function</em>, which represents the impact of trading at time <span class="math inline">\(s\)</span>, and <span class="math inline">\(G(t-s)\)</span> is a decay factor. Note that <span class="math inline">\(h(v) &gt; 0\)</span> if <span class="math inline">\(v &gt; 0\)</span>; whereas <span class="math inline">\(h(v) &lt; 0\)</span> if <span class="math inline">\(v &lt; 0\)</span>.</p></li>
 <li><p>The cumulative impact of (others’) trading is implicitly in <span class="math inline">\(S_0\)</span> and the noise term.</p></li>
@@ -771,36 +771,37 @@ x(t) = X\,\frac{\sinh \kappa (T-t)}{\sinh \kappa T},
 <section id="pl-and-cost-of-trading-in-transient-impact-model" class="level2">
 <h2 class="anchored" data-anchor-id="pl-and-cost-of-trading-in-transient-impact-model">P&amp;L and cost of trading in transient impact model</h2>
 <p>Note that, at the end of execution period <span class="math inline">\(T\)</span>, the P&amp;L reads <span class="math display">\[
-  \Pi_T(x) = x_T (S_T - S_0) + \int_0^T (S_0 - \tilde S_u) d x_u,
+  \Pi_T(x) = x_T (S_T - S_0) + \int_0^T (S_0 - \tilde S_u) \mathrm{d} x_u,
 \]</span> should there be <span class="math inline">\(x_T\)</span> shares yet to be transacted. Hence, in transient impact model (note that <span class="math inline">\(\tilde S_t = S_t\)</span>)</p>
 <p><span class="math display">\[\begin{align*}
-\Pi_T(x) &amp;= x_T (S_T - S_0) + \int_0^T (S_0 - \tilde S_u) d x_u \\
-&amp;= - \int_0^T \int_0^t h(v_u)G(t-u) du d x_t - \int_0^T M_t d x_t \quad (\text{since } x_T = 0) \\
-&amp;= - \int_0^T \int_0^t h(v_u)G(t-u) du d x_t - (M_T x_T - M_0 x_0) + \int_0^T x_t d M_t \quad (\text{Integration by parts}) \\
-&amp;= - \int_0^T \int_0^t h(v_u)G(t-u) du d x_t + \int_0^T x_t d M_t \quad (\text{since } x_T = 0 \text{ and } M_0 = 0).
-\end{align*}\]</span> Therefore, the expected cost corresponding to the trading strategy <span class="math inline">\(x\)</span> is given by<br>
-<span class="math display">\[\begin{align*}
-&amp; \E\left[C_T(x)\right] = \E\left[-\Pi_T(x)\right] = \Eof{\int_0^T \int_0^t h(v_u)G(t-u) du d x_t}.
+\Pi_T(x) &amp;= x_T (S_T - S_0) + \int_0^T (S_0 - \tilde S_u) \mathrm{d} x_u \\
+&amp;= - \int_0^T \int_0^t h(v_u)G(t-u) \mathrm{d} u \mathrm{d} x_t - \int_0^T M_t \mathrm{d} x_t \quad (\text{since } x_T = 0) \\
+&amp;= - \int_0^T \int_0^t h(v_u)G(t-u) \mathrm{d}u \mathrm{d} x_t - (M_T x_T - M_0 x_0) + \int_0^T x_t \mathrm{d} M_t \quad (\text{Integration by parts}) \\
+&amp;= - \int_0^T \int_0^t h(v_u)G(t-u) \mathrm{d}u \mathrm{d} x_t + \int_0^T x_t \mathrm{d} M_t \quad (\text{since } x_T = 0 \text{ and } M_0 = 0).
+\end{align*}\]</span></p>
+<p>Therefore, the expected cost corresponding to the trading strategy <span class="math inline">\(x\)</span> is given by</p>
+<p><span class="math display">\[\begin{align*}
+&amp; \E\left[C_T(x)\right] = \E\left[-\Pi_T(x)\right] = \Eof{\int_0^T \int_0^t h(v_u)G(t-u) \mathrm{d}u \mathrm{d} x_t}.
 \end{align*}\]</span></p>
 </section>
 <section id="the-optimal-strategy-of-a-risk-neutral-trader" class="level2">
 <h2 class="anchored" data-anchor-id="the-optimal-strategy-of-a-risk-neutral-trader">The optimal strategy of a risk neutral trader</h2>
 <p>For a risk neutral trader whose objective is to minimize the expected cost of trading, the optimal control problem reads</p>
 <p><span class="math display">\[\begin{align*}
-&amp; \min_{v} \E\left[C_T(x)\right] = \min_v \int_0^T \int_0^t h(v_u)G(t-u) du d x_t,
+&amp; \min_{v} \E\left[C_T(x)\right] = \min_v \int_0^T \int_0^t h(v_u)G(t-u) \mathrm{d}u \mathrm{d} x_t,
 \end{align*}\]</span></p>
 <p>where the state variable <span class="math inline">\(x_t\)</span> is driven by <span class="math inline">\(dx_t = v_t dt\)</span> with the constraints <span class="math inline">\(x_0 = X\)</span> and <span class="math inline">\(x_T = 0\)</span>. It is equivalent to a variational problem.</p>
 <p><span class="math display">\[\begin{align*}
-&amp; \min_{v} \E\left[C_T(x)\right] = \min_v \left\{\int_0^T \int_0^t h(v_u)G(t-u) du v_t dt\right\},
+&amp; \min_{v} \E\left[C_T(x)\right] = \min_v \left\{\int_0^T \int_0^t h(v_u)G(t-u) \mathrm{d}u v_t \mathrm{d}t\right\},
 \end{align*}\]</span></p>
-<p>subject to the constraint <span class="math inline">\(\int_0^T v_t dt = X\)</span>.</p>
+<p>subject to the constraint <span class="math inline">\(\displaystyle \int_0^T v_t \mathrm{d}t = X\)</span>.</p>
 </section>
 <section id="lagrange-multiplier" class="level2">
 <h2 class="anchored" data-anchor-id="lagrange-multiplier">Lagrange multiplier</h2>
 <p>To derive the Euler-Lagrange equation, consider the Lagrangian</p>
 <p><span class="math display">\[\begin{align*}
-  &amp; L(v,\lambda) = \int_0^T\int_0^t v_t G(t-s) h(v_s) ds dt - \lambda \left( \int_0^T v_t dt - X \right) \\
-  &amp;= \int_0^T \left[ \int_0^t G(t-s) h(v_s) ds - \lambda \right] v_t dt + \lambda X,
+  &amp; L(v,\lambda) = \int_0^T\int_0^t v_t G(t-s) h(v_s) \mathrm{d}s \mathrm{d}t - \lambda \left( \int_0^T v_t \mathrm{d}t - X \right) \\
+  &amp;= \int_0^T \left[ \int_0^t G(t-s) h(v_s) \mathrm{d}s - \lambda \right] v_t \mathrm{d}t + \lambda X,
 \end{align*}\]</span></p>
 <p>where <span class="math inline">\(\lambda\)</span> is the Lagrange multiplier.</p>
 </section>
@@ -808,30 +809,30 @@ x(t) = X\,\frac{\sinh \kappa (T-t)}{\sinh \kappa T},
 <h2 class="anchored" data-anchor-id="euler-lagrange-equation">Euler-Lagrange equation</h2>
 <p>Let <span class="math inline">\(\varphi\)</span> be a perturbation. Consider the first order criterion for the Lagrangian <span class="math inline">\(L\)</span>:</p>
 <p><span class="math display">\[\begin{align*}
-  0 &amp;= \left.\frac{d}{d\epsilon}\right|_{\epsilon=0} L( v_t + \epsilon \varphi_t,\lambda) \\
-  &amp;= \left.\frac{d}{d\epsilon}\right|_{\epsilon=0} \int_0^T \left[ \int_0^t G(t-s) h(v_s + \epsilon \varphi_s) ds - \lambda \right] (v_t + \epsilon \varphi_t ) dt  \\
-  &amp;= \int_0^T \left[ \int_0^t G(t-s) h'(v_s) \varphi_s ds \right] v_t dt
-   + \int_0^T \left[ \int_0^t G(t-s) h(v_s) ds - \lambda \right] \varphi_t dt  \\
-  &amp;= \int_0^T \int_0^t G(t-s) h'(v_s) \varphi_s v_t ds dt + \int_0^T \left[ \int_0^t G(t-s) h(v_s) ds - \lambda \right] \varphi_t dt  \\
-%  &amp;= \int_0^T \int_s^T G(t-s) h'(v_s) \varphi_s v_t dt ds + \int_0^T \left[ \int_0^t G(t-s) h(v_s) ds + \lambda \right] \varphi_t dt  \\
-  &amp;= \int_0^T \left[ \int_t^T G(s-t) h'(v_t) v_s ds + \int_0^t G(t-s) h(v_s) ds - \lambda \right] \varphi_t dt.
+  0 &amp;= \left.\frac{\mathrm{d}}{\mathrm{d}\epsilon}\right|_{\epsilon=0} L( v_t + \epsilon \varphi_t,\lambda) \\
+  &amp;= \left.\frac{\mathrm{d}}{\mathrm{d}\epsilon}\right|_{\epsilon=0} \int_0^T \left[ \int_0^t G(t-s) h(v_s + \epsilon \varphi_s) \mathrm{d}s - \lambda \right] (v_t + \epsilon \varphi_t ) \mathrm{d}t  \\
+  &amp;= \int_0^T \left[ \int_0^t G(t-s) h'(v_s) \varphi_s \mathrm{d}s \right] v_t \mathrm{d}t
+   + \int_0^T \left[ \int_0^t G(t-s) h(v_s) \mathrm{d}s - \lambda \right] \varphi_t \mathrm{d}t  \\
+  &amp;= \int_0^T \int_0^t G(t-s) h'(v_s) \varphi_s v_t \mathrm{d}s \mathrm{d}t + \int_0^T \left[ \int_0^t G(t-s) h(v_s) \mathrm{d}s - \lambda \right] \varphi_t \mathrm{d}t  \\
+%  &amp;= \int_0^T \int_s^T G(t-s) h'(v_s) \varphi_s v_t \mathrm{d}t \mathrm{d}s + \int_0^T \left[ \int_0^t G(t-s) h(v_s) \mathrm{d}s + \lambda \right] \varphi_t \mathrm{d}t  \\
+  &amp;= \int_0^T \left[ \int_t^T G(s-t) h'(v_t) v_s \mathrm{d}s + \int_0^t G(t-s) h(v_s) \mathrm{d}s - \lambda \right] \varphi_t \mathrm{d}t.
 \end{align*}\]</span></p>
 <p>Since <span class="math inline">\(\varphi_t\)</span> is arbitrary (because the first order criterion must hold for any perturbation), we must have</p>
 <p><a name="eq:intEL-TH"></a>(2) <span class="math display">\[
-  \int_t^T G(s-t) h'(v_t) v_s ds + \int_0^t G(t-s) h(v_s) ds = \lambda
+  \int_t^T G(s-t) h'(v_t) v_s \mathrm{d}s + \int_0^t G(t-s) h(v_s) \mathrm{d}s = \lambda
 \]</span></p>
-<p>for all <span class="math inline">\(0\leq t\leq T\)</span>. This is a generalized Fredholm integral equation of the first kind. The Lagrange multiplier <span class="math inline">\(\lambda\)</span> is determined by the constraint <span class="math inline">\(\int_0^T v_t dt = -X\)</span>.</p>
+<p>for all <span class="math inline">\(0\leq t\leq T\)</span>. This is a generalized Fredholm integral equation of the first kind. The Lagrange multiplier <span class="math inline">\(\lambda\)</span> is determined by the constraint <span class="math inline">\(\displaystyle \int_0^T v_t \mathrm{d}t = -X\)</span>.</p>
 </section>
 <section id="the-obizhaeva-and-wang-model" class="level2">
 <h2 class="anchored" data-anchor-id="the-obizhaeva-and-wang-model">The Obizhaeva and Wang model</h2>
 <p>The model in [Obizhaeva and Wang]<sup id="cite_ref-ObizhaevaWang" class="reference"><a href="#cite_note-ObizhaevaWang"><span>[</span>7<span>]</span></a></sup> is given by</p>
-<p><a name="eq:OWprocess"></a>(1) <span class="math display">\[S_t = S_0 + \eta\,\int_0^t\,v_s\,e^{-\rho\,(t-s)}\,ds + \sigma_S Z_t\]</span></p>
+<p><a name="eq:OWprocess"></a>(1) <span class="math display">\[S_t = S_0 + \eta\,\int_0^t\,v_s\,e^{-\rho\,(t-s)}\,\mathrm{d}s + \sigma_S Z_t\]</span></p>
 <p>with <span class="math inline">\(v_t=\dot x_t\)</span>.</p>
 <ul>
 <li><p>Market impact decays exponentially, <em>i.e.</em>, <span class="math inline">\(G(\tau) = e^{-\rho\tau}\)</span></p></li>
 <li><p>Instantaneous market impact is linear in the rate of trading, <span class="math inline">\(h(v) = \eta v\)</span>.</p></li>
 </ul>
-<p>The expected cost of trading becomes: <span class="math display">\[\mathcal{C} =\eta\,\int_0^T\int_0^t\,{v}_s\,e^{-\rho\,(t-s)}\,ds\, v_tdt\]</span></p>
+<p>The expected cost of trading becomes: <span class="math display">\[\mathcal{C} =\eta\,\int_0^T\int_0^t\,{v}_s\,e^{-\rho\,(t-s)}\,\mathrm{d}s\, v_t\mathrm{d}t\]</span></p>
 </section>
 <section id="impact-profile-in-the-obizhaeva-and-wang-model" class="level2">
 <h2 class="anchored" data-anchor-id="impact-profile-in-the-obizhaeva-and-wang-model">Impact profile in the Obizhaeva and Wang model</h2>
@@ -865,15 +866,15 @@ x(t) = X\,\frac{\sinh \kappa (T-t)}{\sinh \kappa T},
 <h2 class="anchored" data-anchor-id="optimal-strategy-in-obizhaeva-wang">Optimal strategy in Obizhaeva-Wang</h2>
 <p>The Euler-Lagrange equation in this case reads:</p>
 <p><span class="math display">\[
-\eta \int_t^T\,v_s\,e^{-\rho\,(s-t)}\,ds + \eta \int_0^t\,v_s\,e^{-\rho\,(t-s)}\,ds  = \lambda.
+\eta \int_t^T\,v_s\,e^{-\rho\,(s-t)}\,\mathrm{d}s + \eta \int_0^t\,v_s\,e^{-\rho\,(t-s)}\,\mathrm{d}s  = \lambda.
 \]</span></p>
 <p>which may be rewritten as</p>
-<p><span class="math display">\[\int_0^T\,v_s\,e^{-\rho\,|t-s|}\,ds = \frac\lambda\eta\]</span></p>
+<p><span class="math display">\[\int_0^T\,v_s\,e^{-\rho\,|t-s|}\,\mathrm{d}s = \frac\lambda\eta\]</span></p>
 <p>which is a Fredholm integral equation of the first kind.</p>
 <p>The solution is</p>
 <p><span class="math display">\[v_t = \frac\lambda\eta \,\left\{\delta(t)+\rho+\delta(T-t)\right\}\]</span></p>
 <p>The Lagrange multiplier <span class="math inline">\(\lambda\)</span> is determined by</p>
-<p><span class="math display">\[-X = x_T - x_0 = \int_0^T\, v_t \,dt = \frac\lambda\eta \, \left(2+\rho\,T\right)\]</span></p>
+<p><span class="math display">\[-X = x_T - x_0 = \int_0^T\, v_t \,\mathrm{d}t = \frac\lambda\eta \, \left(2+\rho\,T\right)\]</span></p>
 <p>Thus, <span class="math inline">\(\frac\lambda\eta = -\frac X{2 + \rho T}\)</span> and</p>
 <p><span class="math display">\[
 v_t = -\frac X{2 + \rho T}\left\{\delta(t)+\rho+\delta(T-t)\right\}.
@@ -891,16 +892,16 @@ v_t = -\frac X{2 + \rho T}\left\{\delta(t)+\rho+\delta(T-t)\right\}.
 <p>We may recast the optimal execution problem in the Obizhaeva-Wang model as a control problem as follows.</p>
 <p>Let</p>
 <p><span class="math display">\[
-Y_t = \eta \int_0^t e^{-\rho(t-s)} v_s ds.
+Y_t = \eta \int_0^t e^{-\rho(t-s)} v_s \mathrm{d}s.
 \]</span></p>
 <p>Thus, we can rewrite the dynamic for <span class="math inline">\(S_t\)</span> as <span class="math inline">\(S_t = s_0 + Y_t + \sigma_S Z_t\)</span>. It follows that the state equations are given by</p>
 <p><span class="math display">\[\begin{align*}
-&amp; dX_t = v_t dt, \quad X_0 = X \\
-&amp; dY_t = \left\{\eta v_t - \rho Y_t \right\}dt, \quad Y_0 = 0 \\
+&amp; \mathrm{d}X_t = v_t \mathrm{d}t, \quad X_0 = X \\
+&amp; \mathrm{d}Y_t = \left\{\eta v_t - \rho Y_t \right\}\mathrm{d}t, \quad Y_0 = 0 \\
 \end{align*}\]</span></p>
 <p>Objective functional (the expected cost)</p>
 <p><span class="math display">\[\begin{align*}
-&amp; \int_0^T y_t v_t dt.
+&amp; \int_0^T y_t v_t \mathrm{d}t.
 \end{align*}\]</span></p>
 <p>Notice that we end up with a deterministic control problem.</p>
 </section>
@@ -908,7 +909,7 @@ Y_t = \eta \int_0^t e^{-\rho(t-s)} v_s ds.
 <h2 class="anchored" data-anchor-id="value-function">Value function</h2>
 <p>As always, the value function <span class="math inline">\(J\)</span> is defined as</p>
 <p><span class="math display">\[
-J(t, x, y) = \min_v \int_t^T y_s v_s ds.
+J(t, x, y) = \min_v \int_t^T y_s v_s \mathrm{d}s.
 \]</span></p>
 </section>
 <section id="hjb-equation" class="level2">
@@ -937,11 +938,11 @@ J(t, x, y) = \min_v \int_t^T y_s v_s ds.
 \end{align*}\]</span></p>
 <p>where</p>
 <p><span class="math display">\[
-Y_t = \int_0^t e^{-\rho(t - s)} \phi v_s ds + \sigma \int_0^t e^{-\rho(t-s)} dZ_s
+Y_t = \int_0^t e^{-\rho(t - s)} \phi v_s \mathrm{d}s + \sigma \int_0^t e^{-\rho(t-s)} \mathrm{d}Z_s
 \]</span></p>
 <p>be the price impact (due to trading). Then <span class="math inline">\(Y_t\)</span> satisfies the ODE</p>
 <p><span class="math display">\[
-d Y_t = \{\phi v_t - \rho Y_t\}dt + \sigma dZ_t, \quad Y_0 = 0.
+\mathrm{d} Y_t = \{\phi v_t - \rho Y_t\}\mathrm{d}t + \sigma \mathrm{d}Z_t, \quad Y_0 = 0.
 \]</span></p>
 <ul>
 <li><span class="math inline">\(S_t\)</span>: efficient/mid price</li>
@@ -999,32 +1000,33 @@ d Y_t = \{\phi v_t - \rho Y_t\}dt + \sigma dZ_t, \quad Y_0 = 0.
 </section>
 <section id="control-problem" class="level2">
 <h2 class="anchored" data-anchor-id="control-problem">Control problem</h2>
-<p>State equations <span class="math display">\[\begin{align*}
-&amp; dX_t = v_t dt, \quad X_0 = X \\
-&amp; dY_t = \left\{\phi v_t - \rho Y_t \right\}dt + \sigma dZ_t, \quad Y_0 = 0, \\
+<p>State equations</p>
+<p><span class="math display">\[\begin{align*}
+&amp; \mathrm{d}X_t = v_t \mathrm{d}t, \quad X_0 = X \\
+&amp; \mathrm{d}Y_t = \left\{\phi v_t - \rho Y_t \right\}\mathrm{d}t + \sigma \mathrm{d}Z_t, \quad Y_0 = 0, \\
 &amp; S_t = s_0 + \gamma (X_t - X_0) + Y_t + \sigma_S W_t \\
 &amp; s_0 - \tS_t = -\gamma (X_t - X_0) - Y_t - \sigma_S W_t - \eta v_t
 \end{align*}\]</span></p>
 <p>Objective functional (the expected P&amp;L, marked to the price <span class="math inline">\(s_0\)</span>)</p>
 <p><span class="math display">\[\begin{align*}
-&amp; \Eof{X_T(S_T - s_0) + \int_0^T (s_0 - \tS_t) dX_t} \\
-&amp;= \Eof{X_T \{\gamma (X_T - X_0) + Y_T + \sigma_S W_T\} - \int_0^T \left\{\gamma (X_t - X_0) + Y_t + \sigma_S W_t + \eta v_t \right\} dX_t}
+&amp; \Eof{X_T(S_T - s_0) + \int_0^T (s_0 - \tS_t) \mathrm{d}X_t} \\
+&amp;= \Eof{X_T \{\gamma (X_T - X_0) + Y_T + \sigma_S W_T\} - \int_0^T \left\{\gamma (X_t - X_0) + Y_t + \sigma_S W_t + \eta v_t \right\} \mathrm{d}X_t}
 \end{align*}\]</span></p>
 <p>Note that, by applying integration by parts, we have</p>
 <p><span class="math display">\[\begin{align*}
-&amp; -\gamma \int_0^T (X_t - X_0) dX_t -\int_0^T (Y_t + \sigma_S W_t) dX_t - \eta \int_0^T v_t^2 dt \\
-&amp;= -\frac\gamma2 (X_T - X_0)^2 - X_T (Y_T + \sigma_S W_T) + X_0 (Y_0 + \sigma_S W_0) + \int_0^T X_t dY_t + \sigma_S \int_0^T X_t dW_t - \eta \int_0^T v_t^2 dt \\
-&amp;= -\frac\gamma2 (X_T - X_0)^2 -X_T (Y_T + \sigma_S W_T) + \int_0^T X_t \left\{\phi v_t - \rho Y_t \right\} dt + \sigma \int_0^T X_t dZ_t + \sigma_S \int_0^T X_t dW_t - \eta \int_0^T v_t^2 dt
+&amp; -\gamma \int_0^T (X_t - X_0) \mathrm{d}X_t -\int_0^T (Y_t + \sigma_S W_t) \mathrm{d}X_t - \eta \int_0^T v_t^2 \mathrm{d}t \\
+&amp;= -\frac\gamma2 (X_T - X_0)^2 - X_T (Y_T + \sigma_S W_T) + X_0 (Y_0 + \sigma_S W_0) + \int_0^T X_t \mathrm{d}Y_t + \sigma_S \int_0^T X_t \mathrm{d}W_t - \eta \int_0^T v_t^2 \mathrm{d}t \\
+&amp;= -\frac\gamma2 (X_T - X_0)^2 -X_T (Y_T + \sigma_S W_T) + \int_0^T X_t \left\{\phi v_t - \rho Y_t \right\} \mathrm{d}t + \sigma \int_0^T X_t \mathrm{d}Z_t + \sigma_S \int_0^T X_t \mathrm{d}W_t - \eta \int_0^T v_t^2 \mathrm{d}t
 \end{align*}\]</span></p>
 <p>Thus,</p>
 <p><span class="math display">\[\begin{align*}
-&amp; \Eof{X_T \{\gamma (X_T - X_0) + Y_T + \sigma_S W_T)\} - \int_0^T \{\gamma (X_t - X_0) + Y_t + \sigma_S W_t + \eta v_t\} v_t dt} \\
-&amp;= \Eof{ \frac\gamma2 (X_T^2 + X_0^2) + \int_0^T X_t \left\{\phi v_t - \rho Y_t \right\} - \eta v_t^2 dt}
+&amp; \Eof{X_T \{\gamma (X_T - X_0) + Y_T + \sigma_S W_T)\} - \int_0^T \{\gamma (X_t - X_0) + Y_t + \sigma_S W_t + \eta v_t\} v_t \mathrm{d}t} \\
+&amp;= \Eof{ \frac\gamma2 (X_T^2 + X_0^2) + \int_0^T X_t \left\{\phi v_t - \rho Y_t \right\} - \eta v_t^2 \mathrm{d}t}
 \end{align*}\]</span></p>
 <p>Penalize the final block trade by <span class="math inline">\(-\beta X_T^2\)</span>. The objective functional reads</p>
 <p><span class="math display">\[\begin{align*}
-&amp;= \frac\gamma2 X_0^2 + \Eof{\left(\frac\gamma2 - \beta\right) X_T^2 + \phi \int_0^T X_s dX_s - \int_0^T \left(\rho X_s Y_s + \eta v_s^2\right) ds} \\
-&amp;= \frac{\gamma - \phi}2 X_0^2 + \Eof{\left(\frac{\gamma + \phi}2 -\beta\right) X_T^2 - \int_0^T \left(\rho X_s Y_s + \eta v_s^2\right) ds}.
+&amp;= \frac\gamma2 X_0^2 + \Eof{\left(\frac\gamma2 - \beta\right) X_T^2 + \phi \int_0^T X_s dX_s - \int_0^T \left(\rho X_s Y_s + \eta v_s^2\right) \mathrm{d}s} \\
+&amp;= \frac{\gamma - \phi}2 X_0^2 + \Eof{\left(\frac{\gamma + \phi}2 -\beta\right) X_T^2 - \int_0^T \left(\rho X_s Y_s + \eta v_s^2\right) \mathrm{d}s}.
 \end{align*}\]</span></p>
 </section>
 <section id="matrix-notations" class="level2">
@@ -1065,18 +1067,18 @@ d Y_t = \{\phi v_t - \rho Y_t\}dt + \sigma dZ_t, \quad Y_0 = 0.
 <h2 class="anchored" data-anchor-id="lq-problem">LQ problem</h2>
 <p>We obtain the following LQ control problem</p>
 <p><span class="math display">\[
-\max_u \Eof{\bX_T' \mbP \bX_T + \int_0^T \left(\bX_t' \mbQ \bX_t + \bu_t' \mbR \bu_t \right) dt},
+\max_u \Eof{\bX_T' \mbP \bX_T + \int_0^T \left(\bX_t' \mbQ \bX_t + \bu_t' \mbR \bu_t \right) \mathrm{d}t},
 \]</span></p>
 <p>with the controlled SDE given by</p>
 <p><span class="math display">\[
-d\bX_t = (A \bX_t + \mbB v_t)dt + \bSigma dZ_t
+\mathrm{d}\bX_t = (A \bX_t + \mbB v_t)\mathrm{d}t + \bSigma \mathrm{d}Z_t
 \]</span></p>
 </section>
 <section id="value-function-and-hjb-equation" class="level2">
 <h2 class="anchored" data-anchor-id="value-function-and-hjb-equation">Value function and HJB equation</h2>
 <p>Let <span class="math inline">\(V\)</span> be the value function</p>
 <p><span class="math display">\[
-V(t, \bx) = \max_{\bu} \Eof{\left. \bX_T' \mbP \bX_T + \int_t^T \left(\bX_s' \mbQ \bX_s + \bu_s' \mbR \bu_s \right) ds\right|\bX_t = \bx}.
+V(t, \bx) = \max_{\bu} \Eof{\left. \bX_T' \mbP \bX_T + \int_t^T \left(\bX_s' \mbQ \bX_s + \bu_s' \mbR \bu_s \right) \mathrm{d}s\right|\bX_t = \bx}.
 \]</span></p>
 <p><span class="math inline">\(V\)</span> satisfies the following HJB equation</p>
 <p><span class="math display">\[
@@ -1129,7 +1131,7 @@ H_1 = M N^{-1},
 \]</span></p>
 <p>where <span class="math inline">\(M\)</span>, <span class="math inline">\(N\)</span> satisfy the linear ODEs</p>
 <p><span class="math display">\[
-\frac{d}{dt} \left[\begin{array}{c} M \\ N \end{array}\right] =
+\frac{\mathrm{d}}{\mathrm{d}t} \left[\begin{array}{c} M \\ N \end{array}\right] =
 \left[\begin{array}{cc} -\mbA &amp; -\mbQ \\
 \frac1{\eta}\mbB \mbB' &amp; \mbA
 \end{array}\right] \,
