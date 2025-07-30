@@ -1029,7 +1029,7 @@ memory usage: 87.4 KB</code></pre>
 </ul>
 <span class="math display">\[\begin{aligned}
 \sigma_P^2 &amp;= \frac{1}{4\ln2} \frac{1}{n}\sum_{i=1}^n (\ln H_i - \ln L_i)^2, \\
-\sigma_{GK}^2 &amp;= \frac{1}{n} \left\{\sum_{i=1}^n \frac{1}{2}(\ln H_i - \ln L_i)^2 + (2\ln2 - 1)(\ln C_i - \ln O_i)^2 \right\}, \\
+\sigma_{GK}^2 &amp;= \frac{1}{n} \left\{\sum_{i=1}^n \frac{1}{2}(\ln H_i - \ln L_i)^2 - (2\ln2 - 1)(\ln C_i - \ln O_i)^2 \right\}, \\
 \sigma_{RS}^2 &amp;= \frac{1}{n} \sum_{i=1}^n u_i(u_i - c_i) + d_i(d_i - c_i), \\
 \sigma_{YZ}^2 &amp;= \sigma_O^2 + w\sigma_C^2 + (1 - w)\sigma_P^2, \quad w = \frac{0.34}{1.34 + \frac{n+1}{n-1}}.
 \end{aligned}\]</span>
@@ -6844,6 +6844,7 @@ dtype: float64</code></pre>
 </ol>
 <section id="lecture-notes" class="level2">
 <h2 class="anchored" data-anchor-id="lecture-notes">Lecture Notes</h2>
+<p>Thanks to 刘弘锌 (Liú Hóng Xīn) for his lecture notes.</p>
 <p>Moneyness: Moneyness (在值程度) 是金融衍生品中用于描述期权状态的核心概念, 它反映了期权的行权价 (Strike Price) 与标的资产当前价格 (Underlying Asset Price) 之间的关系.根据这种关系, 期权可以分为: 实值期权 (In-the-Money, ITM)、平值期权 (At-the-Money, ATM) 和虚值期权 (Out-of-the-Money, OTM).</p>
 <ul>
 <li>In-the-Money: 行权后能活力获利.</li>
@@ -6854,8 +6855,106 @@ dtype: float64</code></pre>
 <p><span class="math display">\[
 \text{Moneyness} = \frac{K e^{-r \tau}}{S e^{-d\tau}}.
 \]</span></p>
+<section id="波动率理论基础与测算" class="level3">
+<h3 class="anchored" data-anchor-id="波动率理论基础与测算">波动率理论基础与测算</h3>
+<ol type="1">
+<li>核心定义与性质
+<ul>
+<li>多元定义本质: 波动率表征对数收益率的条件期望 <span class="math inline">\(\sigma = \sqrt{\text{Var}(\log r_t)}\)</span>.</li>
+<li>对数收益率优势: 时间可加性, 规避线性收益率跨期误差</li>
+<li>微分规范: <span class="math inline">\(\displaystyle \mathrm{d} (\log P_t) = \frac{\mathrm{d} P_t}{P_t} - \frac{1}{2}\left(\frac{\mathrm{d} P_t}{P_t}\right)^2\)</span>.</li>
+</ul></li>
+<li>波动率的测算方法
+<ul>
+<li>滚动窗口法: 样本标准差 <span class="math inline">\(\displaystyle s = \sqrt{\frac{1}{n-1} \sum_{i=1}^n (r_i - \bar{r})^2}\)</span>, 其中 <span class="math inline">\(\bar{r}\)</span> 为样本均值. 年度化波动率 <span class="math inline">\(\sigma = s \sqrt{252}\)</span>.</li>
+<li>窗口长度效应: 窗口长度 <span class="math inline">\(n\)</span> 越长, 波动率估计越平滑, 但反应速度较慢. 短窗口则更敏感, 但可能过度反应噪音.</li>
+</ul></li>
+<li>分区理论应用
+<ul>
+<li>分区理论: 将时间序列分为多个区间, 每个区间内计算波动率, 以捕捉不同时间尺度的波动特征.</li>
+<li>分区长度选择: 短期分区适合捕捉快速波动, 长期分区则更稳定. 例如, 5分钟、30分钟、日线等.</li>
+</ul></li>
+</ol>
+</section>
+<section id="波动率特性与经典模型" class="level3">
+<h3 class="anchored" data-anchor-id="波动率特性与经典模型">波动率特性与经典模型</h3>
+<ol type="1">
+<li>波动率的特性
+<ul>
+<li>波动率聚集现象: 高波动率时期往往伴随高波动率, 低波动率时期则相反.</li>
+<li>波动率微笑: 期权隐含波动率在不同执行价下呈现 U 形分布, 反映市场对不同风险的定价差异.</li>
+<li>杠杆效应: 股价下跌时, 波动率往往上升, 反之亦然. 这与公司财务杠杆有关.</li>
+</ul></li>
+<li>经典波动率模型
+<ul>
+<li>直接基于 Close Price 计算;</li>
+<li>Parkinson 模型: 基于最高价和最低价计算波动率, 适用于高频数据.</li>
+<li>Garman-Klass 模型: 结合开盘价、最高价、最低价和收盘价, 提供更精确的波动率估计.</li>
+<li>Yang-Zhang 模型: 进一步改进 Garman-Klass, 考虑了开盘价和收盘价的影响.</li>
+</ul></li>
+</ol>
+</section>
+<section id="期权定价与市场情绪量化" class="level3">
+<h3 class="anchored" data-anchor-id="期权定价与市场情绪量化">期权定价与市场情绪量化</h3>
+<ol type="1">
+<li><p>定价模型</p>
+<ul>
+<li>Black-Scholes 模型: 基于几何布朗运动假设, 计算欧式期权价格.</li>
+<li>Heston 模型: 引入随机波动率, 更好地捕捉市场波动特性.</li>
+<li>Dupire 方程: 基于局部波动率假设, 计算期权隐含波动率曲面.</li>
+</ul></li>
+<li><p>收益函数分解定理 <span class="math display">\[
+f(S_T) = f(K_0) + \int_{0}^{K_0} \frac{\partial^2 f}{\partial K^2} (K-S_T)^+ \mathrm{d}S + \int_S^\infty \frac{\partial^2 f}{\partial K^2} (S_T-K)^+ \mathrm{d}S,
+\]</span> 通过期权组合复制任意连续收益.</p></li>
+<li><p>市场情绪指标</p>
+<ul>
+<li>未平仓量 (Open Interest): 反映市场参与者的情绪和预期. 看涨期权未平仓量增加通常表示市场对上涨的预期增强, 反之亦然.</li>
+<li>交易量 (Volume): 期权交易量的变化可以反映市场情绪的变化. 例如, 看涨期权交易量增加可能表示市场对上涨的预期增强.</li>
+<li>隐含远期预期: 近月 ATM 期权加权隐含收益率, 年化处理生成情绪指数.</li>
+</ul></li>
+</ol>
+</section>
+<section id="关键公式总结" class="level3">
+<h3 class="anchored" data-anchor-id="关键公式总结">关键公式总结</h3>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>概念</th>
+<th>公式</th>
+<th>参数说明</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>对数收益率</td>
+<td><span class="math display">\[r_t^{\log} = \ln(P_t/P_{t-1})\]</span></td>
+<td><span class="math inline">\(P_t\)</span>: <span class="math inline">\(t\)</span> 时刻价格</td>
+</tr>
+<tr class="even">
+<td>年度化波动率</td>
+<td><span class="math display">\[\sigma_{\text{annual}} = \sqrt{252} \times \hat{\sigma}_{\text{daily}}\]</span></td>
+<td>252: 年交易日数</td>
+</tr>
+<tr class="odd">
+<td>隐含远期价格</td>
+<td><span class="math display">\[\hat{F} = K + e^{rT}(C - P)\]</span></td>
+<td><span class="math inline">\(F\)</span>: 隐含远期价格</td>
+</tr>
+<tr class="even">
+<td>波动率微笑校准</td>
+<td><span class="math display">\[\sigma_{\text{IV}}(K) = a + b\left(\frac{K-F}{F}\right)^2\]</span></td>
+<td><span class="math inline">\(a\)</span>: ATM 波动率, <span class="math inline">\(b\)</span>: 曲率</td>
+</tr>
+</tbody>
+</table>
 
 
+</section>
 </section>
 </div>
 

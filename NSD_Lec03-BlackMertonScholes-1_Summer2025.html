@@ -55,7 +55,27 @@ div.sourceCode
 @media screen {
 pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
-</style>
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+  margin-bottom: 0em;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
 
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script><script src="site_libs/quarto-nav/quarto-nav.js"></script>
@@ -253,6 +273,9 @@ window.Quarto = {
   <li><a href="#期权定价与对冲" id="toc-期权定价与对冲" class="nav-link" data-scroll-target="#期权定价与对冲">期权定价与对冲</a></li>
   <li><a href="#black-scholes-模型与隐含波动率" id="toc-black-scholes-模型与隐含波动率" class="nav-link" data-scroll-target="#black-scholes-模型与隐含波动率">Black-Scholes 模型与隐含波动率</a></li>
   <li><a href="#jump-trading" id="toc-jump-trading" class="nav-link" data-scroll-target="#jump-trading">Jump Trading</a></li>
+  <li><a href="#做市商核心职能与盈利机制" id="toc-做市商核心职能与盈利机制" class="nav-link" data-scroll-target="#做市商核心职能与盈利机制">做市商核心职能与盈利机制 🏦</a></li>
+  <li><a href="#高频交易关键要素与技术基础" id="toc-高频交易关键要素与技术基础" class="nav-link" data-scroll-target="#高频交易关键要素与技术基础">高频交易关键要素与技术基础 🖥️</a></li>
+  <li><a href="#关键概念总结" id="toc-关键概念总结" class="nav-link" data-scroll-target="#关键概念总结">关键概念总结</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -2274,7 +2297,7 @@ Wall time: 19.6 s</code></pre>
 </section>
 <section id="lecture-notes" class="level2">
 <h2 class="anchored" data-anchor-id="lecture-notes">Lecture Notes</h2>
-<p>Thanks to 段凤仪 (Duàn Fèng Yí) for her lecture notes.</p>
+<p>Thanks to 段凤仪 (Duàn Fèng Yí) and 刘弘锌 (Liú Hóng Xīn) for their lecture notes.</p>
 <section id="black-scholes-model-1" class="level3">
 <h3 class="anchored" data-anchor-id="black-scholes-model-1">Black-Scholes Model</h3>
 <ul>
@@ -2311,6 +2334,8 @@ P = K e^{-r \tau} N(-d_2) - S e^{-D \tau} N(-d_1).
 <li>Volatility: Volatility (<span class="math inline">\(\sigma\)</span>) is a crucial parameter in the Black-Scholes model. It represents the degree of price fluctuation of the underlying asset. Estimating volatility accurately is challenging but essential for option pricing.</li>
 <li>Other Parameters: Other parameters such as stock price, strike price, interest rate, and time to expiration are usually observable in the market. However, dividend rate may require estimation based on historical data or company announcements.</li>
 </ul>
+<p>注: 定价与真实概率无关 → 需用<strong>风险中性概率</strong></p>
+<p>风险中性下: 资产收益率 = 无风险利率(<span class="math inline">\(r\)</span>)</p>
 </section>
 </section>
 <section id="期权定价与对冲" class="level3">
@@ -2330,6 +2355,14 @@ P = K e^{-r \tau} N(-d_2) - S e^{-D \tau} N(-d_1).
 <h4 class="anchored" data-anchor-id="delta-gamma-hedging">Delta-Gamma Hedging</h4>
 <p>概念介绍: 除了 delta 中性, 还使组合的 gamma 也为 0. 由于股票 gamma 为 0, 需要额外引入另一个期权来中和 gamma.</p>
 </section>
+<section id="动态对冲-dynamic-hedging" class="level4">
+<h4 class="anchored" data-anchor-id="动态对冲-dynamic-hedging">动态对冲 (Dynamic Hedging)</h4>
+<p>操作流程:</p>
+<ul>
+<li>每日调整: i) 计算当日组合 Delta/Gamma 值; ii) 买卖股票及对冲期权使风险中性; iii) 按自融资原则更新现金账户.</li>
+<li>模拟效果: 30 日动态 Delta 对冲后, 组合波动远低于裸卖空.</li>
+</ul>
+</section>
 </section>
 <section id="black-scholes-模型与隐含波动率" class="level3">
 <h3 class="anchored" data-anchor-id="black-scholes-模型与隐含波动率">Black-Scholes 模型与隐含波动率</h3>
@@ -2339,6 +2372,14 @@ P = K e^{-r \tau} N(-d_2) - S e^{-D \tau} N(-d_1).
 <ul>
 <li>市场情绪指标: 隐含波动率代表市场对未来波动的预期, 是投资者情绪的反映.</li>
 <li>模型改进方向: 隐含波动率的发现也推动了模型的改进, 比如局部波动率模型、随机波动率模型等, 使模型更贴合实际.</li>
+</ul>
+<p>隐含波动率微笑现象: 在实际市场中, 隐含波动率往往呈现出不同的形状, 如 U 形或 V 形, 而不是单调递增或递减。这种现象被称为隐含波动率微笑.</p>
+<p>市场修正模型:</p>
+<ul>
+<li>Dupire 局部波动率模型: 通过局部波动率来修正 Black-Scholes 模型，使其能够更好地适应市场数据.</li>
+<li>Heston 随机波动率模型: 通过引入随机波动率来修正 Black-Scholes 模型，使其能够更好地捕捉市场的波动特性. <span class="math display">\[
+\mathrm{d} \nu_t = \kappa(\theta - \nu_t) \mathrm{d}t + \sigma \sqrt{\nu_t} \mathrm{d}W_t,
+\]</span> 这里波动率 <span class="math inline">\(\nu_t\)</span> 自身随机演化, 常用于拟合隐含波动率随行权价与期限的异质性.</li>
 </ul>
 </section>
 <section id="jump-trading" class="level3">
@@ -2362,12 +2403,95 @@ P = K e^{-r \tau} N(-d_2) - S e^{-D \tau} N(-d_1).
 <li>全职机会: 表现好的实习生可直接获得正式工作邀请.</li>
 </ul></li>
 </ol>
+</section>
+<section id="做市商核心职能与盈利机制" class="level3">
+<h3 class="anchored" data-anchor-id="做市商核心职能与盈利机制">做市商核心职能与盈利机制 🏦</h3>
+<p>做市商 (Market Maker) 在高频交易 (HFT) 环境中有怎样的市场机制、策略架构、风控框架以及将 RL 对冲与模型风险管理融合的思路?</p>
+<p>市场机制:</p>
+<ol type="1">
+<li>价格发现机制: 做市商通过提供买卖报价，帮助市场形成价格. 其报价基于对市场流动性、供需关系和其他市场参与者行为的分析.</li>
+<li>流动性供给: 做市商不断挂单 (Bid/Ask), 服务机构大单进出市场, 稳定深度并降低交易滑点.</li>
+</ol>
+</section>
+<section id="高频交易关键要素与技术基础" class="level3">
+<h3 class="anchored" data-anchor-id="高频交易关键要素与技术基础">高频交易关键要素与技术基础 🖥️</h3>
+<ol type="1">
+<li>订单簿解析与信号识别
+<ol type="a">
+<li>大单拆分, 如 500 手 → 10×50 手, 暗示机构建仓.</li>
+<li>冰山订单, 持续小量成交, 预示隐藏大单.</li>
+</ol></li>
+<li>基础设施: 极低延迟
+<ol type="a">
+<li>使用 FPGA 或 kernel bypass 技术实现极低延迟处理</li>
+<li>利用微波、无线等传输方式, 比光纤更接近直线路径, 减少传输距离和延迟</li>
+<li>市场接近性部署 (colocation)、专有直连线路和零跳点网络设计以缩短 tick‑to‑trade 时延</li>
+</ol></li>
+</ol>
+<p><span class="citation" data-cites="gao2020optimalmarketmakingpresence">(<a href="#ref-gao2020optimalmarketmakingpresence" role="doc-biblioref">Gao and Wang 2020</a>)</span></p>
+<blockquote class="blockquote">
+<p>Our analysis suggests that latency can be an additional risk source for market makers and one key task in market making is to predict the order values based on market primitives.</p>
+</blockquote>
+</section>
+<section id="关键概念总结" class="level3">
+<h3 class="anchored" data-anchor-id="关键概念总结">关键概念总结</h3>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>概念</th>
+<th>定义</th>
+<th>应用场景</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Delta (<span class="math inline">\(\Delta\)</span>)</td>
+<td>期权价格对标的价格的一阶敏感度 (对冲比率)</td>
+<td>Delta 对冲消除线性风险</td>
+</tr>
+<tr class="even">
+<td>Gamma (<span class="math inline">\(\Gamma\)</span>)</td>
+<td>期权价格对标的价格的二阶敏感度 (曲率风险)</td>
+<td>Gamma 对冲消除非线性风险</td>
+</tr>
+<tr class="odd">
+<td>自融资</td>
+<td>头寸调整仅通过内部现金调配, 无外部注资</td>
+<td>保证对冲成本可控</td>
+</tr>
+<tr class="even">
+<td>波动率微笑</td>
+<td>虚值/实值期权隐含波动率高于平值的市场现象</td>
+<td>揭示BS模型局限性</td>
+</tr>
+<tr class="odd">
+<td>深度虚值期权</td>
+<td>行权价远离现价的期权 (如现价$10, 行权价$14)</td>
+<td>Gamma 对冲的成本最优工具</td>
+</tr>
+<tr class="even">
+<td>随机波动率</td>
+<td>波动率随时间随机变化的模型 (如Heston)</td>
+<td>更贴合市场实际的希腊值计算</td>
+</tr>
+</tbody>
+</table>
+
 
 
 </section>
 </section>
 
-</main> <!-- /main -->
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography" id="quarto-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
+<div id="ref-gao2020optimalmarketmakingpresence" class="csl-entry" role="listitem">
+Gao, Xuefeng, and Yunhan Wang. 2020. <span>“Optimal Market Making in the Presence of Latency.”</span> <a href="https://arxiv.org/abs/1806.05849">https://arxiv.org/abs/1806.05849</a>.
+</div>
+</div></section></div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
     const icon = "";
