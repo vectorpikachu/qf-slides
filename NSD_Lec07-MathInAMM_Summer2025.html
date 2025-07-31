@@ -1,0 +1,1836 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.7.32">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Topics in Quantitative Finance, Summer 2025 – Topics in QF</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<script src="site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap-b82b626913fb92a8b9be04cecd5320fa.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="styles.css">
+</head>
+
+<body class="nav-fixed quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="./index.html">
+    <span class="navbar-title">Topics in QF</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="./index.html"> 
+<span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./about.html"> 
+<span class="menu-text">About</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./NSD_Lec01-FinancialEngineering_Summer2025.html"> 
+<span class="menu-text">Lecture 01</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./NSD_Lec02-StochCal_Summer2025.html"> 
+<span class="menu-text">Lecture 02</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./NSD_Lec03-BlackMertonScholes-1_Summer2025.html"> 
+<span class="menu-text">Lecture 03</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./NSD_Lec04_Summer2025/NSD_Lec04-BlackMertonScholes-2_Summer2025.html"> 
+<span class="menu-text">Lecture 04</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./NSD_Lec05_Summer2025/NSD_Lec05-Volatility_Summer2025.html"> 
+<span class="menu-text">Lecture 05</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./NSD_Lec06-OptimalOrderExecution_Summer2025.html"> 
+<span class="menu-text">Lecture 06</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link active" href="./NSD_Lec07-MathInAMM_Summer2025.html" aria-current="page"> 
+<span class="menu-text">Lecture 07</span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#topics-in-quantitative-finance-summer-2025" id="toc-topics-in-quantitative-finance-summer-2025" class="nav-link active" data-scroll-target="#topics-in-quantitative-finance-summer-2025">Topics in Quantitative Finance, Summer 2025</a>
+  <ul class="collapse">
+  <li><a href="#lecture-7-mathematics-behind-amm-in-defi" id="toc-lecture-7-mathematics-behind-amm-in-defi" class="nav-link" data-scroll-target="#lecture-7-mathematics-behind-amm-in-defi">Lecture 7: Mathematics behind AMM in DeFi</a></li>
+  <li><a href="#outline-of-lecture-7" id="toc-outline-of-lecture-7" class="nav-link" data-scroll-target="#outline-of-lecture-7">Outline of Lecture 7</a></li>
+  <li><a href="#automated-market-making" id="toc-automated-market-making" class="nav-link" data-scroll-target="#automated-market-making">Automated Market Making</a></li>
+  <li><a href="#amm-vs-clob" id="toc-amm-vs-clob" class="nav-link" data-scroll-target="#amm-vs-clob">AMM vs CLOB</a></li>
+  <li><a href="#amm-vs-clob-1" id="toc-amm-vs-clob-1" class="nav-link" data-scroll-target="#amm-vs-clob-1">AMM vs CLOB</a></li>
+  <li><a href="#types-of-traders" id="toc-types-of-traders" class="nav-link" data-scroll-target="#types-of-traders">Types of traders</a></li>
+  <li><a href="#constant-function-market-making" id="toc-constant-function-market-making" class="nav-link" data-scroll-target="#constant-function-market-making">Constant function market making</a></li>
+  <li><a href="#notations" id="toc-notations" class="nav-link" data-scroll-target="#notations">Notations</a></li>
+  <li><a href="#bonding-curve" id="toc-bonding-curve" class="nav-link" data-scroll-target="#bonding-curve">Bonding curve</a></li>
+  <li><a href="#example-constant-product-market-making-cpmm" id="toc-example-constant-product-market-making-cpmm" class="nav-link" data-scroll-target="#example-constant-product-market-making-cpmm">Example: Constant product market making (CPMM)</a></li>
+  <li><a href="#example-geometric-mean-market-making-g3ms-or-balancer" id="toc-example-geometric-mean-market-making-g3ms-or-balancer" class="nav-link" data-scroll-target="#example-geometric-mean-market-making-g3ms-or-balancer">Example: Geometric mean market making (G3Ms) or Balancer</a></li>
+  <li><a href="#constant-product-market-making" id="toc-constant-product-market-making" class="nav-link" data-scroll-target="#constant-product-market-making">Constant product market making</a></li>
+  <li><a href="#example-curve" id="toc-example-curve" class="nav-link" data-scroll-target="#example-curve">Example: Curve</a></li>
+  <li><a href="#marginal-exchange-rate-or-marginal-price" id="toc-marginal-exchange-rate-or-marginal-price" class="nav-link" data-scroll-target="#marginal-exchange-rate-or-marginal-price">Marginal exchange rate or marginal price</a></li>
+  <li><a href="#total-traded-price-by-line-integral" id="toc-total-traded-price-by-line-integral" class="nav-link" data-scroll-target="#total-traded-price-by-line-integral">Total traded price by line integral</a>
+  <ul class="collapse">
+  <li><a href="#line-integral" id="toc-line-integral" class="nav-link" data-scroll-target="#line-integral">Line integral</a></li>
+  </ul></li>
+  <li><a href="#example-cpmm" id="toc-example-cpmm" class="nav-link" data-scroll-target="#example-cpmm">Example: CPMM</a></li>
+  <li><a href="#sell-price-by-line-integral" id="toc-sell-price-by-line-integral" class="nav-link" data-scroll-target="#sell-price-by-line-integral">Sell price by line integral</a></li>
+  <li><a href="#price-impact-by-line-integral" id="toc-price-impact-by-line-integral" class="nav-link" data-scroll-target="#price-impact-by-line-integral">Price impact by line integral</a></li>
+  <li><a href="#example-cpmm-1" id="toc-example-cpmm-1" class="nav-link" data-scroll-target="#example-cpmm-1">Example: CPMM</a></li>
+  <li><a href="#transformation-between-xy-and-l-p-in-cpmm" id="toc-transformation-between-xy-and-l-p-in-cpmm" class="nav-link" data-scroll-target="#transformation-between-xy-and-l-p-in-cpmm">Transformation between <span class="math inline">\((x,y)\)</span> and <span class="math inline">\((L, P)\)</span> in CPMM</a></li>
+  <li><a href="#value-of-the-pool" id="toc-value-of-the-pool" class="nav-link" data-scroll-target="#value-of-the-pool">Value of the pool</a></li>
+  <li><a href="#impermanent-loss-il-aka-divergence-loss" id="toc-impermanent-loss-il-aka-divergence-loss" class="nav-link" data-scroll-target="#impermanent-loss-il-aka-divergence-loss">Impermanent loss (IL) aka Divergence Loss</a></li>
+  <li><a href="#loss-versus-rebalance-lvr" id="toc-loss-versus-rebalance-lvr" class="nav-link" data-scroll-target="#loss-versus-rebalance-lvr">Loss-versus-rebalance (LVR)</a></li>
+  <li><a href="#example-il-and-lvr-in-cpmm" id="toc-example-il-and-lvr-in-cpmm" class="nav-link" data-scroll-target="#example-il-and-lvr-in-cpmm">Example: IL and LVR in CPMM</a></li>
+  <li><a href="#concentrated-liquidity-provision-clp" id="toc-concentrated-liquidity-provision-clp" class="nav-link" data-scroll-target="#concentrated-liquidity-provision-clp">Concentrated liquidity provision (CLP)</a></li>
+  <li><a href="#comparison-with-traditional-limit-order-books" id="toc-comparison-with-traditional-limit-order-books" class="nav-link" data-scroll-target="#comparison-with-traditional-limit-order-books">Comparison with Traditional Limit Order Books</a></li>
+  <li><a href="#clp-and-contribution-to-pool-reserve" id="toc-clp-and-contribution-to-pool-reserve" class="nav-link" data-scroll-target="#clp-and-contribution-to-pool-reserve">CLP and contribution to pool reserve</a></li>
+  <li><a href="#clp-and-contribution-to-pool-reserve-1" id="toc-clp-and-contribution-to-pool-reserve-1" class="nav-link" data-scroll-target="#clp-and-contribution-to-pool-reserve-1">CLP and contribution to pool reserve</a></li>
+  <li><a href="#additivity-of-coins-and-liquidity" id="toc-additivity-of-coins-and-liquidity" class="nav-link" data-scroll-target="#additivity-of-coins-and-liquidity">Additivity of coins and liquidity</a></li>
+  <li><a href="#pool-reserve-as-payoff-for-portfolio-of-call-options" id="toc-pool-reserve-as-payoff-for-portfolio-of-call-options" class="nav-link" data-scroll-target="#pool-reserve-as-payoff-for-portfolio-of-call-options">Pool reserve as payoff for portfolio of call options</a></li>
+  <li><a href="#liquidity-profile" id="toc-liquidity-profile" class="nav-link" data-scroll-target="#liquidity-profile">Liquidity profile</a></li>
+  <li><a href="#summary-conversion-between-liquidity-profile-and-pool-reserves" id="toc-summary-conversion-between-liquidity-profile-and-pool-reserves" class="nav-link" data-scroll-target="#summary-conversion-between-liquidity-profile-and-pool-reserves">Summary: Conversion between liquidity profile and pool reserves</a></li>
+  <li><a href="#monotonicity-and-convexity-of-bonding-curve" id="toc-monotonicity-and-convexity-of-bonding-curve" class="nav-link" data-scroll-target="#monotonicity-and-convexity-of-bonding-curve">Monotonicity and convexity of bonding curve</a></li>
+  <li><a href="#illustration-for-the-conversion-of-liquidity-profile-to-reserve" id="toc-illustration-for-the-conversion-of-liquidity-profile-to-reserve" class="nav-link" data-scroll-target="#illustration-for-the-conversion-of-liquidity-profile-to-reserve">Illustration for the conversion of liquidity profile to reserve</a>
+  <ul class="collapse">
+  <li><a href="#create-a-python-class-for-ploting-liquidty-profile-and-reserve-curve" id="toc-create-a-python-class-for-ploting-liquidty-profile-and-reserve-curve" class="nav-link" data-scroll-target="#create-a-python-class-for-ploting-liquidty-profile-and-reserve-curve">Create a <code>python</code> <code>class</code> for ploting liquidty profile and reserve curve</a></li>
+  <li><a href="#constant-liquidity-profile---cpmm-uniswap-v2" id="toc-constant-liquidity-profile---cpmm-uniswap-v2" class="nav-link" data-scroll-target="#constant-liquidity-profile---cpmm-uniswap-v2">Constant liquidity profile - CPMM, Uniswap v2</a></li>
+  <li><a href="#piecewise-constant-liquidity-profile-finitely-supported" id="toc-piecewise-constant-liquidity-profile-finitely-supported" class="nav-link" data-scroll-target="#piecewise-constant-liquidity-profile-finitely-supported">Piecewise constant liquidity profile, finitely supported</a></li>
+  <li><a href="#continuous-liquidity-profile" id="toc-continuous-liquidity-profile" class="nav-link" data-scroll-target="#continuous-liquidity-profile">Continuous liquidity profile</a></li>
+  </ul></li>
+  <li><a href="#what-are-the-il-and-lvr-in-this-framework" id="toc-what-are-the-il-and-lvr-in-this-framework" class="nav-link" data-scroll-target="#what-are-the-il-and-lvr-in-this-framework">What are the IL and LVR in this framework?</a></li>
+  <li><a href="#lvr-in-clp" id="toc-lvr-in-clp" class="nav-link" data-scroll-target="#lvr-in-clp">LVR in CLP</a></li>
+  <li><a href="#il-in-clp" id="toc-il-in-clp" class="nav-link" data-scroll-target="#il-in-clp">IL in CLP</a></li>
+  <li><a href="#time-dependent-liquidity-profile" id="toc-time-dependent-liquidity-profile" class="nav-link" data-scroll-target="#time-dependent-liquidity-profile">Time dependent liquidity profile</a></li>
+  <li><a href="#trader-trades-at-rate-u_t" id="toc-trader-trades-at-rate-u_t" class="nav-link" data-scroll-target="#trader-trades-at-rate-u_t">Trader trades at rate <span class="math inline">\(u_t\)</span></a></li>
+  <li><a href="#putting-things-together" id="toc-putting-things-together" class="nav-link" data-scroll-target="#putting-things-together">Putting things together</a>
+  <ul class="collapse">
+  <li><a href="#market-mechanism---without-transaction-cost" id="toc-market-mechanism---without-transaction-cost" class="nav-link" data-scroll-target="#market-mechanism---without-transaction-cost">Market mechanism - without transaction cost</a></li>
+  </ul></li>
+  <li><a href="#wealth-process-for-a-static-liquidity-provider" id="toc-wealth-process-for-a-static-liquidity-provider" class="nav-link" data-scroll-target="#wealth-process-for-a-static-liquidity-provider">Wealth process for a static liquidity provider</a>
+  <ul class="collapse">
+  <li><a href="#notation" id="toc-notation" class="nav-link" data-scroll-target="#notation">Notation</a></li>
+  <li><a href="#market-mechanism---with-transaction-cost" id="toc-market-mechanism---with-transaction-cost" class="nav-link" data-scroll-target="#market-mechanism---with-transaction-cost">Market mechanism - with transaction cost</a></li>
+  </ul></li>
+  <li><a href="#a-look-at-the-market-data" id="toc-a-look-at-the-market-data" class="nav-link" data-scroll-target="#a-look-at-the-market-data">A look at the market data</a>
+  <ul class="collapse">
+  <li><a href="#empirical-liquidity-profile-i" id="toc-empirical-liquidity-profile-i" class="nav-link" data-scroll-target="#empirical-liquidity-profile-i">Empirical liquidity profile I</a></li>
+  <li><a href="#empirical-liquidity-profile-ii" id="toc-empirical-liquidity-profile-ii" class="nav-link" data-scroll-target="#empirical-liquidity-profile-ii">Empirical liquidity profile II</a></li>
+  </ul></li>
+  <li><a href="#summary" id="toc-summary" class="nav-link" data-scroll-target="#summary">Summary</a></li>
+  <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references">References</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content column-page-left" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Topics in Quantitative Finance, Summer 2025</h1>
+</div>
+
+
+
+<div class="quarto-title-meta column-page-left">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="topics-in-quantitative-finance-summer-2025" class="level1">
+<h1>Topics in Quantitative Finance, Summer 2025</h1>
+<section id="lecture-7-mathematics-behind-amm-in-defi" class="level2">
+<h2 class="anchored" data-anchor-id="lecture-7-mathematics-behind-amm-in-defi">Lecture 7: Mathematics behind AMM in DeFi</h2>
+<p><br> <br></p>
+<center>
+<font size="5," color="darkblue">Tai-Ho Wang (王 太和)</font>
+</center>
+<h3 style="text-align: center;" class="anchored">
+<img src="http://mfe.baruch.cuny.edu/wp-content/uploads/2016/04/MFE-Logo.jpg" align="center" width="500">
+</h3>
+<p><span class="math display">\[
+\newcommand{\bea}{\begin{align}}
+\newcommand{\eea}{\end{align}}
+\newcommand{\supp}{\mathrm{supp}}
+\newcommand{\F}{\mathcal{F} }
+\newcommand{\cF}{\mathcal{F} }
+\newcommand{\E}{\mathbb{E} }
+\newcommand{\Eof}[1]{\mathbb{E}\left[ #1 \right]}
+\def\Cov{{ \mbox{Cov} }}
+\def\Var{{ \mbox{Var} }}
+\newcommand{\1}{\mathbf{1} }
+\newcommand{\p}{\partial}
+\newcommand{\PP}{\mathbb{P} }
+\newcommand{\Pof}[1]{\mathbb{P}\left[ #1 \right]}
+\newcommand{\QQ}{\mathbb{Q} }
+\renewcommand{\R}{\mathbb{R} }
+\newcommand{\DD}{\mathbb{D} }
+\newcommand{\HH}{\mathbb{H} }
+\newcommand{\spn}{\mathrm{span} }
+\newcommand{\cov}{\mathrm{cov} }
+\newcommand{\HS}{\mathcal{L}_{\mathrm{HS}} }
+\newcommand{\Hess}{\mathrm{Hess} }
+\newcommand{\trace}{\mathrm{trace} }
+\newcommand{\cL}{\mathcal{L} }
+\newcommand{\cG}{\mathcal{G} }
+\newcommand{\Xv}{X^{(v)}}
+\newcommand{\s}{\mathcal{S} }
+\newcommand{\cE}{\mathcal{E} }
+\newcommand{\ff}{\mathcal{F} }
+\newcommand{\hh}{\mathcal{H} }
+\newcommand{\bb}{\mathcal{B} }
+\newcommand{\dd}{\mathcal{D} }
+\newcommand{\g}{\mathcal{G} }
+\newcommand{\half}{\frac{1}{2} }
+\newcommand{\T}{\mathcal{T} }
+\newcommand{\bit}{\begin{itemize}}
+\newcommand{\eit}{\end{itemize}}
+\newcommand{\beq}{\begin{equation}}
+\newcommand{\eeq}{\end{equation}}
+\newcommand{\beas}{\begin{align*}}
+\newcommand{\eeas}{\end{align*}}
+\newcommand{\tr}{\mbox{tr}}
+\newcommand{\ee}[1]{{\mathbb{E}\left[{#1}\right]}}
+\newcommand{\eef}[1]{{\mathbb{E}\left[\left.{#1}\right|\cF_t\right]}}
+\newcommand{\eefm}[2]{{\mathbb{E}^{#2}\left[\left.{#1}\right|\cF_t\right]}}
+\renewcommand{\angl}[1]{{\langle{#1}\rangle}}
+\newcommand{\inn}[1]{{\langle{#1}\rangle}}
+\newcommand{\tL}{{\tilde L}}
+\]</span></p>
+</section>
+<section id="outline-of-lecture-7" class="level2">
+<h2 class="anchored" data-anchor-id="outline-of-lecture-7">Outline of Lecture 7</h2>
+<ul>
+<li>Brief introduction to Automated Market Making (AMM) in decentralized finance (DeFi)<br>
+</li>
+<li>Constant function market making (CFMM)
+<ul>
+<li>Bonding curve</li>
+<li>Constant product market making (CPMM), Geometric mean market making (G3M) or Balancer, Curve</li>
+<li>Price impact under CFMM</li>
+<li>Impermanent Loss (IL) and Loss-versus-rebalance (LVR)</li>
+</ul></li>
+<li>Concentrated liquidity providing (CLP)
+<ul>
+<li>Customized liquidity provision</li>
+<li>IL and LVR under CLP</li>
+<li>Empirical data</li>
+</ul></li>
+<li>Problems to be done</li>
+</ul>
+<br> <br>
+<center>
+<font color="blue" size="5">Automated Market Making</font>
+</center>
+<p><br> <br></p>
+</section>
+<section id="automated-market-making" class="level2">
+<h2 class="anchored" data-anchor-id="automated-market-making">Automated Market Making</h2>
+<section id="automatic-market-makers-amms-are" class="level4">
+<h4 class="anchored" data-anchor-id="automatic-market-makers-amms-are">Automatic Market Makers (AMMs) are</h4>
+<ul>
+<li>Algorithms that power decentralized exchanges (DEXs).</li>
+<li>Replace traditional order books with liquidity pools.</li>
+<li>Use mathematical formulas to determine asset prices.</li>
+</ul>
+</section>
+<section id="how-amms-work" class="level4">
+<h4 class="anchored" data-anchor-id="how-amms-work">How AMMs Work</h4>
+<ul>
+<li>Users provide liquidity (crypto assets) to pools.</li>
+<li>Traders swap directly with the pool’s assets.</li>
+<li>Prices are determined by the ratio of assets within the pool.</li>
+<li>Key Benefits
+<ul>
+<li>Permissionless: Anyone can trade or provide liquidity.</li>
+<li>Automated: No middlemen or order books needed.</li>
+<li>Always Available: 24/7 trading, regardless of market conditions.</li>
+</ul></li>
+</ul>
+</section>
+</section>
+<section id="amm-vs-clob" class="level2">
+<h2 class="anchored" data-anchor-id="amm-vs-clob">AMM vs CLOB</h2>
+<ul>
+<li><strong>Automated market making</strong> are innovative solutions to the problems of decentralized exchanges. In the years prior to the implementation of AMMs, developers implemented <strong>Decentralized Exchanges</strong> (DEXs) by replicating traditional central limit order books (CLOB) used by centralized exchanges.</li>
+<li>The result was excessive network transaction fees and high latency due to the difficulty in managing and maintaining a huge amount of transactions on the chain. Fortunately, the implementation of AMMs solved the problems of excessive fees and low liquidity.</li>
+</ul>
+</section>
+<section id="amm-vs-clob-1" class="level2">
+<h2 class="anchored" data-anchor-id="amm-vs-clob-1">AMM vs CLOB</h2>
+<p>Compared to CLOBs, AMMs offer some advantages. - Efficient computation. They have minimal storage needs, and matching computations can be done quickly, typically via constant-time closed-from algebraic computations. - In a CLOB, on the other hand, matching engine calculations may involve complex data structures and computations that scale with the number of orders. Thus AMMs are uniquely suited to the severely computation- and storage-constrained environment of the blockchain.</p>
+<ul>
+<li>CLOBs are not well-suited to a long-tail of illiquid assets. This is because they require the participation of active market markers. In contrast, AMMs mainly rely on passive liquidity providers (LPs).</li>
+</ul>
+</section>
+<section id="types-of-traders" class="level2">
+<h2 class="anchored" data-anchor-id="types-of-traders">Types of traders</h2>
+<p>There are two types of traders in an AMM pool.</p>
+<ul>
+<li>Liquidity provider (LP)
+<ul>
+<li>Provide liquidity by adding coins simultaneously to the pool.</li>
+<li>Liquidity provision leaving the pool price/marginal exchange rate unaltered.<br>
+</li>
+<li>Collects fee from the pool/swapper.</li>
+</ul></li>
+<li>Swapper
+<ul>
+<li>Swap coins with the pool.</li>
+<li>Swaps implemented along the bonding curve.</li>
+<li>Pays fee to the pool/LP for each transaction.</li>
+</ul></li>
+</ul>
+<br> <br>
+<center>
+<font color="blue" size="5">Constant Function Market Making</font>
+</center>
+<p><br> <br></p>
+</section>
+<section id="constant-function-market-making" class="level2">
+<h2 class="anchored" data-anchor-id="constant-function-market-making">Constant function market making</h2>
+<ul>
+<li>One of the most popular proctols utilized for AMM in DEX is the Constant Function Market Making (CFMM).</li>
+<li>We shall investigate the trading mechanism under CFMM.</li>
+</ul>
+</section>
+<section id="notations" class="level2">
+<h2 class="anchored" data-anchor-id="notations">Notations</h2>
+<ul>
+<li><span class="math inline">\(x_t\)</span>: number of risky asset, say ETH, at time <span class="math inline">\(t\)</span> in the pool</li>
+<li><span class="math inline">\(y_t\)</span>: number of numeraire, say USDC, at time <span class="math inline">\(t\)</span> in the pool</li>
+<li><span class="math inline">\(f\)</span>: bonding function</li>
+<li><span class="math inline">\(L\)</span>: level of bonding function</li>
+<li><span class="math inline">\(\displaystyle P:=-\frac{dy_t}{dx_t}\)</span>: infinitesimal/marginal rate of exchange or pool price at time <span class="math inline">\(t\)</span></li>
+<li><span class="math inline">\(V_t\)</span>: value of the pool or LP’s wealth at time <span class="math inline">\(t\)</span></li>
+<li><span class="math inline">\(1 - \gamma\)</span>: (proportional) transaction cost, typically <span class="math inline">\(\gamma = 99.7\%\)</span>.</li>
+<li><span class="math inline">\(S_t\)</span>: exogenous reference price of the risky asset</li>
+</ul>
+</section>
+<section id="bonding-curve" class="level2">
+<h2 class="anchored" data-anchor-id="bonding-curve">Bonding curve</h2>
+<p>Consider the CFMM with bonding curve given by the level curve</p>
+<p><span class="math display">\[
+f(x, y) = L,
+\]</span></p>
+<p>where <span class="math inline">\(x\)</span> is regarded as the number of risk assets and <span class="math inline">\(y\)</span> the number of numeraire in the liquidity pool. <span class="math inline">\(f\)</span> is referred to as the <em>bonding function</em> and <span class="math inline">\(L\)</span> as the level of bonding function.</p>
+<section id="note" class="level4">
+<h4 class="anchored" data-anchor-id="note">Note</h4>
+<ul>
+<li>Pricing is nonlinear in general.</li>
+<li>For the trading mechanism to be viable, <span class="math inline">\(f\)</span> must satisfies certain conditions. For example, <span class="math inline">\(y\)</span> as a function <span class="math inline">\(x\)</span> implicitly defined via the bonding curve must be decreasing.</li>
+</ul>
+<p>注: Bonding curve <span class="math inline">\(f(x,y)=L\)</span> 给出风险资产与计价资产之间的数量关系.</p>
+</section>
+</section>
+<section id="example-constant-product-market-making-cpmm" class="level2">
+<h2 class="anchored" data-anchor-id="example-constant-product-market-making-cpmm">Example: Constant product market making (CPMM)</h2>
+<p>In this case, the bonding function <span class="math inline">\(f\)</span> and the bonding curve are given by</p>
+<p><span class="math display">\[
+f(x,y) := \sqrt{xy} = L
+\]</span></p>
+<p>or equivalently</p>
+<p><span class="math display">\[
+xy = L^2 \quad \leftrightsquigarrow \quad \frac xL \cdot \frac yL = 1
+\]</span></p>
+<div id="cell-13" class="cell" data-execution_count="1">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="cell-14" class="cell" data-execution_count="2">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>w, ell <span class="op">=</span> <span class="fl">0.5</span>, <span class="fl">0.3</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>dx <span class="op">=</span> dy <span class="op">=</span> <span class="fl">0.01</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> np.arange(<span class="fl">0.2</span>, <span class="fl">0.89</span>, dx)</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> ell<span class="op">**</span><span class="dv">2</span><span class="op">/</span>x</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="co">#y = np.arange(0.01, 0.99, dy)</span></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="co">#X, Y = np.meshgrid(x, y)</span></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="co">#Z = X**w*Y**(1-w)</span></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="co">#CS = plt.contour(X, Y, Z, [ell])#, label=f'w={w}')</span></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a><span class="co">#plt.clabel(CS, inline=True, fontsize=10)</span></span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>plt.plot(x, y, label<span class="op">=</span><span class="vs">fr'</span><span class="dv">$</span><span class="vs">xy=L</span><span class="dv">^</span><span class="vs">2</span><span class="dv">$</span><span class="vs">'</span>)</span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>plt.scatter([<span class="fl">0.6</span>, <span class="fl">0.3</span>], [ell<span class="op">**</span><span class="dv">2</span><span class="op">/</span><span class="fl">0.6</span>, ell<span class="op">**</span><span class="dv">2</span><span class="op">/</span><span class="fl">0.3</span>], s<span class="op">=</span><span class="dv">25</span>)</span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>plt.grid()</span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>plt.legend()</span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>plt.vlines(x<span class="op">=</span>[<span class="fl">0.3</span>, <span class="fl">0.6</span>], ymin<span class="op">=</span>[<span class="dv">0</span>,<span class="dv">0</span>], ymax<span class="op">=</span>[ell<span class="op">**</span><span class="dv">2</span><span class="op">/</span><span class="fl">0.3</span>, ell<span class="op">**</span><span class="dv">2</span><span class="op">/</span><span class="fl">0.6</span>], ls<span class="op">=</span><span class="st">'dotted'</span>, color<span class="op">=</span><span class="st">'k'</span>)<span class="op">;</span></span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a>plt.hlines(y<span class="op">=</span>[ell<span class="op">**</span><span class="dv">2</span><span class="op">/</span><span class="fl">0.3</span>, ell<span class="op">**</span><span class="dv">2</span><span class="op">/</span><span class="fl">0.6</span>], xmin<span class="op">=</span>[<span class="dv">0</span>,<span class="dv">0</span>], xmax<span class="op">=</span>[<span class="fl">0.3</span>, <span class="fl">0.6</span>], ls<span class="op">=</span><span class="st">'dotted'</span>, color<span class="op">=</span><span class="st">'k'</span>)<span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="NSD_Lec07-MathInAMM_Summer2025_files/figure-html/cell-3-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="example-geometric-mean-market-making-g3ms-or-balancer" class="level2">
+<h2 class="anchored" data-anchor-id="example-geometric-mean-market-making-g3ms-or-balancer">Example: Geometric mean market making (G3Ms) or Balancer</h2>
+<p>In this case, the bonding function <span class="math inline">\(f\)</span> and the bonding curve are determined by</p>
+<p><span class="math display">\[
+f(x,y) := x^\alpha y^{1-\alpha} = L
+\]</span></p>
+<p>for some <span class="math inline">\(\alpha \in (0,1)\)</span>. Equivalently</p>
+<p><span class="math display">\[
+x^\alpha y^{1 - \alpha} = L \quad \leftrightsquigarrow \quad \left(\frac xL\right)^\alpha \cdot \left(\frac yL\right)^{1-\alpha} = 1
+\]</span></p>
+<p>Apparently, CPMM corresponds to the case <span class="math inline">\(\alpha = \frac12\)</span>.</p>
+</section>
+<section id="constant-product-market-making" class="level2">
+<h2 class="anchored" data-anchor-id="constant-product-market-making">Constant product market making</h2>
+<section id="uniswap-v2" class="level4">
+<h4 class="anchored" data-anchor-id="uniswap-v2">Uniswap v2</h4>
+<ul>
+<li>Best For: Basic swaps of popular tokens (ETH, WBTC, stablecoins, etc.)</li>
+<li>Key Feature: Simplicity and wide asset support, ideal for beginners.</li>
+</ul>
+</section>
+<section id="balancer" class="level4">
+<h4 class="anchored" data-anchor-id="balancer">Balancer</h4>
+<ul>
+<li>Best For: More flexibility in liquidity pools and trading less common assets.</li>
+<li>Key Features:
+<ul>
+<li>Customizable pool weights (not just 50/50)</li>
+<li>Supports multiple assets per pool</li>
+</ul></li>
+</ul>
+</section>
+</section>
+<section id="example-curve" class="level2">
+<h2 class="anchored" data-anchor-id="example-curve">Example: Curve</h2>
+<p>In this case, the bonding function and the bonding curve are given by</p>
+<p><span class="math display">\[
+f(x,y) = \alpha(x + y) - \frac\beta{xy} = L
+\]</span></p>
+</section>
+<section id="marginal-exchange-rate-or-marginal-price" class="level2">
+<h2 class="anchored" data-anchor-id="marginal-exchange-rate-or-marginal-price">Marginal exchange rate or marginal price</h2>
+<p>It follows from the implicit function theorem that the marginal price or the marginal exchange rate, denoted by <span class="math inline">\(P\)</span>, is defined as</p>
+<p><span class="math display">\[
+P := -\frac{\mathrm{d}y}{\mathrm{d}x} = \frac{f_x}{f_y}.
+\]</span></p>
+<p>The marginal exchange rate <span class="math inline">\(P\)</span> represents the price, or the amount of numeraire <span class="math inline">\(\mathrm{d}y\)</span> that the trader/swapper pays to the pool in exchange of retrieving <span class="math inline">\(-\mathrm{d}x\)</span> shares from the pool, when the reserve is <span class="math inline">\((x,y)\)</span>.</p>
+<p>The trading/exchange must be done along the bonding curve <span class="math inline">\(f(x,y) = L\)</span>.</p>
+<p>In general, <span class="math inline">\(P = P(x,y)\)</span>.</p>
+</section>
+<section id="total-traded-price-by-line-integral" class="level2">
+<h2 class="anchored" data-anchor-id="total-traded-price-by-line-integral">Total traded price by line integral</h2>
+<p>Assume the current reserve is <span class="math inline">\((x_0, y_0)\)</span>, a swapper would like to purchase <span class="math inline">\(\Delta_x\)</span> shares from the pool. We would like to determine how much of the numeraire should the swapper pay to the pool in exchange of the risk asset.</p>
+<p>This can be done by evaluating a line integral along the bonding curve. Let <span class="math inline">\(\gamma\)</span> be the path connecting <span class="math inline">\((x_0, y_0)\)</span> to <span class="math inline">\((x_0 + \Delta_x, y_0 + \Delta_y)\)</span>, where the amount <span class="math inline">\(\Delta_y\)</span> is to be determined, along the bonding curve <span class="math inline">\(f(x,y) = L\)</span>. We have</p>
+<p><span class="math display">\[
+\Delta_y = \int_{\gamma} \mathrm{d} y = \int_0^1 \dot y_t \mathrm{d}t,
+\]</span></p>
+<p>where we parametrize the curve as <span class="math inline">\(\gamma_t = (x_t, y_t)\)</span> with <span class="math inline">\(f(x_t, y_t) = L\)</span> for all <span class="math inline">\(t\)</span>. Thus, the averaged traded price is</p>
+<p><span class="math display">\[
+\frac{\Delta_y}{\Delta_x} = \frac1{\Delta_x} \int_0^1 \dot y_t \mathrm{d}t.
+\]</span></p>
+<p>Note that, since along the bonding curve <span class="math inline">\(\mathrm{d}y = -P\mathrm{d}x\)</span>, we have</p>
+<p><span class="math display">\[
+\int_\gamma \mathrm{d}y = -\int_\gamma P(x,y) \mathrm{d}x.
+\]</span></p>
+<section id="line-integral" class="level3">
+<h3 class="anchored" data-anchor-id="line-integral">Line integral</h3>
+<p>Quotes from <a href="https://en.wikipedia.org/wiki/Line_integral">Wikipedia</a>:</p>
+<blockquote class="blockquote">
+<p>In mathematics, a line integral is an integral where the function to be integrated is evaluated along a curve. The terms path integral, curve integral, and curvilinear integral are also used; contour integral is used as well, although that is typically reserved for line integrals in the complex plane.</p>
+</blockquote>
+<p>For some scalar field <span class="math inline">\({\displaystyle f\colon U\to \mathbb {R} }\)</span> where <span class="math inline">\({\displaystyle U\subseteq \mathbb {R} ^{n}}\)</span>, the line integral along a piecewise smooth curve <span class="math inline">\({\displaystyle {\mathcal {C}}\subset U}\)</span> is defined as</p>
+<p><span class="math display">\[
+{\displaystyle \int _{\mathcal {C}}f\,ds=\int _{a}^{b}f\left(\mathbf {r} (t)\right)\left|\mathbf {r} '(t)\right|\,dt,}
+\]</span></p>
+<p>where <span class="math inline">\({\displaystyle \mathbf {r} \colon [a,b]\to {\mathcal {C}}}\)</span> is an arbitrary bijective parametrization of the curve <span class="math inline">\({\displaystyle {\mathcal {C}}}\)</span> such that <span class="math inline">\(\mathbf {r}(a)\)</span> and <span class="math inline">\(\mathbf {r}(b)\)</span> give the endpoints of <span class="math inline">\({\displaystyle {\mathcal {C}}}\)</span> and <span class="math inline">\(a &lt; b\)</span>. Here, and in the rest of the article, the absolute value bars denote the standard (Euclidean) norm of a vector.</p>
+<div style="text-align: center;">
+<img src="https://upload.wikimedia.org/wikipedia/commons/4/42/Line_integral_of_scalar_field.gif" alt="Line integral of scalar field" width="400">
+<p>
+Line integral of scalar field. Source: <a href="https://en.wikipedia.org/wiki/Line_integral">Wikipedia</a>.
+</p>
+</div>
+</section>
+</section>
+<section id="example-cpmm" class="level2">
+<h2 class="anchored" data-anchor-id="example-cpmm">Example: CPMM</h2>
+<p>In this case, we have <span class="math inline">\(f(x,y) = \sqrt{xy} = L\)</span>. It follows that the marginal price <span class="math inline">\(P\)</span> is given by</p>
+<p><span class="math display">\[
+P = P(x,y) = \frac{f_x}{f_y} = \frac yx.
+\]</span></p>
+<p>Along the bonding curve <span class="math inline">\(xy = L^2\)</span>, we have</p>
+<p><span class="math display">\[\begin{align*}
+\Delta_y &amp;= \int_\gamma dy = - \int_\gamma P dx = - \int_\gamma \frac yx dx.
+\end{align*}\]</span></p>
+<p>Thus, if we parametrize the bonding curve <span class="math inline">\(f(x,y) = \sqrt{xy} = L\)</span>, denoted as <span class="math inline">\(\gamma\)</span>, by</p>
+<p><span class="math display">\[\begin{align*}
+\gamma_t = (x_t, y_t)
+\end{align*}\]</span></p>
+<p>for <span class="math inline">\(t \in [0,1]\)</span>, with <span class="math inline">\(x_0 = x_0\)</span>, <span class="math inline">\(x_1 = x_0 + \Delta_x\)</span>, <span class="math inline">\(y_0 = y_0\)</span>, and <span class="math inline">\(y_1 = y_0 + \Delta_y\)</span>.</p>
+<p>Since <span class="math inline">\(f(x_t, y_t) = \sqrt{x_t y_t} = L\)</span> for all <span class="math inline">\(t\)</span>, we have that</p>
+<p><span class="math display">\[
+y_t = \frac{L^2}{x_t}
+\]</span></p>
+<p>It follows that</p>
+<p><span class="math display">\[\begin{align*}
+\Delta_y &amp;= - \int_\gamma \frac yx dx = - \int_0^1 \frac{L^2}{x_t^2} dx_t \\
+&amp;= \frac{L^2}{x_1} - \frac{L^2}{x_0} = L^2\left\{ \frac1{x_0 + \Delta_x} - \frac1{x_0} \right\} \\
+&amp;= \frac{L^2}{x_0} \left(\left\{1 + \frac{\Delta_x}{x_0}\right)^{-1} - 1 \right\}
+\approx -\frac{L^2}{x_0^2} \Delta_x
+\end{align*}\]</span></p>
+<p>if <span class="math inline">\(|\Delta_x| \ll x_0\)</span>. Thus,</p>
+<p><span class="math display">\[
+-\frac{\Delta_y}{\Delta_x} \approx \frac{L^2}{x_0^2} = \frac{y_0}{x_0}
+\]</span></p>
+<p>if <span class="math inline">\(|\Delta_x| \ll x_0\)</span>.</p>
+<section id="note-1" class="level4">
+<h4 class="anchored" data-anchor-id="note-1">Note</h4>
+<ul>
+<li><span class="math inline">\(\Delta_y &gt; 0\)</span> since <span class="math inline">\(\Delta_x &lt; 0\)</span>.</li>
+<li>Price impact depends not only on the traded amount but also the level <span class="math inline">\(L\)</span> and the current pool reserve <span class="math inline">\(x_0\)</span> or <span class="math inline">\(y_0\)</span>.</li>
+</ul>
+</section>
+</section>
+<section id="sell-price-by-line-integral" class="level2">
+<h2 class="anchored" data-anchor-id="sell-price-by-line-integral">Sell price by line integral</h2>
+<p>Likewise, we can show that if a trader wants to retrieve <span class="math inline">\(\Delta_y\)</span> numeraire from the pool, he must deposit</p>
+<p><span class="math display">\[
+\Delta_x = \int_\gamma dx = -\int_\gamma \frac{dy}P
+\]</span></p>
+<p>shares of risky asset to the pool.</p>
+</section>
+<section id="price-impact-by-line-integral" class="level2">
+<h2 class="anchored" data-anchor-id="price-impact-by-line-integral">Price impact by line integral</h2>
+<p>The price impact <span class="math inline">\(\Delta P\)</span> of trading <span class="math inline">\(\Delta_x\)</span> shares with pool can be determined by the line integral</p>
+<p><span class="math display">\[
+\Delta P = \int_\gamma dP = \int_\gamma P_x dx + P_y dy = \int_\gamma (P_x - P P_y) dx
+= \int_\gamma \frac1{f_y}\left(f_{xx} -2Pf_{xy} + P^2 f_{yy} \right)dx = \int_\gamma 2 P^{3/2} \kappa_h dx
+\]</span></p>
+<p>since <span class="math inline">\(dy = -P dx\)</span> along <span class="math inline">\(\gamma\)</span>, the bonding curve <span class="math inline">\(f(x,y) = L\)</span>.</p>
+</section>
+<section id="example-cpmm-1" class="level2">
+<h2 class="anchored" data-anchor-id="example-cpmm-1">Example: CPMM</h2>
+<p>In this case, we have <span class="math inline">\(f(x,y) = \sqrt{xy} = L\)</span> and <span class="math inline">\(P(x,y) = \frac yx\)</span>, thus</p>
+<p><span class="math display">\[\begin{align*}
+P_x &amp;= -\frac y{x^2}, \quad P_y = \frac1x.
+\end{align*}\]</span></p>
+<p>It follows that</p>
+<p><span class="math display">\[\begin{align*}
+\Delta P &amp;= \int_\gamma P_x dx + P_y dy = -2\int_\gamma \frac{y}{x^2} dx = -2L^2 \int_\gamma \frac1{x^3} dx \\
+&amp;= L^2 \left\{\frac1{(x_0 + \Delta_x)^2} - \frac1{x_0^2}\right\} \\
+&amp;= \frac{L^2}{x_0^2} \left\{\left(1 + \frac{\Delta_x}{x_0} \right)^{-2} - 1 \right\} \\
+&amp;\approx -2 \frac{L^2}{x_0^2} \frac{\Delta_x}{x_0} = -2 \frac{y_0}{x_0} \frac{\Delta_x}{x_0}
+\end{align*}\]</span></p>
+<p>if <span class="math inline">\(|\Delta_x| \ll x_0\)</span>.</p>
+</section>
+<section id="transformation-between-xy-and-l-p-in-cpmm" class="level2">
+<h2 class="anchored" data-anchor-id="transformation-between-xy-and-l-p-in-cpmm">Transformation between <span class="math inline">\((x,y)\)</span> and <span class="math inline">\((L, P)\)</span> in CPMM</h2>
+<p>Apparently, we have - from <span class="math inline">\((x,y)\)</span> to <span class="math inline">\((L, P)\)</span> <span class="math display">\[
+L = \sqrt{xy}, \quad P = \frac yx
+\]</span></p>
+<ul>
+<li>from <span class="math inline">\((L,P)\)</span> to <span class="math inline">\((x, y)\)</span> <span class="math display">\[
+x = \frac L{\sqrt P}, \quad y = L \sqrt{P}
+\]</span></li>
+</ul>
+<section id="note-2" class="level4">
+<h4 class="anchored" data-anchor-id="note-2">Note</h4>
+<ul>
+<li>It follows that the status of the liquidity pool can be characterized by either the pool reserve pair <span class="math inline">\((x,y)\)</span> or the <em>level-price</em> pair <span class="math inline">\((L, P)\)</span>.<br>
+</li>
+<li>Pool reserve <span class="math inline">\(x\)</span> and <span class="math inline">\(y\)</span> are proportional to <span class="math inline">\(L\)</span>.</li>
+<li>Later we will show that the level <span class="math inline">\(L\)</span> in CPMM is equal to the (intrinsic) liquidity <span class="math inline">\(\ell\)</span>.</li>
+</ul>
+</section>
+</section>
+<section id="value-of-the-pool" class="level2">
+<h2 class="anchored" data-anchor-id="value-of-the-pool">Value of the pool</h2>
+<p>Let <span class="math inline">\(f(x,y) = L\)</span> be the bonding curve. Define the value of the pool <span class="math inline">\(V\)</span> as</p>
+<p><span class="math display">\[
+V = Px + y
+\]</span></p>
+<p>where recall that <span class="math inline">\(P = -\frac{dy}{dx} = \frac{f_x}{f_y}\)</span>. Note that we can regard pool reserve <span class="math inline">\((x,y)\)</span> as a function of <span class="math inline">\(P\)</span>. Indeed, suppose <span class="math inline">\(x = \varphi(y, L)\)</span> obtained by solving the equation <span class="math inline">\(f(x,y) = L\)</span> for <span class="math inline">\(x\)</span> in terms of <span class="math inline">\(y\)</span> and <span class="math inline">\(L\)</span>. It follows that, by inverting the equation</p>
+<p><span class="math display">\[
+P = \frac{f_x(\varphi(y, L),y)}{f_y(\varphi(y, L), y)},
+\]</span></p>
+<p><span class="math inline">\(y\)</span> is regarded as a function of <span class="math inline">\(P\)</span> (and <span class="math inline">\(L\)</span>).</p>
+</section>
+<section id="impermanent-loss-il-aka-divergence-loss" class="level2">
+<h2 class="anchored" data-anchor-id="impermanent-loss-il-aka-divergence-loss">Impermanent loss (IL) aka Divergence Loss</h2>
+<ul>
+<li><p>Liquidity provision faces the so called <em>Impermanent Loss</em>, also known as the <em>Divergence loss</em> or the <em>Loss-versus-Holding</em> risk.</p></li>
+<li><p>The key point is that in average the LP will be better off holding the coins static than providing them as liquidity to the pool, should there be no transaction fee paid to the LP.</p></li>
+<li><p>To wit, we provide a slightly different but equivalent argument as in <em><a href="https://dl.acm.org/doi/pdf/10.1145/3560832.3563441">Quantifying Loss in Automated Market Makers</a></em> by Milionis, Moallemi, Roughgarden, and Zhang.</p></li>
+<li><p>Assume zero interest.</p></li>
+<li><p><span class="math inline">\(P_0\)</span>: pool price at time <span class="math inline">\(0\)</span></p></li>
+<li><p>An LP possesses <span class="math inline">\(x_0 = x(P_0)\)</span> of <span class="math inline">\(X\)</span> coins and <span class="math inline">\(y_0 = y(P_0)\)</span> of <span class="math inline">\(Y\)</span> coins</p></li>
+<li><p>He is considering whether depositing the coins as liquidity to a CFMM pool is profitable.</p></li>
+</ul>
+<p>Should he hold the position and stay put without trading, the value of his position at time <span class="math inline">\(t\)</span>, denoted by <span class="math inline">\(H_t\)</span>, satisfies</p>
+<p><span class="math display">\[
+dH_t = x(P_0)dP_t \quad \Longrightarrow \quad H_t := x_0 P_t + y_0.
+\]</span></p>
+<p>On the other hand, if he deposits the coins to the pool, the value of his pool reserve at time <span class="math inline">\(t\)</span> is given by</p>
+<p><span class="math display">\[
+V_t = V(P_t) = x_tP_t + y_t = x(P_t) P_t + y(P_t).
+\]</span></p>
+<p>As <span class="math inline">\(P_t\)</span> evolves, Ito’s formula implies that</p>
+<p><span class="math display">\[
+dV_t = V'(P_t) dP_t + \frac12 V''(P_t) d\inn{P}_t = x(P_t) dP_t + \frac12 V''(P_t) d\inn{P}_t
+\]</span></p>
+<p>since</p>
+<p><span class="math display">\[
+V'(P) = \frac{d}{dP}\left(P x + y\right) = x + P\frac{dx}{dP} + \frac{dy}{dP} = x.
+\]</span></p>
+<section id="note-3" class="level4">
+<h4 class="anchored" data-anchor-id="note-3">Note</h4>
+<ul>
+<li><span class="math inline">\(\inn{P}_t\)</span>: quadratic variation of <span class="math inline">\(P_t\)</span></li>
+<li>Recall that <span class="math inline">\(P = -\frac{dy}{dx} = -\frac{dy/dP}{dx/dP}\)</span>.</li>
+</ul>
+<p>It follows that the so called <em>impermanent loss</em>, defined by <span class="math inline">\({\rm IL}_t := H_t - V_t\)</span>, satisfies</p>
+<p><span class="math display">\[
+d{\rm IL}_t = dH_t - dV_t = \left\{x(P_0) - x(P_t)\right\} dP_t - \frac12 V''(P_t) d\inn{P}_t
+\]</span></p>
+<p>or equivalently,</p>
+<p><span class="math display">\[
+{\rm IL}_t = H_t - V_t = \int_0^t \left\{x(P_0) - x(P_s)\right\} dP_s - \int_0^t\frac12 V''(P_s) d\inn{P}_s.
+\]</span></p>
+<p>Note that, since <span class="math display">\[
+V''(P) = x'(P) = -\frac12 \frac{\ell(P)}{P^{3/2}} \leq 0,
+\]</span></p>
+<p>we have</p>
+<p><span class="math display">\[
+\Eof{{\rm IL}_t} = -\Eof{\int_0^t\frac12 V''(P_s) d\inn{P}_s} \geq 0
+\]</span></p>
+<p>should <span class="math inline">\(P_t\)</span> be a martingale. In other words, in average the agent is better off in holding the coins than depositing them to the pool.</p>
+<p><font color="blue">In fact, regarding <span class="math inline">\(H\)</span> and <span class="math inline">\(V\)</span> as functions of <span class="math inline">\(P\)</span>, recall that <span class="math display">\[\begin{align*}
+&amp; V'(P) = x(P) \\
+&amp; V''(P) = x'(P) = -\frac12 \frac{\ell(P)}{P^{3/2}} &lt; 0
+\end{align*}\]</span> It follows that <span class="math inline">\(V\)</span> is an increasing and concave function of <span class="math inline">\(P\)</span>. Note that <span class="math inline">\(H\)</span> is tangent to <span class="math inline">\(V\)</span> at <span class="math inline">\(P_0\)</span>, hence <span class="math inline">\(H(P) \geq V(P)\)</span> for all <span class="math inline">\(P\)</span> since <span class="math inline">\(V\)</span> is concave. Specifically, <span class="math display">\[\begin{align*}
+&amp; V(P) - H(P)  \\
+&amp;= V(P) - x_0 P - y_0  \\
+&amp;= V(P) - x_0 P_0 + x_0 P_0 - x_0 P - y_0 \\
+&amp;= V(P) - V(P_0) + x_0 (P_0 - P) \\
+&amp;= V(P) - \left\{ V(P_0) + V'(P_0) (P - P_0) \right\} \\
+&amp;\leq 0
+\end{align*}\]</span> for all <span class="math inline">\(P\)</span> since <span class="math inline">\(V\)</span> is concave. </font></p>
+</section>
+</section>
+<section id="loss-versus-rebalance-lvr" class="level2">
+<h2 class="anchored" data-anchor-id="loss-versus-rebalance-lvr">Loss-versus-rebalance (LVR)</h2>
+<p>A slightly more detailed analysis given in <em><a href="https://dl.acm.org/doi/pdf/10.1145/3560832.3563441">Quantifying Loss in Automated Market Makers</a></em> shows that the term involving the quadratic variation of <span class="math inline">\(P_t\)</span> in the equation of <span class="math inline">\({\rm IL}_t\)</span> can be attributed to the so called <em>loss-versus-rebalance</em>.</p>
+<p>Let <span class="math inline">\(R_t\)</span> be the self-financing strategy that holds <span class="math inline">\(x(P_t)\)</span> in risky asset at time <span class="math inline">\(t\)</span> with <span class="math inline">\(R_0 = x_0 P_0 + y_0\)</span>. Self-financing implies that</p>
+<p><span class="math display">\[
+dR_t = x(P_t) dP_t.
+\]</span></p>
+<p>Define the <em>loss-versus-rebalance</em> as <span class="math inline">\({\rm LVR}_t := R_t - V_t\)</span>. It follows that</p>
+<p><span class="math display">\[
+d{\rm LVR}_t := dR_t - dV_t = -\frac12 V''(P_t) d\inn{P}_t \geq 0
+\]</span></p>
+<p>again since <span class="math inline">\(V''(P) = x'(P) \leq 0\)</span>. It follows that</p>
+<p><span class="math display">\[
+{\rm IL}_t = \int_0^t \left\{x(P_0) - x(P_s)\right\} dP_s + {\rm LVR}_t.
+\]</span></p>
+<p>Thus, the impermanent loss consists of a martingale component, which can be “delta-hedged” by dynamically holding <span class="math inline">\(x(P_0) - x(P_t)\)</span> shares of the risk asset (the <span class="math inline">\(X\)</span> coin), and a positive drift named loss-versus-rebalance.</p>
+</section>
+<section id="example-il-and-lvr-in-cpmm" class="level2">
+<h2 class="anchored" data-anchor-id="example-il-and-lvr-in-cpmm">Example: IL and LVR in CPMM</h2>
+<p>Consider the CPMM in which <span class="math inline">\(f(x,y) = \sqrt{xy}\)</span>. In this case, <span class="math inline">\(P = \frac{f_x}{f_y} = \frac yx\)</span>. We have, since <span class="math inline">\(xy = L^2\)</span>,</p>
+<p><span class="math display">\[
+P = \frac yx = \frac y{\frac{L^2}y} = \frac{y^2}{L^2} \quad \Longrightarrow \quad y = L\sqrt P.
+\]</span></p>
+<p>Likewise, one can show that</p>
+<p><span class="math display">\[
+x = \frac L{\sqrt P}.
+\]</span></p>
+<p>Hence, the value <span class="math inline">\(V\)</span> is given by</p>
+<p><span class="math display">\[
+V(P) = P x + y = 2 L \sqrt P.
+\]</span></p>
+<p>Hence, <span class="math display">\[\begin{align*}
+&amp; H(P) - V(P) \\
+&amp;= x_0 P + y_0 - 2L\sqrt P \\
+&amp;= \frac{L}{\sqrt{P_0}} P + L\sqrt{P_0} - 2 L \sqrt P \\
+&amp;= \frac{2L}{\sqrt{P_0}}\left\{ \frac{P + P_0}2 - \sqrt{P P_0} \right\} &amp;\geq&amp; 0
+\end{align*}\]</span> and the equality holds if and only if <span class="math inline">\(P = P_0\)</span>.</p>
+<p>Thus, by applying Ito’s formula, the evolution of the value <span class="math inline">\(V_t\)</span> is given by</p>
+<p><span class="math display">\[
+dV_t = \frac L{\sqrt{P_t}} dP_t - \frac14 \frac L{\sqrt{P_t^3}} d\inn{P}_t,
+\]</span></p>
+<p>where <span class="math inline">\(\inn{P}_t\)</span> denotes the quadratic variation of pool price <span class="math inline">\(P_t\)</span>.</p>
+<p>On the other hand, should we hold a in poisition <span class="math inline">\(x_t\)</span> a self-financing manner the value <span class="math inline">\(R_t\)</span> is given by</p>
+<p><span class="math display">\[
+dR_t = x_t dP_t = \frac L{\sqrt{P_t}} dP_t
+\]</span></p>
+<p>Thus, we end up with</p>
+<p><span class="math display">\[
+d{\rm LVR}_t = dR_t - dV_t = \frac L4 \frac{d\inn{P_t}}{\sqrt{P_t^3}}
+\]</span></p>
+<p>as well as</p>
+<p><span class="math display">\[
+{\rm IL}_t = \int_0^t (x_0 - x_s) dP_s + \frac L4 \int_0^t \frac{d\inn{P_s}}{\sqrt{P_t^3}}.
+\]</span></p>
+<br> <br>
+<center>
+<font color="blue" size="5">Concentrated Liquidity Provision Market Making</font>
+</center>
+<p><br> <br></p>
+</section>
+<section id="concentrated-liquidity-provision-clp" class="level2">
+<h2 class="anchored" data-anchor-id="concentrated-liquidity-provision-clp">Concentrated liquidity provision (CLP)</h2>
+<ul>
+<li>In CFMM, the bonding curve dictates the rule of trading and pricing, which is inconsistent with the notion of free market.</li>
+<li>In the CPMM pools, LPs provide reserves to the pool for swapper to swap at any price level and their contributions to the pool are measured in liquidity unit <span class="math inline">\(L\)</span>.</li>
+<li>The feature of concentrated liquidity provision provides LP the ability to allocate liquidities to be used only when swaps occurring in a designated price interval, say, <span class="math inline">\([p_l, p_r]\)</span> of his choice.</li>
+<li>The result is a market induced liquidity profile which liberates the trading and pricing in AMM from the dictation of bonding curve in CFMM.</li>
+<li>Liquidity providers willing to actively manage positions for maximum returns.</li>
+<li>Key Features:
+<ul>
+<li>Users provide liquidity within specific price ranges.</li>
+<li>Enables limit-order-like trades.</li>
+<li>Increases capital efficiency and potential higher earnings for LPs.</li>
+</ul></li>
+</ul>
+</section>
+<section id="comparison-with-traditional-limit-order-books" class="level2">
+<h2 class="anchored" data-anchor-id="comparison-with-traditional-limit-order-books">Comparison with Traditional Limit Order Books</h2>
+<p>Uniswap v3 can be seen as a hybrid of a constant function market maker (CFMM) and a traditional electronic limit order book (LOB), which allows market participants to specify quantities of assets they wish to trade at specified prices and maintains a list of outstanding buy and sell orders. The concentrated liquidity feature of Uniswap v3 allows for the creation of LP positions that function similarly to limit orders in LOBs, bridging the gap in expressiveness that exists between simple CFMMs and more complex LOBs, which can approximate any demand curve but require more complex state descriptions.</p>
+<p>While a narrow-range Uniswap v3 LP position shares the goal of executing trades at preferred price levels with traditional limit orders in LOBs, the underlying mechanisms and characteristics differ significantly.</p>
+<ul>
+<li><p>A key distinction lies in how the price is specified. Uniswap v3 LPs define a price range, offering liquidity across a continuum of prices, whereas LOBs rely on specific, discrete price points for each order.</p></li>
+<li><p>Liquidity provision also differs fundamentally. In Uniswap v3, liquidity within a defined range is continuous and formula-driven, meaning it’s available at any price within the range according to the bonding curve. In contrast, LOB liquidity is offered in discrete quantities at specific price levels.</p></li>
+<li><p>Operational Mechanisms and Trade Execution: Uniswap v3 and LOBs differ in their operational mechanisms and trade execution processes. Uniswap v3 operates as an AMM, using a constant product formula (adjusted for the price range) to facilitate swaps, which occur at any price within the LP’s range until the provided liquidity is utilized. Conversely, LOBs function by matching buy and sell orders, executed through a greedy matching process at the specified price or better.</p></li>
+<li><p>Behavior with Market Price Movements: When the market price moves, the behaviour of positions also differs significantly. If the market price moves out of a Uniswap v3 LP’s defined range, the position becomes inactive, holding a specific asset composition until the price returns. This necessitates active position withdrawal by the LP to avoid a “reversal” of their intended trade. In LOBs, limit orders remain in the book until filled or actively cancelled by the user, regardless of market price fluctuations.</p></li>
+</ul>
+</section>
+<section id="clp-and-contribution-to-pool-reserve" class="level2">
+<h2 class="anchored" data-anchor-id="clp-and-contribution-to-pool-reserve">CLP and contribution to pool reserve</h2>
+<p>Assume an LP would like to provide liquidity <span class="math inline">\(L\)</span> for the price range <span class="math inline">\([p_l, p_r]\)</span> with <span class="math inline">\(0 &lt; p_l &lt; p_r &lt; \infty\)</span>. He is required to deposit as reserves to the pool <span class="math inline">\(x\)</span> of the <span class="math inline">\(X\)</span> coins and <span class="math inline">\(y\)</span> of <span class="math inline">\(Y\)</span> coins according to</p>
+<ul>
+<li><span class="math inline">\(P \in [p_l, p_r]\)</span> <span class="math display">\[
+x = L \left(\frac1{\sqrt P} - \frac1{\sqrt{p_r}} \right), \qquad y = L \left(\sqrt P - \sqrt{p_l} \right);
+\]</span></li>
+<li><span class="math inline">\(P &gt; p_r\)</span> <span class="math display">\[
+x = 0, \qquad y = L \left(\sqrt{p_r} - \sqrt{p_l} \right);
+\]</span></li>
+<li><span class="math inline">\(P &lt; p_l\)</span> <span class="math display">\[
+x = L\left(\frac1{\sqrt{p_l}} - \frac1{\sqrt{p_r}}\right), \qquad y = 0.
+\]</span></li>
+</ul>
+<section id="note-4" class="level4">
+<h4 class="anchored" data-anchor-id="note-4">Note</h4>
+<ul>
+<li>The bonding curve is natually in the canonical parametrization.</li>
+</ul>
+</section>
+</section>
+<section id="clp-and-contribution-to-pool-reserve-1" class="level2">
+<h2 class="anchored" data-anchor-id="clp-and-contribution-to-pool-reserve-1">CLP and contribution to pool reserve</h2>
+<p>The provision of <span class="math inline">\(L\)</span> units of liquidity to the pool as a function of pool price <span class="math inline">\(p\)</span> can thus be summarized neatly as follows.</p>
+<p><span class="math display">\[\begin{align*}
+x(p) &amp;= L \left(\frac1{\sqrt p} - \frac1{\sqrt p_r} \right)^+ - L \left(\frac1{\sqrt p} - \frac1{\sqrt p_l} \right)^+, \\
+y(p) &amp;= L \left(\sqrt p - \sqrt p_l \right)^+ - L \left(\sqrt p - \sqrt p_r \right)^+.
+\end{align*}\]</span></p>
+<p>Furthermore, for <span class="math inline">\(p \in [p_l, p_r]\)</span>, by eliminating the parameter <span class="math inline">\(p\)</span>, the reserve/bonding curve is given by</p>
+<p><span class="math display">\[
+\left( x + \frac L{\sqrt{p_r}}\right)\left( y + L\sqrt{p_l} \right) = L^2 \leftrightsquigarrow
+\left( \frac xL + \frac1{\sqrt{p_r}}\right)\left( \frac yL + \sqrt{p_l} \right) = 1.
+\]</span></p>
+<section id="note-5" class="level4">
+<h4 class="anchored" data-anchor-id="note-5">Note</h4>
+<ul>
+<li>In CPMM, the bonding curve never touches the <span class="math inline">\(x\)</span>-axis nor the <span class="math inline">\(y\)</span>-axis.</li>
+<li>In CLP, if there is only a sole LP who provides liquidity <span class="math inline">\(L\)</span> in the price range <span class="math inline">\([p_l, p_r]\)</span>, the bonding curve intersects the <span class="math inline">\(x\)</span>-axis at <span class="math inline">\(x^* = L \left(\frac1{\sqrt p_l} - \frac1{\sqrt p_r}\right)\)</span> and the <span class="math inline">\(y\)</span>-axis at <span class="math inline">\(y^*=L\left({\sqrt p_r} - {\sqrt p_l}\right)\)</span>. Beyond those two points, no swaps are possible.</li>
+</ul>
+<div id="cell-45" class="cell" data-execution_count="3">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>L, pl, pr <span class="op">=</span> <span class="dv">100</span>, <span class="dv">1</span>, <span class="dv">10</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>xx <span class="op">=</span> <span class="kw">lambda</span> p: L<span class="op">*</span>(<span class="dv">1</span><span class="op">/</span>np.sqrt(p) <span class="op">-</span> <span class="dv">1</span><span class="op">/</span>np.sqrt(pr))</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>yy <span class="op">=</span> <span class="kw">lambda</span> p: L<span class="op">*</span>(np.sqrt(p) <span class="op">-</span> np.sqrt(pl))</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>p <span class="op">=</span> np.arange(pl, pr, <span class="fl">0.01</span>)</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>x, y <span class="op">=</span> xx(p), yy(p)</span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>plt.figure()</span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>plt.plot(x, y, label<span class="op">=</span><span class="vs">r'</span><span class="dv">$</span><span class="er">\</span><span class="vs">left</span><span class="kw">(</span><span class="vs">x </span><span class="op">+</span><span class="vs"> </span><span class="ch">\f</span><span class="vs">rac{L}{</span><span class="dv">\s</span><span class="vs">qrt{p_r}}</span><span class="ch">\r</span><span class="vs">ight</span><span class="kw">)(</span><span class="vs">y </span><span class="op">+</span><span class="vs"> L </span><span class="dv">\s</span><span class="vs">qrt{p_l}</span><span class="kw">)</span><span class="vs"> = L</span><span class="dv">^</span><span class="vs">2</span><span class="dv">$</span><span class="vs">'</span>)</span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>plt.vlines(x<span class="op">=</span>x.<span class="bu">max</span>(), ymin<span class="op">=</span><span class="dv">0</span>, ymax<span class="op">=</span>y.<span class="bu">max</span>(), color<span class="op">=</span><span class="st">'r'</span>, ls<span class="op">=</span><span class="st">'dotted'</span>, label<span class="op">=</span><span class="vs">r'</span><span class="dv">$</span><span class="vs">x=L</span><span class="er">\</span><span class="vs">left</span><span class="kw">(</span><span class="ch">\f</span><span class="vs">rac</span><span class="op">{1}</span><span class="vs">{</span><span class="dv">\s</span><span class="vs">qrt{p_l}}-</span><span class="ch">\f</span><span class="vs">rac</span><span class="op">{1}</span><span class="vs">{</span><span class="dv">\s</span><span class="vs">qrt{p_r}}</span><span class="ch">\r</span><span class="vs">ight</span><span class="kw">)</span><span class="dv">$</span><span class="vs">'</span>)</span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>plt.hlines(y<span class="op">=</span>y.<span class="bu">max</span>(), xmin<span class="op">=</span><span class="dv">0</span>, xmax<span class="op">=</span>x.<span class="bu">max</span>(), color<span class="op">=</span><span class="st">'r'</span>, ls<span class="op">=</span><span class="st">'dotted'</span>, label<span class="op">=</span><span class="vs">r'</span><span class="dv">$</span><span class="vs">y=L</span><span class="er">\</span><span class="vs">left</span><span class="kw">(</span><span class="dv">\s</span><span class="vs">qrt{p_r}-</span><span class="dv">\s</span><span class="vs">qrt{p_l}</span><span class="ch">\r</span><span class="vs">ight</span><span class="kw">)</span><span class="dv">$</span><span class="vs">'</span>)</span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>plt.vlines(x<span class="op">=</span><span class="dv">0</span>, ymin<span class="op">=</span><span class="dv">0</span>, ymax<span class="op">=</span>y.<span class="bu">max</span>(), color<span class="op">=</span><span class="st">'k'</span>, lw<span class="op">=</span><span class="fl">0.5</span>, ls<span class="op">=</span><span class="st">'dashdot'</span>)</span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>plt.hlines(y<span class="op">=</span><span class="dv">0</span>, xmin<span class="op">=</span><span class="dv">0</span>, xmax<span class="op">=</span>x.<span class="bu">max</span>(), color<span class="op">=</span><span class="st">'k'</span>, lw<span class="op">=</span><span class="fl">0.5</span>, ls<span class="op">=</span><span class="st">'dashdot'</span>)</span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>plt.legend()<span class="op">;</span><span class="co">#loc='lower left');</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="NSD_Lec07-MathInAMM_Summer2025_files/figure-html/cell-4-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="additivity-of-coins-and-liquidity" class="level2">
+<h2 class="anchored" data-anchor-id="additivity-of-coins-and-liquidity">Additivity of coins and liquidity</h2>
+<p>Suppose LP1 is willing provide liquidity <span class="math inline">\(L_1\)</span> in the price range <span class="math inline">\([p_l^1, p_r^1]\)</span> and LP2 for <span class="math inline">\(L_2\)</span> in the price range <span class="math inline">\([p_l^2, p_r^2]\)</span>. That gives us the liquidity profile</p>
+<p><span class="math display">\[
+L(p) = L_1 \1_{[p_l^1, p_r^1]}(p) + L_2 \1_{[p_l^2, p_r^2]}(p)
+\]</span></p>
+<p>which translate to the reserve curve being given by</p>
+<span class="math display">\[\begin{split}
+&amp; x(p) = L_1 \left(\frac1{\sqrt p} - \frac1{\sqrt{p_r^1}} \right)^+ - L_1 \left(\frac1{\sqrt p} - \frac1{\sqrt{p_l^1}} \right)^+ + L_2 \left(\frac1{\sqrt p} - \frac1{\sqrt{p_r^2}} \right)^+ - L_2 \left(\frac1{\sqrt p} - \frac1{\sqrt{p_l^2}} \right)^+ \\
+&amp; y(p) = L_1 \left(\sqrt p - \sqrt{p_l^1} \right)^+ - L_1 \left(\sqrt p - \sqrt{p_r^1} \right)^+ + L_2 \left(\sqrt p - \sqrt{p_l^2} \right)^+ - L_2 \left(\sqrt p - \sqrt{p_r^2} \right)^+
+\end{split}\]</span>
+<section id="note-6" class="level4">
+<h4 class="anchored" data-anchor-id="note-6">Note</h4>
+<ul>
+<li>Unfortunately, there is no simple expression for bonding curve by “eliminating the parameter”.</li>
+</ul>
+</section>
+</section>
+<section id="pool-reserve-as-payoff-for-portfolio-of-call-options" class="level2">
+<h2 class="anchored" data-anchor-id="pool-reserve-as-payoff-for-portfolio-of-call-options">Pool reserve as payoff for portfolio of call options</h2>
+<p>By the change of variable <span class="math inline">\(s = \frac1{\sqrt p}\)</span>, the equation for <span class="math inline">\(x\)</span> becomes</p>
+<p><span class="math display">\[
+x\left(\frac1{s^2}\right) = L_1 \left(s - s_r^1 \right)^+ - L_1 \left(s - s_l^1\right)^+ + L_2 \left(s - s_r^2 \right)^+ - L_2 \left(s - s_l^2 \right)^+.
+\]</span></p>
+<p>Note that the right hand side is simply the payoff function for the portoflio of call options: long <span class="math inline">\(L_1\)</span> and <span class="math inline">\(L_2\)</span> calls struck respectively at <span class="math inline">\(s_r^1\)</span> and <span class="math inline">\(s_r^2\)</span>, short <span class="math inline">\(L_1\)</span> and <span class="math inline">\(L_2\)</span> calls struck at <span class="math inline">\(s_l^1\)</span> and <span class="math inline">\(s_l^2\)</span>, respectively. We can thus rewrite this expression in terms of (Lebesgue) integral as</p>
+<p><span class="math display">\[
+x\left(\frac1{s^2}\right) = \int_{\R^+} (s - k)^+ d\tL(k) = \int_{[0, s]} (s - k) d\tL(k),
+\]</span></p>
+<p>where <span class="math inline">\(d\tL\)</span> is a signed measure given by the sum of signed Dirac measures (point masses)</p>
+<p><span class="math display">\[
+d\tL(k) = L_1\{\delta(s_r^1) - \delta(s_l^1)\} + L_2\{\delta(s_r^2) - \delta(s_l^2)\}.
+\]</span></p>
+<p>Let <span class="math inline">\(\tL(k) = \int_{[0,k]} d\tL(\kappa)\)</span>, i.e., the distribution function of <span class="math inline">\(d\tL\)</span>. Then, integration by parts implies that</p>
+<span class="math display">\[\begin{split}
+x\left(\frac1{s^2}\right) &amp;= (s - k) \tL(k)|_0^s + \int_{[0, s]} \tL(k) dk = \int_{[0, s]} \tL(k) dk
+\end{split}\]</span>
+<p>assume <span class="math inline">\(\tL(0) = 0\)</span>.</p>
+<p>Transforming back to the price space, let <span class="math inline">\(k = \frac1{\sqrt q}\)</span>. We have</p>
+<span class="math display">\[\begin{split}
+x(p) &amp;= x\left(\frac1{s^2}\right) = \int_0^{\frac1{\sqrt p}} \left(\frac1{\sqrt p} - k\right) d\tL(k) \\
+&amp;= \frac1{\sqrt p} \tL\left(\frac1{\sqrt p}\right) - \int_0^{\frac1{\sqrt p}} k d\tL(k) \\
+&amp;= \frac1{\sqrt p} \tL\left(\frac1{\sqrt p}\right) + \int_p^\infty \frac1{\sqrt q} d\tL\left( \frac1{\sqrt q} \right) \\
+&amp;= \frac1{\sqrt p} L(p) + \int_p^\infty \frac1{\sqrt q} dL(q)
+\end{split}\]</span>
+<p>where apparently <span class="math inline">\(L(p) := \tL\left( \frac1{\sqrt p} \right)\)</span>.</p>
+<p>In fact, the transformation <span class="math inline">\(p = \frac1{s^2}\)</span>, pull-back the measure <span class="math inline">\(d\tL\)</span> in the <span class="math inline">\(s\)</span>-space back to the measure <span class="math inline">\(dL\)</span> in the <span class="math inline">\(p\)</span>-space as</p>
+<p><span class="math display">\[
+dL(p) = -\frac12 p^{-\frac32}d\tL\left( \frac1{\sqrt p}\right)
+\]</span></p>
+<p>or equivalently <span class="math inline">\(L(p) = \tL\left( \frac1{\sqrt p} \right)\)</span></p>
+<p>Likewise, by the change of variable <span class="math inline">\(s = \sqrt p\)</span>, the equation for <span class="math inline">\(y\)</span> can be obtained as</p>
+<p><span class="math display">\[
+y(s^2) = \int_{\R^+} (s - k)^+ dL(k),
+\]</span></p>
+<p>where</p>
+<span class="math display">\[\begin{split}
+dL(k) &amp;= L_1\{\delta(s_l^1) - \delta(s_r^1)\} + L_2\{\delta(s_l^2) - \delta(s_r^2)\} \\
+&amp;= L_1\left\{ \delta\left(\sqrt{p_l^1}\right) - \delta\left(\sqrt{p_r^1}\right)\} + L_2\{\delta\left(\sqrt{p_l^2}\right) - \delta\left(\sqrt{p_r^2}\right) \right\}
+\end{split}\]</span>
+<p>and</p>
+<span class="math display">\[\begin{split}
+y\left(s^2\right) &amp;= \int_{[0, s]} L(k) dk
+\end{split}\]</span>
+<p>Also, by the change of variable <span class="math inline">\(k=\sqrt q\)</span>, we have</p>
+<span class="math display">\[\begin{split}
+y(p) &amp;= \int_0^{\sqrt p} \left( \sqrt p - k \right) dL(k) \\
+&amp;=  \sqrt p \tL\left(\sqrt p\right) - \int_0^{\sqrt p} \sqrt q d\tL(\sqrt q) \\
+&amp;= \sqrt p L(p) - \int_0^p \sqrt q dL(q),
+\end{split}\]</span>
+<p>where apparently <span class="math inline">\(L(p):= \tL(\sqrt p)\)</span>.</p>
+</section>
+<section id="liquidity-profile" class="level2">
+<h2 class="anchored" data-anchor-id="liquidity-profile">Liquidity profile</h2>
+<p>Assume that <span class="math inline">\(L = L(P)\)</span>, i.e., liquidity depends on the infinitesimal rate of exchange <span class="math inline">\(P\)</span>, which we shall refer to as the <font color="blue"><em>liquidity profile</em></font>.</p>
+<section id="note-7" class="level4">
+<h4 class="anchored" data-anchor-id="note-7">Note</h4>
+<ul>
+<li>Mathematically, we can regard <span class="math inline">\(dL(p)\)</span> as a (<span class="math inline">\(\sigma\)</span>-finite) signed measure over <span class="math inline">\([0, \infty)\)</span>. Thus, <span class="math inline">\(L\)</span> is the associated cdf for the measure <span class="math inline">\(dL\)</span>.</li>
+</ul>
+</section>
+</section>
+<section id="summary-conversion-between-liquidity-profile-and-pool-reserves" class="level2">
+<h2 class="anchored" data-anchor-id="summary-conversion-between-liquidity-profile-and-pool-reserves">Summary: Conversion between liquidity profile and pool reserves</h2>
+<p>Finally, by applying integration by parts, pool reserve <span class="math inline">\((x,y)\)</span> are given in terms of the infinitesimal rate of exchange <span class="math inline">\(P\)</span> as</p>
+<p><span class="math display">\[\begin{align*}
+&amp; x(P) = \frac12 \int_P^\infty L(p) p^{-\frac32} dp \\
+&amp; y(P) = \frac12 \int_0^P L(p) p^{-\frac12} dp \\
+\end{align*}\]</span></p>
+<p>Apparently, we have</p>
+<p><span class="math display">\[
+\frac{d y}{dx} = \frac{\frac{dy}{dP}}{\frac{dx}{dP}} = -P,
+\]</span></p>
+<p>In other words, the infinitesimal rate of exchange <span class="math inline">\(P\)</span> is equal to the negative slope of tangent of the reserve curve.</p>
+<section id="note-8" class="level4">
+<h4 class="anchored" data-anchor-id="note-8">Note</h4>
+<ul>
+<li>This is exactly the canonical parametrization of a bonding curve!</li>
+<li>Recall that <span class="math inline">\(L\)</span> is the intrinsically defined liquidity of the bonding curve.</li>
+</ul>
+</section>
+</section>
+<section id="monotonicity-and-convexity-of-bonding-curve" class="level2">
+<h2 class="anchored" data-anchor-id="monotonicity-and-convexity-of-bonding-curve">Monotonicity and convexity of bonding curve</h2>
+<p>It follows immediately that, since</p>
+<span class="math display">\[\begin{split}
+&amp; \frac{dy}{dx} = -P &lt; 0 \\
+&amp; \frac{d^2 y}{dx^2} = \frac{\frac1{dP}\left(\frac{dy}{dx}\right)}{\frac{dx}{dP}} = \frac{-1}{-\frac{L(P)}{2P^{\frac32}}} = \frac{2P^{\frac32}}{L(P)} = 2\kappa_h(P) \, P^{3/2} &gt; 0,
+\end{split}\]</span>
+<p>the bonding curve is decreasing and convex.</p>
+</section>
+<section id="illustration-for-the-conversion-of-liquidity-profile-to-reserve" class="level2">
+<h2 class="anchored" data-anchor-id="illustration-for-the-conversion-of-liquidity-profile-to-reserve">Illustration for the conversion of liquidity profile to reserve</h2>
+<p>For example, if the liquidity profile is given by</p>
+<p><span class="math display">\[
+L(p) = k_1 \1_{[a, b)}(p) + k_2 \1_{[b, c)}(p)
+\]</span></p>
+<p>for some positive constants <span class="math inline">\(k_1, k_2\)</span>. Then, we have</p>
+<p><span class="math display">\[
+dL(p) = k_1 \delta(p - a) dp + (k_2 - k_1)\delta(p - b) dp - k_2 \delta(p-c) dp.
+\]</span></p>
+<p>By simply carrying out the integrations, one obtains</p>
+<ul>
+<li>for <span class="math inline">\(P \geq c\)</span>, apparently <span class="math display">\[
+x = 0;
+\]</span></li>
+<li>for <span class="math inline">\(b \leq P &lt; c\)</span> <span class="math display">\[
+x = \frac{L(P)}{\sqrt P} + \int_P^\infty \frac1{\sqrt p}dL(p) = \frac{k_2}{\sqrt P} - \frac{k_2}{\sqrt c} = k_2 \left(\frac1{\sqrt P} - \frac1{\sqrt c}\right)
+\]</span></li>
+<li>for <span class="math inline">\(a \leq P &lt; b\)</span> <span class="math display">\[\begin{align*}
+x &amp;= \frac{L(P)}{\sqrt P} + \int_P^\infty \frac1{\sqrt p}dL(p) = \frac{k_1}{\sqrt P} + (k_2 - k_1) \left(\frac1{\sqrt b} - \frac1{\sqrt c}\right) - \frac{k_2}{\sqrt c} \\
+&amp;= k_1 \left(\frac1{\sqrt P} - \frac1{\sqrt b}\right) + k_2 \left(\frac1{\sqrt b} - \frac1{\sqrt c}\right)
+\end{align*}\]</span></li>
+<li>for <span class="math inline">\(P &lt; a\)</span> <span class="math display">\[\begin{align*}
+x &amp;=  \frac{L(P)}{\sqrt P} + \int_P^\infty \frac1{\sqrt p}dL(p) = \frac{k_1}{\sqrt a} + \frac{k_2 - k_1}{\sqrt b} - \frac{k_2}{\sqrt c}
+\end{align*}\]</span></li>
+</ul>
+<p>Similarly, as for <span class="math inline">\(y\)</span> we have - for <span class="math inline">\(P \leq a\)</span>, apparently <span class="math display">\[
+y = 0;
+\]</span> - for <span class="math inline">\(a &lt; P \leq b\)</span> <span class="math display">\[
+y = \sqrt P L(P) - \int_0^P \sqrt p dL(p) = k_1 \left(\sqrt P - \sqrt a \right)
+\]</span> - for <span class="math inline">\(b &lt; P \leq c\)</span> <span class="math display">\[\begin{align*}
+y &amp;= \sqrt P L(P) - \int_0^P \sqrt p dL(p) = k_2 \sqrt P - k_1 \sqrt a - (k_2 - k_1)\sqrt b \\
+&amp;= k_1 \left(\sqrt b - \sqrt a\right) + k_2 \left(\sqrt P - \sqrt b\right)
+\end{align*}\]</span> - for <span class="math inline">\(P &gt; c\)</span> <span class="math display">\[\begin{align*}
+y &amp;= -k_1 \sqrt a - (k_2 - k_1)\sqrt b + k_2\sqrt c = k_1\left(\sqrt b - \sqrt a\right) + k_2\left(\sqrt c - \sqrt b\right)
+\end{align*}\]</span></p>
+<section id="create-a-python-class-for-ploting-liquidty-profile-and-reserve-curve" class="level3">
+<h3 class="anchored" data-anchor-id="create-a-python-class-for-ploting-liquidty-profile-and-reserve-curve">Create a <code>python</code> <code>class</code> for ploting liquidty profile and reserve curve</h3>
+<div id="cell-57" class="cell" data-execution_count="4">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> scipy.stats <span class="im">as</span> ss</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> LiquidityReservePlot():</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>    <span class="co">'''</span></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a><span class="co">    L = liquidity profile</span></span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a><span class="co">    range/interval for P = [start=0, end=10]</span></span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a><span class="co">    '''</span></span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, L, start<span class="op">=</span><span class="fl">0.00001</span>, end<span class="op">=</span><span class="dv">10</span>):</span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.L, <span class="va">self</span>.start, <span class="va">self</span>.end <span class="op">=</span> L, start, end</span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.x1 <span class="op">=</span> <span class="kw">lambda</span> p: <span class="va">self</span>.L(p)<span class="op">/</span><span class="dv">2</span><span class="op">/</span>p<span class="op">**</span><span class="fl">1.5</span></span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.y1 <span class="op">=</span> <span class="kw">lambda</span> p: <span class="va">self</span>.L(p)<span class="op">/</span><span class="dv">2</span><span class="op">/</span>np.sqrt(p)</span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a>        dP <span class="op">=</span> <span class="fl">0.01</span></span>
+<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a>        P <span class="op">=</span> np.arange(<span class="va">self</span>.start, <span class="va">self</span>.end, dP)</span>
+<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a>        <span class="co"># numerical intergration</span></span>
+<span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a>        x <span class="op">=</span> (<span class="va">self</span>.x1(P).<span class="bu">sum</span>() <span class="op">-</span> <span class="va">self</span>.x1(P).cumsum())<span class="op">*</span>dP</span>
+<span id="cb4-20"><a href="#cb4-20" aria-hidden="true" tabindex="-1"></a>        y <span class="op">=</span> <span class="va">self</span>.y1(P).cumsum()<span class="op">*</span>dP</span>
+<span id="cb4-21"><a href="#cb4-21" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.x, <span class="va">self</span>.y <span class="op">=</span> x, y</span>
+<span id="cb4-22"><a href="#cb4-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-23"><a href="#cb4-23" aria-hidden="true" tabindex="-1"></a>        <span class="co">#plot</span></span>
+<span id="cb4-24"><a href="#cb4-24" aria-hidden="true" tabindex="-1"></a>        plt.figure(figsize<span class="op">=</span>(<span class="dv">12</span>, <span class="dv">8</span>))</span>
+<span id="cb4-25"><a href="#cb4-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-26"><a href="#cb4-26" aria-hidden="true" tabindex="-1"></a>        plt.subplot(<span class="dv">2</span>, <span class="dv">2</span>, <span class="dv">1</span>)</span>
+<span id="cb4-27"><a href="#cb4-27" aria-hidden="true" tabindex="-1"></a>        plt.plot(P, <span class="va">self</span>.L(P))</span>
+<span id="cb4-28"><a href="#cb4-28" aria-hidden="true" tabindex="-1"></a>        plt.title(<span class="st">'Liquidity profile'</span>, fontsize<span class="op">=</span><span class="dv">18</span>)</span>
+<span id="cb4-29"><a href="#cb4-29" aria-hidden="true" tabindex="-1"></a>        plt.xlabel(<span class="vs">r'</span><span class="dv">$</span><span class="vs">P</span><span class="dv">$</span><span class="vs">'</span>, fontsize<span class="op">=</span><span class="dv">15</span>)</span>
+<span id="cb4-30"><a href="#cb4-30" aria-hidden="true" tabindex="-1"></a>        plt.ylabel(<span class="vs">r'</span><span class="dv">$</span><span class="vs">L</span><span class="dv">$</span><span class="vs">'</span>, fontsize<span class="op">=</span><span class="dv">15</span>)</span>
+<span id="cb4-31"><a href="#cb4-31" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-32"><a href="#cb4-32" aria-hidden="true" tabindex="-1"></a>        plt.subplot(<span class="dv">2</span>, <span class="dv">2</span>, <span class="dv">2</span>)</span>
+<span id="cb4-33"><a href="#cb4-33" aria-hidden="true" tabindex="-1"></a>        plt.plot(x, y)</span>
+<span id="cb4-34"><a href="#cb4-34" aria-hidden="true" tabindex="-1"></a>        plt.title(<span class="st">'Reserve curve'</span>, fontsize<span class="op">=</span><span class="dv">18</span>)</span>
+<span id="cb4-35"><a href="#cb4-35" aria-hidden="true" tabindex="-1"></a>        plt.hlines(y<span class="op">=</span><span class="dv">0</span>, xmin<span class="op">=</span><span class="dv">0</span>, xmax<span class="op">=</span>x.<span class="bu">max</span>(), color<span class="op">=</span><span class="st">'grey'</span>, ls<span class="op">=</span><span class="st">'dotted'</span>)</span>
+<span id="cb4-36"><a href="#cb4-36" aria-hidden="true" tabindex="-1"></a>        plt.vlines(x<span class="op">=</span><span class="dv">0</span>, ymin<span class="op">=</span><span class="dv">0</span>, ymax<span class="op">=</span>y.<span class="bu">max</span>(), color<span class="op">=</span><span class="st">'grey'</span>, ls<span class="op">=</span><span class="st">'dotted'</span>)</span>
+<span id="cb4-37"><a href="#cb4-37" aria-hidden="true" tabindex="-1"></a>        plt.xlabel(<span class="vs">r'</span><span class="dv">$</span><span class="vs">x</span><span class="dv">$</span><span class="vs">'</span>, fontsize<span class="op">=</span><span class="dv">15</span>)</span>
+<span id="cb4-38"><a href="#cb4-38" aria-hidden="true" tabindex="-1"></a>        plt.ylabel(<span class="vs">r'</span><span class="dv">$</span><span class="vs">y</span><span class="dv">$</span><span class="vs">'</span>, fontsize<span class="op">=</span><span class="dv">15</span>)</span>
+<span id="cb4-39"><a href="#cb4-39" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-40"><a href="#cb4-40" aria-hidden="true" tabindex="-1"></a>        plt.subplot(<span class="dv">2</span>, <span class="dv">2</span>, <span class="dv">3</span>)</span>
+<span id="cb4-41"><a href="#cb4-41" aria-hidden="true" tabindex="-1"></a>        plt.plot(P, x)</span>
+<span id="cb4-42"><a href="#cb4-42" aria-hidden="true" tabindex="-1"></a>        plt.xlabel(<span class="vs">r'</span><span class="dv">$</span><span class="vs">P</span><span class="dv">$</span><span class="vs">'</span>, fontsize<span class="op">=</span><span class="dv">15</span>)</span>
+<span id="cb4-43"><a href="#cb4-43" aria-hidden="true" tabindex="-1"></a>        plt.ylabel(<span class="vs">r'</span><span class="dv">$</span><span class="vs">x</span><span class="dv">$</span><span class="vs">'</span>, fontsize<span class="op">=</span><span class="dv">15</span>)</span>
+<span id="cb4-44"><a href="#cb4-44" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-45"><a href="#cb4-45" aria-hidden="true" tabindex="-1"></a>        plt.subplot(<span class="dv">2</span>, <span class="dv">2</span>, <span class="dv">4</span>)</span>
+<span id="cb4-46"><a href="#cb4-46" aria-hidden="true" tabindex="-1"></a>        plt.plot(P, y)</span>
+<span id="cb4-47"><a href="#cb4-47" aria-hidden="true" tabindex="-1"></a>        plt.xlabel(<span class="vs">r'</span><span class="dv">$</span><span class="vs">P</span><span class="dv">$</span><span class="vs">'</span>, fontsize<span class="op">=</span><span class="dv">15</span>)</span>
+<span id="cb4-48"><a href="#cb4-48" aria-hidden="true" tabindex="-1"></a>        plt.ylabel(<span class="vs">r'</span><span class="dv">$</span><span class="vs">y</span><span class="dv">$</span><span class="vs">'</span>, fontsize<span class="op">=</span><span class="dv">15</span>)<span class="op">;</span></span>
+<span id="cb4-49"><a href="#cb4-49" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-50"><a href="#cb4-50" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__call__</span>(<span class="va">self</span>):</span>
+<span id="cb4-51"><a href="#cb4-51" aria-hidden="true" tabindex="-1"></a>        <span class="cf">pass</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="constant-liquidity-profile---cpmm-uniswap-v2" class="level3">
+<h3 class="anchored" data-anchor-id="constant-liquidity-profile---cpmm-uniswap-v2">Constant liquidity profile - CPMM, Uniswap v2</h3>
+<div id="cell-59" class="cell" data-execution_count="5">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># constant liquidity profile</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>L <span class="op">=</span> <span class="kw">lambda</span> p: <span class="dv">100</span><span class="op">*</span>(p <span class="op">&gt;</span> <span class="dv">0</span>)</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>ex1 <span class="op">=</span> LiquidityReservePlot(L, end<span class="op">=</span><span class="dv">10_000</span>)<span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="NSD_Lec07-MathInAMM_Summer2025_files/figure-html/cell-6-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<div id="cell-60" class="cell" data-execution_count="6">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>start, end <span class="op">=</span> <span class="dv">50</span>, <span class="dv">10000</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>plt.plot(ex1.x[start:end], ex1.y[start:end])<span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="NSD_Lec07-MathInAMM_Summer2025_files/figure-html/cell-7-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="piecewise-constant-liquidity-profile-finitely-supported" class="level3">
+<h3 class="anchored" data-anchor-id="piecewise-constant-liquidity-profile-finitely-supported">Piecewise constant liquidity profile, finitely supported</h3>
+<div id="cell-62" class="cell" data-execution_count="7">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>a, b, c <span class="op">=</span> <span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>k1, k2 <span class="op">=</span> <span class="dv">10</span>, <span class="dv">50</span></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>L <span class="op">=</span> <span class="kw">lambda</span> p: k1<span class="op">*</span>(p <span class="op">&gt;=</span> a) <span class="op">+</span> (k2 <span class="op">-</span> k1)<span class="op">*</span>(p <span class="op">&gt;=</span> b) <span class="op">-</span> k2<span class="op">*</span>(p <span class="op">&gt;</span> c)</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>LiquidityReservePlot(L)<span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="NSD_Lec07-MathInAMM_Summer2025_files/figure-html/cell-8-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="continuous-liquidity-profile" class="level3">
+<h3 class="anchored" data-anchor-id="continuous-liquidity-profile">Continuous liquidity profile</h3>
+<div id="cell-64" class="cell" data-execution_count="8">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>L <span class="op">=</span> <span class="kw">lambda</span> p: <span class="dv">100</span><span class="op">*</span>ss.chi2.pdf(p, df<span class="op">=</span><span class="dv">3</span>)</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>LiquidityReservePlot(L, end<span class="op">=</span><span class="dv">15</span>)<span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="NSD_Lec07-MathInAMM_Summer2025_files/figure-html/cell-9-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<section id="note-9" class="level4">
+<h4 class="anchored" data-anchor-id="note-9">Note</h4>
+<ul>
+<li>We can calibrate the model to fit either the liquidity profile or the bonding curve.</li>
+<li>If both are observable, they should be consistent; otherwise, arbitrageable?</li>
+</ul>
+</section>
+</section>
+</section>
+<section id="what-are-the-il-and-lvr-in-this-framework" class="level2">
+<h2 class="anchored" data-anchor-id="what-are-the-il-and-lvr-in-this-framework">What are the IL and LVR in this framework?</h2>
+<p>Recall that the relation between the reserve in coins <span class="math inline">\(X\)</span> and the liquidity profile <span class="math inline">\(L\)</span> is given by</p>
+<p><span class="math display">\[
+x = \frac12 \int_P^\infty L(p)p^{-\frac32} dp.
+\]</span></p>
+<p>Applying Ito’s formula yields</p>
+<span class="math display">\[\begin{split}
+dx_t =&amp; d\left\{\frac12 \int_{P_t}^\infty L_t(p)p^{-\frac32} dp \right\} \\
+=&amp; \frac12 \int_{P_t}^\infty dL_t(p)p^{-\frac32} dp \\
+&amp;- \frac12 L_t(P_t){P_t}^{-\frac32} dP_t + \frac12 \left\{-\frac12 P_t L_t'(P_t)+ \frac34 L_t(P_t)\right\} P_t^{-\frac52} d\inn{P}_t  \\
+&amp;- \frac14 L_t(P_t)P_t^{-3/2}\int_{P_t}^\infty d\inn{P_t,L_t(p)} p^{-\frac32} dp
+\end{split}\]</span>
+<p>Likewise, for <span class="math inline">\(y_t\)</span> we have</p>
+<span class="math display">\[\begin{split}
+dy_t =&amp; d\left\{\frac12 \int_0^{P_t} L_t(p)p^{-\frac12} dp \right\} \\
+=&amp; \frac12 \int_0^{P_t} dL_t(p)p^{-\frac12} dp \\
+&amp;+ \frac12 L_t(P_t){P_t}^{-\frac12} dP_t + \frac12 \left\{\frac12 P_t L_t'(P_t) - \frac14 L_t(P_t)\right\} P_t^{-\frac32} d\inn{P}_t  \\
+&amp;+ \frac14 L_t(P_t)P_t^{-1/2}\int_0^{P_t} d\inn{P_t,L_t(p)} p^{-\frac12} dp.
+\end{split}\]</span>
+<p>It follows that the evolution of pool value <span class="math inline">\(V_t = P_t x_t + y_t\)</span> is given by</p>
+<span class="math display">\[\begin{split}
+dV_t =&amp; d(P_t x_t + y_t) \\
+=&amp; x_t dP_t + P_t dx_t + d\inn{x, P}_t + dy_t \\
+=&amp; x_t dP_t + \frac12 P_t \int_{P_t}^\infty dL_t(p)p^{-\frac32} dp \\
+&amp;- \frac12 L_t(P_t){P_t}^{-\frac12} dP_t + \frac12 \left\{-\frac12 P_t L_t'(P_t)+ \frac34 L_t(P_t)\right\} P_t^{-\frac32} d\inn{P}_t  \\
+&amp;- \frac14 L_t(P_t)P_t^{-1/2}\int_{P_t}^\infty d\inn{P_t,L_t(p)} p^{-\frac32} dp
+\\
+&amp;+ \frac12 \int_{P_t}^\infty d\inn{P, L(p)}_tp^{-\frac32} dp - \frac12 L_t(P_t){P_t}^{-\frac32} d\inn{P}_t
+\\
+&amp;+ \frac12 \int_0^{P_t} dL_t(p)p^{-\frac12} dp \\
+&amp;+ \frac12 L_t(P_t){P_t}^{-\frac12} dP_t + \frac12 \left\{\frac12 P_t L_t'(P_t) - \frac14 L_t(P_t)\right\} P_t^{-\frac32} d\inn{P}_t  \\
+&amp;+ \frac14 L_t(P_t)P_t^{-1/2}\int_0^{P_t} d\inn{P_t,L_t(p)} p^{-\frac12} dp \\
+=&amp; x_t dP_t - \frac14 L_t(P_t) P_t^{-\frac32} d\inn{P}_t \\
+&amp; + \frac12 P_t \int_{P_t}^\infty dL_t(p)p^{-\frac32} dp \\
+&amp;+ \left\{\frac12 - \frac14 L_t(P_t)P_t^{-1/2} \right\}\int_{P_t}^\infty d\inn{P_t,L_t(p)} p^{-\frac32} dp
+\\
+&amp;+ \frac12 \int_0^{P_t} dL_t(p)p^{-\frac12} dp \\
+&amp;+ \frac14 L_t(P_t)P_t^{-1/2}\int_0^{P_t} d\inn{P_t,L_t(p)} p^{-\frac12} dp
+\end{split}\]</span>
+<p>If <span class="math inline">\(d\inn{P, L(p)}_t = 0\)</span>, the last equation simplifies a little to</p>
+<span class="math display">\[\begin{split}
+dV_t
+=&amp; x_t dP_t - \frac14 L_t(P_t) P_t^{-\frac32} d\inn{P}_t + \frac12 P_t \int_{P_t}^\infty dL_t(p)p^{-\frac32} dp + \frac12 \int_0^{P_t} dL_t(p)p^{-\frac12} dp
+\end{split}\]</span>
+</section>
+<section id="lvr-in-clp" class="level2">
+<h2 class="anchored" data-anchor-id="lvr-in-clp">LVR in CLP</h2>
+<p>Hence, the LVR in this case reads</p>
+<span class="math display">\[\begin{split}
+d{\rm LVR}_t =&amp; x_t dP_t - dV_t \\
+=&amp; \frac14 L_t(P_t) P_t^{-\frac32} d\inn{P}_t - \frac12 P_t \int_{P_t}^\infty dL_t(p)p^{-\frac32} dp - \frac12 \int_0^{P_t} dL_t(p)p^{-\frac12} dp \\
+&amp; - \left\{\frac12 - \frac14 L_t(P_t)P_t^{-1/2} \right\}\int_{P_t}^\infty d\inn{P_t,L_t(p)} p^{-\frac32} dp \\
+&amp;- \frac14 L_t(P_t)P_t^{-1/2}\int_0^{P_t} d\inn{P_t,L_t(p)} p^{-\frac12} dp
+\end{split}\]</span>
+</section>
+<section id="il-in-clp" class="level2">
+<h2 class="anchored" data-anchor-id="il-in-clp">IL in CLP</h2>
+<p>Also, the impermanent loss <span class="math inline">\({\rm IL}_t\)</span> is given by</p>
+<p><span class="math display">\[
+d{\rm IL}_t = (x_0 - x_t)dP_t + d {\rm LVR}_t.
+\]</span></p>
+<p>Note that now the LVR in this case is driven by not only the quadratic variation of pool price <span class="math inline">\(P_t\)</span> but also the evolution of liquidity profile <span class="math inline">\(L_t\)</span> as well as the covariation between <span class="math inline">\(P_t\)</span> and <span class="math inline">\(L_t\)</span>.</p>
+<p>We remark that, if the liquidity profile is static, i.e., <span class="math inline">\(dL_t = 0\)</span>, then we recover the result in <em>Quantifying Loss in Automated Market Makers</em> by Milionis et al, which in our notation reads</p>
+<p><span class="math display">\[
+d{\rm LVR}_t = \frac14 L(P_t) P_t^{-\frac32} d\inn{P}_t = -\frac12 x'(P_t) d\inn{P}_t \geq 0.
+\]</span></p>
+</section>
+<section id="time-dependent-liquidity-profile" class="level2">
+<h2 class="anchored" data-anchor-id="time-dependent-liquidity-profile">Time dependent liquidity profile</h2>
+<p>If the liquidity profile <span class="math inline">\(L\)</span> depends on time, it follows that</p>
+<p><span class="math display">\[\begin{align}
+&amp; x_t(P) = \frac12 \int_P^\infty L_t(p)p^{-\frac32} dp \\
+&amp; y_t(P) = \frac12 \int_0^P L_t(p)p^{-\frac12} dp \\
+&amp; m_t(P):= \frac{\p y_t}{\p x_t} = -P.
+\end{align}\]</span></p>
+<p>Thus,</p>
+<p><span class="math display">\[\begin{align*}
+&amp; dx_t(P) = \frac12 \int_P^\infty dL_t(p)p^{-\frac32} dp \\
+&amp; dy_t(P) = \frac12 \int_0^P dL_t(p)p^{-\frac12} dp \\
+&amp; dm_t(P) = d\left(\frac{\p y_t}{\p x_t}\right) = d\left(-P\right) = 0.
+\end{align*}\]</span></p>
+<p>The set of equations above convert the evolution of liquidity profile to the evolution of reserve curve.</p>
+<section id="note-10" class="level4">
+<h4 class="anchored" data-anchor-id="note-10">Note</h4>
+<ul>
+<li>The infinitesimal rate of exchange <span class="math inline">\(-\frac{\p y_t}{\p x_t}\)</span> does not depend on time.</li>
+<li>One may model the evolution of <span class="math inline">\(L_t\)</span> by Gaussian process or SPDE. For example, <span class="math display">\[
+dL_t = \mathcal{A}_t L_t dt + \sigma L_t dW_t
+\]</span> where <span class="math inline">\(\mathcal{A}_t\)</span> is a second order parabolic/elliptic differential operator, like a stochastic heat equation.</li>
+</ul>
+</section>
+</section>
+<section id="trader-trades-at-rate-u_t" class="level2">
+<h2 class="anchored" data-anchor-id="trader-trades-at-rate-u_t">Trader trades at rate <span class="math inline">\(u_t\)</span></h2>
+<p>When trader trades, he must trade along the reserve curve. Assume the liquidity profile <span class="math inline">\(L\)</span> remain unchanged, the trader trades at rate <span class="math inline">\(u_t\)</span>, i.e., <span class="math inline">\(dx_t = u_tdt\)</span>.</p>
+<p>Recall that</p>
+<p><span class="math display">\[
+x = \frac12 \int_P^\infty L(p)p^{-\frac32} dp
+\]</span></p>
+<p>it follows that</p>
+<p><span class="math display">\[
+x_t = \frac12 \int_{P_t}^\infty L(p)p^{-\frac32} dp.
+\]</span></p>
+<p>Thus, if trader trades at the rate <span class="math inline">\(u_t\)</span>, i.e., <span class="math inline">\(dx_t = u_t dt\)</span>, then by differentiate the equation above with respect to <span class="math inline">\(t\)</span> on both sides we obtain</p>
+<p><span class="math display">\[
+u_t dt = dx_t = -\frac12 L(P_t)P_t^{-\frac32} dP_t
+\]</span></p>
+<p>Thus, if trader trades at the rate <span class="math inline">\(u_t\)</span>, then the evolution of <span class="math inline">\(P_t\)</span> is given by the ODE</p>
+<p><span class="math display">\[
+-\frac12 L(P_t)P_t^{-\frac32} dP_t = u_t dt
+\]</span></p>
+<p>or equivalently,</p>
+<p><span class="math display">\[
+dP_t = \frac{-2 P_t^{\frac32}}{L(P_t)} u_t dt
+\]</span></p>
+<p>Likewise, for <span class="math inline">\(y_t\)</span> we have</p>
+<p><span class="math display">\[
+y_t = \frac12 \int_0^{P_t} L(p)p^{-\frac12} dp.
+\]</span></p>
+<p>By differentiate the equation above with respect to <span class="math inline">\(t\)</span> on both sides we obtain</p>
+<p><span class="math display">\[
+dy_t = \frac12 L(P_t)P_t^{-\frac12} dP_t = -P_t \left\{-\frac12 L(P_t)P_t^{-\frac32} dP_t \right\} = -P_t u_t dt
+\]</span></p>
+<p>In summary, assume the liquidity profile stays steady, if the trader trades at rate <span class="math inline">\(u_t\)</span>, i.e., <span class="math inline">\(dx_t = u_t dt\)</span>, the evolutions of the pool and the infinitesimal rate of exchange are governed by</p>
+<p><span class="math display">\[\begin{align*}
+&amp; dx_t = u_t dt \\
+&amp; dy_t = -P_t u_t dt \\
+&amp; dP_t = \frac{-2 P_t^{\frac32}}{L(P_t)} u_t dt
+\end{align*}\]</span></p>
+</section>
+<section id="putting-things-together" class="level2">
+<h2 class="anchored" data-anchor-id="putting-things-together">Putting things together</h2>
+<section id="market-mechanism---without-transaction-cost" class="level3">
+<h3 class="anchored" data-anchor-id="market-mechanism---without-transaction-cost">Market mechanism - without transaction cost</h3>
+<p>If the trader is trading at rate <span class="math inline">\(u_t\)</span> in time dependent liquidty profile <span class="math inline">\(L_t(\cdot)\)</span>, the evolutions of the pool and the infinitesimal rate of exchange are given by</p>
+<p><span class="math display">\[\begin{align*}
+dx_t &amp;= \frac12 \int_{P_t}^\infty dL_t(p)p^{-\frac32} dp + u_t dt \\
+dy_t &amp;= \frac12 \int_0^{P_t} dL_t(p)p^{-\frac12} dp - P_t u_t dt \\
+dP_t &amp;= \frac{-2 P_t^{\frac32}}{L_t(P_t)} u_t dt
+\end{align*}\]</span></p>
+</section>
+</section>
+<section id="wealth-process-for-a-static-liquidity-provider" class="level2">
+<h2 class="anchored" data-anchor-id="wealth-process-for-a-static-liquidity-provider">Wealth process for a static liquidity provider</h2>
+<p>Consider a liquidity provider operating with a set liquidity profile.</p>
+<section id="notation" class="level3">
+<h3 class="anchored" data-anchor-id="notation">Notation</h3>
+<ul>
+<li><span class="math inline">\(\ell = \ell(P)\)</span>: the liqudity profile</li>
+<li><span class="math inline">\(1 - \gamma\)</span>: (proportional) transaction cost, typically <span class="math inline">\(\gamma = 99.7\%\)</span></li>
+<li><span class="math inline">\(F^x\)</span>: the amount of the trading fees accrued in risky asset</li>
+<li><span class="math inline">\(F^y\)</span>: the amount of the trading fees accrued in numeraire</li>
+<li><span class="math inline">\(S_t\)</span>: exogenous reference price of the risky asset</li>
+</ul>
+<p>It’s crucial to note that, unlike Uniswap V2, fees in Uniswap V3 aren’t compounded.</p>
+</section>
+<section id="market-mechanism---with-transaction-cost" class="level3">
+<h3 class="anchored" data-anchor-id="market-mechanism---with-transaction-cost">Market mechanism - with transaction cost</h3>
+<ul>
+<li><p>When a trader acquires a risky asset from the pool, the pool price escalates by <span class="math inline">\(\Delta P\)</span>. Subsequently, the liquidity profile undergoes the following changes: <span class="math display">\[\begin{align*}
+\Delta x &amp;= -\frac12 \int_{P}^{P+\Delta P} \ell(p)p^{-\frac32} dp\\
+\Delta y &amp;= \frac12 \int_P^{P+\Delta P} \ell(p)p^{-\frac12} dp\\
+\Delta F^x &amp;= 0 \\
+\Delta F^y &amp;= \frac{1-\gamma}{\gamma} \Delta y
+\end{align*}\]</span></p></li>
+<li><p>Conversely, when a trader offloads the risky asset to the pool, the pool price diminishes by <span class="math inline">\(\Delta P\)</span>, leading to the following updates in the liquidity profile: <span class="math display">\[\begin{align*}
+\Delta x &amp;= -\frac12 \int_{P}^{P+\Delta P} \ell(p)p^{-\frac32} dp\\
+\Delta y &amp;= \frac12 \int_P^{P+\Delta P} \ell(p)p^{-\frac12} dp\\
+\Delta F^x &amp;= \frac{1-\gamma}{\gamma} \Delta x \\
+\Delta F^y &amp;= 0
+\end{align*}\]</span></p></li>
+</ul>
+</section>
+</section>
+<section id="a-look-at-the-market-data" class="level2">
+<h2 class="anchored" data-anchor-id="a-look-at-the-market-data">A look at the market data</h2>
+<section id="empirical-liquidity-profile-i" class="level3">
+<h3 class="anchored" data-anchor-id="empirical-liquidity-profile-i">Empirical liquidity profile I</h3>
+<h3 class="anchored">
+<img src="LiquidityProfile3D.png" align="center" width="500">
+</h3>
+</section>
+<section id="empirical-liquidity-profile-ii" class="level3">
+<h3 class="anchored" data-anchor-id="empirical-liquidity-profile-ii">Empirical liquidity profile II</h3>
+<p><img src="LPs.png" align="center" width="600"></p>
+</section>
+</section>
+<section id="summary" class="level2">
+<h2 class="anchored" data-anchor-id="summary">Summary</h2>
+<ul>
+<li><p>We briefly reviewed the protocol of CFMM in DeFi and introduced the feature of CLP.</p></li>
+<li><p>We introduced the intrinsic liquidity, the hyperbolic curvature, and the canonical parametrization for the bonding curve in CFMM.</p></li>
+<li><p>The liquidity profile was introduced as liquidity distributions spreading among price ranges. We derived the relationship between pool reserve and the liquidity profile.</p></li>
+<li><p>We calculated the IL and LVR in CFMM and in CLP.</p></li>
+<li><p>We provide a consistent formulation for the evolution of pool reserve in terms of trading activities including liquidity provision and swapping.</p></li>
+</ul>
+<br> <br>
+<center>
+<font color="blue" size="5">Pandora’s box opened</font>
+</center>
+<p><br> <br></p>
+<p>The formulation and modeling of evolution of the liquidity pool presented above in fact open up the Pandora’s box.</p>
+<ul>
+<li><p>Optimal or equilibrium shape of liquidity profile</p></li>
+<li><p>Dynamic models for evolution of liquidity profile</p>
+<ul>
+<li>Dynamic functional factor model</li>
+<li>Gaussian process regression (GPR)</li>
+<li>Stochastic partial differential equation (SPDE)</li>
+</ul></li>
+<li><p>Problem of optimal order execution in AMM with CLP</p></li>
+<li><p>Problem of optimal liquidity provision</p>
+<ul>
+<li>Liquidity provision as asset allocation</li>
+<li>Optimal stopping time of extracting liquidity</li>
+</ul></li>
+<li><p>Game theoretical equilibria between liquidity providers and swappers</p>
+<ul>
+<li>Nash equilibrium</li>
+<li>Stackelberg equilibrium</li>
+<li>Mean-field type of equilibria</li>
+<li>Kyle model style of equilibrium between liquidity provider and informed swappers</li>
+</ul></li>
+<li><p>and so on and so forth …</p></li>
+</ul>
+</section>
+<section id="references" class="level2">
+<h2 class="anchored" data-anchor-id="references">References</h2>
+<ul>
+<li><p>J. Milionis, C.C. Moallemi, T. Roughgarden, and A.L. Zhang, <em>Quantifying Loss in Automated Market Makers</em>, available online at <a href="https://dl.acm.org/doi/pdf/10.1145/3560832.3563441">dl.acm.org</a>.</p></li>
+<li><p>S.-N. Tung and T.-H. Wang, <em>A mathematical framework for modelling CLMM dynamics in continuous time</em>, available on <a href="https://arxiv.org/abs/2412.18580">arXiv</a>.</p></li>
+</ul>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+        const codeEl = trigger.previousElementSibling.cloneNode(true);
+        for (const childEl of codeEl.children) {
+          if (isCodeAnnotation(childEl)) {
+            childEl.remove();
+          }
+        }
+        return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>
