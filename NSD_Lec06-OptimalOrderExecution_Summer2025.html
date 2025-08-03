@@ -1630,8 +1630,145 @@ Anna Obizhaeva and Jiang Wang, Optimal trading strategy and supply/demand dynami
 Elia Zarinelli, Michele Treccani, J. Doyne Farmer, and Fabrizio Lillo, Beyond the square root: Evidence for logarithmic dependence of market impact on size and participation rate, <i>Market Microstructure and Liquidity</i>, <b>1</b>(2), 1550004, (2015).
 </li>
 </ol>
+<section id="a-simple-lecture-notes" class="level2">
+<h2 class="anchored" data-anchor-id="a-simple-lecture-notes">A Simple Lecture Notes</h2>
+<ol type="1">
+<li>概述
+<ul>
+<li>主题: 价格冲击 (market impact) 及最优执行 (optimal execution)</li>
+<li>核心问题: 大额交易 (metaorder) 如何影响市场价格? 如何在承受冲击成本和价格风险之间取得平衡, 以实现最优交易执行?</li>
+</ul></li>
+<li>核心术语
+<ul>
+<li>Metaorder (元订单): 体量足够大, 需拆分执行的订单.</li>
+<li>子订单 (child order): 元订单的拆分单元.<br>
+</li>
+<li>Impact profile (冲击剖面): 元订单执行期间及执行后, 平均价格随时间的轨迹.<br>
+</li>
+<li>Completion (完成): 最后一笔子订单成交的时刻.<br>
+</li>
+<li>Spread cost (点差成本): 买入/卖出时吃掉的半个买卖价差.</li>
+</ul></li>
+<li>元订单的市场冲击
+<ol type="a">
+<li>定性描述<br>
+</li>
+</ol>
+<ul>
+<li>买盘倾向推高价格, 卖盘倾向压低价格。<br>
+</li>
+<li>市场冲击可分为瞬时冲击 (temporary impact) 和永久冲击 (permanent impact).</li>
+</ul>
+<ol start="2" type="a">
+<li>平方根法则 (Square‐Root Impact Law)</li>
+</ol>
+<ul>
+<li>经验公式: <span class="math display">\[
+\Delta P \approx \text{Spread cost} + \alpha \cdot \sigma \cdot \sqrt{\frac{Q}{V}},
+\]</span> 其中
+<ul>
+<li><span class="math inline">\(\sigma\)</span>: 日内美元波动率<br>
+</li>
+<li><span class="math inline">\(V\)</span>: 日均成交量<br>
+</li>
+<li><span class="math inline">\(Q\)</span>: 元订单体量</li>
+<li><span class="math inline">\(\alpha\)</span>: 冲击系数 (impact coefficient)</li>
+</ul></li>
+</ul></li>
+<li>常见执行算法
+<ul>
+<li>TWAP (Time-Weighted Average Price): 等速切分、等间隔执行<br>
+</li>
+<li>VWAP (Volume-Weighted Average Price): 按市场成交量比例参与交易<br>
+</li>
+<li>POV (Percentage-of-Volume): 固定日内市场成交量百分比<br>
+</li>
+<li>IS (Implementation Shortfall): 前期快速执行、后期放缓, 以平衡滑点成本与市场风险</li>
+</ul></li>
+<li>Almgren–Chriss 模型
+<ol type="a">
+<li>模型设定<br>
+</li>
+</ol>
+<ul>
+<li>资产价格:<br>
+<span class="math display">\[
+  S_t = S_0 + \gamma (X_t - X_0) + \sigma_S W_t,
+  \]</span> 其中 <span class="math inline">\(v_s\)</span> 为交易速率，<span class="math inline">\(\eta\)</span> 为冲击系数<br>
+</li>
+<li>成本函数:<br>
+<span class="math display">\[
+     C_T(x) = \int_0^T \left( \gamma v_t^2 + \eta v_t^2 \right) \mathrm{d}t + \int_0^T (S_0 - S_t) \mathrm{d}x_t,
+     \]</span> <span class="math inline">\(\lambda\)</span>: 风险厌恶系数</li>
+</ul>
+<ol start="2" type="a">
+<li>最优策略<br>
+</li>
+</ol>
+<ul>
+<li>风险中性 (<span class="math inline">\(\lambda = 0\)</span>): 最优执行为等速执行 (TWAP)<br>
+</li>
+<li>风险厌恶(<span class="math inline">\(\lambda &gt; 0\)</span>): 求解二阶常微分方程, 得到渐进收敛于均匀速率的交易轨迹</li>
+</ul>
+<ol start="3" type="a">
+<li>优缺点<br>
+</li>
+</ol>
+<ul>
+<li>易于分析与实现, 成为算法交易基础<br>
+– 冲击无回落, 与实证的瞬时衰减不符<br>
+– 永久冲击线性假设与平方根规律不一致</li>
+</ul></li>
+<li>Obizhaeva–Wang 模型
+<ol type="a">
+<li>模型设定<br>
+</li>
+</ol>
+<ul>
+<li>冲击脉冲响应 (exponential decay):<br>
+<span class="math display">\[
+  S_t = S_0 + \eta \int_0^t v_s e^{-\rho(t-s)} \mathrm{d}s + \sigma_S Z_t,
+  \]</span> 其中 <span class="math inline">\(\rho\)</span> 为衰减速率</li>
+</ul>
+<ol start="2" type="a">
+<li>特点<br>
+</li>
+</ol>
+<ul>
+<li>冲击线性、衰减符合指数律<br>
+</li>
+<li>更符合高频撮合市场微结构</li>
+</ul></li>
+<li>ACOW 模型 (Almgren–Chriss + Obizhaeva–Wang)
+<ul>
+<li>结合永久冲击 (AC) 和瞬时指数衰减冲击 (OW)<br>
+</li>
+<li>状态方程 + 最优控制问题<br>
+</li>
+<li>可调节参数 <span class="math inline">\(\gamma, \eta, \sigma\)</span> 控制永久与瞬时冲击</li>
+</ul></li>
+<li>小结与讨论
+<ul>
+<li>市场冲击研究的目的:
+<ul>
+<li>量化大额交易对价格的影响<br>
+</li>
+<li>在成本与风险之间做出量化权衡<br>
+</li>
+</ul></li>
+<li>未来方向:
+<ul>
+<li>非线性冲击函数、非高斯噪声<br>
+</li>
+<li>多资产组合清算<br>
+</li>
+<li>深度学习与在线自适应执行算法</li>
+</ul></li>
+</ul></li>
+</ol>
 
 
+</section>
 </div>
 
 </section>
