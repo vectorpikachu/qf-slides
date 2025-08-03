@@ -264,11 +264,6 @@ window.Quarto = {
   <li><a href="#notation" id="toc-notation" class="nav-link" data-scroll-target="#notation">Notation</a></li>
   <li><a href="#market-mechanism---with-transaction-cost" id="toc-market-mechanism---with-transaction-cost" class="nav-link" data-scroll-target="#market-mechanism---with-transaction-cost">Market mechanism - with transaction cost</a></li>
   </ul></li>
-  <li><a href="#a-look-at-the-market-data" id="toc-a-look-at-the-market-data" class="nav-link" data-scroll-target="#a-look-at-the-market-data">A look at the market data</a>
-  <ul class="collapse">
-  <li><a href="#empirical-liquidity-profile-i" id="toc-empirical-liquidity-profile-i" class="nav-link" data-scroll-target="#empirical-liquidity-profile-i">Empirical liquidity profile I</a></li>
-  <li><a href="#empirical-liquidity-profile-ii" id="toc-empirical-liquidity-profile-ii" class="nav-link" data-scroll-target="#empirical-liquidity-profile-ii">Empirical liquidity profile II</a></li>
-  </ul></li>
   <li><a href="#summary" id="toc-summary" class="nav-link" data-scroll-target="#summary">Summary</a></li>
   <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references">References</a></li>
   </ul></li>
@@ -418,9 +413,11 @@ window.Quarto = {
 </section>
 <section id="amm-vs-clob-1" class="level2">
 <h2 class="anchored" data-anchor-id="amm-vs-clob-1">AMM vs CLOB</h2>
-<p>Compared to CLOBs, AMMs offer some advantages. - Efficient computation. They have minimal storage needs, and matching computations can be done quickly, typically via constant-time closed-from algebraic computations. - In a CLOB, on the other hand, matching engine calculations may involve complex data structures and computations that scale with the number of orders. Thus AMMs are uniquely suited to the severely computation- and storage-constrained environment of the blockchain.</p>
+<p>Compared to CLOBs, AMMs offer some advantages.</p>
 <ul>
-<li>CLOBs are not well-suited to a long-tail of illiquid assets. This is because they require the participation of active market markers. In contrast, AMMs mainly rely on passive liquidity providers (LPs).</li>
+<li><p>Efficient computation. They have minimal storage needs, and matching computations can be done quickly, typically via constant-time closed-from algebraic computations.</p></li>
+<li><p>In a CLOB, on the other hand, matching engine calculations may involve complex data structures and computations that scale with the number of orders. Thus AMMs are uniquely suited to the severely computation- and storage-constrained environment of the blockchain.</p></li>
+<li><p>CLOBs are not well-suited to a long-tail of illiquid assets. This is because they require the participation of active market markers. In contrast, AMMs mainly rely on passive liquidity providers (LPs).</p></li>
 </ul>
 </section>
 <section id="types-of-traders" class="level2">
@@ -461,7 +458,7 @@ window.Quarto = {
 <li><span class="math inline">\(y_t\)</span>: number of numeraire, say USDC, at time <span class="math inline">\(t\)</span> in the pool</li>
 <li><span class="math inline">\(f\)</span>: bonding function</li>
 <li><span class="math inline">\(L\)</span>: level of bonding function</li>
-<li><span class="math inline">\(\displaystyle P:=-\frac{dy_t}{dx_t}\)</span>: infinitesimal/marginal rate of exchange or pool price at time <span class="math inline">\(t\)</span></li>
+<li><span class="math inline">\(\displaystyle P:=-\frac{\mathrm{d}y_t}{\mathrm{d}x_t}\)</span>: infinitesimal/marginal rate of exchange or pool price at time <span class="math inline">\(t\)</span></li>
 <li><span class="math inline">\(V_t\)</span>: value of the pool or LP’s wealth at time <span class="math inline">\(t\)</span></li>
 <li><span class="math inline">\(1 - \gamma\)</span>: (proportional) transaction cost, typically <span class="math inline">\(\gamma = 99.7\%\)</span>.</li>
 <li><span class="math inline">\(S_t\)</span>: exogenous reference price of the risky asset</li>
@@ -614,7 +611,7 @@ P = P(x,y) = \frac{f_x}{f_y} = \frac yx.
 \]</span></p>
 <p>Along the bonding curve <span class="math inline">\(xy = L^2\)</span>, we have</p>
 <p><span class="math display">\[\begin{align*}
-\Delta_y &amp;= \int_\gamma dy = - \int_\gamma P dx = - \int_\gamma \frac yx dx.
+\Delta_y &amp;= \int_\gamma \mathrm{d}y = - \int_\gamma P \mathrm{d}x = - \int_\gamma \frac yx \mathrm{d}x.
 \end{align*}\]</span></p>
 <p>Thus, if we parametrize the bonding curve <span class="math inline">\(f(x,y) = \sqrt{xy} = L\)</span>, denoted as <span class="math inline">\(\gamma\)</span>, by</p>
 <p><span class="math display">\[\begin{align*}
@@ -627,7 +624,7 @@ y_t = \frac{L^2}{x_t}
 \]</span></p>
 <p>It follows that</p>
 <p><span class="math display">\[\begin{align*}
-\Delta_y &amp;= - \int_\gamma \frac yx dx = - \int_0^1 \frac{L^2}{x_t^2} dx_t \\
+\Delta_y &amp;= - \int_\gamma \frac yx \mathrm{d}x = - \int_0^1 \frac{L^2}{x_t^2} \mathrm{d}x_t \\
 &amp;= \frac{L^2}{x_1} - \frac{L^2}{x_0} = L^2\left\{ \frac1{x_0 + \Delta_x} - \frac1{x_0} \right\} \\
 &amp;= \frac{L^2}{x_0} \left(\left\{1 + \frac{\Delta_x}{x_0}\right)^{-1} - 1 \right\}
 \approx -\frac{L^2}{x_0^2} \Delta_x
@@ -649,7 +646,7 @@ y_t = \frac{L^2}{x_t}
 <h2 class="anchored" data-anchor-id="sell-price-by-line-integral">Sell price by line integral</h2>
 <p>Likewise, we can show that if a trader wants to retrieve <span class="math inline">\(\Delta_y\)</span> numeraire from the pool, he must deposit</p>
 <p><span class="math display">\[
-\Delta_x = \int_\gamma dx = -\int_\gamma \frac{dy}P
+\Delta_x = \int_\gamma \mathrm{d}x = -\int_\gamma \frac{\mathrm{d}y}P
 \]</span></p>
 <p>shares of risky asset to the pool.</p>
 </section>
@@ -657,20 +654,20 @@ y_t = \frac{L^2}{x_t}
 <h2 class="anchored" data-anchor-id="price-impact-by-line-integral">Price impact by line integral</h2>
 <p>The price impact <span class="math inline">\(\Delta P\)</span> of trading <span class="math inline">\(\Delta_x\)</span> shares with pool can be determined by the line integral</p>
 <p><span class="math display">\[
-\Delta P = \int_\gamma dP = \int_\gamma P_x dx + P_y dy = \int_\gamma (P_x - P P_y) dx
-= \int_\gamma \frac1{f_y}\left(f_{xx} -2Pf_{xy} + P^2 f_{yy} \right)dx = \int_\gamma 2 P^{3/2} \kappa_h dx
+\Delta P = \int_\gamma \mathrm{d}P = \int_\gamma P_x \mathrm{d}x + P_y \mathrm{d}y = \int_\gamma (P_x - P P_y) \mathrm{d}x
+= \int_\gamma \frac1{f_y}\left(f_{xx} -2Pf_{xy} + P^2 f_{yy} \right)\mathrm{d}x = \int_\gamma 2 P^{3/2} \kappa_h \mathrm{d}x
 \]</span></p>
-<p>since <span class="math inline">\(dy = -P dx\)</span> along <span class="math inline">\(\gamma\)</span>, the bonding curve <span class="math inline">\(f(x,y) = L\)</span>.</p>
+<p>since <span class="math inline">\(\mathrm{d}y = -P \mathrm{d}x\)</span> along <span class="math inline">\(\gamma\)</span>, the bonding curve <span class="math inline">\(f(x,y) = L\)</span>.</p>
 </section>
 <section id="example-cpmm-1" class="level2">
 <h2 class="anchored" data-anchor-id="example-cpmm-1">Example: CPMM</h2>
-<p>In this case, we have <span class="math inline">\(f(x,y) = \sqrt{xy} = L\)</span> and <span class="math inline">\(P(x,y) = \frac yx\)</span>, thus</p>
+<p>In this case, we have <span class="math inline">\(f(x,y) = \sqrt{xy} = L\)</span> and <span class="math inline">\(\displaystyle P(x,y) = \frac yx\)</span>, thus</p>
 <p><span class="math display">\[\begin{align*}
 P_x &amp;= -\frac y{x^2}, \quad P_y = \frac1x.
 \end{align*}\]</span></p>
 <p>It follows that</p>
 <p><span class="math display">\[\begin{align*}
-\Delta P &amp;= \int_\gamma P_x dx + P_y dy = -2\int_\gamma \frac{y}{x^2} dx = -2L^2 \int_\gamma \frac1{x^3} dx \\
+\Delta P &amp;= \int_\gamma P_x \mathrm{d}x + P_y \mathrm{d}y = -2\int_\gamma \frac{y}{x^2} \mathrm{d}x = -2L^2 \int_\gamma \frac1{x^3} \mathrm{d}x \\
 &amp;= L^2 \left\{\frac1{(x_0 + \Delta_x)^2} - \frac1{x_0^2}\right\} \\
 &amp;= \frac{L^2}{x_0^2} \left\{\left(1 + \frac{\Delta_x}{x_0} \right)^{-2} - 1 \right\} \\
 &amp;\approx -2 \frac{L^2}{x_0^2} \frac{\Delta_x}{x_0} = -2 \frac{y_0}{x_0} \frac{\Delta_x}{x_0}
@@ -703,7 +700,7 @@ x = \frac L{\sqrt P}, \quad y = L \sqrt{P}
 <p><span class="math display">\[
 V = Px + y
 \]</span></p>
-<p>where recall that <span class="math inline">\(P = -\frac{dy}{dx} = \frac{f_x}{f_y}\)</span>. Note that we can regard pool reserve <span class="math inline">\((x,y)\)</span> as a function of <span class="math inline">\(P\)</span>. Indeed, suppose <span class="math inline">\(x = \varphi(y, L)\)</span> obtained by solving the equation <span class="math inline">\(f(x,y) = L\)</span> for <span class="math inline">\(x\)</span> in terms of <span class="math inline">\(y\)</span> and <span class="math inline">\(L\)</span>. It follows that, by inverting the equation</p>
+<p>where recall that <span class="math inline">\(\displaystyle P = -\frac{\mathrm{d}y}{\mathrm{d}x} = \frac{f_x}{f_y}\)</span>. Note that we can regard pool reserve <span class="math inline">\((x,y)\)</span> as a function of <span class="math inline">\(P\)</span>. Indeed, suppose <span class="math inline">\(x = \varphi(y, L)\)</span> obtained by solving the equation <span class="math inline">\(f(x,y) = L\)</span> for <span class="math inline">\(x\)</span> in terms of <span class="math inline">\(y\)</span> and <span class="math inline">\(L\)</span>. It follows that, by inverting the equation</p>
 <p><span class="math display">\[
 P = \frac{f_x(\varphi(y, L),y)}{f_y(\varphi(y, L), y)},
 \]</span></p>
@@ -722,7 +719,7 @@ P = \frac{f_x(\varphi(y, L),y)}{f_y(\varphi(y, L), y)},
 </ul>
 <p>Should he hold the position and stay put without trading, the value of his position at time <span class="math inline">\(t\)</span>, denoted by <span class="math inline">\(H_t\)</span>, satisfies</p>
 <p><span class="math display">\[
-dH_t = x(P_0)dP_t \quad \Longrightarrow \quad H_t := x_0 P_t + y_0.
+\mathrm{d}H_t = x(P_0)\mathrm{d}P_t \quad \Longrightarrow \quad H_t := x_0 P_t + y_0.
 \]</span></p>
 <p>On the other hand, if he deposits the coins to the pool, the value of his pool reserve at time <span class="math inline">\(t\)</span> is given by</p>
 <p><span class="math display">\[
@@ -730,32 +727,32 @@ V_t = V(P_t) = x_tP_t + y_t = x(P_t) P_t + y(P_t).
 \]</span></p>
 <p>As <span class="math inline">\(P_t\)</span> evolves, Ito’s formula implies that</p>
 <p><span class="math display">\[
-dV_t = V'(P_t) dP_t + \frac12 V''(P_t) d\inn{P}_t = x(P_t) dP_t + \frac12 V''(P_t) d\inn{P}_t
+\mathrm{d}V_t = V'(P_t) \mathrm{d}P_t + \frac12 V''(P_t) \mathrm{d}\inn{P}_t = x(P_t) \mathrm{d}P_t + \frac12 V''(P_t) \mathrm{d}\inn{P}_t
 \]</span></p>
 <p>since</p>
 <p><span class="math display">\[
-V'(P) = \frac{d}{dP}\left(P x + y\right) = x + P\frac{dx}{dP} + \frac{dy}{dP} = x.
+V'(P) = \frac{\mathrm{d}}{\mathrm{d}P}\left(P x + y\right) = x + P\frac{\mathrm{d}x}{\mathrm{d}P} + \frac{\mathrm{d}y}{\mathrm{d}P} = x.
 \]</span></p>
 <section id="note-3" class="level4">
 <h4 class="anchored" data-anchor-id="note-3">Note</h4>
 <ul>
 <li><span class="math inline">\(\inn{P}_t\)</span>: quadratic variation of <span class="math inline">\(P_t\)</span></li>
-<li>Recall that <span class="math inline">\(P = -\frac{dy}{dx} = -\frac{dy/dP}{dx/dP}\)</span>.</li>
+<li>Recall that <span class="math inline">\(\displaystyle P = -\frac{\mathrm{d}y}{\mathrm{d}x} = -\frac{\mathrm{d}y/\mathrm{d}P}{\mathrm{d}x/\mathrm{d}P}\)</span>.</li>
 </ul>
 <p>It follows that the so called <em>impermanent loss</em>, defined by <span class="math inline">\({\rm IL}_t := H_t - V_t\)</span>, satisfies</p>
 <p><span class="math display">\[
-d{\rm IL}_t = dH_t - dV_t = \left\{x(P_0) - x(P_t)\right\} dP_t - \frac12 V''(P_t) d\inn{P}_t
+\mathrm{d}{\rm IL}_t = \mathrm{d}H_t - \mathrm{d}V_t = \left\{x(P_0) - x(P_t)\right\} \mathrm{d}P_t - \frac12 V''(P_t) \mathrm{d}\inn{P}_t
 \]</span></p>
 <p>or equivalently,</p>
 <p><span class="math display">\[
-{\rm IL}_t = H_t - V_t = \int_0^t \left\{x(P_0) - x(P_s)\right\} dP_s - \int_0^t\frac12 V''(P_s) d\inn{P}_s.
+{\rm IL}_t = H_t - V_t = \int_0^t \left\{x(P_0) - x(P_s)\right\} \mathrm{d}P_s - \int_0^t\frac12 V''(P_s) \mathrm{d}\inn{P}_s.
 \]</span></p>
 <p>Note that, since <span class="math display">\[
 V''(P) = x'(P) = -\frac12 \frac{\ell(P)}{P^{3/2}} \leq 0,
 \]</span></p>
 <p>we have</p>
 <p><span class="math display">\[
-\Eof{{\rm IL}_t} = -\Eof{\int_0^t\frac12 V''(P_s) d\inn{P}_s} \geq 0
+\Eof{{\rm IL}_t} = -\Eof{\int_0^t\frac12 V''(P_s) \mathrm{d}\inn{P}_s} \geq 0
 \]</span></p>
 <p>should <span class="math inline">\(P_t\)</span> be a martingale. In other words, in average the agent is better off in holding the coins than depositing them to the pool.</p>
 <p><font color="blue">In fact, regarding <span class="math inline">\(H\)</span> and <span class="math inline">\(V\)</span> as functions of <span class="math inline">\(P\)</span>, recall that <span class="math display">\[\begin{align*}
@@ -776,21 +773,21 @@ V''(P) = x'(P) = -\frac12 \frac{\ell(P)}{P^{3/2}} \leq 0,
 <p>A slightly more detailed analysis given in <em><a href="https://dl.acm.org/doi/pdf/10.1145/3560832.3563441">Quantifying Loss in Automated Market Makers</a></em> shows that the term involving the quadratic variation of <span class="math inline">\(P_t\)</span> in the equation of <span class="math inline">\({\rm IL}_t\)</span> can be attributed to the so called <em>loss-versus-rebalance</em>.</p>
 <p>Let <span class="math inline">\(R_t\)</span> be the self-financing strategy that holds <span class="math inline">\(x(P_t)\)</span> in risky asset at time <span class="math inline">\(t\)</span> with <span class="math inline">\(R_0 = x_0 P_0 + y_0\)</span>. Self-financing implies that</p>
 <p><span class="math display">\[
-dR_t = x(P_t) dP_t.
+\mathrm{d}R_t = x(P_t) \mathrm{d}P_t.
 \]</span></p>
 <p>Define the <em>loss-versus-rebalance</em> as <span class="math inline">\({\rm LVR}_t := R_t - V_t\)</span>. It follows that</p>
 <p><span class="math display">\[
-d{\rm LVR}_t := dR_t - dV_t = -\frac12 V''(P_t) d\inn{P}_t \geq 0
+\mathrm{d}{\rm LVR}_t := \mathrm{d}R_t - \mathrm{d}V_t = -\frac12 V''(P_t) \mathrm{d}\inn{P}_t \geq 0
 \]</span></p>
 <p>again since <span class="math inline">\(V''(P) = x'(P) \leq 0\)</span>. It follows that</p>
 <p><span class="math display">\[
-{\rm IL}_t = \int_0^t \left\{x(P_0) - x(P_s)\right\} dP_s + {\rm LVR}_t.
+{\rm IL}_t = \int_0^t \left\{x(P_0) - x(P_s)\right\} \mathrm{d}P_s + {\rm LVR}_t.
 \]</span></p>
 <p>Thus, the impermanent loss consists of a martingale component, which can be “delta-hedged” by dynamically holding <span class="math inline">\(x(P_0) - x(P_t)\)</span> shares of the risk asset (the <span class="math inline">\(X\)</span> coin), and a positive drift named loss-versus-rebalance.</p>
 </section>
 <section id="example-il-and-lvr-in-cpmm" class="level2">
 <h2 class="anchored" data-anchor-id="example-il-and-lvr-in-cpmm">Example: IL and LVR in CPMM</h2>
-<p>Consider the CPMM in which <span class="math inline">\(f(x,y) = \sqrt{xy}\)</span>. In this case, <span class="math inline">\(P = \frac{f_x}{f_y} = \frac yx\)</span>. We have, since <span class="math inline">\(xy = L^2\)</span>,</p>
+<p>Consider the CPMM in which <span class="math inline">\(f(x,y) = \sqrt{xy}\)</span>. In this case, <span class="math inline">\(\displaystyle P = \frac{f_x}{f_y} = \frac yx\)</span>. We have, since <span class="math inline">\(xy = L^2\)</span>,</p>
 <p><span class="math display">\[
 P = \frac yx = \frac y{\frac{L^2}y} = \frac{y^2}{L^2} \quad \Longrightarrow \quad y = L\sqrt P.
 \]</span></p>
@@ -810,20 +807,20 @@ V(P) = P x + y = 2 L \sqrt P.
 \end{align*}\]</span> and the equality holds if and only if <span class="math inline">\(P = P_0\)</span>.</p>
 <p>Thus, by applying Ito’s formula, the evolution of the value <span class="math inline">\(V_t\)</span> is given by</p>
 <p><span class="math display">\[
-dV_t = \frac L{\sqrt{P_t}} dP_t - \frac14 \frac L{\sqrt{P_t^3}} d\inn{P}_t,
+\mathrm{d}V_t = \frac L{\sqrt{P_t}} \mathrm{d}P_t - \frac14 \frac L{\sqrt{P_t^3}} \mathrm{d}\inn{P}_t,
 \]</span></p>
 <p>where <span class="math inline">\(\inn{P}_t\)</span> denotes the quadratic variation of pool price <span class="math inline">\(P_t\)</span>.</p>
-<p>On the other hand, should we hold a in poisition <span class="math inline">\(x_t\)</span> a self-financing manner the value <span class="math inline">\(R_t\)</span> is given by</p>
+<p>On the other hand, should we hold a in position <span class="math inline">\(x_t\)</span> a self-financing manner the value <span class="math inline">\(R_t\)</span> is given by</p>
 <p><span class="math display">\[
-dR_t = x_t dP_t = \frac L{\sqrt{P_t}} dP_t
+\mathrm{d}R_t = x_t \mathrm{d}P_t = \frac L{\sqrt{P_t}} \mathrm{d}P_t
 \]</span></p>
 <p>Thus, we end up with</p>
 <p><span class="math display">\[
-d{\rm LVR}_t = dR_t - dV_t = \frac L4 \frac{d\inn{P_t}}{\sqrt{P_t^3}}
+\mathrm{d}{\rm LVR}_t = \mathrm{d}R_t - \mathrm{d}V_t = \frac L4 \frac{\mathrm{d}\inn{P_t}}{\sqrt{P_t^3}}
 \]</span></p>
 <p>as well as</p>
 <p><span class="math display">\[
-{\rm IL}_t = \int_0^t (x_0 - x_s) dP_s + \frac L4 \int_0^t \frac{d\inn{P_s}}{\sqrt{P_t^3}}.
+{\rm IL}_t = \int_0^t (x_0 - x_s) \mathrm{d}P_s + \frac L4 \int_0^t \frac{\mathrm{d}\inn{P_s}}{\sqrt{P_t^3}}.
 \]</span></p>
 <br> <br>
 <center>
@@ -948,48 +945,48 @@ x\left(\frac1{s^2}\right) = L_1 \left(s - s_r^1 \right)^+ - L_1 \left(s - s_l^1\
 \]</span></p>
 <p>Note that the right hand side is simply the payoff function for the portoflio of call options: long <span class="math inline">\(L_1\)</span> and <span class="math inline">\(L_2\)</span> calls struck respectively at <span class="math inline">\(s_r^1\)</span> and <span class="math inline">\(s_r^2\)</span>, short <span class="math inline">\(L_1\)</span> and <span class="math inline">\(L_2\)</span> calls struck at <span class="math inline">\(s_l^1\)</span> and <span class="math inline">\(s_l^2\)</span>, respectively. We can thus rewrite this expression in terms of (Lebesgue) integral as</p>
 <p><span class="math display">\[
-x\left(\frac1{s^2}\right) = \int_{\R^+} (s - k)^+ d\tL(k) = \int_{[0, s]} (s - k) d\tL(k),
+x\left(\frac1{s^2}\right) = \int_{\R^+} (s - k)^+ \mathrm{d}\tL(k) = \int_{[0, s]} (s - k) \mathrm{d}\tL(k),
 \]</span></p>
-<p>where <span class="math inline">\(d\tL\)</span> is a signed measure given by the sum of signed Dirac measures (point masses)</p>
+<p>where <span class="math inline">\(\mathrm{d}\tL\)</span> is a signed measure given by the sum of signed Dirac measures (point masses)</p>
 <p><span class="math display">\[
-d\tL(k) = L_1\{\delta(s_r^1) - \delta(s_l^1)\} + L_2\{\delta(s_r^2) - \delta(s_l^2)\}.
+\mathrm{d}\tL(k) = L_1\{\delta(s_r^1) - \delta(s_l^1)\} + L_2\{\delta(s_r^2) - \delta(s_l^2)\}.
 \]</span></p>
-<p>Let <span class="math inline">\(\tL(k) = \int_{[0,k]} d\tL(\kappa)\)</span>, i.e., the distribution function of <span class="math inline">\(d\tL\)</span>. Then, integration by parts implies that</p>
+<p>Let <span class="math inline">\(\tL(k) = \int_{[0,k]} \mathrm{d}\tL(\kappa)\)</span>, i.e., the distribution function of <span class="math inline">\(\mathrm{d}\tL\)</span>. Then, integration by parts implies that</p>
 <span class="math display">\[\begin{split}
-x\left(\frac1{s^2}\right) &amp;= (s - k) \tL(k)|_0^s + \int_{[0, s]} \tL(k) dk = \int_{[0, s]} \tL(k) dk
+x\left(\frac1{s^2}\right) &amp;= (s - k) \tL(k)|_0^s + \int_{[0, s]} \tL(k) \mathrm{d}k = \int_{[0, s]} \tL(k) \mathrm{d}k
 \end{split}\]</span>
 <p>assume <span class="math inline">\(\tL(0) = 0\)</span>.</p>
 <p>Transforming back to the price space, let <span class="math inline">\(k = \frac1{\sqrt q}\)</span>. We have</p>
 <span class="math display">\[\begin{split}
-x(p) &amp;= x\left(\frac1{s^2}\right) = \int_0^{\frac1{\sqrt p}} \left(\frac1{\sqrt p} - k\right) d\tL(k) \\
-&amp;= \frac1{\sqrt p} \tL\left(\frac1{\sqrt p}\right) - \int_0^{\frac1{\sqrt p}} k d\tL(k) \\
-&amp;= \frac1{\sqrt p} \tL\left(\frac1{\sqrt p}\right) + \int_p^\infty \frac1{\sqrt q} d\tL\left( \frac1{\sqrt q} \right) \\
-&amp;= \frac1{\sqrt p} L(p) + \int_p^\infty \frac1{\sqrt q} dL(q)
+x(p) &amp;= x\left(\frac1{s^2}\right) = \int_0^{\frac1{\sqrt p}} \left(\frac1{\sqrt p} - k\right) \mathrm{d}\tL(k) \\
+&amp;= \frac1{\sqrt p} \tL\left(\frac1{\sqrt p}\right) - \int_0^{\frac1{\sqrt p}} k \mathrm{d}\tL(k) \\
+&amp;= \frac1{\sqrt p} \tL\left(\frac1{\sqrt p}\right) + \int_p^\infty \frac1{\sqrt q} \mathrm{d}\tL\left( \frac1{\sqrt q} \right) \\
+&amp;= \frac1{\sqrt p} L(p) + \int_p^\infty \frac1{\sqrt q} \mathrm{d}L(q)
 \end{split}\]</span>
 <p>where apparently <span class="math inline">\(L(p) := \tL\left( \frac1{\sqrt p} \right)\)</span>.</p>
-<p>In fact, the transformation <span class="math inline">\(p = \frac1{s^2}\)</span>, pull-back the measure <span class="math inline">\(d\tL\)</span> in the <span class="math inline">\(s\)</span>-space back to the measure <span class="math inline">\(dL\)</span> in the <span class="math inline">\(p\)</span>-space as</p>
+<p>In fact, the transformation <span class="math inline">\(p = \frac1{s^2}\)</span>, pull-back the measure <span class="math inline">\(\mathrm{d}\tL\)</span> in the <span class="math inline">\(s\)</span>-space back to the measure <span class="math inline">\(\mathrm{d}L\)</span> in the <span class="math inline">\(p\)</span>-space as</p>
 <p><span class="math display">\[
-dL(p) = -\frac12 p^{-\frac32}d\tL\left( \frac1{\sqrt p}\right)
+dL(p) = -\frac12 p^{-\frac32}\mathrm{d}\tL\left( \frac1{\sqrt p}\right)
 \]</span></p>
 <p>or equivalently <span class="math inline">\(L(p) = \tL\left( \frac1{\sqrt p} \right)\)</span></p>
 <p>Likewise, by the change of variable <span class="math inline">\(s = \sqrt p\)</span>, the equation for <span class="math inline">\(y\)</span> can be obtained as</p>
 <p><span class="math display">\[
-y(s^2) = \int_{\R^+} (s - k)^+ dL(k),
+y(s^2) = \int_{\R^+} (s - k)^+ \mathrm{d}L(k),
 \]</span></p>
 <p>where</p>
 <span class="math display">\[\begin{split}
-dL(k) &amp;= L_1\{\delta(s_l^1) - \delta(s_r^1)\} + L_2\{\delta(s_l^2) - \delta(s_r^2)\} \\
+\mathrm{d}L(k) &amp;= L_1\{\delta(s_l^1) - \delta(s_r^1)\} + L_2\{\delta(s_l^2) - \delta(s_r^2)\} \\
 &amp;= L_1\left\{ \delta\left(\sqrt{p_l^1}\right) - \delta\left(\sqrt{p_r^1}\right)\} + L_2\{\delta\left(\sqrt{p_l^2}\right) - \delta\left(\sqrt{p_r^2}\right) \right\}
 \end{split}\]</span>
 <p>and</p>
 <span class="math display">\[\begin{split}
-y\left(s^2\right) &amp;= \int_{[0, s]} L(k) dk
+y\left(s^2\right) &amp;= \int_{[0, s]} L(k) \mathrm{d}k
 \end{split}\]</span>
 <p>Also, by the change of variable <span class="math inline">\(k=\sqrt q\)</span>, we have</p>
 <span class="math display">\[\begin{split}
-y(p) &amp;= \int_0^{\sqrt p} \left( \sqrt p - k \right) dL(k) \\
-&amp;=  \sqrt p \tL\left(\sqrt p\right) - \int_0^{\sqrt p} \sqrt q d\tL(\sqrt q) \\
-&amp;= \sqrt p L(p) - \int_0^p \sqrt q dL(q),
+y(p) &amp;= \int_0^{\sqrt p} \left( \sqrt p - k \right) \mathrm{d}L(k) \\
+&amp;=  \sqrt p \tL\left(\sqrt p\right) - \int_0^{\sqrt p} \sqrt q \mathrm{d}\tL(\sqrt q) \\
+&amp;= \sqrt p L(p) - \int_0^p \sqrt q \mathrm{d}L(q),
 \end{split}\]</span>
 <p>where apparently <span class="math inline">\(L(p):= \tL(\sqrt p)\)</span>.</p>
 </section>
@@ -999,7 +996,7 @@ y(p) &amp;= \int_0^{\sqrt p} \left( \sqrt p - k \right) dL(k) \\
 <section id="note-7" class="level4">
 <h4 class="anchored" data-anchor-id="note-7">Note</h4>
 <ul>
-<li>Mathematically, we can regard <span class="math inline">\(dL(p)\)</span> as a (<span class="math inline">\(\sigma\)</span>-finite) signed measure over <span class="math inline">\([0, \infty)\)</span>. Thus, <span class="math inline">\(L\)</span> is the associated cdf for the measure <span class="math inline">\(dL\)</span>.</li>
+<li>Mathematically, we can regard <span class="math inline">\(\mathrm{d}L(p)\)</span> as a (<span class="math inline">\(\sigma\)</span>-finite) signed measure over <span class="math inline">\([0, \infty)\)</span>. Thus, <span class="math inline">\(L\)</span> is the associated cdf for the measure <span class="math inline">\(\mathrm{d}L\)</span>.</li>
 </ul>
 </section>
 </section>
@@ -1007,12 +1004,12 @@ y(p) &amp;= \int_0^{\sqrt p} \left( \sqrt p - k \right) dL(k) \\
 <h2 class="anchored" data-anchor-id="summary-conversion-between-liquidity-profile-and-pool-reserves">Summary: Conversion between liquidity profile and pool reserves</h2>
 <p>Finally, by applying integration by parts, pool reserve <span class="math inline">\((x,y)\)</span> are given in terms of the infinitesimal rate of exchange <span class="math inline">\(P\)</span> as</p>
 <p><span class="math display">\[\begin{align*}
-&amp; x(P) = \frac12 \int_P^\infty L(p) p^{-\frac32} dp \\
-&amp; y(P) = \frac12 \int_0^P L(p) p^{-\frac12} dp \\
+&amp; x(P) = \frac12 \int_P^\infty L(p) p^{-\frac32} \mathrm{d}p \\
+&amp; y(P) = \frac12 \int_0^P L(p) p^{-\frac12} \mathrm{d}p \\
 \end{align*}\]</span></p>
 <p>Apparently, we have</p>
 <p><span class="math display">\[
-\frac{d y}{dx} = \frac{\frac{dy}{dP}}{\frac{dx}{dP}} = -P,
+\frac{\mathrm{d} y}{\mathrm{d}x} = \frac{\frac{\mathrm{d}y}{\mathrm{d}P}}{\frac{\mathrm{d}x}{\mathrm{d}P}} = -P,
 \]</span></p>
 <p>In other words, the infinitesimal rate of exchange <span class="math inline">\(P\)</span> is equal to the negative slope of tangent of the reserve curve.</p>
 <section id="note-8" class="level4">
@@ -1027,8 +1024,8 @@ y(p) &amp;= \int_0^{\sqrt p} \left( \sqrt p - k \right) dL(k) \\
 <h2 class="anchored" data-anchor-id="monotonicity-and-convexity-of-bonding-curve">Monotonicity and convexity of bonding curve</h2>
 <p>It follows immediately that, since</p>
 <span class="math display">\[\begin{split}
-&amp; \frac{dy}{dx} = -P &lt; 0 \\
-&amp; \frac{d^2 y}{dx^2} = \frac{\frac1{dP}\left(\frac{dy}{dx}\right)}{\frac{dx}{dP}} = \frac{-1}{-\frac{L(P)}{2P^{\frac32}}} = \frac{2P^{\frac32}}{L(P)} = 2\kappa_h(P) \, P^{3/2} &gt; 0,
+&amp; \frac{\mathrm{d}y}{\mathrm{d}x} = -P &lt; 0 \\
+&amp; \frac{\mathrm{d}^2 y}{\mathrm{d}x^2} = \frac{\frac1{\mathrm{d}P}\left(\frac{\mathrm{d}y}{\mathrm{d}x}\right)}{\frac{\mathrm{d}x}{dP}} = \frac{-1}{-\frac{L(P)}{2P^{\frac32}}} = \frac{2P^{\frac32}}{L(P)} = 2\kappa_h(P) \, P^{3/2} &gt; 0,
 \end{split}\]</span>
 <p>the bonding curve is decreasing and convex.</p>
 </section>
@@ -1040,32 +1037,58 @@ L(p) = k_1 \1_{[a, b)}(p) + k_2 \1_{[b, c)}(p)
 \]</span></p>
 <p>for some positive constants <span class="math inline">\(k_1, k_2\)</span>. Then, we have</p>
 <p><span class="math display">\[
-dL(p) = k_1 \delta(p - a) dp + (k_2 - k_1)\delta(p - b) dp - k_2 \delta(p-c) dp.
+\mathrm{d}L(p) = k_1 \delta(p - a) \mathrm{d}p + (k_2 - k_1)\delta(p - b) \mathrm{d}p - k_2 \delta(p-c) \mathrm{d}p.
 \]</span></p>
 <p>By simply carrying out the integrations, one obtains</p>
 <ul>
-<li>for <span class="math inline">\(P \geq c\)</span>, apparently <span class="math display">\[
-x = 0;
-\]</span></li>
-<li>for <span class="math inline">\(b \leq P &lt; c\)</span> <span class="math display">\[
-x = \frac{L(P)}{\sqrt P} + \int_P^\infty \frac1{\sqrt p}dL(p) = \frac{k_2}{\sqrt P} - \frac{k_2}{\sqrt c} = k_2 \left(\frac1{\sqrt P} - \frac1{\sqrt c}\right)
-\]</span></li>
-<li>for <span class="math inline">\(a \leq P &lt; b\)</span> <span class="math display">\[\begin{align*}
-x &amp;= \frac{L(P)}{\sqrt P} + \int_P^\infty \frac1{\sqrt p}dL(p) = \frac{k_1}{\sqrt P} + (k_2 - k_1) \left(\frac1{\sqrt b} - \frac1{\sqrt c}\right) - \frac{k_2}{\sqrt c} \\
-&amp;= k_1 \left(\frac1{\sqrt P} - \frac1{\sqrt b}\right) + k_2 \left(\frac1{\sqrt b} - \frac1{\sqrt c}\right)
-\end{align*}\]</span></li>
-<li>for <span class="math inline">\(P &lt; a\)</span> <span class="math display">\[\begin{align*}
-x &amp;=  \frac{L(P)}{\sqrt P} + \int_P^\infty \frac1{\sqrt p}dL(p) = \frac{k_1}{\sqrt a} + \frac{k_2 - k_1}{\sqrt b} - \frac{k_2}{\sqrt c}
-\end{align*}\]</span></li>
+<li>for <span class="math inline">\(P \geq c\)</span>, apparently</li>
 </ul>
-<p>Similarly, as for <span class="math inline">\(y\)</span> we have - for <span class="math inline">\(P \leq a\)</span>, apparently <span class="math display">\[
+<p><span class="math display">\[
+x = 0;
+\]</span></p>
+<ul>
+<li>for <span class="math inline">\(b \leq P &lt; c\)</span></li>
+</ul>
+<p><span class="math display">\[
+x = \frac{L(P)}{\sqrt P} + \int_P^\infty \frac1{\sqrt p}\mathrm{d}L(p) = \frac{k_2}{\sqrt P} - \frac{k_2}{\sqrt c} = k_2 \left(\frac1{\sqrt P} - \frac1{\sqrt c}\right)
+\]</span></p>
+<ul>
+<li>for <span class="math inline">\(a \leq P &lt; b\)</span></li>
+</ul>
+<p><span class="math display">\[\begin{align*}
+x &amp;= \frac{L(P)}{\sqrt P} + \int_P^\infty \frac1{\sqrt p}\mathrm{d}L(p) = \frac{k_1}{\sqrt P} + (k_2 - k_1) \left(\frac1{\sqrt b} - \frac1{\sqrt c}\right) - \frac{k_2}{\sqrt c} \\
+&amp;= k_1 \left(\frac1{\sqrt P} - \frac1{\sqrt b}\right) + k_2 \left(\frac1{\sqrt b} - \frac1{\sqrt c}\right)
+\end{align*}\]</span></p>
+<ul>
+<li>for <span class="math inline">\(P &lt; a\)</span></li>
+</ul>
+<p><span class="math display">\[\begin{align*}
+x &amp;=  \frac{L(P)}{\sqrt P} + \int_P^\infty \frac1{\sqrt p}\mathrm{d}L(p) = \frac{k_1}{\sqrt a} + \frac{k_2 - k_1}{\sqrt b} - \frac{k_2}{\sqrt c}
+\end{align*}\]</span></p>
+<p>Similarly, as for <span class="math inline">\(y\)</span> we have</p>
+<ul>
+<li>for <span class="math inline">\(P \leq a\)</span>, apparently</li>
+</ul>
+<p><span class="math display">\[
 y = 0;
-\]</span> - for <span class="math inline">\(a &lt; P \leq b\)</span> <span class="math display">\[
-y = \sqrt P L(P) - \int_0^P \sqrt p dL(p) = k_1 \left(\sqrt P - \sqrt a \right)
-\]</span> - for <span class="math inline">\(b &lt; P \leq c\)</span> <span class="math display">\[\begin{align*}
-y &amp;= \sqrt P L(P) - \int_0^P \sqrt p dL(p) = k_2 \sqrt P - k_1 \sqrt a - (k_2 - k_1)\sqrt b \\
+\]</span></p>
+<ul>
+<li>for <span class="math inline">\(a &lt; P \leq b\)</span></li>
+</ul>
+<p><span class="math display">\[
+y = \sqrt P L(P) - \int_0^P \sqrt p \mathrm{d}L(p) = k_1 \left(\sqrt P - \sqrt a \right)
+\]</span></p>
+<ul>
+<li>for <span class="math inline">\(b &lt; P \leq c\)</span></li>
+</ul>
+<p><span class="math display">\[\begin{align*}
+y &amp;= \sqrt P L(P) - \int_0^P \sqrt p \mathrm{d}L(p) = k_2 \sqrt P - k_1 \sqrt a - (k_2 - k_1)\sqrt b \\
 &amp;= k_1 \left(\sqrt b - \sqrt a\right) + k_2 \left(\sqrt P - \sqrt b\right)
-\end{align*}\]</span> - for <span class="math inline">\(P &gt; c\)</span> <span class="math display">\[\begin{align*}
+\end{align*}\]</span></p>
+<ul>
+<li>for <span class="math inline">\(P &gt; c\)</span></li>
+</ul>
+<p><span class="math display">\[\begin{align*}
 y &amp;= -k_1 \sqrt a - (k_2 - k_1)\sqrt b + k_2\sqrt c = k_1\left(\sqrt b - \sqrt a\right) + k_2\left(\sqrt c - \sqrt b\right)
 \end{align*}\]</span></p>
 <section id="create-a-python-class-for-ploting-liquidty-profile-and-reserve-curve" class="level3">
@@ -1194,83 +1217,83 @@ y &amp;= -k_1 \sqrt a - (k_2 - k_1)\sqrt b + k_2\sqrt c = k_1\left(\sqrt b - \sq
 <h2 class="anchored" data-anchor-id="what-are-the-il-and-lvr-in-this-framework">What are the IL and LVR in this framework?</h2>
 <p>Recall that the relation between the reserve in coins <span class="math inline">\(X\)</span> and the liquidity profile <span class="math inline">\(L\)</span> is given by</p>
 <p><span class="math display">\[
-x = \frac12 \int_P^\infty L(p)p^{-\frac32} dp.
+x = \frac12 \int_P^\infty L(p)p^{-\frac32} \mathrm{d}p.
 \]</span></p>
 <p>Applying Ito’s formula yields</p>
 <span class="math display">\[\begin{split}
-dx_t =&amp; d\left\{\frac12 \int_{P_t}^\infty L_t(p)p^{-\frac32} dp \right\} \\
-=&amp; \frac12 \int_{P_t}^\infty dL_t(p)p^{-\frac32} dp \\
-&amp;- \frac12 L_t(P_t){P_t}^{-\frac32} dP_t + \frac12 \left\{-\frac12 P_t L_t'(P_t)+ \frac34 L_t(P_t)\right\} P_t^{-\frac52} d\inn{P}_t  \\
-&amp;- \frac14 L_t(P_t)P_t^{-3/2}\int_{P_t}^\infty d\inn{P_t,L_t(p)} p^{-\frac32} dp
+\mathrm{d}x_t =&amp; \mathrm{d}\left\{\frac12 \int_{P_t}^\infty L_t(p)p^{-\frac32} \mathrm{d}p \right\} \\
+=&amp; \frac12 \int_{P_t}^\infty \mathrm{d}L_t(p)p^{-\frac32} \mathrm{d}p \\
+&amp;- \frac12 L_t(P_t){P_t}^{-\frac32} \mathrm{d}P_t + \frac12 \left\{-\frac12 P_t L_t'(P_t)+ \frac34 L_t(P_t)\right\} P_t^{-\frac52} \mathrm{d}\inn{P}_t  \\
+&amp;- \frac14 L_t(P_t)P_t^{-3/2}\int_{P_t}^\infty \mathrm{d}\inn{P_t,L_t(p)} p^{-\frac32} \mathrm{d}p
 \end{split}\]</span>
 <p>Likewise, for <span class="math inline">\(y_t\)</span> we have</p>
 <span class="math display">\[\begin{split}
-dy_t =&amp; d\left\{\frac12 \int_0^{P_t} L_t(p)p^{-\frac12} dp \right\} \\
-=&amp; \frac12 \int_0^{P_t} dL_t(p)p^{-\frac12} dp \\
-&amp;+ \frac12 L_t(P_t){P_t}^{-\frac12} dP_t + \frac12 \left\{\frac12 P_t L_t'(P_t) - \frac14 L_t(P_t)\right\} P_t^{-\frac32} d\inn{P}_t  \\
-&amp;+ \frac14 L_t(P_t)P_t^{-1/2}\int_0^{P_t} d\inn{P_t,L_t(p)} p^{-\frac12} dp.
+\mathrm{d}y_t =&amp; \mathrm{d}\left\{\frac12 \int_0^{P_t} L_t(p)p^{-\frac12} \mathrm{d}p \right\} \\
+=&amp; \frac12 \int_0^{P_t} \mathrm{d}L_t(p)p^{-\frac12} \mathrm{d}p \\
+&amp;+ \frac12 L_t(P_t){P_t}^{-\frac12} \mathrm{d}P_t + \frac12 \left\{\frac12 P_t L_t'(P_t) - \frac14 L_t(P_t)\right\} P_t^{-\frac32} \mathrm{d}\inn{P}_t  \\
+&amp;+ \frac14 L_t(P_t)P_t^{-1/2}\int_0^{P_t} \mathrm{d}\inn{P_t,L_t(p)} p^{-\frac12} \mathrm{d}p.
 \end{split}\]</span>
 <p>It follows that the evolution of pool value <span class="math inline">\(V_t = P_t x_t + y_t\)</span> is given by</p>
 <span class="math display">\[\begin{split}
-dV_t =&amp; d(P_t x_t + y_t) \\
-=&amp; x_t dP_t + P_t dx_t + d\inn{x, P}_t + dy_t \\
-=&amp; x_t dP_t + \frac12 P_t \int_{P_t}^\infty dL_t(p)p^{-\frac32} dp \\
-&amp;- \frac12 L_t(P_t){P_t}^{-\frac12} dP_t + \frac12 \left\{-\frac12 P_t L_t'(P_t)+ \frac34 L_t(P_t)\right\} P_t^{-\frac32} d\inn{P}_t  \\
-&amp;- \frac14 L_t(P_t)P_t^{-1/2}\int_{P_t}^\infty d\inn{P_t,L_t(p)} p^{-\frac32} dp
+\mathrm{d}V_t =&amp; \mathrm{d}(P_t x_t + y_t) \\
+=&amp; x_t \mathrm{d}P_t + P_t \mathrm{d}x_t + \mathrm{d}\inn{x, P}_t + \mathrm{d}y_t \\
+=&amp; x_t \mathrm{d}P_t + \frac12 P_t \int_{P_t}^\infty \mathrm{d}L_t(p)p^{-\frac32} \mathrm{d}p \\
+&amp;- \frac12 L_t(P_t){P_t}^{-\frac12} \mathrm{d}P_t + \frac12 \left\{-\frac12 P_t L_t'(P_t)+ \frac34 L_t(P_t)\right\} P_t^{-\frac32} \mathrm{d}\inn{P}_t  \\
+&amp;- \frac14 L_t(P_t)P_t^{-1/2}\int_{P_t}^\infty \mathrm{d}\inn{P_t,L_t(p)} p^{-\frac32} \mathrm{d}p
 \\
-&amp;+ \frac12 \int_{P_t}^\infty d\inn{P, L(p)}_tp^{-\frac32} dp - \frac12 L_t(P_t){P_t}^{-\frac32} d\inn{P}_t
+&amp;+ \frac12 \int_{P_t}^\infty \mathrm{d}\inn{P, L(p)}_tp^{-\frac32} \mathrm{d}p - \frac12 L_t(P_t){P_t}^{-\frac32} \mathrm{d}\inn{P}_t
 \\
-&amp;+ \frac12 \int_0^{P_t} dL_t(p)p^{-\frac12} dp \\
-&amp;+ \frac12 L_t(P_t){P_t}^{-\frac12} dP_t + \frac12 \left\{\frac12 P_t L_t'(P_t) - \frac14 L_t(P_t)\right\} P_t^{-\frac32} d\inn{P}_t  \\
-&amp;+ \frac14 L_t(P_t)P_t^{-1/2}\int_0^{P_t} d\inn{P_t,L_t(p)} p^{-\frac12} dp \\
-=&amp; x_t dP_t - \frac14 L_t(P_t) P_t^{-\frac32} d\inn{P}_t \\
-&amp; + \frac12 P_t \int_{P_t}^\infty dL_t(p)p^{-\frac32} dp \\
-&amp;+ \left\{\frac12 - \frac14 L_t(P_t)P_t^{-1/2} \right\}\int_{P_t}^\infty d\inn{P_t,L_t(p)} p^{-\frac32} dp
+&amp;+ \frac12 \int_0^{P_t} \mathrm{d}L_t(p)p^{-\frac12} \mathrm{d}p \\
+&amp;+ \frac12 L_t(P_t){P_t}^{-\frac12} \mathrm{d}P_t + \frac12 \left\{\frac12 P_t L_t'(P_t) - \frac14 L_t(P_t)\right\} P_t^{-\frac32} \mathrm{d}\inn{P}_t  \\
+&amp;+ \frac14 L_t(P_t)P_t^{-1/2}\int_0^{P_t} \mathrm{d}\inn{P_t,L_t(p)} p^{-\frac12} \mathrm{d}p \\
+=&amp; x_t \mathrm{d}P_t - \frac14 L_t(P_t) P_t^{-\frac32} \mathrm{d}\inn{P}_t \\
+&amp; + \frac12 P_t \int_{P_t}^\infty \mathrm{d}L_t(p)p^{-\frac32} \mathrm{d}p \\
+&amp;+ \left\{\frac12 - \frac14 L_t(P_t)P_t^{-1/2} \right\}\int_{P_t}^\infty \mathrm{d}\inn{P_t,L_t(p)} p^{-\frac32} \mathrm{d}p
 \\
-&amp;+ \frac12 \int_0^{P_t} dL_t(p)p^{-\frac12} dp \\
-&amp;+ \frac14 L_t(P_t)P_t^{-1/2}\int_0^{P_t} d\inn{P_t,L_t(p)} p^{-\frac12} dp
+&amp;+ \frac12 \int_0^{P_t} \mathrm{d}L_t(p)p^{-\frac12} \mathrm{d}p \\
+&amp;+ \frac14 L_t(P_t)P_t^{-1/2}\int_0^{P_t} \mathrm{d}\inn{P_t,L_t(p)} p^{-\frac12} \mathrm{d}p
 \end{split}\]</span>
-<p>If <span class="math inline">\(d\inn{P, L(p)}_t = 0\)</span>, the last equation simplifies a little to</p>
+<p>If <span class="math inline">\(\mathrm{d}\inn{P, L(p)}_t = 0\)</span>, the last equation simplifies a little to</p>
 <span class="math display">\[\begin{split}
-dV_t
-=&amp; x_t dP_t - \frac14 L_t(P_t) P_t^{-\frac32} d\inn{P}_t + \frac12 P_t \int_{P_t}^\infty dL_t(p)p^{-\frac32} dp + \frac12 \int_0^{P_t} dL_t(p)p^{-\frac12} dp
+\mathrm{d}V_t
+=&amp; x_t \mathrm{d}P_t - \frac14 L_t(P_t) P_t^{-\frac32} \mathrm{d}\inn{P}_t + \frac12 P_t \int_{P_t}^\infty \mathrm{d}L_t(p)p^{-\frac32} \mathrm{d}p + \frac12 \int_0^{P_t} \mathrm{d}L_t(p)p^{-\frac12} \mathrm{d}p
 \end{split}\]</span>
 </section>
 <section id="lvr-in-clp" class="level2">
 <h2 class="anchored" data-anchor-id="lvr-in-clp">LVR in CLP</h2>
 <p>Hence, the LVR in this case reads</p>
 <span class="math display">\[\begin{split}
-d{\rm LVR}_t =&amp; x_t dP_t - dV_t \\
-=&amp; \frac14 L_t(P_t) P_t^{-\frac32} d\inn{P}_t - \frac12 P_t \int_{P_t}^\infty dL_t(p)p^{-\frac32} dp - \frac12 \int_0^{P_t} dL_t(p)p^{-\frac12} dp \\
-&amp; - \left\{\frac12 - \frac14 L_t(P_t)P_t^{-1/2} \right\}\int_{P_t}^\infty d\inn{P_t,L_t(p)} p^{-\frac32} dp \\
-&amp;- \frac14 L_t(P_t)P_t^{-1/2}\int_0^{P_t} d\inn{P_t,L_t(p)} p^{-\frac12} dp
+\mathrm{d}{\rm LVR}_t =&amp; x_t \mathrm{d}P_t - \mathrm{d}V_t \\
+=&amp; \frac14 L_t(P_t) P_t^{-\frac32} \mathrm{d}\inn{P}_t - \frac12 P_t \int_{P_t}^\infty \mathrm{d}L_t(p)p^{-\frac32} \mathrm{d}p - \frac12 \int_0^{P_t} \mathrm{d}L_t(p)p^{-\frac12} \mathrm{d}p \\
+&amp; - \left\{\frac12 - \frac14 L_t(P_t)P_t^{-1/2} \right\}\int_{P_t}^\infty \mathrm{d}\inn{P_t,L_t(p)} p^{-\frac32} \mathrm{d}p \\
+&amp;- \frac14 L_t(P_t)P_t^{-1/2}\int_0^{P_t} \mathrm{d}\inn{P_t,L_t(p)} p^{-\frac12} \mathrm{d}p
 \end{split}\]</span>
 </section>
 <section id="il-in-clp" class="level2">
 <h2 class="anchored" data-anchor-id="il-in-clp">IL in CLP</h2>
 <p>Also, the impermanent loss <span class="math inline">\({\rm IL}_t\)</span> is given by</p>
 <p><span class="math display">\[
-d{\rm IL}_t = (x_0 - x_t)dP_t + d {\rm LVR}_t.
+\mathrm{d}{\rm IL}_t = (x_0 - x_t)\mathrm{d}P_t + \mathrm{d} {\rm LVR}_t.
 \]</span></p>
 <p>Note that now the LVR in this case is driven by not only the quadratic variation of pool price <span class="math inline">\(P_t\)</span> but also the evolution of liquidity profile <span class="math inline">\(L_t\)</span> as well as the covariation between <span class="math inline">\(P_t\)</span> and <span class="math inline">\(L_t\)</span>.</p>
 <p>We remark that, if the liquidity profile is static, i.e., <span class="math inline">\(dL_t = 0\)</span>, then we recover the result in <em>Quantifying Loss in Automated Market Makers</em> by Milionis et al, which in our notation reads</p>
 <p><span class="math display">\[
-d{\rm LVR}_t = \frac14 L(P_t) P_t^{-\frac32} d\inn{P}_t = -\frac12 x'(P_t) d\inn{P}_t \geq 0.
+\mathrm{d}{\rm LVR}_t = \frac14 L(P_t) P_t^{-\frac32} \mathrm{d}\inn{P}_t = -\frac12 x'(P_t) \mathrm{d}\inn{P}_t \geq 0.
 \]</span></p>
 </section>
 <section id="time-dependent-liquidity-profile" class="level2">
 <h2 class="anchored" data-anchor-id="time-dependent-liquidity-profile">Time dependent liquidity profile</h2>
 <p>If the liquidity profile <span class="math inline">\(L\)</span> depends on time, it follows that</p>
 <p><span class="math display">\[\begin{align}
-&amp; x_t(P) = \frac12 \int_P^\infty L_t(p)p^{-\frac32} dp \\
-&amp; y_t(P) = \frac12 \int_0^P L_t(p)p^{-\frac12} dp \\
+&amp; x_t(P) = \frac12 \int_P^\infty L_t(p)p^{-\frac32} \mathrm{d}p \\
+&amp; y_t(P) = \frac12 \int_0^P L_t(p)p^{-\frac12} \mathrm{d}p \\
 &amp; m_t(P):= \frac{\p y_t}{\p x_t} = -P.
 \end{align}\]</span></p>
 <p>Thus,</p>
 <p><span class="math display">\[\begin{align*}
-&amp; dx_t(P) = \frac12 \int_P^\infty dL_t(p)p^{-\frac32} dp \\
-&amp; dy_t(P) = \frac12 \int_0^P dL_t(p)p^{-\frac12} dp \\
-&amp; dm_t(P) = d\left(\frac{\p y_t}{\p x_t}\right) = d\left(-P\right) = 0.
+&amp; \mathrm{d}x_t(P) = \frac12 \int_P^\infty \mathrm{d}L_t(p)p^{-\frac32} \mathrm{d}p \\
+&amp; \mathrm{d}y_t(P) = \frac12 \int_0^P \mathrm{d}L_t(p)p^{-\frac12} \mathrm{d}p \\
+&amp; \mathrm{d}m_t(P) = \mathrm{d}\left(\frac{\p y_t}{\p x_t}\right) = \mathrm{d}\left(-P\right) = 0.
 \end{align*}\]</span></p>
 <p>The set of equations above convert the evolution of liquidity profile to the evolution of reserve curve.</p>
 <section id="note-10" class="level4">
@@ -1278,47 +1301,47 @@ d{\rm LVR}_t = \frac14 L(P_t) P_t^{-\frac32} d\inn{P}_t = -\frac12 x'(P_t) d\inn
 <ul>
 <li>The infinitesimal rate of exchange <span class="math inline">\(-\frac{\p y_t}{\p x_t}\)</span> does not depend on time.</li>
 <li>One may model the evolution of <span class="math inline">\(L_t\)</span> by Gaussian process or SPDE. For example, <span class="math display">\[
-dL_t = \mathcal{A}_t L_t dt + \sigma L_t dW_t
+\mathrm{d}L_t = \mathcal{A}_t L_t \mathrm{d}t + \sigma L_t \mathrm{d}W_t
 \]</span> where <span class="math inline">\(\mathcal{A}_t\)</span> is a second order parabolic/elliptic differential operator, like a stochastic heat equation.</li>
 </ul>
 </section>
 </section>
 <section id="trader-trades-at-rate-u_t" class="level2">
 <h2 class="anchored" data-anchor-id="trader-trades-at-rate-u_t">Trader trades at rate <span class="math inline">\(u_t\)</span></h2>
-<p>When trader trades, he must trade along the reserve curve. Assume the liquidity profile <span class="math inline">\(L\)</span> remain unchanged, the trader trades at rate <span class="math inline">\(u_t\)</span>, i.e., <span class="math inline">\(dx_t = u_tdt\)</span>.</p>
+<p>When trader trades, he must trade along the reserve curve. Assume the liquidity profile <span class="math inline">\(L\)</span> remain unchanged, the trader trades at rate <span class="math inline">\(u_t\)</span>, i.e., <span class="math inline">\(\mathrm{d}x_t = u_t\mathrm{d}t\)</span>.</p>
 <p>Recall that</p>
 <p><span class="math display">\[
-x = \frac12 \int_P^\infty L(p)p^{-\frac32} dp
+x = \frac12 \int_P^\infty L(p)p^{-\frac32} \mathrm{d}p
 \]</span></p>
 <p>it follows that</p>
 <p><span class="math display">\[
-x_t = \frac12 \int_{P_t}^\infty L(p)p^{-\frac32} dp.
+x_t = \frac12 \int_{P_t}^\infty L(p)p^{-\frac32} \mathrm{d}p.
 \]</span></p>
-<p>Thus, if trader trades at the rate <span class="math inline">\(u_t\)</span>, i.e., <span class="math inline">\(dx_t = u_t dt\)</span>, then by differentiate the equation above with respect to <span class="math inline">\(t\)</span> on both sides we obtain</p>
+<p>Thus, if trader trades at the rate <span class="math inline">\(u_t\)</span>, i.e., <span class="math inline">\(\mathrm{d}x_t = u_t \mathrm{d}t\)</span>, then by differentiate the equation above with respect to <span class="math inline">\(t\)</span> on both sides we obtain</p>
 <p><span class="math display">\[
-u_t dt = dx_t = -\frac12 L(P_t)P_t^{-\frac32} dP_t
+u_t \mathrm{d}t = \mathrm{d}x_t = -\frac12 L(P_t)P_t^{-\frac32} \mathrm{d}P_t
 \]</span></p>
 <p>Thus, if trader trades at the rate <span class="math inline">\(u_t\)</span>, then the evolution of <span class="math inline">\(P_t\)</span> is given by the ODE</p>
 <p><span class="math display">\[
--\frac12 L(P_t)P_t^{-\frac32} dP_t = u_t dt
+-\frac12 L(P_t)P_t^{-\frac32} \mathrm{d}P_t = u_t \mathrm{d}t
 \]</span></p>
 <p>or equivalently,</p>
 <p><span class="math display">\[
-dP_t = \frac{-2 P_t^{\frac32}}{L(P_t)} u_t dt
+\mathrm{d}P_t = \frac{-2 P_t^{\frac32}}{L(P_t)} u_t \mathrm{d}t
 \]</span></p>
 <p>Likewise, for <span class="math inline">\(y_t\)</span> we have</p>
 <p><span class="math display">\[
-y_t = \frac12 \int_0^{P_t} L(p)p^{-\frac12} dp.
+y_t = \frac12 \int_0^{P_t} L(p)p^{-\frac12} \mathrm{d}p.
 \]</span></p>
 <p>By differentiate the equation above with respect to <span class="math inline">\(t\)</span> on both sides we obtain</p>
 <p><span class="math display">\[
-dy_t = \frac12 L(P_t)P_t^{-\frac12} dP_t = -P_t \left\{-\frac12 L(P_t)P_t^{-\frac32} dP_t \right\} = -P_t u_t dt
+\mathrm{d}y_t = \frac12 L(P_t)P_t^{-\frac12} \mathrm{d}P_t = -P_t \left\{-\frac12 L(P_t)P_t^{-\frac32} \mathrm{d}P_t \right\} = -P_t u_t \mathrm{d}t
 \]</span></p>
-<p>In summary, assume the liquidity profile stays steady, if the trader trades at rate <span class="math inline">\(u_t\)</span>, i.e., <span class="math inline">\(dx_t = u_t dt\)</span>, the evolutions of the pool and the infinitesimal rate of exchange are governed by</p>
+<p>In summary, assume the liquidity profile stays steady, if the trader trades at rate <span class="math inline">\(u_t\)</span>, i.e., <span class="math inline">\(\mathrm{d}x_t = u_t \mathrm{d}t\)</span>, the evolutions of the pool and the infinitesimal rate of exchange are governed by</p>
 <p><span class="math display">\[\begin{align*}
-&amp; dx_t = u_t dt \\
-&amp; dy_t = -P_t u_t dt \\
-&amp; dP_t = \frac{-2 P_t^{\frac32}}{L(P_t)} u_t dt
+&amp; \mathrm{d}x_t = u_t \mathrm{d}t \\
+&amp; \mathrm{d}y_t = -P_t u_t \mathrm{d}t \\
+&amp; \mathrm{d}P_t = \frac{-2 P_t^{\frac32}}{L(P_t)} u_t \mathrm{d}t
 \end{align*}\]</span></p>
 </section>
 <section id="putting-things-together" class="level2">
@@ -1327,9 +1350,9 @@ dy_t = \frac12 L(P_t)P_t^{-\frac12} dP_t = -P_t \left\{-\frac12 L(P_t)P_t^{-\fra
 <h3 class="anchored" data-anchor-id="market-mechanism---without-transaction-cost">Market mechanism - without transaction cost</h3>
 <p>If the trader is trading at rate <span class="math inline">\(u_t\)</span> in time dependent liquidty profile <span class="math inline">\(L_t(\cdot)\)</span>, the evolutions of the pool and the infinitesimal rate of exchange are given by</p>
 <p><span class="math display">\[\begin{align*}
-dx_t &amp;= \frac12 \int_{P_t}^\infty dL_t(p)p^{-\frac32} dp + u_t dt \\
-dy_t &amp;= \frac12 \int_0^{P_t} dL_t(p)p^{-\frac12} dp - P_t u_t dt \\
-dP_t &amp;= \frac{-2 P_t^{\frac32}}{L_t(P_t)} u_t dt
+\mathrm{d}x_t &amp;= \frac12 \int_{P_t}^\infty \mathrm{d}L_t(p)p^{-\frac32} \mathrm{d}p + u_t \mathrm{d}t \\
+\mathrm{d}y_t &amp;= \frac12 \int_0^{P_t} \mathrm{d}L_t(p)p^{-\frac12} \mathrm{d}p - P_t u_t \mathrm{d}t \\
+\mathrm{d}P_t &amp;= \frac{-2 P_t^{\frac32}}{L_t(P_t)} u_t \mathrm{d}t
 \end{align*}\]</span></p>
 </section>
 </section>
@@ -1350,32 +1373,23 @@ dP_t &amp;= \frac{-2 P_t^{\frac32}}{L_t(P_t)} u_t dt
 <section id="market-mechanism---with-transaction-cost" class="level3">
 <h3 class="anchored" data-anchor-id="market-mechanism---with-transaction-cost">Market mechanism - with transaction cost</h3>
 <ul>
-<li><p>When a trader acquires a risky asset from the pool, the pool price escalates by <span class="math inline">\(\Delta P\)</span>. Subsequently, the liquidity profile undergoes the following changes: <span class="math display">\[\begin{align*}
-\Delta x &amp;= -\frac12 \int_{P}^{P+\Delta P} \ell(p)p^{-\frac32} dp\\
-\Delta y &amp;= \frac12 \int_P^{P+\Delta P} \ell(p)p^{-\frac12} dp\\
+<li>When a trader acquires a risky asset from the pool, the pool price escalates by <span class="math inline">\(\Delta P\)</span>. Subsequently, the liquidity profile undergoes the following changes:</li>
+</ul>
+<p><span class="math display">\[\begin{align*}
+\Delta x &amp;= -\frac12 \int_{P}^{P+\Delta P} \ell(p)p^{-\frac32} \mathrm{d}p\\
+\Delta y &amp;= \frac12 \int_P^{P+\Delta P} \ell(p)p^{-\frac12} \mathrm{d}p\\
 \Delta F^x &amp;= 0 \\
 \Delta F^y &amp;= \frac{1-\gamma}{\gamma} \Delta y
-\end{align*}\]</span></p></li>
-<li><p>Conversely, when a trader offloads the risky asset to the pool, the pool price diminishes by <span class="math inline">\(\Delta P\)</span>, leading to the following updates in the liquidity profile: <span class="math display">\[\begin{align*}
-\Delta x &amp;= -\frac12 \int_{P}^{P+\Delta P} \ell(p)p^{-\frac32} dp\\
-\Delta y &amp;= \frac12 \int_P^{P+\Delta P} \ell(p)p^{-\frac12} dp\\
+\end{align*}\]</span></p>
+<ul>
+<li>Conversely, when a trader offloads the risky asset to the pool, the pool price diminishes by <span class="math inline">\(\Delta P\)</span>, leading to the following updates in the liquidity profile:</li>
+</ul>
+<p><span class="math display">\[\begin{align*}
+\Delta x &amp;= -\frac12 \int_{P}^{P+\Delta P} \ell(p)p^{-\frac32} \mathrm{d}p\\
+\Delta y &amp;= \frac12 \int_P^{P+\Delta P} \ell(p)p^{-\frac12} \mathrm{d}p\\
 \Delta F^x &amp;= \frac{1-\gamma}{\gamma} \Delta x \\
 \Delta F^y &amp;= 0
-\end{align*}\]</span></p></li>
-</ul>
-</section>
-</section>
-<section id="a-look-at-the-market-data" class="level2">
-<h2 class="anchored" data-anchor-id="a-look-at-the-market-data">A look at the market data</h2>
-<section id="empirical-liquidity-profile-i" class="level3">
-<h3 class="anchored" data-anchor-id="empirical-liquidity-profile-i">Empirical liquidity profile I</h3>
-<h3 class="anchored">
-<img src="LiquidityProfile3D.png" align="center" width="500">
-</h3>
-</section>
-<section id="empirical-liquidity-profile-ii" class="level3">
-<h3 class="anchored" data-anchor-id="empirical-liquidity-profile-ii">Empirical liquidity profile II</h3>
-<p><img src="LPs.png" align="center" width="600"></p>
+\end{align*}\]</span></p>
 </section>
 </section>
 <section id="summary" class="level2">
