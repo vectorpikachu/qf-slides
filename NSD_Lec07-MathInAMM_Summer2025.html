@@ -205,9 +205,7 @@ window.Quarto = {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#topics-in-quantitative-finance-summer-2025" id="toc-topics-in-quantitative-finance-summer-2025" class="nav-link active" data-scroll-target="#topics-in-quantitative-finance-summer-2025">Topics in Quantitative Finance, Summer 2025</a>
-  <ul class="collapse">
-  <li><a href="#lecture-7-mathematics-behind-amm-in-defi" id="toc-lecture-7-mathematics-behind-amm-in-defi" class="nav-link" data-scroll-target="#lecture-7-mathematics-behind-amm-in-defi">Lecture 7: Mathematics behind AMM in DeFi</a></li>
+  <li><a href="#lecture-7-mathematics-behind-amm-in-defi" id="toc-lecture-7-mathematics-behind-amm-in-defi" class="nav-link active" data-scroll-target="#lecture-7-mathematics-behind-amm-in-defi">Lecture 7: Mathematics behind AMM in DeFi</a></li>
   <li><a href="#outline-of-lecture-7" id="toc-outline-of-lecture-7" class="nav-link" data-scroll-target="#outline-of-lecture-7">Outline of Lecture 7</a></li>
   <li><a href="#automated-market-making" id="toc-automated-market-making" class="nav-link" data-scroll-target="#automated-market-making">Automated Market Making</a></li>
   <li><a href="#amm-vs-clob" id="toc-amm-vs-clob" class="nav-link" data-scroll-target="#amm-vs-clob">AMM vs CLOB</a></li>
@@ -266,7 +264,7 @@ window.Quarto = {
   </ul></li>
   <li><a href="#summary" id="toc-summary" class="nav-link" data-scroll-target="#summary">Summary</a></li>
   <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references">References</a></li>
-  </ul></li>
+  <li><a href="#a-simple-note" id="toc-a-simple-note" class="nav-link" data-scroll-target="#a-simple-note">A Simple Note</a></li>
   </ul>
 </nav>
     </div>
@@ -292,8 +290,6 @@ window.Quarto = {
 </header>
 
 
-<section id="topics-in-quantitative-finance-summer-2025" class="level1">
-<h1>Topics in Quantitative Finance, Summer 2025</h1>
 <section id="lecture-7-mathematics-behind-amm-in-defi" class="level2">
 <h2 class="anchored" data-anchor-id="lecture-7-mathematics-behind-amm-in-defi">Lecture 7: Mathematics behind AMM in DeFi</h2>
 <p><br> <br></p>
@@ -438,6 +434,78 @@ window.Quarto = {
 <li>Pays fee to the pool/LP for each transaction.</li>
 </ul></li>
 </ul>
+<p>注:</p>
+<p>AMM 特别适合处理 长尾资产 (long-tail assets), 因为这些资产在 CLOB 中通常没有足够的市场参与者挂单. 但在 AMM 中, 只要有人提供了一点点流动性, 别人就能交易.</p>
+<p>AMM 的工作机制:</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 40%">
+<col style="width: 46%">
+<col style="width: 12%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>角色</th>
+<th>行为</th>
+<th>收益</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Liquidity Provider (LP)</strong></td>
+<td>向资金池中提供一对加密资产 (如 ETH 和 USDC)</td>
+<td>赚取交易费用</td>
+</tr>
+<tr class="even">
+<td><strong>Swapper</strong></td>
+<td>向池中提供一种币并获取另一种币 (例如用 USDC 换 ETH)</td>
+<td>支付费用给 LP</td>
+</tr>
+</tbody>
+</table>
+<p>交易流程:</p>
+<ul>
+<li>LP 把一对币 (比如 ETH 和 USDC) 按一定比例加入资金池</li>
+<li>Swapper 用某种币进行交换, 自动通过一个 <strong>公式 (bonding curve)</strong> 计算价格</li>
+<li>池子的资产比例改变, 价格随之自动更新</li>
+<li>每次交易收取的手续费归 LP 所有, 激励他们继续提供流动性</li>
+</ul>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 24%">
+<col style="width: 40%">
+<col style="width: 35%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>维度</th>
+<th>AMM</th>
+<th>CLOB</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>机制</strong></td>
+<td>算法定价, 基于池中资产比例</td>
+<td>人工挂单, 撮合买卖双方</td>
+</tr>
+<tr class="even">
+<td><strong>效率</strong></td>
+<td>高效、可用性强 (24/7、无需撮合)</td>
+<td>需要实时撮合、依赖交易撮合引擎</td>
+</tr>
+<tr class="odd">
+<td><strong>链上表现</strong></td>
+<td>适合区块链, 计算开销小</td>
+<td>不适合链上, 数据结构复杂、成本高</td>
+</tr>
+<tr class="even">
+<td><strong>适合的资产类型</strong></td>
+<td>即使是冷门币也可以提供交易</td>
+<td>冷门币缺乏挂单流动性, 交易困难</td>
+</tr>
+</tbody>
+</table>
 <br> <br>
 <center>
 <font color="blue" size="5">Constant Function Market Making</font>
@@ -490,11 +558,11 @@ f(x,y) := \sqrt{xy} = L
 <p><span class="math display">\[
 xy = L^2 \quad \leftrightsquigarrow \quad \frac xL \cdot \frac yL = 1
 \]</span></p>
-<div id="cell-13" class="cell" data-execution_count="1">
+<div id="cell-14" class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="cell-14" class="cell" data-execution_count="2">
+<div id="cell-15" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>w, ell <span class="op">=</span> <span class="fl">0.5</span>, <span class="fl">0.3</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>dx <span class="op">=</span> dy <span class="op">=</span> <span class="fl">0.01</span></span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> np.arange(<span class="fl">0.2</span>, <span class="fl">0.89</span>, dx)</span>
@@ -529,7 +597,7 @@ f(x,y) := x^\alpha y^{1-\alpha} = L
 <p><span class="math display">\[
 x^\alpha y^{1 - \alpha} = L \quad \leftrightsquigarrow \quad \left(\frac xL\right)^\alpha \cdot \left(\frac yL\right)^{1-\alpha} = 1
 \]</span></p>
-<p>Apparently, CPMM corresponds to the case <span class="math inline">\(\alpha = \frac12\)</span>.</p>
+<p>Apparently, CPMM corresponds to the case <span class="math inline">\(\displaystyle \alpha = \frac12\)</span>.</p>
 </section>
 <section id="constant-product-market-making" class="level2">
 <h2 class="anchored" data-anchor-id="constant-product-market-making">Constant product market making</h2>
@@ -550,6 +618,22 @@ x^\alpha y^{1 - \alpha} = L \quad \leftrightsquigarrow \quad \left(\frac xL\righ
 <li>Supports multiple assets per pool</li>
 </ul></li>
 </ul>
+<p>注: 这是 <strong>常数乘积做市 (Constant Product Market Making, CPMM)</strong> 的代表性 AMM 协议:</p>
+<ul>
+<li>Uniswap v2: 使用公式为
+<ul>
+<li><span class="math inline">\(f(x,y) = \sqrt{xy} = L\)</span></li>
+<li>适合基本的代币交换, 如 ETH, WBTC, 稳定币等</li>
+<li>简单易用, 适合初学者</li>
+</ul></li>
+<li>Balancer:
+<ul>
+<li><span class="math inline">\(f(x,y) = x^\alpha y^{1-\alpha} = L\)</span></li>
+<li>适合更灵活的流动性池和交易不太常见的资产</li>
+<li>支持自定义池权重 (不只是 50/50)</li>
+<li>支持多个资产在同一池中</li>
+</ul></li>
+</ul>
 </section>
 </section>
 <section id="example-curve" class="level2">
@@ -568,15 +652,21 @@ P := -\frac{\mathrm{d}y}{\mathrm{d}x} = \frac{f_x}{f_y}.
 <p>The marginal exchange rate <span class="math inline">\(P\)</span> represents the price, or the amount of numeraire <span class="math inline">\(\mathrm{d}y\)</span> that the trader/swapper pays to the pool in exchange of retrieving <span class="math inline">\(-\mathrm{d}x\)</span> shares from the pool, when the reserve is <span class="math inline">\((x,y)\)</span>.</p>
 <p>The trading/exchange must be done along the bonding curve <span class="math inline">\(f(x,y) = L\)</span>.</p>
 <p>In general, <span class="math inline">\(P = P(x,y)\)</span>.</p>
+<p>注: <span class="math inline">\(x\)</span> 是风险资产的数量, <span class="math inline">\(y\)</span> 是计价资产的数量.</p>
+<blockquote class="blockquote">
+<p>当你从池子中拿出一小单位的某种币 (如 ETH) 时, 必须向池子支付多少单位的另一种币 (如 USDC) 来换取它.</p>
+</blockquote>
 </section>
 <section id="total-traded-price-by-line-integral" class="level2">
 <h2 class="anchored" data-anchor-id="total-traded-price-by-line-integral">Total traded price by line integral</h2>
 <p>Assume the current reserve is <span class="math inline">\((x_0, y_0)\)</span>, a swapper would like to purchase <span class="math inline">\(\Delta_x\)</span> shares from the pool. We would like to determine how much of the numeraire should the swapper pay to the pool in exchange of the risk asset.</p>
+<p>注: Swapper 为了从池子中购买 <span class="math inline">\(\Delta_x\)</span> 单位的风险资产, 需要支付多少单位的计价资产. 这里设为 <span class="math inline">\(\Delta_y\)</span>.</p>
 <p>This can be done by evaluating a line integral along the bonding curve. Let <span class="math inline">\(\gamma\)</span> be the path connecting <span class="math inline">\((x_0, y_0)\)</span> to <span class="math inline">\((x_0 + \Delta_x, y_0 + \Delta_y)\)</span>, where the amount <span class="math inline">\(\Delta_y\)</span> is to be determined, along the bonding curve <span class="math inline">\(f(x,y) = L\)</span>. We have</p>
 <p><span class="math display">\[
 \Delta_y = \int_{\gamma} \mathrm{d} y = \int_0^1 \dot y_t \mathrm{d}t,
 \]</span></p>
 <p>where we parametrize the curve as <span class="math inline">\(\gamma_t = (x_t, y_t)\)</span> with <span class="math inline">\(f(x_t, y_t) = L\)</span> for all <span class="math inline">\(t\)</span>. Thus, the averaged traded price is</p>
+<p>注: <span class="math inline">\(\displaystyle \Delta_y = \int_{\gamma} \mathrm{d} y\)</span> 的直观解释是: 从起点走到终点, 在 <span class="math inline">\(y\)</span> 方向上走了多少距离 (也就是你总共支付了多少计价资产).</p>
 <p><span class="math display">\[
 \frac{\Delta_y}{\Delta_x} = \frac1{\Delta_x} \int_0^1 \dot y_t \mathrm{d}t.
 \]</span></p>
@@ -592,7 +682,7 @@ P := -\frac{\mathrm{d}y}{\mathrm{d}x} = \frac{f_x}{f_y}.
 </blockquote>
 <p>For some scalar field <span class="math inline">\({\displaystyle f\colon U\to \mathbb {R} }\)</span> where <span class="math inline">\({\displaystyle U\subseteq \mathbb {R} ^{n}}\)</span>, the line integral along a piecewise smooth curve <span class="math inline">\({\displaystyle {\mathcal {C}}\subset U}\)</span> is defined as</p>
 <p><span class="math display">\[
-{\displaystyle \int _{\mathcal {C}}f\,ds=\int _{a}^{b}f\left(\mathbf {r} (t)\right)\left|\mathbf {r} '(t)\right|\,dt,}
+{\displaystyle \int _{\mathcal {C}}f\,\mathrm{d}s=\int _{a}^{b}f\left(\mathbf {r} (t)\right)\left|\mathbf {r} '(t)\right|\,\mathrm{d}t,}
 \]</span></p>
 <p>where <span class="math inline">\({\displaystyle \mathbf {r} \colon [a,b]\to {\mathcal {C}}}\)</span> is an arbitrary bijective parametrization of the curve <span class="math inline">\({\displaystyle {\mathcal {C}}}\)</span> such that <span class="math inline">\(\mathbf {r}(a)\)</span> and <span class="math inline">\(\mathbf {r}(b)\)</span> give the endpoints of <span class="math inline">\({\displaystyle {\mathcal {C}}}\)</span> and <span class="math inline">\(a &lt; b\)</span>. Here, and in the rest of the article, the absolute value bars denote the standard (Euclidean) norm of a vector.</p>
 <div style="text-align: center;">
@@ -709,13 +799,18 @@ P = \frac{f_x(\varphi(y, L),y)}{f_y(\varphi(y, L), y)},
 <section id="impermanent-loss-il-aka-divergence-loss" class="level2">
 <h2 class="anchored" data-anchor-id="impermanent-loss-il-aka-divergence-loss">Impermanent loss (IL) aka Divergence Loss</h2>
 <ul>
-<li><p>Liquidity provision faces the so called <em>Impermanent Loss</em>, also known as the <em>Divergence loss</em> or the <em>Loss-versus-Holding</em> risk.</p></li>
-<li><p>The key point is that in average the LP will be better off holding the coins static than providing them as liquidity to the pool, should there be no transaction fee paid to the LP.</p></li>
-<li><p>To wit, we provide a slightly different but equivalent argument as in <em><a href="https://dl.acm.org/doi/pdf/10.1145/3560832.3563441">Quantifying Loss in Automated Market Makers</a></em> by Milionis, Moallemi, Roughgarden, and Zhang.</p></li>
-<li><p>Assume zero interest.</p></li>
-<li><p><span class="math inline">\(P_0\)</span>: pool price at time <span class="math inline">\(0\)</span></p></li>
-<li><p>An LP possesses <span class="math inline">\(x_0 = x(P_0)\)</span> of <span class="math inline">\(X\)</span> coins and <span class="math inline">\(y_0 = y(P_0)\)</span> of <span class="math inline">\(Y\)</span> coins</p></li>
-<li><p>He is considering whether depositing the coins as liquidity to a CFMM pool is profitable.</p></li>
+<li>Liquidity provision faces the so called <em>Impermanent Loss</em>, also known as the <em>Divergence loss</em> or the <em>Loss-versus-Holding</em> risk.</li>
+<li>The key point is that in average the LP will be better off holding the coins static than providing them as liquidity to the pool, should there be no transaction fee paid to the LP.</li>
+<li>To wit, we provide a slightly different but equivalent argument as in <em><a href="https://dl.acm.org/doi/pdf/10.1145/3560832.3563441">Quantifying Loss in Automated Market Makers</a></em> by Milionis, Moallemi, Roughgarden, and Zhang.</li>
+</ul>
+<blockquote class="blockquote">
+<p>如果你不收手续费, 只是把代币投入池子做市, 那么你最终的资产价值平均而言是更低的, 还不如啥也不做, 静静持有代币. 当然现实中 AMM 是有交易手续费的, 而这些手续费就是 LP 收益的来源, 也是抵御无常损失的手段.</p>
+</blockquote>
+<ul>
+<li>Assume zero interest.</li>
+<li><span class="math inline">\(P_0\)</span>: pool price at time <span class="math inline">\(0\)</span></li>
+<li>An LP possesses <span class="math inline">\(x_0 = x(P_0)\)</span> of <span class="math inline">\(X\)</span> coins and <span class="math inline">\(y_0 = y(P_0)\)</span> of <span class="math inline">\(Y\)</span> coins</li>
+<li>He is considering whether depositing the coins as liquidity to a CFMM pool is profitable.</li>
 </ul>
 <p>Should he hold the position and stay put without trading, the value of his position at time <span class="math inline">\(t\)</span>, denoted by <span class="math inline">\(H_t\)</span>, satisfies</p>
 <p><span class="math display">\[
@@ -784,6 +879,16 @@ V''(P) = x'(P) = -\frac12 \frac{\ell(P)}{P^{3/2}} \leq 0,
 {\rm IL}_t = \int_0^t \left\{x(P_0) - x(P_s)\right\} \mathrm{d}P_s + {\rm LVR}_t.
 \]</span></p>
 <p>Thus, the impermanent loss consists of a martingale component, which can be “delta-hedged” by dynamically holding <span class="math inline">\(x(P_0) - x(P_t)\)</span> shares of the risk asset (the <span class="math inline">\(X\)</span> coin), and a positive drift named loss-versus-rebalance.</p>
+<p>🧠: 分解无常损失 IL 的来源</p>
+<ul>
+<li><span class="math inline">\(R_t\)</span>: 自融资策略, 持有 <span class="math inline">\(x(P_t)\)</span> 风险资产</li>
+<li><span class="math inline">\(H_t\)</span>: 静态持有的资产价值</li>
+<li><span class="math inline">\(V_t\)</span>: 提供流动性后的资产价值</li>
+</ul>
+<blockquote class="blockquote">
+<p>Impermanent Loss = 可对冲的价格波动损失 (martingale) + 无法避免的 rebalance 损耗 (LVR).</p>
+<p>其中 LVR 来源于 AMM 沿着 bonding curve 自动换币导致的非对称损失, 价格波动越大, LVR 越大.</p>
+</blockquote>
 </section>
 <section id="example-il-and-lvr-in-cpmm" class="level2">
 <h2 class="anchored" data-anchor-id="example-il-and-lvr-in-cpmm">Example: IL and LVR in CPMM</h2>
@@ -843,6 +948,18 @@ V(P) = P x + y = 2 L \sqrt P.
 <li>Increases capital efficiency and potential higher earnings for LPs.</li>
 </ul></li>
 </ul>
+<p>注:</p>
+<p>CLP 的核心思想是:</p>
+<blockquote class="blockquote">
+<p>流动性提供者只在指定价格区间 (如 <span class="math inline">\([p_l, p_r]\)</span>) 内提供流动性.</p>
+</blockquote>
+<p>这意味着:</p>
+<ul>
+<li>如果当前交易价格不在这个区间, LP 的资金就不会被动用;</li>
+<li>一旦市场价格进入 LP 设置的价格区间, LP 才会开始“参与做市”并赚取手续费;</li>
+<li>类似于限价挂单 (limit order);</li>
+<li>由 LP 主动决定在哪个价格区间承担风险、赚手续费.</li>
+</ul>
 </section>
 <section id="comparison-with-traditional-limit-order-books" class="level2">
 <h2 class="anchored" data-anchor-id="comparison-with-traditional-limit-order-books">Comparison with Traditional Limit Order Books</h2>
@@ -852,7 +969,10 @@ V(P) = P x + y = 2 L \sqrt P.
 <li><p>A key distinction lies in how the price is specified. Uniswap v3 LPs define a price range, offering liquidity across a continuum of prices, whereas LOBs rely on specific, discrete price points for each order.</p></li>
 <li><p>Liquidity provision also differs fundamentally. In Uniswap v3, liquidity within a defined range is continuous and formula-driven, meaning it’s available at any price within the range according to the bonding curve. In contrast, LOB liquidity is offered in discrete quantities at specific price levels.</p></li>
 <li><p>Operational Mechanisms and Trade Execution: Uniswap v3 and LOBs differ in their operational mechanisms and trade execution processes. Uniswap v3 operates as an AMM, using a constant product formula (adjusted for the price range) to facilitate swaps, which occur at any price within the LP’s range until the provided liquidity is utilized. Conversely, LOBs function by matching buy and sell orders, executed through a greedy matching process at the specified price or better.</p></li>
-<li><p>Behavior with Market Price Movements: When the market price moves, the behaviour of positions also differs significantly. If the market price moves out of a Uniswap v3 LP’s defined range, the position becomes inactive, holding a specific asset composition until the price returns. This necessitates active position withdrawal by the LP to avoid a “reversal” of their intended trade. In LOBs, limit orders remain in the book until filled or actively cancelled by the user, regardless of market price fluctuations.</p></li>
+<li><p>Behavior with Market Price Movements: When the market price moves, the behavior of positions also differs significantly. If the market price moves out of a Uniswap v3 LP’s defined range, the position becomes inactive, holding a specific asset composition until the price returns. This necessitates active position withdrawal by the LP to avoid a “reversal” of their intended trade. In LOBs, limit orders remain in the book until filled or actively cancelled by the user, regardless of market price fluctuations.</p></li>
+<li><p>CFMM (如 Uniswap v2) 是基于公式 (如 <span class="math inline">\(xy = k\)</span>) 的自动做市;</p></li>
+<li><p>LOB 是传统的中心化撮合系统, 每笔订单都是“买入/卖出 某个数量 at 某个价格”;</p></li>
+<li><p>Uniswap v3 引入的“集中流动性”允许 LP 指定价格区间, 模拟出在某个价位附近挂单的效果 → 这就桥接了 CFMM 和 LOB 的表达能力差距.</p></li>
 </ul>
 </section>
 <section id="clp-and-contribution-to-pool-reserve" class="level2">
@@ -894,7 +1014,7 @@ y(p) &amp;= L \left(\sqrt p - \sqrt p_l \right)^+ - L \left(\sqrt p - \sqrt p_r 
 <li>In CPMM, the bonding curve never touches the <span class="math inline">\(x\)</span>-axis nor the <span class="math inline">\(y\)</span>-axis.</li>
 <li>In CLP, if there is only a sole LP who provides liquidity <span class="math inline">\(L\)</span> in the price range <span class="math inline">\([p_l, p_r]\)</span>, the bonding curve intersects the <span class="math inline">\(x\)</span>-axis at <span class="math inline">\(x^* = L \left(\frac1{\sqrt p_l} - \frac1{\sqrt p_r}\right)\)</span> and the <span class="math inline">\(y\)</span>-axis at <span class="math inline">\(y^*=L\left({\sqrt p_r} - {\sqrt p_l}\right)\)</span>. Beyond those two points, no swaps are possible.</li>
 </ul>
-<div id="cell-45" class="cell" data-execution_count="3">
+<div id="cell-49" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>L, pl, pr <span class="op">=</span> <span class="dv">100</span>, <span class="dv">1</span>, <span class="dv">10</span></span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>xx <span class="op">=</span> <span class="kw">lambda</span> p: L<span class="op">*</span>(<span class="dv">1</span><span class="op">/</span>np.sqrt(p) <span class="op">-</span> <span class="dv">1</span><span class="op">/</span>np.sqrt(pr))</span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>yy <span class="op">=</span> <span class="kw">lambda</span> p: L<span class="op">*</span>(np.sqrt(p) <span class="op">-</span> np.sqrt(pl))</span>
@@ -1093,7 +1213,7 @@ y &amp;= -k_1 \sqrt a - (k_2 - k_1)\sqrt b + k_2\sqrt c = k_1\left(\sqrt b - \sq
 \end{align*}\]</span></p>
 <section id="create-a-python-class-for-ploting-liquidty-profile-and-reserve-curve" class="level3">
 <h3 class="anchored" data-anchor-id="create-a-python-class-for-ploting-liquidty-profile-and-reserve-curve">Create a <code>python</code> <code>class</code> for ploting liquidty profile and reserve curve</h3>
-<div id="cell-57" class="cell" data-execution_count="4">
+<div id="cell-61" class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> scipy.stats <span class="im">as</span> ss</span>
@@ -1149,7 +1269,7 @@ y &amp;= -k_1 \sqrt a - (k_2 - k_1)\sqrt b + k_2\sqrt c = k_1\left(\sqrt b - \sq
 </section>
 <section id="constant-liquidity-profile---cpmm-uniswap-v2" class="level3">
 <h3 class="anchored" data-anchor-id="constant-liquidity-profile---cpmm-uniswap-v2">Constant liquidity profile - CPMM, Uniswap v2</h3>
-<div id="cell-59" class="cell" data-execution_count="5">
+<div id="cell-63" class="cell" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># constant liquidity profile</span></span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>L <span class="op">=</span> <span class="kw">lambda</span> p: <span class="dv">100</span><span class="op">*</span>(p <span class="op">&gt;</span> <span class="dv">0</span>)</span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -1162,7 +1282,7 @@ y &amp;= -k_1 \sqrt a - (k_2 - k_1)\sqrt b + k_2\sqrt c = k_1\left(\sqrt b - \sq
 </div>
 </div>
 </div>
-<div id="cell-60" class="cell" data-execution_count="6">
+<div id="cell-64" class="cell" data-execution_count="6">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>start, end <span class="op">=</span> <span class="dv">50</span>, <span class="dv">10000</span></span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>plt.plot(ex1.x[start:end], ex1.y[start:end])<span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
@@ -1176,7 +1296,7 @@ y &amp;= -k_1 \sqrt a - (k_2 - k_1)\sqrt b + k_2\sqrt c = k_1\left(\sqrt b - \sq
 </section>
 <section id="piecewise-constant-liquidity-profile-finitely-supported" class="level3">
 <h3 class="anchored" data-anchor-id="piecewise-constant-liquidity-profile-finitely-supported">Piecewise constant liquidity profile, finitely supported</h3>
-<div id="cell-62" class="cell" data-execution_count="7">
+<div id="cell-66" class="cell" data-execution_count="7">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>a, b, c <span class="op">=</span> <span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span></span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>k1, k2 <span class="op">=</span> <span class="dv">10</span>, <span class="dv">50</span></span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>L <span class="op">=</span> <span class="kw">lambda</span> p: k1<span class="op">*</span>(p <span class="op">&gt;=</span> a) <span class="op">+</span> (k2 <span class="op">-</span> k1)<span class="op">*</span>(p <span class="op">&gt;=</span> b) <span class="op">-</span> k2<span class="op">*</span>(p <span class="op">&gt;</span> c)</span>
@@ -1193,7 +1313,7 @@ y &amp;= -k_1 \sqrt a - (k_2 - k_1)\sqrt b + k_2\sqrt c = k_1\left(\sqrt b - \sq
 </section>
 <section id="continuous-liquidity-profile" class="level3">
 <h3 class="anchored" data-anchor-id="continuous-liquidity-profile">Continuous liquidity profile</h3>
-<div id="cell-64" class="cell" data-execution_count="8">
+<div id="cell-68" class="cell" data-execution_count="8">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>L <span class="op">=</span> <span class="kw">lambda</span> p: <span class="dv">100</span><span class="op">*</span>ss.chi2.pdf(p, df<span class="op">=</span><span class="dv">3</span>)</span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>LiquidityReservePlot(L, end<span class="op">=</span><span class="dv">15</span>)<span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
@@ -1362,7 +1482,7 @@ y_t = \frac12 \int_0^{P_t} L(p)p^{-\frac12} \mathrm{d}p.
 <section id="notation" class="level3">
 <h3 class="anchored" data-anchor-id="notation">Notation</h3>
 <ul>
-<li><span class="math inline">\(\ell = \ell(P)\)</span>: the liqudity profile</li>
+<li><span class="math inline">\(\ell = \ell(P)\)</span>: the liquidity profile</li>
 <li><span class="math inline">\(1 - \gamma\)</span>: (proportional) transaction cost, typically <span class="math inline">\(\gamma = 99.7\%\)</span></li>
 <li><span class="math inline">\(F^x\)</span>: the amount of the trading fees accrued in risky asset</li>
 <li><span class="math inline">\(F^y\)</span>: the amount of the trading fees accrued in numeraire</li>
@@ -1437,9 +1557,67 @@ y_t = \frac12 \int_0^{P_t} L(p)p^{-\frac12} \mathrm{d}p.
 <li><p>J. Milionis, C.C. Moallemi, T. Roughgarden, and A.L. Zhang, <em>Quantifying Loss in Automated Market Makers</em>, available online at <a href="https://dl.acm.org/doi/pdf/10.1145/3560832.3563441">dl.acm.org</a>.</p></li>
 <li><p>S.-N. Tung and T.-H. Wang, <em>A mathematical framework for modelling CLMM dynamics in continuous time</em>, available on <a href="https://arxiv.org/abs/2412.18580">arXiv</a>.</p></li>
 </ul>
-
-
 </section>
+<section id="a-simple-note" class="level2">
+<h2 class="anchored" data-anchor-id="a-simple-note">A Simple Note</h2>
+<ol type="1">
+<li>AMM
+<ul>
+<li>AMM 的定义: 用算法和“流动性池”替代传统的中心化撮合交易簿 (CLOB)<br>
+</li>
+<li>优势: 全天候交易、无需撮合商、低计算与存储成本、适合长尾资产<br>
+</li>
+<li>角色:
+<ul>
+<li>流动性提供者 (LP) —— 同时存入两种资产, 赚取手续费<br>
+</li>
+<li>交易者 (Swapper) —— 按“曲线”与池子对换资产, 支付手续费</li>
+</ul></li>
+</ul></li>
+<li>常数函数做市 (CFMM) 框架<br>
+a 基本符号与记号
+<ul>
+<li><span class="math inline">\(x_t, y_t\)</span>: 池中两种资产数量<br>
+</li>
+<li><span class="math inline">\(f(x,y)=L\)</span>: Bonding curve (“粘合函数”及其水平)<br>
+</li>
+<li><span class="math inline">\(P = \mathrm{d}y/\mathrm{d}x\)</span>: 边际兑换率 (池中价格)<br>
+</li>
+<li><span class="math inline">\(V = P \cdot x + y\)</span>: 池子总价值</li>
+</ul>
+<ol start="2" type="a">
+<li>典型例子<br>
+</li>
+</ol>
+<ul>
+<li>Constant Product (CPMM, Uniswap v2) – 曲线: <span class="math inline">\(x\cdot y = L^2\)</span><br>
+– 边际价: <span class="math inline">\(P = y/x\)</span><br>
+</li>
+<li>Geometric Mean (G3M, Balancer)<br>
+– 曲线: <span class="math inline">\(x^\alpha \cdot y^{1-\alpha} = L\)</span><br>
+– 可调权重</li>
+</ul></li>
+<li>Impermanent Loss (IL) 及 Loss-versus-Rebalance (LVR)
+<ul>
+<li>IL 定义: 在无手续费情形下, LP 持币收益 &lt; 直接持有收益<br>
+</li>
+<li>LVR 概念: 与再平衡策略相关的损失</li>
+</ul></li>
+<li>集中式流动性提供 (CLP, Uniswap v3 核心)
+<ul>
+<li>LP 可指定价格区间 <span class="math inline">\([p_l, p_r]\)</span> 投放流动性<br>
+</li>
+<li>在区间内, 池子跟 CFMM 一致; 区间外则资产之一清零</li>
+</ul></li>
+<li>AMM 与 CLOB 对比
+<ul>
+<li>计算与存储效率<br>
+</li>
+<li>对长尾资产、碎片化流动性的支持度</li>
+</ul></li>
+</ol>
+
+
 </section>
 
 </main> <!-- /main -->
