@@ -256,7 +256,10 @@ window.Quarto = {
   </ul></li>
   <li><a href="#applications-of-the-almgren-chriss-framework" id="toc-applications-of-the-almgren-chriss-framework" class="nav-link" data-scroll-target="#applications-of-the-almgren-chriss-framework">Applications of the Almgren-Chriss framework</a></li>
   <li><a href="#summary-on-the-almgren-chriss-model" id="toc-summary-on-the-almgren-chriss-model" class="nav-link" data-scroll-target="#summary-on-the-almgren-chriss-model">Summary on the Almgren-Chriss model</a></li>
-  <li><a href="#transient-impact-models" id="toc-transient-impact-models" class="nav-link" data-scroll-target="#transient-impact-models">Transient impact models</a></li>
+  <li><a href="#transient-impact-models" id="toc-transient-impact-models" class="nav-link" data-scroll-target="#transient-impact-models">Transient impact models</a>
+  <ul class="collapse">
+  <li><a href="#note-2" id="toc-note-2" class="nav-link" data-scroll-target="#note-2">Note</a></li>
+  </ul></li>
   <li><a href="#pl-and-cost-of-trading-in-transient-impact-model" id="toc-pl-and-cost-of-trading-in-transient-impact-model" class="nav-link" data-scroll-target="#pl-and-cost-of-trading-in-transient-impact-model">P&amp;L and cost of trading in transient impact model</a></li>
   <li><a href="#the-optimal-strategy-of-a-risk-neutral-trader" id="toc-the-optimal-strategy-of-a-risk-neutral-trader" class="nav-link" data-scroll-target="#the-optimal-strategy-of-a-risk-neutral-trader">The optimal strategy of a risk neutral trader</a></li>
   <li><a href="#lagrange-multiplier" id="toc-lagrange-multiplier" class="nav-link" data-scroll-target="#lagrange-multiplier">Lagrange multiplier</a></li>
@@ -426,7 +429,7 @@ window.Quarto = {
 <li>Ask price (卖出价): 交易者愿意接受的价格</li>
 </ul>
 <p>这两者之间的差额就是 Spread (点差).</p>
-<p>注: Spread cost. 无论你买入还是卖出, 你都会吃掉一半的 spread. <span class="math display">\[
+<p>注: Spread cost. 无论你买入还是卖出, 你都会吃掉一半的 spread. 也即市场的合理参考价应该为 Mid price, 但是你买入的时候, 一般成交价为 Best Ask, 这和 Mid price 有差距, 这部分差距就是 Spread cost. 同理, 卖出的时候, 一般成交价为 Best Bid, 这和 Mid price 有差距, 这部分差距也是 Spread cost. <span class="math display">\[
 \text{Spread cost} = \frac{1}{2} \times \text{Spread}
 \]</span></p>
 </section>
@@ -451,6 +454,55 @@ window.Quarto = {
 <li>To balance the risk of a worse price against the benefit of better execution from being patient.</li>
 </ul></li>
 </ul>
+<p>注: 当你需要执行一个较大的订单, 不希望对市场价格造成太大影响, 你可以使用一些算法来分批执行这个订单, 以降低市场冲击.</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 10%">
+<col style="width: 18%">
+<col style="width: 23%">
+<col style="width: 23%">
+<col style="width: 23%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>算法</th>
+<th>执行方式</th>
+<th>优点</th>
+<th>缺点</th>
+<th>适用场景</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>VWAP</strong></td>
+<td>与当天成交量历史分布挂钩</td>
+<td>平衡性好、易控风险</td>
+<td>无实时感知、不区分价格趋势</td>
+<td>流动性高、全天相对均衡的市场</td>
+</tr>
+<tr class="even">
+<td><strong>POV</strong></td>
+<td>实时按市场成交量比例自动下单</td>
+<td>实时自适应, 部分规避流动性脉冲</td>
+<td>需要准确设置参与率、易触发极端执行</td>
+<td>市场节奏多变、成交量波动大时</td>
+</tr>
+<tr class="odd">
+<td><strong>TWAP</strong></td>
+<td>时间切片均等、无视成交量</td>
+<td>简单易理解, 执行控制明确</td>
+<td>在低晶流动性时间段易导致更差执行价格</td>
+<td>流动性波动大、但对价格执行节奏敏感时</td>
+</tr>
+<tr class="even">
+<td><strong>IS</strong></td>
+<td>前期迅速、后期委细</td>
+<td>最好控制决策价偏离, 较兼顾速度与成本</td>
+<td>有执行风险, 受市场判断影响大</td>
+<td>对价格走势敏感、需尽快完成交易时</td>
+</tr>
+</tbody>
+</table>
 </section>
 <section id="terminology" class="level2">
 <h2 class="anchored" data-anchor-id="terminology">Terminology</h2>
@@ -522,6 +574,13 @@ The impact profile
 \tilde{S}_t = S_t + \eta v_t = s_0 + \sigma_S Z_t + \gamma(X_t - x_0) + \eta v_t,
 \]</span></p>
 <p>where <span class="math inline">\(\displaystyle X_t = x_0 + \int_0^t v_s \mathrm{d}s\)</span>.</p>
+<p>注:</p>
+<ul>
+<li><span class="math inline">\(s_0\)</span>: 清仓前的价格</li>
+<li><span class="math inline">\(\sigma_S Z_t\)</span>: 无冲击的随机价格波动</li>
+<li><span class="math inline">\(\gamma (X_t - x_0)\)</span>: 永久性冲击, 也即清仓后价格的变化. 由于你累积卖出 (或买入) 所带来的永久 (permanent) 价格冲击</li>
+<li><span class="math inline">\(\eta v_t\)</span>: 临时性冲击, 瞬时提交量导致的影响.</li>
+</ul>
 <p><span class="math display">\[\begin{align*}
 \Eof{\tilde{S}_t - s_0} &amp;= \sigma_S \Eof{Z_t} + \gamma \Eof{X_t - x_0} + \eta \Eof{v_t} \\
 &amp;= \gamma \int_0^t v_s \mathrm{d}s + \eta v_t.
@@ -530,7 +589,7 @@ The impact profile
 <h3 class="anchored" data-anchor-id="note">Note</h3>
 <ul>
 <li><span class="math inline">\(\eta v_t\)</span>: temporary impact</li>
-<li><span class="math inline">\(\gamma (X_t - x_0)\)</span>: permanenty impact</li>
+<li><span class="math inline">\(\gamma (X_t - x_0)\)</span>: permanently impact</li>
 <li><span class="math inline">\(X_t = x_0 + v t\)</span> if <span class="math inline">\(v_t \equiv v\)</span>, a constant.</li>
 </ul>
 <p>Suppose <span class="math inline">\(\displaystyle v_t = - \frac{x}{T}\)</span>, then: <span class="math display">\[
@@ -582,12 +641,12 @@ The impact profile
 \]</span></p>
 <ul>
 <li><p>The first term represents the (fair) value of stock shares that are yet to be transacted.</p></li>
-<li><p>The second term corresponds to the monetary value collected from the shares that have been transacted up to time <span class="math inline">\(t\)</span>.</p></li>
+<li><p>The second term corresponds to the monetary value collected from the shares that have been transacted up to time <span class="math inline">\(t\)</span>. 也就是, 在时刻 <span class="math inline">\(\tau\)</span> 以 <span class="math inline">\(\tilde S_\tau\)</span> 的价格成交的股票, 但是参考价为 <span class="math inline">\(S_0\)</span>, 你已经收到了 <span class="math inline">\((S_0 - \tilde S_\tau)\)</span> 的 P&amp;L.</p></li>
 <li><p>Obviously, should there be no trade in the time interval <span class="math inline">\([0,t]\)</span>, i.e., <span class="math inline">\(x_s = X\)</span> for all <span class="math inline">\(s \in [0,t]\)</span>, the P&amp;L reads <span class="math inline">\(\Pi_t(x) = X (S_t - S_0)\)</span>; reflecting the P&amp;L from the price movement of the stock.</p></li>
 </ul>
 <section id="implementation-shortfall-as-cost-of-trading" class="level4">
 <h4 class="anchored" data-anchor-id="implementation-shortfall-as-cost-of-trading"><font color="blue">Implementation shortfall as cost of trading </font></h4>
-<p>Negative P&amp;L is also referred to as the <em>implementation shortfall</em>, which will be used as the cost of trading, denoted by <span class="math inline">\(C\)</span> hereafter.</p>
+<p>Negative P&amp;L is also referred to as the <em>implementation shortfall</em>, which will be used as the cost of trading, denoted by <span class="math inline">\(C\)</span> hereafter. 对于一个 trading strategy <span class="math inline">\(x\)</span>, 如果它的 P&amp;L 为 <span class="math inline">\(\Pi_t(x)\)</span>, 那么它的交易成本为 <span class="math inline">\(C(x) = - \Pi_t(x)\)</span>.</p>
 </section>
 </section>
 <section id="pl-in-almgren-chriss-model" class="level2">
@@ -607,7 +666,12 @@ The impact profile
 </section>
 <section id="expected-cost-of-twap-in-the-almgren-and-chriss-model" class="level2">
 <h2 class="anchored" data-anchor-id="expected-cost-of-twap-in-the-almgren-and-chriss-model">Expected cost of TWAP in the Almgren and Chriss model</h2>
-<p>For a TWAP, <span class="math inline">\(v_t = -\frac XT\)</span> where <span class="math inline">\(X\)</span> is the total trade size and <span class="math inline">\(T\)</span> is the duration of the order.</p>
+<p>For a TWAP, <span class="math inline">\(\displaystyle v_t = -\frac XT\)</span> where <span class="math inline">\(X\)</span> is the total trade size and <span class="math inline">\(T\)</span> is the duration of the order.</p>
+<p>注: TWAP (Time Weighted Average Price) 是一种交易策略, 它在整个交易期间内以恒定的速率执行订单, 以避免对市场价格造成过大的冲击. 它对应的公式为:</p>
+<p><span class="math display">\[
+v_t = -\frac{X}{T},
+\]</span> 然后把这个替换入 Almgren-Chriss 模型的公式中.</p>
+<p>Then, we have</p>
 <p><span class="math display">\[\begin{align*}
 \E[C_T(x)] &amp;= \frac\gamma2 X^2 + \eta \int_0^T \left(\frac XT\right)^2 \mathrm{d} u \\
 &amp;= \frac\gamma2 X^2 + \eta \frac{X^2}T \\
@@ -627,7 +691,7 @@ The impact profile
 \end{align*}\]</span></p>
 <p>where the state variable <span class="math inline">\(x_t\)</span> is driven by <span class="math inline">\(\mathrm{d} x_t = v_t \mathrm{d} t\)</span> with the constraints <span class="math inline">\(x_0 = X\)</span> and <span class="math inline">\(x_T = 0\)</span>.<br>
 Note that, since <span class="math inline">\(S_t\)</span> is not involved in the last expression, we end up with a deterministic control problem which can be solved by the solution to its associated HJB equation or, due to the simplicity of the dynamics of <span class="math inline">\(x_t\)</span>, further reduced to a variational problem.</p>
-<p>注: risk-neutral trader 表示: Risk neutral investors may understand that risk is involved, but they aren’t considering it for the moment.</p>
+<p>注: risk-neutral trader 表示: Risk neutral investors may understand that risk is involved, but they aren’t considering it for the moment. 可以理解为完全不考虑 <span class="math inline">\(S_t\)</span> 的价格波动影响, 只考虑交易成本.</p>
 <p>Quotes from <a href="https://www.investopedia.com/terms/r/riskneutral.asp">Investopedia</a>:</p>
 <blockquote class="blockquote">
 <p>Risk neutral is a term used to describe the attitude of an individual who may be evaluating investment alternatives. If the individual focuses solely on potential gains regardless of the risk, they are said to be risk neutral. Such behavior, to evaluate reward without thought to risk, may seem to be inherently risky. A risk averse investor would not consider the choice to risk a $1000 loss with the possibility of making a $50 gain to be the same as risking only $100 to make the same $50 gain. However someone who is risk neutral would. Given two investment opportunities the risk-neutral investor only looks at the potential gains of each investment and ignores the potential downside risk.</p>
@@ -679,7 +743,7 @@ L_{u} (t, u(t)) = 0.
 <p><a href="#almgren-and-chriss">Almgren and Chriss</a><sup id="cite_ref-AlmgrenChriss" class="reference"><a href="#cite_note-AlmgrenChriss"><span>[</span>2<span>]</span></a></sup> add a <font color="red">risk term</font> that penalizes the approximate variance of the trading cost. They claim</p>
 <p><span class="math display">\[ \text{Var} \left[\int_0^T\,x_t\,\mathrm{d} S_t\right] \approx \sigma^2\,\int_0^T\,x_t^2\,\mathrm{d} t. \]</span></p>
 <p>In fact, by Itô’s isomety, it is an equality if <span class="math inline">\(x_t\)</span> is deterministic.</p>
-<p>The expected risk-adjusted cost is then given by (temporarily ignore the path independent term <span class="math inline">\(\frac\gamma2 X^2\)</span>)</p>
+<p>The expected risk-adjusted cost is then given by (temporarily ignore the path independent term <span class="math inline">\(\displaystyle \frac\gamma2 X^2\)</span>)</p>
 <p><span class="math display">\[\eta\,\int_0^T\,{\dot x}_t^2\,\mathrm{d}t + \lambda\,\sigma^2\,\int_0^T\,x_t^2\,\mathrm{d}t\]</span></p>
 <p>for some price of risk <span class="math inline">\(\lambda\)</span>.</p>
 <ul>
@@ -689,11 +753,17 @@ L_{u} (t, u(t)) = 0.
 <li><p><span>The expression looks like the objective in mean-variance portfolio optimization.</span></p></li>
 </ul></li>
 </ul>
+<p>注: 写成泛函的形式, <span class="math inline">\(L(t, x(t), {\dot x}(t)) = \eta {\dot x}^2(t) + \lambda \sigma^2 x^2(t)\)</span>. 那么现在的 Euler-Lagrange 方程为: <span class="math display">\[
+\frac{\partial L}{\partial x} - \frac{\mathrm{d}}{\mathrm{d} t} \frac{\partial L}{\partial {\dot x}} = 0.
+\]</span></p>
 <p>The Euler-Lagrange equation becomes</p>
 <p><span class="math display">\[\ddot x- \kappa^2\,x=0\]</span></p>
 <p>with</p>
 <p><span class="math display">\[\kappa^2=\frac{\lambda\,\sigma^2}{\eta}.\]</span></p>
 <p>The solution is a linear combination of terms of the form <span class="math inline">\(e^{\pm \kappa t}\)</span> that satisfies the boundary conditions <span class="math inline">\(x_0=X\)</span>, <span class="math inline">\(x_T=0\)</span>.</p>
+<p>注: 也就是说 <span class="math display">\[
+x(t) = A e^{\kappa t} + B e^{-\kappa t},
+\]</span> where <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> are determined by the boundary conditions.</p>
 </section>
 <section id="mean-qv-trader-the-almgren-chriss-strategy" class="level2">
 <h2 class="anchored" data-anchor-id="mean-qv-trader-the-almgren-chriss-strategy">Mean-QV trader: The Almgren-Chriss strategy</h2>
@@ -701,7 +771,10 @@ L_{u} (t, u(t)) = 0.
 <p><span class="math display">\[
 x(t) = X\,\frac{\sinh \kappa (T-t)}{\sinh \kappa T},
 \]</span></p>
-<p>where <span class="math inline">\(\kappa = \sqrt{\frac{\lambda\sigma_S^2}\eta}\)</span>, <span class="math inline">\(\lambda\)</span> is the parameter that proxies the trader’s risk aversion.</p>
+<p>where <span class="math inline">\(\displaystyle \kappa = \sqrt{\frac{\lambda\sigma_S^2}\eta}\)</span>, <span class="math inline">\(\lambda\)</span> is the parameter that proxies the trader’s risk aversion.</p>
+<p>注: <span class="math display">\[
+\sinh x = \frac{e^x - e^{-x}}{2}.
+\]</span></p>
 <section id="note-1" class="level3">
 <h3 class="anchored" data-anchor-id="note-1">Note</h3>
 <ul>
@@ -771,6 +844,15 @@ x(t) = X\,\frac{\sinh \kappa (T-t)}{\sinh \kappa T},
 <li><p>The cumulative impact of (others’) trading is implicitly in <span class="math inline">\(S_0\)</span> and the noise term.</p></li>
 <li><p>The model is a generalization of processes due to Almgren, Bouchaud, and Obizhaeva and Wang.</p></li>
 </ul>
+<section id="note-2" class="level3">
+<h3 class="anchored" data-anchor-id="note-2">Note</h3>
+<ul>
+<li>Transient impact model: 瞬态冲击模型.</li>
+<li><span class="math inline">\(M_t\)</span> 是一个零均值的鞅, 也即 <span class="math inline">\(M_t\)</span> 的期望为零, 它代表了市场噪音. 指交易对手或市场其他参与者的买卖行为引入的随机价格变动, 不由控制者交易产生</li>
+<li><span class="math inline">\(h(v_s)\)</span> 是瞬时市场冲击函数, 它表示在时间 <span class="math inline">\(s\)</span> 交易对市场价格的影响. 例如, 如果 <span class="math inline">\(v_s &gt; 0\)</span>, 那么 <span class="math inline">\(h(v_s) &gt; 0\)</span>, 表示买入对价格有正向影响; 如果 <span class="math inline">\(v_s &lt; 0\)</span>, 那么 <span class="math inline">\(h(v_s) &lt; 0\)</span>, 表示卖出对价格有负向影响.</li>
+<li><span class="math inline">\(G(t-s)\)</span> 是一个衰减函数, 它表示交易对价格的影响随时间的衰减. 例如, 如果 <span class="math inline">\(G(t-s)\)</span> 随着 <span class="math inline">\(t-s\)</span> 的增大而减小, 那么表示交易的影响会随着时间的推移而减弱.</li>
+</ul>
+</section>
 </section>
 <section id="pl-and-cost-of-trading-in-transient-impact-model" class="level2">
 <h2 class="anchored" data-anchor-id="pl-and-cost-of-trading-in-transient-impact-model">P&amp;L and cost of trading in transient impact model</h2>
@@ -794,7 +876,7 @@ x(t) = X\,\frac{\sinh \kappa (T-t)}{\sinh \kappa T},
 <p><span class="math display">\[\begin{align*}
 &amp; \min_{v} \E\left[C_T(x)\right] = \min_v \int_0^T \int_0^t h(v_u)G(t-u) \mathrm{d}u \mathrm{d} x_t,
 \end{align*}\]</span></p>
-<p>where the state variable <span class="math inline">\(x_t\)</span> is driven by <span class="math inline">\(dx_t = v_t dt\)</span> with the constraints <span class="math inline">\(x_0 = X\)</span> and <span class="math inline">\(x_T = 0\)</span>. It is equivalent to a variational problem.</p>
+<p>where the state variable <span class="math inline">\(x_t\)</span> is driven by <span class="math inline">\(\mathrm{d}x_t = v_t \mathrm{d}t\)</span> with the constraints <span class="math inline">\(x_0 = X\)</span> and <span class="math inline">\(x_T = 0\)</span>. It is equivalent to a variational problem.</p>
 <p><span class="math display">\[\begin{align*}
 &amp; \min_{v} \E\left[C_T(x)\right] = \min_v \left\{\int_0^T \int_0^t h(v_u)G(t-u) \mathrm{d}u v_t \mathrm{d}t\right\},
 \end{align*}\]</span></p>
@@ -811,7 +893,7 @@ x(t) = X\,\frac{\sinh \kappa (T-t)}{\sinh \kappa T},
 </section>
 <section id="euler-lagrange-equation" class="level2">
 <h2 class="anchored" data-anchor-id="euler-lagrange-equation">Euler-Lagrange equation</h2>
-<p>Let <span class="math inline">\(\varphi\)</span> be a perturbation. Consider the first order criterion for the Lagrangian <span class="math inline">\(L\)</span>:</p>
+<p>Let <span class="math inline">\(\varphi\)</span> be a perturbation(扰动). Consider the first order criterion for the Lagrangian <span class="math inline">\(L\)</span>:</p>
 <p><span class="math display">\[\begin{align*}
   0 &amp;= \left.\frac{\mathrm{d}}{\mathrm{d}\epsilon}\right|_{\epsilon=0} L( v_t + \epsilon \varphi_t,\lambda) \\
   &amp;= \left.\frac{\mathrm{d}}{\mathrm{d}\epsilon}\right|_{\epsilon=0} \int_0^T \left[ \int_0^t G(t-s) h(v_s + \epsilon \varphi_s) \mathrm{d}s - \lambda \right] (v_t + \epsilon \varphi_t ) \mathrm{d}t  \\
@@ -879,13 +961,13 @@ x(t) = X\,\frac{\sinh \kappa (T-t)}{\sinh \kappa T},
 <p><span class="math display">\[v_t = \frac\lambda\eta \,\left\{\delta(t)+\rho+\delta(T-t)\right\}\]</span></p>
 <p>The Lagrange multiplier <span class="math inline">\(\lambda\)</span> is determined by</p>
 <p><span class="math display">\[-X = x_T - x_0 = \int_0^T\, v_t \,\mathrm{d}t = \frac\lambda\eta \, \left(2+\rho\,T\right)\]</span></p>
-<p>Thus, <span class="math inline">\(\frac\lambda\eta = -\frac X{2 + \rho T}\)</span> and</p>
+<p>Thus, <span class="math inline">\(\displaystyle \frac\lambda\eta = -\frac X{2 + \rho T}\)</span> and</p>
 <p><span class="math display">\[
 v_t = -\frac X{2 + \rho T}\left\{\delta(t)+\rho+\delta(T-t)\right\}.
 \]</span></p>
 <p>The optimal strategy consists of block trades at <span class="math inline">\(t=0\)</span> and <span class="math inline">\(t=T\)</span> and continuous trading at the constant rate <span class="math inline">\(\rho\)</span> between these two times.</p>
-<section id="note-2" class="level4">
-<h4 class="anchored" data-anchor-id="note-2">Note</h4>
+<section id="note-3" class="level4">
+<h4 class="anchored" data-anchor-id="note-3">Note</h4>
 <ul>
 <li>The case <span class="math inline">\(\rho = 0\)</span> corresponds to the Almgren-Chriss model with only permanent impact. In this case, the strategy suggests a block trade of half of the total shares at the beginning and a block trade of the other in the end. In fact, in this case all strategies are optimal since the expected cost is a constant, independent of the strategies!</li>
 </ul>
@@ -932,6 +1014,8 @@ J(t, x, y) = \min_v \int_t^T y_s v_s \mathrm{d}s.
 \end{array}\right.
 \]</span></p>
 <p>Special treatment for this type of problems are required.</p>
+<p>注: HJB 方程, 全称 Hamilton–Jacobi–Bellman Equation. 简单来说: HJB 方程是动态规划在连续时间中的表达形式, 是最优化控制问题的中心工具. 其解就是所谓的 value function, 代表「在给定状态和时间点, 从现在开始最优执行能确保的最低 (或最大) 代价/收益」.</p>
+<p>一般说来, 我们定义 value function, 得到对应的 HJB 方程, 然后求解 HJB 方程, 得到 value function 的表达式.</p>
 </section>
 <section id="combining-almgren-chriss-and-obizhaeva-wang-the-acow-model" class="level2">
 <h2 class="anchored" data-anchor-id="combining-almgren-chriss-and-obizhaeva-wang-the-acow-model">Combining Almgren-Chriss and Obizhaeva-Wang: the ACOW model</h2>
@@ -956,8 +1040,8 @@ Y_t = \int_0^t e^{-\rho(t - s)} \phi v_s \mathrm{d}s + \sigma \int_0^t e^{-\rho(
 <li><span class="math inline">\(\eta v_t\)</span>: linear temporary impact</li>
 <li><span class="math inline">\(\gamma (X_t - X_0)\)</span>: linear permanent impact</li>
 </ul>
-<section id="note-3" class="level4">
-<h4 class="anchored" data-anchor-id="note-3">Note</h4>
+<section id="note-4" class="level4">
+<h4 class="anchored" data-anchor-id="note-4">Note</h4>
 <ul>
 <li>Without the <span class="math inline">\(Y\)</span> term, the model reduces to Almgren-Chriss.</li>
 <li>If <span class="math inline">\(\gamma = \eta = \sigma = 0\)</span>, the model reduces to Obizhaeva-Wang.</li>
@@ -1077,6 +1161,7 @@ Y_t = \int_0^t e^{-\rho(t - s)} \phi v_s \mathrm{d}s + \sigma \int_0^t e^{-\rho(
 <p><span class="math display">\[
 \mathrm{d}\bX_t = (A \bX_t + \mbB v_t)\mathrm{d}t + \bSigma \mathrm{d}Z_t
 \]</span></p>
+<p>注: LQ (Linear Quadratic) control problem: 线性二次型控制问题, 是一种特殊的最优控制问题, 其目标是最小化一个二次型的代价函数, 同时满足线性动态系统的约束条件.</p>
 </section>
 <section id="value-function-and-hjb-equation" class="level2">
 <h2 class="anchored" data-anchor-id="value-function-and-hjb-equation">Value function and HJB equation</h2>
@@ -1089,8 +1174,8 @@ V(t, \bx) = \max_{\bu} \Eof{\left. \bX_T' \mbP \bX_T + \int_t^T \left(\bX_s' \mb
 V_t + \frac12\tr(\bSigma\bSigma'\nabla^2 V) + \max_{\bu}\left\{(\mbA \bx + \mbB \bu)' \nabla V + \bx'\mbQ\bx + \bu_t' \mbR \bu_t \right\} = 0
 \]</span></p>
 <p>with terminal condition <span class="math inline">\(V(T, \bx) = \bx'\mbP\bx\)</span>.</p>
-<section id="note-4" class="level4">
-<h4 class="anchored" data-anchor-id="note-4">Note</h4>
+<section id="note-5" class="level4">
+<h4 class="anchored" data-anchor-id="note-5">Note</h4>
 <ul>
 <li><span class="math inline">\(\mbR = -\eta\)</span> is negative definite since we have a maximization problem.</li>
 </ul>
@@ -1126,6 +1211,18 @@ V_t + \frac12\tr(\bSigma\bSigma'\nabla^2 V) + \max_{\bu}\left\{(\mbA \bx + \mbB 
 &amp; \dot H_1 + \frac1\eta H_1\mbB\mbB'H_1 + \mbA' H_1 + H_1 \mbA + \mbQ = 0 \\
 &amp; \dot H_0 + \tr(\bSigma\bSigma'H_1) = 0
 \end{align*}\]</span></p>
+<p>注: <strong>黎卡提方程 (Riccati Equation)</strong> 是一类非线性一阶常微分方程, 广泛应用于控制理论、量子力学、金融数学等多个领域. Ricatti 方程通常表示为: <span class="math display">\[
+\frac{\mathrm{d} y}{\mathrm{d} x} = P(x)y^2 + Q(x)y + R(x),
+\]</span> 其中 <span class="math inline">\(P(x)\)</span>, <span class="math inline">\(Q(x)\)</span>, <span class="math inline">\(R(x)\)</span> 是已知的函数, <span class="math inline">\(y(x)\)</span> 是未知函数.</p>
+<p>在最优控制问题中, 黎卡提方程用于求解代数黎卡提方程 (ARE, Algebraic Riccati Equation) 或微分黎卡提方程 (DRE, Differential Riccati Equation).</p>
+<ul>
+<li><p><strong>代数黎卡提方程 (ARE)</strong> 是一种特殊的黎卡提方程, 其形式为: <span class="math display">\[
+  0 = A'X + XA - XBR^{-1}B'X + Q,
+\]</span> 其中 <span class="math inline">\(A\)</span>, <span class="math inline">\(B\)</span>, <span class="math inline">\(Q\)</span>, <span class="math inline">\(R\)</span> 是已知矩阵, <span class="math inline">\(X\)</span> 是未知矩阵. ARE 在最优控制问题中用于无限时间的最优控制问题.</p></li>
+<li><p><strong>微分黎卡提方程 (DRE)</strong> 是一种时间相关的黎卡提方程, 其形式为: <span class="math display">\[
+  \dot X = A'X + XA - XBR^{-1}B'X + Q,
+\]</span> 其中 <span class="math inline">\(\dot X\)</span> 是 <span class="math inline">\(X\)</span> 关于时间的导数. DRE 在最优控制问题中用于有限时间的最优控制问题.</p></li>
+</ul>
 </section>
 <section id="solution-to-the-riccati-equation" class="level1">
 <h1>Solution to the Riccati equation</h1>
@@ -1171,11 +1268,11 @@ e^{\rho t} y_t - y_0 = \phi (x_t - x_0) \quad \Longrightarrow \quad y_t = e^{-\r
 <p>since <span class="math inline">\(y_0 = 0\)</span>.</p>
 <section id="numerical-examples" class="level2">
 <h2 class="anchored" data-anchor-id="numerical-examples">Numerical examples</h2>
-<div id="cell-61" class="cell" data-execution_count="7">
+<div id="cell-62" class="cell" data-execution_count="7">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> scipy.linalg <span class="im">import</span> expm</span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> scipy.integrate <span class="im">import</span> odeint</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="cell-62" class="cell" data-execution_count="8">
+<div id="cell-63" class="cell" data-execution_count="8">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># liquidation horizon</span></span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>T <span class="op">=</span> <span class="dv">1</span></span>
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -1202,7 +1299,7 @@ e^{\rho t} y_t - y_0 = \phi (x_t - x_0) \quad \Longrightarrow \quad y_t = e^{-\r
 <pre><code>(gamma + phi)/2 - beta is -0.0024373749999999994.</code></pre>
 </div>
 </div>
-<div id="cell-63" class="cell" data-execution_count="9">
+<div id="cell-64" class="cell" data-execution_count="9">
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># matrices</span></span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>A <span class="op">=</span> np.array([<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="op">-</span>rho]).reshape(<span class="dv">2</span>, <span class="dv">2</span>)</span>
 <span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>P <span class="op">=</span> np.array([(gamma <span class="op">+</span> phi)<span class="op">/</span><span class="dv">2</span> <span class="op">-</span> beta, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>]).reshape(<span class="dv">2</span>, <span class="dv">2</span>)</span>
@@ -1213,7 +1310,7 @@ e^{\rho t} y_t - y_0 = \phi (x_t - x_0) \quad \Longrightarrow \quad y_t = e^{-\r
 <span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a>Psi <span class="op">=</span> np.array([[<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, rho<span class="op">/</span><span class="dv">2</span>], [<span class="dv">0</span>, rho, rho<span class="op">/</span><span class="dv">2</span>, <span class="dv">0</span>], [<span class="dv">1</span><span class="op">/</span>eta, phi<span class="op">/</span>eta, <span class="dv">0</span>, <span class="dv">0</span>], </span>
 <span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a>                [phi<span class="op">/</span>eta, phi<span class="op">**</span><span class="dv">2</span><span class="op">/</span>eta, <span class="dv">0</span>, <span class="op">-</span>rho]])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="cell-64" class="cell" data-execution_count="10">
+<div id="cell-65" class="cell" data-execution_count="10">
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># solution H1</span></span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> H1(t):</span>
 <span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Matrix [P I]'</span></span>
@@ -1245,12 +1342,12 @@ e^{\rho t} y_t - y_0 = \phi (x_t - x_0) \quad \Longrightarrow \quad y_t = e^{-\r
 <span id="cb11-29"><a href="#cb11-29" aria-hidden="true" tabindex="-1"></a>    y_opt <span class="op">=</span> soln1[:, <span class="dv">1</span>]</span>
 <span id="cb11-30"><a href="#cb11-30" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> x_opt, y_opt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="cell-65" class="cell" data-execution_count="11">
+<div id="cell-66" class="cell" data-execution_count="11">
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>n_steps <span class="op">=</span> <span class="dv">200</span></span>
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>t <span class="op">=</span> np.linspace(<span class="dv">0</span>, <span class="dv">1</span>, n_steps<span class="op">+</span><span class="dv">1</span>)</span>
 <span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>x, y <span class="op">=</span> solve_opt_xy(n_steps)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="cell-66" class="cell" data-execution_count="12">
+<div id="cell-67" class="cell" data-execution_count="12">
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># plot optimal trajectory for x</span></span>
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="co">#plt.figure(figsize=(8, 6))</span></span>
 <span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>plt.plot(t, x)</span>
@@ -1265,7 +1362,7 @@ e^{\rho t} y_t - y_0 = \phi (x_t - x_0) \quad \Longrightarrow \quad y_t = e^{-\r
 </div>
 </div>
 </div>
-<div id="cell-67" class="cell" data-execution_count="13">
+<div id="cell-68" class="cell" data-execution_count="13">
 <div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co"># plot trajectory for y under optimal policy</span></span>
 <span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="co">#plt.figure(figsize=(8, 6))</span></span>
 <span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>plt.plot(t, y)</span>
@@ -1280,7 +1377,7 @@ e^{\rho t} y_t - y_0 = \phi (x_t - x_0) \quad \Longrightarrow \quad y_t = e^{-\r
 </div>
 </div>
 </div>
-<div id="cell-68" class="cell" data-execution_count="14">
+<div id="cell-69" class="cell" data-execution_count="14">
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># the optimal trading rate v</span></span>
 <span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>v <span class="op">=</span>np.array([])</span>
 <span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">len</span>(t)):</span>
@@ -1300,7 +1397,7 @@ e^{\rho t} y_t - y_0 = \phi (x_t - x_0) \quad \Longrightarrow \quad y_t = e^{-\r
 </div>
 </div>
 </div>
-<div id="cell-69" class="cell" data-execution_count="15">
+<div id="cell-70" class="cell" data-execution_count="15">
 <div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co"># in fact, v = dx/dt</span></span>
 <span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>plt.plot(t[<span class="dv">1</span>:], np.diff(x)<span class="op">/</span>np.diff(t))<span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
@@ -1318,7 +1415,7 @@ e^{\rho t} y_t - y_0 = \phi (x_t - x_0) \quad \Longrightarrow \quad y_t = e^{-\r
 </section>
 <section id="create-a-python-class-for-evaluating-value-function-by-simulation" class="level2">
 <h2 class="anchored" data-anchor-id="create-a-python-class-for-evaluating-value-function-by-simulation">Create a <code>python</code> class for evaluating value function by simulation</h2>
-<div id="cell-72" class="cell" data-execution_count="16">
+<div id="cell-73" class="cell" data-execution_count="16">
 <div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> scipy.stats <span class="im">import</span> norm </span>
 <span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span>
@@ -1385,7 +1482,7 @@ e^{\rho t} y_t - y_0 = \phi (x_t - x_0) \quad \Longrightarrow \quad y_t = e^{-\r
 </div>
 <section id="policy-1-twap" class="level3">
 <h3 class="anchored" data-anchor-id="policy-1-twap">Policy 1: TWAP</h3>
-<div id="cell-74" class="cell" data-tags="[]" data-execution_count="17">
+<div id="cell-75" class="cell" data-tags="[]" data-execution_count="17">
 <div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="co"># parameters</span></span>
 <span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>sigma <span class="op">=</span> <span class="fl">0.1</span></span>
 <span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>params <span class="op">=</span> {<span class="st">'T'</span>: T, <span class="st">'x0'</span>: x0, <span class="st">'eta'</span>: eta, <span class="st">'gamma'</span>: gamma, <span class="st">'rho'</span>: rho, <span class="st">'beta'</span>: beta, <span class="st">'phi'</span>: phi, <span class="st">'sigma'</span>:sigma}</span>
@@ -1404,7 +1501,7 @@ e^{\rho t} y_t - y_0 = \phi (x_t - x_0) \quad \Longrightarrow \quad y_t = e^{-\r
 </section>
 <section id="sample-path-of-running-reward" class="level3">
 <h3 class="anchored" data-anchor-id="sample-path-of-running-reward">Sample path of running reward</h3>
-<div id="cell-76" class="cell" data-execution_count="18">
+<div id="cell-77" class="cell" data-execution_count="18">
 <div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>n_sim, n_steps <span class="op">=</span> <span class="dv">10_000</span>, <span class="dv">200</span></span>
 <span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>dt <span class="op">=</span> T<span class="op">/</span>n_steps</span>
 <span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>t <span class="op">=</span> np.arange(<span class="dv">0</span>, T<span class="op">+</span>dt, dt)</span>
@@ -1422,7 +1519,7 @@ e^{\rho t} y_t - y_0 = \phi (x_t - x_0) \quad \Longrightarrow \quad y_t = e^{-\r
 </div>
 </div>
 </div>
-<div id="cell-77" class="cell" data-execution_count="19">
+<div id="cell-78" class="cell" data-execution_count="19">
 <div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>vd_twap.V_hist()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div>
@@ -1435,20 +1532,20 @@ e^{\rho t} y_t - y_0 = \phi (x_t - x_0) \quad \Longrightarrow \quad y_t = e^{-\r
 </section>
 <section id="optimal-policy" class="level3">
 <h3 class="anchored" data-anchor-id="optimal-policy">Optimal policy</h3>
-<div id="cell-79" class="cell" data-execution_count="20">
+<div id="cell-80" class="cell" data-execution_count="20">
 <div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> v_opt(x, y, t):</span>
 <span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>    bx <span class="op">=</span> np.column_stack([x, y])</span>
 <span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>    HB <span class="op">=</span> H1(t).dot(B)</span>
 <span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> bx.dot(HB).flatten()<span class="op">/</span>eta</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="cell-80" class="cell" data-execution_count="21">
+<div id="cell-81" class="cell" data-execution_count="21">
 <div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>vd_opt <span class="op">=</span> ValueDistribution(params<span class="op">=</span>params, strategy<span class="op">=</span>v_opt, n_steps<span class="op">=</span>n_steps)</span>
 <span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>vd_opt.simulate()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="21">
 <pre><code>19744.088225206633</code></pre>
 </div>
 </div>
-<div id="cell-81" class="cell" data-tags="[]" data-execution_count="22">
+<div id="cell-82" class="cell" data-tags="[]" data-execution_count="22">
 <div class="sourceCode cell-code" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>vd_opt.V_hist()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div>
@@ -1461,7 +1558,7 @@ e^{\rho t} y_t - y_0 = \phi (x_t - x_0) \quad \Longrightarrow \quad y_t = e^{-\r
 </section>
 <section id="put-together-the-histograms" class="level3">
 <h3 class="anchored" data-anchor-id="put-together-the-histograms">Put together the histograms</h3>
-<div id="cell-83" class="cell" data-execution_count="23">
+<div id="cell-84" class="cell" data-execution_count="23">
 <div class="sourceCode cell-code" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>sns.histplot(vd_twap.V, bins<span class="op">=</span><span class="dv">50</span>, stat<span class="op">=</span><span class="st">'density'</span>, element<span class="op">=</span><span class="st">'step'</span>, kde<span class="op">=</span><span class="va">True</span>)<span class="op">;</span></span>
 <span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>sns.histplot(vd_opt.V, bins<span class="op">=</span><span class="dv">50</span>, stat<span class="op">=</span><span class="st">'density'</span>, color<span class="op">=</span><span class="st">'orange'</span>, element<span class="op">=</span><span class="st">'step'</span>, kde<span class="op">=</span><span class="va">True</span>)<span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
@@ -1475,7 +1572,7 @@ e^{\rho t} y_t - y_0 = \phi (x_t - x_0) \quad \Longrightarrow \quad y_t = e^{-\r
 </section>
 <section id="sample-path-of-liquidation" class="level3">
 <h3 class="anchored" data-anchor-id="sample-path-of-liquidation">Sample path of liquidation</h3>
-<div id="cell-85" class="cell" data-execution_count="24">
+<div id="cell-86" class="cell" data-execution_count="24">
 <div class="sourceCode cell-code" id="cb28"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>n_path <span class="op">=</span> np.random.choice(n_sim)</span>
 <span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>plt.plot(t, vd_opt.x[n_path,:])</span>
 <span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a>plt.plot(t, vd_twap.x[n_path,:], color<span class="op">=</span><span class="st">'orange'</span>)<span class="op">;</span></span>
@@ -1494,7 +1591,7 @@ e^{\rho t} y_t - y_0 = \phi (x_t - x_0) \quad \Longrightarrow \quad y_t = e^{-\r
 </section>
 <section id="sample-path-of-transient-impact" class="level3">
 <h3 class="anchored" data-anchor-id="sample-path-of-transient-impact">Sample path of transient impact</h3>
-<div id="cell-87" class="cell" data-execution_count="25">
+<div id="cell-88" class="cell" data-execution_count="25">
 <div class="sourceCode cell-code" id="cb30"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="co">#plt.figure(figsize=(12,6))</span></span>
 <span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a>plt.subplot(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">1</span>)</span>
 <span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a>plt.plot(t, vd_opt.y[n_path,:])</span>
