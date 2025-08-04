@@ -216,9 +216,14 @@ window.Quarto = {
 <blockquote class="blockquote">
 <p>早在2008年，摩根大通（J.P. Morgan）量化策略分析师 Hans Buehler 就开始考虑用一种新方法来做衍生品对冲，并认为这种方法颠覆了现代大部分量化金融理论。他认为依靠机器学习技术，可以根据过去有效的方法来确定未来的哪些对冲可能有效。银行可以仅使用基于数据的方法来对冲衍生品，而不是用传统的 Black-Scholes、Heston 模型。</p>
 </blockquote>
-<div style="text-align: center;">
-<pre><code>&lt;img src="https://www.risk.net/sites/default/files/styles/landscape_750_463/public/2022-02/Hans%20Buehler%203.jpg.webp?h=3a282f46&amp;itok=u9WO0AZL" alt="Hans Buehler" width="400"&gt;
-&lt;p&gt;Hans Buehler. Source: &lt;a href="https://www.risk.net/awards/7926411/quant-of-the-year-hans-buehler#cxrecs_s"&gt;Risk.net&lt;/a&gt;&lt;/p&gt;</code></pre>
+<div class="center">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://www.risk.net/sites/default/files/styles/landscape_750_463/public/2022-02/Hans%20Buehler%203.jpg.webp?h=3a282f46&amp;itok=u9WO0AZL" class="img-fluid figure-img"></p>
+<figcaption>Hans Buehler</figcaption>
+</figure>
+</div>
+<p><a href="https://www.risk.net/people/7956216/hans-buehler">图片来源：Risk.net</a></p>
 </div>
 <p>Quotes from <a href="https://www.risk.net/awards/7926411/quant-of-the-year-hans-buehler#cxrecs_s">Risk.net</a>:</p>
 <blockquote class="blockquote">
@@ -241,8 +246,28 @@ window.Quarto = {
 <p>Modern quantitative finance has developed a rich toolkit for handling derivative pricing and risk management under the idealized “complete markets” assumption of perfect hedgability in the absence of any trading restrictions or cost. It has not yet succeeded in providing a scalable industrial approach under more realistic conditions which take into account such market frictions. As a consequence, the practical risk management of non-electronic over-the-counter derivatives is still to a large extent manual, driven by the trader’s intuitive understanding of the shortcomings of the existing derivative tools.</p>
 <p>In this article, we take a first step towards a more integrated, realistic and robust approach to automated derivative risk management by applying modern deep reinforcement learning policy search. In the context of derivatives risk management, a policy means a hedging strategy. We propose to use neural networks to represent our hedging strategies.</p>
 <p>The networks are trained on simulations of future states of the market, including all relevant hedging instruments. Designing a market simulator is not the focus of this paper, and we use toy simulators for the experiments presented here; an advantage of our approach is that the procedure for learning the optimal hedging policy is independent of the choice of market simulator. This is not the case for standard approaches to hedging derivatives.</p>
-<p>关于 Hedging Instrument 的假设: - it can be traded daily with sufficient liquidity (but not necessarily at zero cost) - our trading does not affect the price</p>
-<p>Notation: - <span class="math inline">\(d\)</span>: <span class="math inline">\(d\)</span> 种 hedging instruments are used in each time step. - <span class="math inline">\(\mathcal{S}_t\)</span>: The market observed at some point <span class="math inline">\(t\)</span> represents our state space <span class="math inline">\(\mathcal{S}_t\)</span>. - all current and past prices - cost estimates - news - anything else we might deem necessary for determining our risk management strategies - past trading decisions - the internal state of our policy - <span class="math inline">\(s_t \in \mathcal{S}_t\)</span>: the state of the market at time <span class="math inline">\(t\)</span>. - <span class="math inline">\(h_t \equiv h_t(s_t)\)</span>: Holding a hedging instrument will at some point trigger a cash flow, either positive (received) or negative (paid). These payments are denoted by the d-dimensional function vector <span class="math inline">\(h_t(s_t)\)</span>. - <span class="math inline">\(H_t \equiv H_t(s_t)\)</span>: the vector of observable mid-market prices at time <span class="math inline">\(t\)</span>. - <span class="math inline">\(\delta_t\)</span>: our current position in our hedging instruments.</p>
+<p>关于 Hedging Instrument 的假设:</p>
+<ul>
+<li>it can be traded daily with sufficient liquidity (but not necessarily at zero cost)</li>
+<li>our trading does not affect the price</li>
+</ul>
+<p>Notation:</p>
+<ul>
+<li><span class="math inline">\(d\)</span>: <span class="math inline">\(d\)</span> 种 hedging instruments are used in each time step.</li>
+<li><span class="math inline">\(\mathcal{S}_t\)</span>: The market observed at some point <span class="math inline">\(t\)</span> represents our state space <span class="math inline">\(\mathcal{S}_t\)</span>.
+<ul>
+<li>all current and past prices</li>
+<li>cost estimates</li>
+<li>news</li>
+<li>anything else we might deem necessary for determining our risk management strategies</li>
+<li>past trading decisions</li>
+<li>the internal state of our policy</li>
+</ul></li>
+<li><span class="math inline">\(s_t \in \mathcal{S}_t\)</span>: the state of the market at time <span class="math inline">\(t\)</span>.</li>
+<li><span class="math inline">\(h_t \equiv h_t(s_t)\)</span>: Holding a hedging instrument will at some point trigger a cash flow, either positive (received) or negative (paid). These payments are denoted by the d-dimensional function vector <span class="math inline">\(h_t(s_t)\)</span>.</li>
+<li><span class="math inline">\(H_t \equiv H_t(s_t)\)</span>: the vector of observable mid-market prices at time <span class="math inline">\(t\)</span>.</li>
+<li><span class="math inline">\(\delta_t\)</span>: our current position in our hedging instruments.</li>
+</ul>
 <p>TODO: TO BE CONTINUED…</p>
 
 
