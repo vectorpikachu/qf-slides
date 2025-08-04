@@ -1,5 +1,64 @@
-<html><head>
-<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.7.32">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Topics in Quantitative Finance, Summer 2025 – Topics in QF</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script><script src="../site_libs/quarto-nav/quarto-nav.js"></script>
 <script src="../site_libs/quarto-nav/headroom.min.js"></script>
 <script src="../site_libs/clipboard/clipboard.min.js"></script>
 <script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
@@ -15,20 +74,1656 @@
 <link href="../site_libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-b82b626913fb92a8b9be04cecd5320fa.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light"><script src="../site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="../site_libs/quarto-nav/headroom.min.js"></script>
-<script src="../site_libs/clipboard/clipboard.min.js"></script>
-<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="../site_libs/quarto-search/fuse.min.js"></script>
-<script src="../site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="../">
-<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
-<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="../site_libs/quarto-html/popper.min.js"></script>
-<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="../site_libs/quarto-html/anchor.min.js"></script>
-<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-b82b626913fb92a8b9be04cecd5320fa.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light"></head><body class="quarto-light"></body></html>
+<link href="../site_libs/bootstrap/bootstrap-b82b626913fb92a8b9be04cecd5320fa.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" integrity="sha512-c3Nl8+7g4LMSTdrm621y7kf9v3SDPnhxLNhcjFJbKECVnmZHTdo+IRO05sNLTH/D3vA6u1X32ehoLC7WFVdheg==" crossorigin="anonymous"></script>
+
+<script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="../styles.css">
+<link rel="stylesheet" href="styles.css">
+</head>
+
+<body class="nav-fixed quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="../index.html">
+    <span class="navbar-title">Topics in QF</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../index.html"> 
+<span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../about.html"> 
+<span class="menu-text">About</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../NSD_Lec01-FinancialEngineering_Summer2025.html"> 
+<span class="menu-text">Lecture 01</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../NSD_Lec02-StochCal_Summer2025.html"> 
+<span class="menu-text">Lecture 02</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../NSD_Lec03-BlackMertonScholes-1_Summer2025.html"> 
+<span class="menu-text">Lecture 03</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link active" href="../NSD_Lec04_Summer2025/NSD_Lec04-BlackMertonScholes-2_Summer2025.html" aria-current="page"> 
+<span class="menu-text">Lecture 04</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../NSD_Lec05_Summer2025/NSD_Lec05-Volatility_Summer2025.html"> 
+<span class="menu-text">Lecture 05</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../NSD_Lec06-OptimalOrderExecution_Summer2025.html"> 
+<span class="menu-text">Lecture 06</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../NSD_Lec07-MathInAMM_Summer2025.html"> 
+<span class="menu-text">Lecture 07</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../deep-hedging.html"> 
+<span class="menu-text">Deep Hedging</span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#lecture-4-the-black-merton-scholes-model-and-beyond-ii" id="toc-lecture-4-the-black-merton-scholes-model-and-beyond-ii" class="nav-link active" data-scroll-target="#lecture-4-the-black-merton-scholes-model-and-beyond-ii">Lecture 4: The Black-Merton-Scholes model and beyond II</a></li>
+  <li><a href="#agenda" id="toc-agenda" class="nav-link" data-scroll-target="#agenda">Agenda</a></li>
+  <li><a href="#the-black-scholes-world" id="toc-the-black-scholes-world" class="nav-link" data-scroll-target="#the-black-scholes-world">The Black-Scholes world</a></li>
+  <li><a href="#black-scholes-model" id="toc-black-scholes-model" class="nav-link" data-scroll-target="#black-scholes-model">Black-Scholes model</a></li>
+  <li><a href="#black-scholes-pde" id="toc-black-scholes-pde" class="nav-link" data-scroll-target="#black-scholes-pde">Black-Scholes PDE</a></li>
+  <li><a href="#the-black-scholes-formula" id="toc-the-black-scholes-formula" class="nav-link" data-scroll-target="#the-black-scholes-formula">The Black-Scholes formula</a>
+  <ul class="collapse">
+  <li><a href="#note-2" id="toc-note-2" class="nav-link" data-scroll-target="#note-2">Note</a></li>
+  </ul></li>
+  <li><a href="#implied-volatility" id="toc-implied-volatility" class="nav-link" data-scroll-target="#implied-volatility">Implied volatility</a></li>
+  <li><a href="#volatility-smile-of-spx-on-sep-15-2011" id="toc-volatility-smile-of-spx-on-sep-15-2011" class="nav-link" data-scroll-target="#volatility-smile-of-spx-on-sep-15-2011">Volatility smile of SPX on Sep-15, 2011</a></li>
+  <li><a href="#gaussian-process-revisited" id="toc-gaussian-process-revisited" class="nav-link" data-scroll-target="#gaussian-process-revisited">Gaussian process revisited</a></li>
+  <li><a href="#regression-in-multivariate-normal" id="toc-regression-in-multivariate-normal" class="nav-link" data-scroll-target="#regression-in-multivariate-normal">Regression in multivariate normal</a></li>
+  <li><a href="#gaussian-process-regression-gpr" id="toc-gaussian-process-regression-gpr" class="nav-link" data-scroll-target="#gaussian-process-regression-gpr">Gaussian process regression (GPR)</a></li>
+  <li><a href="#implied-volatility-surface-from-gpr" id="toc-implied-volatility-surface-from-gpr" class="nav-link" data-scroll-target="#implied-volatility-surface-from-gpr">Implied volatility surface from GPR</a></li>
+  <li><a href="#resolutions-to-smile" id="toc-resolutions-to-smile" class="nav-link" data-scroll-target="#resolutions-to-smile">Resolutions to smile</a></li>
+  <li><a href="#local-volatility-model" id="toc-local-volatility-model" class="nav-link" data-scroll-target="#local-volatility-model">Local volatility model</a></li>
+  <li><a href="#example---bachelier-model" id="toc-example---bachelier-model" class="nav-link" data-scroll-target="#example---bachelier-model">Example - Bachelier model</a></li>
+  <li><a href="#louis-bachelier" id="toc-louis-bachelier" class="nav-link" data-scroll-target="#louis-bachelier">Louis Bachelier</a></li>
+  <li><a href="#example---cev-model" id="toc-example---cev-model" class="nav-link" data-scroll-target="#example---cev-model">Example - CEV model</a>
+  <ul class="collapse">
+  <li><a href="#note-6" id="toc-note-6" class="nav-link" data-scroll-target="#note-6">Note</a></li>
+  </ul></li>
+  <li><a href="#stochastic-volatility-model" id="toc-stochastic-volatility-model" class="nav-link" data-scroll-target="#stochastic-volatility-model">Stochastic volatility model</a>
+  <ul class="collapse">
+  <li><a href="#note-7" id="toc-note-7" class="nav-link" data-scroll-target="#note-7">Note</a></li>
+  </ul></li>
+  <li><a href="#numerical-and-approximate-solutions" id="toc-numerical-and-approximate-solutions" class="nav-link" data-scroll-target="#numerical-and-approximate-solutions">Numerical and approximate solutions</a></li>
+  <li><a href="#example---the-heston-model" id="toc-example---the-heston-model" class="nav-link" data-scroll-target="#example---the-heston-model">Example - the Heston model</a>
+  <ul class="collapse">
+  <li><a href="#note-8" id="toc-note-8" class="nav-link" data-scroll-target="#note-8">Note</a></li>
+  </ul></li>
+  <li><a href="#heston-model-in-log-return" id="toc-heston-model-in-log-return" class="nav-link" data-scroll-target="#heston-model-in-log-return">Heston model in log return</a></li>
+  <li><a href="#joint-characteristic-function-for-log-return-and-integrated-variance" id="toc-joint-characteristic-function-for-log-return-and-integrated-variance" class="nav-link" data-scroll-target="#joint-characteristic-function-for-log-return-and-integrated-variance">Joint characteristic function for log return and integrated variance</a></li>
+  <li><a href="#feynman-kac-formula-again" id="toc-feynman-kac-formula-again" class="nav-link" data-scroll-target="#feynman-kac-formula-again">Feynman-Kac formula again</a></li>
+  <li><a href="#solving-the-terminal-value-problem" id="toc-solving-the-terminal-value-problem" class="nav-link" data-scroll-target="#solving-the-terminal-value-problem">Solving the terminal value problem</a></li>
+  <li><a href="#solution-to-system-of-odes" id="toc-solution-to-system-of-odes" class="nav-link" data-scroll-target="#solution-to-system-of-odes">Solution to system of ODEs</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content column-page-left" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Topics in Quantitative Finance, Summer 2025</h1>
+</div>
+
+
+
+<div class="quarto-title-meta column-page-left">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="lecture-4-the-black-merton-scholes-model-and-beyond-ii" class="level2">
+<h2 class="anchored" data-anchor-id="lecture-4-the-black-merton-scholes-model-and-beyond-ii">Lecture 4: The Black-Merton-Scholes model and beyond II</h2>
+<p><br> <br></p>
+<center>
+<font size="5," color="darkblue"> Tai-Ho Wang (王 太和)</font>
+</center>
+<p><span class="math display">\[
+\newcommand{\bea}{\begin{eqnarray}}
+\newcommand{\eea}{\end{eqnarray}}
+\newcommand{\supp}{\mathrm{supp}}
+\newcommand{\F}{\mathcal{F}}
+\newcommand{\cF}{\mathcal{F}}
+\newcommand{\E}{\mathbb{E}}
+\newcommand{\Eof}[1]{\mathbb{E}\left[ #1 \right]}
+\newcommand{\Etof}[1]{\mathbb{E}_t\left[ #1 \right]}
+\newcommand{\Sdof}[1]{\mathbb{Sd}\left[ #1 \right]}
+\newcommand{\Cov}{\text{Cov}}
+\newcommand{\Var}{\text{Var}}
+\newcommand{\1}{\mathbf{1}}
+\newcommand{\p}{\partial}
+\newcommand{\PP}{\mathbb{P}}
+\newcommand{\Pof}[1]{\mathbb{P}\left[ #1 \right]}
+\newcommand{\QQ}{\mathbb{Q}}
+\renewcommand{\R}{\mathbb{R}}
+\newcommand{\DD}{\mathbb{D}}
+\newcommand{\HH}{\mathbb{H}}
+\newcommand{\spn}{\mathrm{span}}
+\newcommand{\cov}{\mathrm{cov}}
+\newcommand{\HS}{\mathcal{L}_{\mathrm{HS}}}
+\newcommand{\Hess}{\mathrm{Hess}}
+\newcommand{\trace}{\mathrm{trace}}
+\newcommand{\LL}{\mathcal{L}}
+\newcommand{\s}{\mathcal{S}}
+\newcommand{\ee}{\mathcal{E}}
+\newcommand{\ff}{\mathcal{F}}
+\newcommand{\hh}{\mathcal{H}}
+\newcommand{\bb}{\mathcal{B}}
+\newcommand{\dd}{\mathcal{D}}
+\newcommand{\g}{\mathcal{G}}
+\newcommand{\half}{\frac{1}{2}}
+\newcommand{\T}{\mathcal{T}}
+\newcommand{\bit}{\begin{itemize}}
+\newcommand{\eit}{\end{itemize}}
+\newcommand{\beq}{\begin{equation}}
+\newcommand{\eeq}{\end{equation}}
+\newcommand{\tr}{\text{tr}}
+\newcommand{\inn}[2]{\left\langle #1, #2 \right\rangle}
+\newcommand{\bmx}{\boldsymbol{x}}
+\newcommand{\bmy}{\boldsymbol{y}}
+\newcommand{\bmu}{\boldsymbol{\mu}}
+\newcommand{\bmsigma}{\boldsymbol{\Sigma}}
+\newcommand{\bmepsilon}{\boldsymbol{\epsilon}}
+\newcommand{\xii}{\boldsymbol{\xi}}
+\renewcommand{\bm}{\boldsymbol{m}}
+\]</span></p>
+</section>
+<section id="agenda" class="level2">
+<h2 class="anchored" data-anchor-id="agenda">Agenda</h2>
+<ul>
+<li>Black-Merton-Scholes model revisited</li>
+<li>Implied volatility
+<ul>
+<li>Gaussian process regression (GPR) fit for implied volatility curve</li>
+</ul></li>
+<li>Local volatility model</li>
+<li>Stochastic volatility model
+<ul>
+<li>Heston models</li>
+</ul></li>
+</ul>
+</section>
+<section id="the-black-scholes-world" class="level2">
+<h2 class="anchored" data-anchor-id="the-black-scholes-world">The Black-Scholes world</h2>
+<p>The Black–Scholes model assumes that the market consists of at least one risky asset, usually called the stock, and one riskless asset, usually called the money market, cash, or bond.</p>
+<p>Assumptions on the assets:</p>
+<ul>
+<li>(riskless rate) The rate of return on the riskless asset is constant and thus called the risk-free interest rate.</li>
+<li>(Brownian motion) The instantaneous log return of stock price is a Brownian motion with drift; and we will assume its drift and volatility are constant (if they are time-varying, we can deduce a suitably modified Black–Scholes formula quite simply, as long as the volatility is not random). As a result, the stock price follows a geometric Brownian motion.</li>
+<li>The stock does not pay dividend.</li>
+</ul>
+<p>Assumptions on the market:</p>
+<ul>
+<li>There exists no arbitrage opportunity.</li>
+<li>It is possible to borrow and lend any amount, even fractional, of cash at the riskless rate.</li>
+<li>It is possible to buy and sell any amount, even fractional, of the stock, including short selling.</li>
+<li>Frictionless market: the transactions do not incur any fees or costs.</li>
+</ul>
+</section>
+<section id="black-scholes-model" class="level2">
+<h2 class="anchored" data-anchor-id="black-scholes-model">Black-Scholes model</h2>
+<p>Assume the price of the underlying asset follows the stochastic differential equation</p>
+<p><span class="math display">\[
+\frac{\text{d}S_t}{S_t} = \mu \text{d}t + \sigma \text{d}W_t,
+\]</span></p>
+<p>where</p>
+<ul>
+<li><span class="math inline">\(\mu\)</span>: (constant) expected return</li>
+<li><span class="math inline">\(\sigma\)</span>: (constant) volatility</li>
+<li><span class="math inline">\(W_t\)</span>: standard Brownian motion</li>
+</ul>
+<p>For each time <span class="math inline">\(t\)</span>, <span class="math inline">\(S_t\)</span> is log-normally distributed. More precisely,</p>
+<p><span class="math display">\[
+S_t \sim S_0 \exp\left[\left(\mu - \frac{\sigma^2}{2}\right)t + \sigma \sqrt t Z \right]
+\]</span></p>
+<p>where <span class="math inline">\(Z\)</span> is a standard normal random variable.</p>
+<section id="note" class="level4">
+<h4 class="anchored" data-anchor-id="note">Note</h4>
+<p><span class="math inline">\(S_t\)</span> has the closed form expression</p>
+<p><span class="math display">\[
+S_t = S_0 e^{\left(\mu - \frac{\sigma^2}2 \right) t+ \sigma W_t}
+\]</span></p>
+<p>and is also referred to as a <em>geometric Brownian motion</em>.</p>
+</section>
+</section>
+<section id="black-scholes-pde" class="level2">
+<h2 class="anchored" data-anchor-id="black-scholes-pde">Black-Scholes PDE</h2>
+<p>We conclude that the price <span class="math inline">\(C\)</span> of a call option satisfies</p>
+<p><span class="math display">\[\begin{equation}
+\begin{aligned}
+   \frac{\partial C}{\partial t} + \frac{\sigma^2}{2} S^2 \frac{\partial^2 C}{\partial S^2} + rS \frac{\partial C}{\partial S} - rC = 0,
+   \quad \text{for } 0 &lt; S &lt; \infty, \quad 0 \leq t &lt; T
+\end{aligned}
+\end{equation}\]</span></p>
+<p>with terminal condition</p>
+<p><span class="math display">\[
+C(T,S) = (S - K)^+
+\]</span></p>
+<p>and boundary conditions</p>
+<p><span class="math display">\[\begin{equation}
+\begin{aligned}
+   C(t, 0) &amp;= 0,  \\
+   C(t, S) &amp;\sim S - K e^{-r(T - t)} \quad \text{as } S \to \infty, \\
+   &amp;\text{or more specifically} \quad \lim_{S \to \infty} \frac{C(t, S)}{S} = 1.
+\end{aligned}
+\end{equation}\]</span></p>
+<section id="note-1" class="level4">
+<h4 class="anchored" data-anchor-id="note-1">Note</h4>
+<p>The Black-Scholes pricing PDE does not depend on the drift <span class="math inline">\(\mu\)</span>.</p>
+</section>
+</section>
+<section id="the-black-scholes-formula" class="level2">
+<h2 class="anchored" data-anchor-id="the-black-scholes-formula">The Black-Scholes formula</h2>
+<p>For call</p>
+<p><span class="math display">\[
+C = S e^{-d\tau} N(d_1) - K e^{-r\tau} N(d_2)
+\]</span></p>
+<p>where <span class="math inline">\(\tau\)</span> is time to expiry, <span class="math inline">\(N(\cdot)\)</span> denotes the cdf for standard normal, and</p>
+<p><span class="math display">\[
+d_1 = \frac{\log\left(\frac{Se^{-d\tau}}{Ke^{-r\tau}}\right)}{\sigma\sqrt\tau}+ \frac{\sigma\sqrt\tau}2, \qquad d_2 = d_1 - \sigma \sqrt\tau
+\]</span></p>
+<p>For put</p>
+<p><span class="math display">\[
+P = K e^{-r\tau} N(-d_2) - S e^{-d\tau} N(-d_1).
+\]</span></p>
+<section id="note-2" class="level3">
+<h3 class="anchored" data-anchor-id="note-2">Note</h3>
+<ul>
+<li><p>Put-call parity</p>
+<p><span class="math display">\[
+  C - P = S e^{-d\tau} - K e^{-r\tau}.
+  \]</span></p></li>
+<li><p>Financial meaning of <span class="math inline">\(N(d_1)\)</span> and <span class="math inline">\(N(d_2)\)</span></p></li>
+</ul>
+<div id="cell-7" class="cell" data-execution_count="1">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> numpy <span class="im">import</span> exp, log, sqrt</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> scipy.stats <span class="im">import</span> norm</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="cell-8" class="cell" data-execution_count="2">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Black-Scholes formulas</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="co"># call</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> bs_call(s, K, sigma, t, r<span class="op">=</span><span class="dv">0</span>, d<span class="op">=</span><span class="dv">0</span>):</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>    d1 <span class="op">=</span> (log(s<span class="op">/</span>K) <span class="op">+</span> (r <span class="op">-</span> d)<span class="op">*</span>t)<span class="op">/</span>(sigma<span class="op">*</span>sqrt(t)) <span class="op">+</span> sigma<span class="op">*</span>sqrt(t)<span class="op">/</span><span class="dv">2</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>    d2 <span class="op">=</span> d1 <span class="op">-</span> sigma<span class="op">*</span>sqrt(t)</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>    c <span class="op">=</span> s<span class="op">*</span>exp(<span class="op">-</span>d<span class="op">*</span>t)<span class="op">*</span>norm.cdf(d1) <span class="op">-</span> K<span class="op">*</span>exp(<span class="op">-</span>r<span class="op">*</span>t)<span class="op">*</span>norm.cdf(d2)</span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>    delta <span class="op">=</span> exp(<span class="op">-</span>d<span class="op">*</span>t)<span class="op">*</span>norm.cdf(d1)</span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>    gamma <span class="op">=</span> exp(<span class="op">-</span>d<span class="op">*</span>t)<span class="op">*</span>norm.pdf(d1)<span class="op">/</span>s<span class="op">/</span>sigma<span class="op">/</span>sqrt(t)</span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> {<span class="st">'c'</span>: c, <span class="st">'delta'</span>: delta, <span class="st">'gamma'</span>: gamma}</span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a><span class="co"># put</span></span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> bs_put(s, K, sigma, t, r<span class="op">=</span><span class="dv">0</span>, d<span class="op">=</span><span class="dv">0</span>):</span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a>    d1 <span class="op">=</span> (log(s<span class="op">/</span>K) <span class="op">+</span> (r <span class="op">-</span> d)<span class="op">*</span>t)<span class="op">/</span>(sigma<span class="op">*</span>sqrt(t)) <span class="op">+</span> sigma<span class="op">*</span>sqrt(t)<span class="op">/</span><span class="dv">2</span></span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a>    d2 <span class="op">=</span> d1 <span class="op">-</span> sigma<span class="op">*</span>sqrt(t)</span>
+<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a>    p <span class="op">=</span> K<span class="op">*</span>exp(<span class="op">-</span>r<span class="op">*</span>t)<span class="op">*</span>norm.cdf(<span class="op">-</span>d2) <span class="op">-</span> s<span class="op">*</span>exp(<span class="op">-</span>d<span class="op">*</span>t)<span class="op">*</span>norm.cdf(<span class="op">-</span>d1)</span>
+<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a>    delta <span class="op">=</span> <span class="op">-</span>exp(<span class="op">-</span>d<span class="op">*</span>t)<span class="op">*</span>norm.cdf(<span class="op">-</span>d1)</span>
+<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a>    gamma <span class="op">=</span> exp(<span class="op">-</span>d<span class="op">*</span>t)<span class="op">*</span>norm.pdf(d1)<span class="op">/</span>s<span class="op">/</span>sigma<span class="op">/</span>sqrt(t)</span>
+<span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb2-22"><a href="#cb2-22" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> {<span class="st">'p'</span>: p, <span class="st">'delta'</span>: delta, <span class="st">'gamma'</span>: gamma}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="cell-9" class="cell" data-execution_count="3">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>bs_call(<span class="dv">100</span>,<span class="dv">101</span>, <span class="fl">0.3</span>, <span class="dv">1</span>), bs_put(<span class="dv">100</span>,<span class="dv">101</span>, <span class="fl">0.3</span>, <span class="dv">1</span>)[<span class="st">'p'</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="3">
+<pre><code>({'c': 11.489697553016399,
+  'delta': 0.5465034987964444,
+  'gamma': 0.013207627175872894},
+ 12.489697553016399)</code></pre>
+</div>
+</div>
+</section>
+</section>
+<section id="implied-volatility" class="level2">
+<h2 class="anchored" data-anchor-id="implied-volatility">Implied volatility</h2>
+<p>“A wrong number to a wrong formula for a correct answer.”</p>
+<ul>
+<li><p>In the Black-Scholes model there is a one-to-one correspondence between the price of the option and the volatility parameter <span class="math inline">\(\sigma\)</span> (Why?). The option prices are often quoted by stating this specific volatility, called the <em>implied volatility</em>.</p></li>
+<li><p>In Black-Scholes world, the volatility is assumed constant. But in reality, options of different strike require different volatilities to match their market prices. This is referred to as the <em>volatility smile</em>.</p></li>
+</ul>
+</section>
+<section id="volatility-smile-of-spx-on-sep-15-2011" class="level2">
+<h2 class="anchored" data-anchor-id="volatility-smile-of-spx-on-sep-15-2011">Volatility smile of SPX on Sep-15, 2011</h2>
+<p><img src="spxImpVol.jpg" align="center" height="600" width="600"></p>
+</section>
+<section id="gaussian-process-revisited" class="level2">
+<h2 class="anchored" data-anchor-id="gaussian-process-revisited">Gaussian process revisited</h2>
+<p>A stochastic “process” <span class="math inline">\(f_{\boldsymbol{x}}\)</span>, (multi-)indexed by <span class="math inline">\(\boldsymbol{x}\in\R^d\)</span>, is called a <em>Gaussian process</em> if all its finite dimensional distributions are jointly Gaussian. Precisely, given any finite set of (multi-)indices <span class="math inline">\(\boldsymbol{x}_1, \cdots, \boldsymbol{x}_n\)</span>, the random variables <span class="math inline">\(f_{\boldsymbol{x}_1}, \cdots, f_{\boldsymbol{x}_n}\)</span> are jointly Gaussian. As a result, the distribution of a Gaussian process is fully characterized by the mean function <span class="math inline">\(m(\boldsymbol{x})\)</span> and the autocovariance function, a.k.a., the <em>kernel</em>, <span class="math inline">\(k(\boldsymbol{x}, \boldsymbol{y})\)</span>. For example, the <span class="math inline">\(n\)</span>-dimensional random vector <span class="math inline">\((f_{\boldsymbol{x}_1}, \cdots, f_{\boldsymbol{x}_n})\)</span> is multivariate normally distribtuted <span class="math inline">\(N(\boldsymbol\mu, \boldsymbol \Sigma)\)</span> with</p>
+<p><span class="math display">\[
+\boldsymbol\mu = \left[\begin{array}{c}
+m(\boldsymbol{x}_1) \\
+\vdots \\
+m(\boldsymbol{x}_n)
+\end{array}\right], \qquad
+\boldsymbol \Sigma = \left[\begin{array}{ccc}
+k(\boldsymbol{x}_1, \boldsymbol{x}_1) &amp; \cdots &amp; k(\boldsymbol{x}_1, \boldsymbol{x}_n) \\
+\vdots &amp; \ddots &amp; \vdots \\
+k(\boldsymbol{x}_n, \boldsymbol{x}_1) &amp; \cdots &amp; k(\boldsymbol{x}_n, \boldsymbol{x}_n)
+\end{array}\right].
+\]</span></p>
+<section id="note-3" class="level4">
+<h4 class="anchored" data-anchor-id="note-3">Note</h4>
+<ul>
+<li>Commonly used kernels are the <em>radial basis functions (RBFs)</em> <span class="math display">\[
+k(\boldsymbol{x},\boldsymbol{y}) = A e^{-\frac{|\boldsymbol{x} - \boldsymbol{y}|^\alpha}{2\ell^2}},
+\]</span> where <span class="math inline">\(A\)</span>, <span class="math inline">\(\alpha\)</span>, and <span class="math inline">\(\ell\)</span> are (hyper)parameters to be estimated.</li>
+<li>The smoothness of the kernel <span class="math inline">\(k\)</span> determines the smoothess of the process <span class="math inline">\(f_{\boldsymbol{x}}\)</span>.</li>
+<li>Brownian motion is when <span class="math inline">\(d=1\)</span>, <span class="math inline">\(m(x) = 0\)</span>, and <span class="math inline">\(k(x,y) = \min\{x, y\}\)</span>.</li>
+</ul>
+</section>
+</section>
+<section id="regression-in-multivariate-normal" class="level2">
+<h2 class="anchored" data-anchor-id="regression-in-multivariate-normal">Regression in multivariate normal</h2>
+<p>Let <span class="math inline">\((\boldsymbol{x}, \boldsymbol{y})\)</span> be multivariate normal random variables.</p>
+<p>Recall the following regression equations for the multivariate normal random variables <span class="math inline">\((\boldsymbol{x}, \boldsymbol{y})\)</span>.</p>
+<p><span class="math display">\[
+\boldsymbol{x}|\boldsymbol{y} = \Eof{\boldsymbol{x}} + \Sigma_{\boldsymbol{x}\boldsymbol{y}}\Sigma_{\boldsymbol{y}\boldsymbol{y}}^{-1}(\boldsymbol{y} - \Eof{\boldsymbol{y}})+ \boldsymbol\epsilon,
+\]</span></p>
+<p>where <span class="math inline">\(\boldsymbol{y}\)</span>, <span class="math inline">\(\boldsymbol\epsilon\)</span> are independent and</p>
+<p><span class="math display">\[
+\Sigma_{\boldsymbol\epsilon} = \Sigma_{\boldsymbol{x}} - \Sigma_{\boldsymbol{x}\boldsymbol{y}} \Sigma_{\boldsymbol{y}\boldsymbol{y}}^{-1} \Sigma_{\boldsymbol{y}\boldsymbol{x}}.
+\]</span></p>
+<p>Hence,</p>
+<p><span class="math display">\[
+\Eof{\boldsymbol{X}|\boldsymbol{y}} = \Eof{\boldsymbol{x}} + \Sigma_{\boldsymbol{x}\boldsymbol{y}} \Sigma_{\boldsymbol{y}}^{-1}(\boldsymbol{y} - \Eof{\boldsymbol{y}}), \qquad
+\Sigma_{\boldsymbol{x}|\boldsymbol{y}} = \Sigma_{\boldsymbol{x}} - \Sigma_{\boldsymbol{x}\boldsymbol{y}} \Sigma_{\boldsymbol{y}\boldsymbol{y}}^{-1} \Sigma_{\boldsymbol{y}\boldsymbol{x}}.
+\]</span></p>
+</section>
+<section id="gaussian-process-regression-gpr" class="level2">
+<h2 class="anchored" data-anchor-id="gaussian-process-regression-gpr">Gaussian process regression (GPR)</h2>
+<p>The “regression” is performed in a Baysian style. The underlying regression model is</p>
+<p><span class="math display">\[
+y = f_{\boldsymbol{x}} + u,
+\]</span></p>
+<p>where <span class="math inline">\(f_{\boldsymbol{x}}\)</span> is a Gaussian process and <span class="math inline">\(u\)</span> is normally distributed with mean zero and variance <span class="math inline">\(\sigma^2\)</span>, independent of <span class="math inline">\(f_{\boldsymbol{x}}\)</span>.</p>
+<p>For a given prior mean function <span class="math inline">\(m^{pr}(\boldsymbol{x})\)</span>, a prior kerel <span class="math inline">\(k^{pr}(\boldsymbol{x},\boldsymbol{y})\)</span>, and a given set of observations <span class="math inline">\(\{y_1, \cdots, y_n\}\)</span>, the posterior mean function <span class="math inline">\(m^{po}(\boldsymbol{x})\)</span> and the posterior kernel <span class="math inline">\(k^{po}(\boldsymbol{x}, \boldsymbol{y})\)</span> are inferred by applying the regression equation provided in the last cell.</p>
+<p>Let</p>
+<p><span class="math display">\[
+\boldsymbol{y} = [y_1 \cdots y_n]' \qquad \text{ and } \qquad \boldsymbol{x} = [\boldsymbol{x}_1 \cdots \boldsymbol{x}_n],
+\]</span></p>
+<p>where <span class="math inline">\(y_i = f_{\boldsymbol{x}_i} + u_i\)</span> for <span class="math inline">\(i = 1, 2, \cdots, n\)</span>.</p>
+<p>Note that</p>
+<p><span class="math display">\[
+\text{Var}(y_i, y_j) = k(\boldsymbol{x}_i, \boldsymbol{x}_j) + \sigma^2, \quad \text{cov}(f_{\boldsymbol{x}}, y_i) = k(\boldsymbol{x}, \boldsymbol{x}_i).
+\]</span></p>
+<p>By the regression formula, the posterior distribution of <span class="math inline">\(f_{\boldsymbol{x}}\)</span> conditioned on <span class="math inline">\(\boldsymbol{y}\)</span> is</p>
+<p><span class="math display">\[
+f_{\boldsymbol{x}}|\boldsymbol{y} = \Eof{f_{\boldsymbol{x}}} + \Sigma_{\boldsymbol{x}\boldsymbol{y}} \Sigma_{\boldsymbol{y}\boldsymbol{y}}^{-1}(\boldsymbol{y} - \Eof{\boldsymbol{y}}) + \varepsilon,
+\]</span></p>
+<p>where <span class="math inline">\(\Sigma_{\boldsymbol{x}\boldsymbol{y}}\)</span> is the row vector of covariances between <span class="math inline">\(f_{\boldsymbol{x}}\)</span> and <span class="math inline">\(\boldsymbol{y}\)</span>, and <span class="math inline">\(\Sigma_{\boldsymbol{y}\boldsymbol{y}}\)</span> the <span class="math inline">\(n\times n\)</span> covariance matrix of <span class="math inline">\(\boldsymbol{y}\)</span>. Their entries are given respectively by</p>
+<p><span class="math display">\[
+(\Sigma_{\boldsymbol{x}\boldsymbol{y}})_i = k^{pr}(\boldsymbol{x}, \boldsymbol{x}_i), \quad (\Sigma_{\boldsymbol{y}\boldsymbol{y}})_{ij} = k^{pr}(\boldsymbol{x}_i, \boldsymbol{x}_j) + \sigma^2\delta_{ij}.
+\]</span></p>
+<p><span class="math inline">\(\varepsilon\)</span> is normally distributed with mean zero and variance given by</p>
+<p><span class="math display">\[
+\Var(\varepsilon) = k(\boldsymbol{x}, \boldsymbol{x}) - \Sigma_{\boldsymbol{x}\boldsymbol{y}} \Sigma_{\boldsymbol{y}\boldsymbol{y}}^{-1} \Sigma_{\boldsymbol{y}\boldsymbol{x}}.
+\]</span></p>
+<p>The posterior mean function <span class="math inline">\(m^{po}(\boldsymbol{x})\)</span> is thus obtained as</p>
+<p><span class="math display">\[
+m^{po}(\boldsymbol{x}) = m^{pr}(\boldsymbol{x}) + \Sigma_{\boldsymbol{x}\boldsymbol{y}} \Sigma_{\boldsymbol{y}\boldsymbol{y}}^{-1}(\boldsymbol{y} - m^{pr}(\boldsymbol{x}))
+\]</span></p>
+<p>and the posterior kernel <span class="math inline">\(k^{po}\)</span></p>
+<p><span class="math display">\[
+k^{po}(\boldsymbol{x}, \tilde{\boldsymbol{x}}) = k^{pr}(\boldsymbol{x}, \tilde{\boldsymbol{x}}) - \Sigma_{\boldsymbol{x}\boldsymbol{y}} \Sigma_{\boldsymbol{y}\boldsymbol{y}}^{-1} \Sigma_{\boldsymbol{y}\tilde{\boldsymbol{x}}}
+\]</span></p>
+<section id="note-4" class="level4">
+<h4 class="anchored" data-anchor-id="note-4">Note</h4>
+<ul>
+<li>The posterior mean function can be used as a point estimator</li>
+<li>The posterior kernel for confidence interval</li>
+</ul>
+<div id="cell-15" class="cell" data-execution_count="4">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># hyperparameters by guessing</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>sigma, A, l <span class="op">=</span> <span class="fl">0.3</span>, <span class="fl">0.2</span>, <span class="fl">0.3</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="co"># target function</span></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>mu <span class="op">=</span> <span class="kw">lambda</span> x: <span class="dv">2</span><span class="op">*</span>x<span class="op">**</span><span class="dv">2</span> <span class="op">-</span> x</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a><span class="co"># observations</span></span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a><span class="co"># set seed for reproducing the result</span></span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>np.random.seed(seed<span class="op">=</span><span class="dv">2718</span>)</span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>x_is <span class="op">=</span> np.linspace(<span class="op">-</span><span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">21</span>)</span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>n <span class="op">=</span> <span class="bu">len</span>(x_is)</span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>y_is <span class="op">=</span> mu(x_is) <span class="op">+</span> sigma<span class="op">*</span>norm.rvs(size<span class="op">=</span>n)</span>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a><span class="co"># prior mean function</span></span>
+<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a><span class="co"># set as the sample mean of observations</span></span>
+<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a>y_mean <span class="op">=</span> y_is.mean()</span>
+<span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a>m <span class="op">=</span> <span class="kw">lambda</span> x: y_mean</span>
+<span id="cb5-19"><a href="#cb5-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-20"><a href="#cb5-20" aria-hidden="true" tabindex="-1"></a><span class="co"># prior kernel</span></span>
+<span id="cb5-21"><a href="#cb5-21" aria-hidden="true" tabindex="-1"></a>k <span class="op">=</span> <span class="kw">lambda</span> x, y: A<span class="op">*</span>exp(<span class="op">-</span><span class="bu">abs</span>(x<span class="op">-</span>y)<span class="op">**</span><span class="dv">2</span><span class="op">/</span><span class="dv">2</span><span class="op">/</span>l<span class="op">**</span><span class="dv">2</span>)</span>
+<span id="cb5-22"><a href="#cb5-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-23"><a href="#cb5-23" aria-hidden="true" tabindex="-1"></a><span class="co"># calculate the covariance matrices</span></span>
+<span id="cb5-24"><a href="#cb5-24" aria-hidden="true" tabindex="-1"></a>tmp, _ <span class="op">=</span> np.meshgrid(x_is, x_is)</span>
+<span id="cb5-25"><a href="#cb5-25" aria-hidden="true" tabindex="-1"></a>Sigma_YY <span class="op">=</span> k(tmp, _)</span>
+<span id="cb5-26"><a href="#cb5-26" aria-hidden="true" tabindex="-1"></a>Sigma_YY <span class="op">=</span> Sigma_YY <span class="op">+</span> sigma<span class="op">**</span><span class="dv">2</span><span class="op">*</span>np.identity(n)</span>
+<span id="cb5-27"><a href="#cb5-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-28"><a href="#cb5-28" aria-hidden="true" tabindex="-1"></a><span class="co"># determine Sigma_YY_inv(Y - EY) by solving the linear system Sigma_YY x = Y - EY</span></span>
+<span id="cb5-29"><a href="#cb5-29" aria-hidden="true" tabindex="-1"></a>Sigma_YY_inv_Y_EY <span class="op">=</span> np.linalg.solve(Sigma_YY, y_is <span class="op">-</span> m(x_is))</span>
+<span id="cb5-30"><a href="#cb5-30" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-31"><a href="#cb5-31" aria-hidden="true" tabindex="-1"></a><span class="co"># posterior mean function</span></span>
+<span id="cb5-32"><a href="#cb5-32" aria-hidden="true" tabindex="-1"></a>mpo <span class="op">=</span> <span class="kw">lambda</span> x: m(x) <span class="op">+</span> <span class="bu">sum</span>(k(x, x_is)<span class="op">*</span>Sigma_YY_inv_Y_EY)</span>
+<span id="cb5-33"><a href="#cb5-33" aria-hidden="true" tabindex="-1"></a><span class="co"># vectorize</span></span>
+<span id="cb5-34"><a href="#cb5-34" aria-hidden="true" tabindex="-1"></a>mpo <span class="op">=</span> np.vectorize(mpo)</span>
+<span id="cb5-35"><a href="#cb5-35" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-36"><a href="#cb5-36" aria-hidden="true" tabindex="-1"></a><span class="co"># fitted values</span></span>
+<span id="cb5-37"><a href="#cb5-37" aria-hidden="true" tabindex="-1"></a>yhat <span class="op">=</span> mpo(x_is)</span>
+<span id="cb5-38"><a href="#cb5-38" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-39"><a href="#cb5-39" aria-hidden="true" tabindex="-1"></a><span class="co"># absolute errors</span></span>
+<span id="cb5-40"><a href="#cb5-40" aria-hidden="true" tabindex="-1"></a>abs_errs <span class="op">=</span> <span class="bu">abs</span>(y_is <span class="op">-</span> yhat)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="cell-16" class="cell" data-execution_count="5">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="bu">max</span>(abs_errs))</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>pd.DataFrame({<span class="st">'y'</span>: y_is, <span class="st">'yhat'</span>: yhat, <span class="st">'abs_errs'</span>: abs_errs})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>1.1358253459151362</code></pre>
+</div>
+<div class="cell-output cell-output-display" data-execution_count="5">
+<div>
+
+
+<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">y</th>
+<th data-quarto-table-cell-role="th">yhat</th>
+<th data-quarto-table-cell-role="th">abs_errs</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>3.516755</td>
+<td>2.380930</td>
+<td>1.135825</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>2.332123</td>
+<td>2.222288</td>
+<td>0.109835</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2</td>
+<td>1.019894</td>
+<td>1.974779</td>
+<td>0.954885</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">3</td>
+<td>1.895070</td>
+<td>1.707121</td>
+<td>0.187948</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">4</td>
+<td>1.725995</td>
+<td>1.448850</td>
+<td>0.277145</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">5</td>
+<td>1.480932</td>
+<td>1.189129</td>
+<td>0.291803</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">6</td>
+<td>0.870354</td>
+<td>0.908513</td>
+<td>0.038160</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">7</td>
+<td>0.704656</td>
+<td>0.610133</td>
+<td>0.094523</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">8</td>
+<td>-0.257049</td>
+<td>0.324002</td>
+<td>0.581051</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">9</td>
+<td>0.279927</td>
+<td>0.087312</td>
+<td>0.192615</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">10</td>
+<td>0.247570</td>
+<td>-0.077739</td>
+<td>0.325309</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">11</td>
+<td>-0.758467</td>
+<td>-0.172100</td>
+<td>0.586367</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">12</td>
+<td>-0.108623</td>
+<td>-0.212834</td>
+<td>0.104212</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">13</td>
+<td>-0.305841</td>
+<td>-0.218536</td>
+<td>0.087306</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">14</td>
+<td>-0.150473</td>
+<td>-0.195562</td>
+<td>0.045090</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">15</td>
+<td>-0.030276</td>
+<td>-0.132750</td>
+<td>0.102473</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">16</td>
+<td>-0.229478</td>
+<td>-0.010076</td>
+<td>0.219402</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">17</td>
+<td>-0.173393</td>
+<td>0.181518</td>
+<td>0.354910</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">18</td>
+<td>0.514295</td>
+<td>0.422797</td>
+<td>0.091498</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">19</td>
+<td>0.818159</td>
+<td>0.666638</td>
+<td>0.151521</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">20</td>
+<td>1.001742</td>
+<td>0.858620</td>
+<td>0.143122</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+<div id="cell-17" class="cell" data-execution_count="6">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># plot</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">9</span>, <span class="dv">6</span>))</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>plt.plot(x_is, y_is, <span class="st">'ro'</span>, label<span class="op">=</span><span class="st">'observed'</span>)</span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>plt.plot(x_is, mu(x_is), ls<span class="op">=</span><span class="st">'dashed'</span>, label<span class="op">=</span><span class="st">'target'</span>)</span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>plt.plot(x_is, yhat, <span class="st">'o--'</span>, label<span class="op">=</span><span class="st">'GPR fit'</span>)</span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="vs">r'</span><span class="dv">$</span><span class="vs">x</span><span class="dv">$</span><span class="vs">'</span>, fontsize<span class="op">=</span><span class="dv">15</span>)</span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="vs">r'</span><span class="dv">$</span><span class="vs">y</span><span class="dv">$</span><span class="vs">'</span>, fontsize<span class="op">=</span><span class="dv">15</span>)</span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>plt.legend()<span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="NSD_Lec04-BlackMertonScholes-2_Summer2025_files/figure-html/cell-7-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<div id="cell-18" class="cell" data-execution_count="7">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># posterior kernel</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> kpo(x, xp):</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>    Sigma_YY_inv_Yxp <span class="op">=</span> np.linalg.solve(Sigma_YY, k(xp, x_is))</span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>    Sigma_xY <span class="op">=</span> k(x, x_is)</span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> k(x, xp) <span class="op">-</span> <span class="bu">sum</span>(Sigma_xY<span class="op">*</span>Sigma_YY_inv_Yxp)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="cell-19" class="cell" data-execution_count="8">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># wrap everthing up as functions</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="co"># The posterior mean function from GPR</span></span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a><span class="co"># inputs: </span></span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a><span class="co"># m: prior mean function </span></span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a><span class="co"># k: prior kernel</span></span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a><span class="co"># y: observations</span></span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a><span class="co"># x: indices</span></span>
+<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a><span class="co"># </span></span>
+<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a><span class="co"># output: the posterior mean function</span></span>
+<span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-12"><a href="#cb10-12" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> pos_mean(m, k, y, x, sigma<span class="op">=</span><span class="fl">0.001</span>):</span>
+<span id="cb10-13"><a href="#cb10-13" aria-hidden="true" tabindex="-1"></a>    n <span class="op">=</span> <span class="bu">len</span>(x)</span>
+<span id="cb10-14"><a href="#cb10-14" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb10-15"><a href="#cb10-15" aria-hidden="true" tabindex="-1"></a>    <span class="co"># calculate the covariance matrices</span></span>
+<span id="cb10-16"><a href="#cb10-16" aria-hidden="true" tabindex="-1"></a>    tmp, _ <span class="op">=</span> np.meshgrid(x_is, x_is)</span>
+<span id="cb10-17"><a href="#cb10-17" aria-hidden="true" tabindex="-1"></a>    Sigma_YY <span class="op">=</span> k(tmp, _)</span>
+<span id="cb10-18"><a href="#cb10-18" aria-hidden="true" tabindex="-1"></a>    Sigma_YY <span class="op">=</span> Sigma_YY <span class="op">+</span> sigma<span class="op">**</span><span class="dv">2</span><span class="op">*</span>np.identity(n)</span>
+<span id="cb10-19"><a href="#cb10-19" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb10-20"><a href="#cb10-20" aria-hidden="true" tabindex="-1"></a>    <span class="co"># determine Sigma_YY_inv(Y - EY) by solving the linear system Sigma_YY x = Y - EY</span></span>
+<span id="cb10-21"><a href="#cb10-21" aria-hidden="true" tabindex="-1"></a>    Sigma_YY_inv_Y_EY <span class="op">=</span> np.linalg.solve(Sigma_YY, y <span class="op">-</span> m(x))</span>
+<span id="cb10-22"><a href="#cb10-22" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb10-23"><a href="#cb10-23" aria-hidden="true" tabindex="-1"></a>    <span class="co"># return the posterior mean function</span></span>
+<span id="cb10-24"><a href="#cb10-24" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="kw">lambda</span> xx: m(xx) <span class="op">+</span> <span class="bu">sum</span>(k(xx, x)<span class="op">*</span>Sigma_YY_inv_Y_EY)</span>
+<span id="cb10-25"><a href="#cb10-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-26"><a href="#cb10-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-27"><a href="#cb10-27" aria-hidden="true" tabindex="-1"></a><span class="co"># The posterior kernel from GPR</span></span>
+<span id="cb10-28"><a href="#cb10-28" aria-hidden="true" tabindex="-1"></a><span class="co"># inputs: </span></span>
+<span id="cb10-29"><a href="#cb10-29" aria-hidden="true" tabindex="-1"></a><span class="co"># k: prior kernel</span></span>
+<span id="cb10-30"><a href="#cb10-30" aria-hidden="true" tabindex="-1"></a><span class="co"># x: indices</span></span>
+<span id="cb10-31"><a href="#cb10-31" aria-hidden="true" tabindex="-1"></a><span class="co"># </span></span>
+<span id="cb10-32"><a href="#cb10-32" aria-hidden="true" tabindex="-1"></a><span class="co"># output: the posterior kernel</span></span>
+<span id="cb10-33"><a href="#cb10-33" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-34"><a href="#cb10-34" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> pos_kernel(k, x, sigma<span class="op">=</span><span class="fl">0.1</span>):</span>
+<span id="cb10-35"><a href="#cb10-35" aria-hidden="true" tabindex="-1"></a>    n <span class="op">=</span> <span class="bu">len</span>(x)</span>
+<span id="cb10-36"><a href="#cb10-36" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb10-37"><a href="#cb10-37" aria-hidden="true" tabindex="-1"></a>    <span class="co"># calculate the covariance matrices</span></span>
+<span id="cb10-38"><a href="#cb10-38" aria-hidden="true" tabindex="-1"></a>    tmp, _ <span class="op">=</span> np.meshgrid(x_is, x_is)</span>
+<span id="cb10-39"><a href="#cb10-39" aria-hidden="true" tabindex="-1"></a>    Sigma_YY <span class="op">=</span> k(tmp, _)</span>
+<span id="cb10-40"><a href="#cb10-40" aria-hidden="true" tabindex="-1"></a>    Sigma_YY <span class="op">=</span> Sigma_YY <span class="op">+</span> sigma<span class="op">**</span><span class="dv">2</span><span class="op">*</span>np.identity(n)</span>
+<span id="cb10-41"><a href="#cb10-41" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb10-42"><a href="#cb10-42" aria-hidden="true" tabindex="-1"></a>    <span class="co"># return the posterior kernel</span></span>
+<span id="cb10-43"><a href="#cb10-43" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> _(xx, xp):</span>
+<span id="cb10-44"><a href="#cb10-44" aria-hidden="true" tabindex="-1"></a>        <span class="co"># determine Sigma_YY_inv Sigma_Yxp by solving the linear system Sigma_YY x = Sigma_Yxp</span></span>
+<span id="cb10-45"><a href="#cb10-45" aria-hidden="true" tabindex="-1"></a>        Sigma_YY_inv_Yxp <span class="op">=</span> np.linalg.solve(Sigma_YY, k(xp, x))</span>
+<span id="cb10-46"><a href="#cb10-46" aria-hidden="true" tabindex="-1"></a>        Sigma_xY <span class="op">=</span> k(xx, x)</span>
+<span id="cb10-47"><a href="#cb10-47" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> k(xx, xp) <span class="op">-</span> <span class="bu">sum</span>(Sigma_xY<span class="op">*</span>Sigma_YY_inv_Yxp)</span>
+<span id="cb10-48"><a href="#cb10-48" aria-hidden="true" tabindex="-1"></a>        </span>
+<span id="cb10-49"><a href="#cb10-49" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> _</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="cell-20" class="cell" data-execution_count="9">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># an example of overfitting</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>mpo <span class="op">=</span> pos_mean(m, k, y_is, x_is, sigma<span class="op">=</span><span class="fl">0.001</span>)</span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>mpo <span class="op">=</span> np.vectorize(mpo)</span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>mpo(x_is)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="9">
+<pre><code>array([ 3.54621538,  2.19815658,  1.28890099,  1.60897726,  1.85557559,
+        1.50339612,  0.92003406,  0.41076722,  0.14251242,  0.11383494,
+        0.00924226, -0.29950277, -0.45034976, -0.24524099, -0.036229  ,
+       -0.11867752, -0.25938903, -0.07346743,  0.42936134,  0.85544179,
+        0.99444426])</code></pre>
+</div>
+</div>
+<div id="cell-21" class="cell" data-execution_count="10">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># plot</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">9</span>, <span class="dv">6</span>))</span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>plt.plot(x_is, y_is, <span class="st">'ro'</span>, label<span class="op">=</span><span class="st">'observed'</span>)</span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>plt.plot(x_is, mu(x_is), ls<span class="op">=</span><span class="st">'dashed'</span>, label<span class="op">=</span><span class="st">'target'</span>)</span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>plt.plot(x_is, mpo(x_is), <span class="st">'o--'</span>, label<span class="op">=</span><span class="st">'GPR fit'</span>)</span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="vs">r'</span><span class="dv">$</span><span class="vs">x</span><span class="dv">$</span><span class="vs">'</span>, fontsize<span class="op">=</span><span class="dv">15</span>)</span>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="vs">r'</span><span class="dv">$</span><span class="vs">y</span><span class="dv">$</span><span class="vs">'</span>, fontsize<span class="op">=</span><span class="dv">15</span>)</span>
+<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a>plt.legend()<span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="NSD_Lec04-BlackMertonScholes-2_Summer2025_files/figure-html/cell-11-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<div id="cell-22" class="cell" data-execution_count="11">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co"># effect of sigma</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">15</span>, <span class="dv">6</span>))</span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>sigmas <span class="op">=</span> [<span class="fl">0.001</span>, <span class="fl">0.1</span>, <span class="dv">10</span>]</span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i, sigma <span class="kw">in</span> <span class="bu">zip</span>(<span class="bu">range</span>(<span class="bu">len</span>(sigmas)), sigmas):</span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>    mpo <span class="op">=</span> pos_mean(m, k, y_is, x_is, sigma<span class="op">=</span>sigma)</span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a>    mpo <span class="op">=</span> np.vectorize(mpo)</span>
+<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a>    plt.subplot(<span class="dv">1</span>, <span class="dv">3</span>, i<span class="op">+</span><span class="dv">1</span>)</span>
+<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a>    plt.plot(x_is, y_is, <span class="st">'ro'</span>, label<span class="op">=</span><span class="st">'observed'</span>)</span>
+<span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a>    plt.plot(x_is, mu(x_is), ls<span class="op">=</span><span class="st">'dashed'</span>, label<span class="op">=</span><span class="st">'target'</span>)</span>
+<span id="cb14-10"><a href="#cb14-10" aria-hidden="true" tabindex="-1"></a>    plt.plot(x_is, mpo(x_is), <span class="st">'o--'</span>, label<span class="op">=</span><span class="st">'GPR fit'</span>)</span>
+<span id="cb14-11"><a href="#cb14-11" aria-hidden="true" tabindex="-1"></a>    plt.xlabel(<span class="vs">r'</span><span class="dv">$</span><span class="vs">x</span><span class="dv">$</span><span class="vs">'</span>, fontsize<span class="op">=</span><span class="dv">15</span>)</span>
+<span id="cb14-12"><a href="#cb14-12" aria-hidden="true" tabindex="-1"></a>    plt.ylabel(<span class="vs">r'</span><span class="dv">$</span><span class="vs">y</span><span class="dv">$</span><span class="vs">'</span>, fontsize<span class="op">=</span><span class="dv">15</span>)</span>
+<span id="cb14-13"><a href="#cb14-13" aria-hidden="true" tabindex="-1"></a>    plt.title(<span class="ss">f'$</span><span class="er">\</span><span class="ss">sigma$=</span><span class="sc">{</span>sigma<span class="sc">}</span><span class="ss">'</span>, fontsize<span class="op">=</span><span class="dv">20</span>)</span>
+<span id="cb14-14"><a href="#cb14-14" aria-hidden="true" tabindex="-1"></a>    plt.legend()<span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="NSD_Lec04-BlackMertonScholes-2_Summer2025_files/figure-html/cell-12-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="implied-volatility-surface-from-gpr" class="level2">
+<h2 class="anchored" data-anchor-id="implied-volatility-surface-from-gpr">Implied volatility surface from GPR</h2>
+<p>To apply GPR to construct implied volatility curve for a given fixed time to expiry, the observations <span class="math inline">\(y_1, \cdots, y_n\)</span> are the implied volatilities inferred from the market traded optios whereas the index <span class="math inline">\(\boldsymbol{x}\)</span> is set as the logmoneyness, i.e., the logarithm of the ratio between strike and forward price. The authors of the paper “Machine Learning for Quantitative Finance: Fast Derivative Pricing, Hedging and Fitting” by Spiegeleer, Madan, Reyners, and Schoutens, chose the radial basis function</p>
+<p><span class="math display">\[
+k(x, y) = A e^{-\frac{|x-y|^2}{2\ell^2}}
+\]</span></p>
+<p>as the prior kernel, where <span class="math inline">\(A\)</span> and <span class="math inline">\(\ell\)</span> are hyperparameters, and a quadratic function as the prior mean function.</p>
+<section id="note-5" class="level4">
+<h4 class="anchored" data-anchor-id="note-5">Note</h4>
+<ul>
+<li>There is no guarantee that the GPR interpolated/extrapolated implied volatility surface would be free of arbitrage.</li>
+<li>Nonconvexity of call price as a function of strike indicates the existence of butterfly spread arbitrage and nonmonotonicity indicates bull spread arbitrage.</li>
+</ul>
+<div id="cell-24" class="cell" data-execution_count="12">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># for example, consider a parabolic implied volatility curve in logmoneyness</span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="co"># k = logmoneyness</span></span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>a, b, c <span class="op">=</span> <span class="fl">0.5</span>, <span class="dv">0</span>, <span class="fl">0.3</span></span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>sig_imp <span class="op">=</span> <span class="kw">lambda</span> k: a<span class="op">*</span>k<span class="op">**</span><span class="dv">2</span> <span class="op">+</span> b<span class="op">*</span>k <span class="op">+</span> c</span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a>s <span class="op">=</span> <span class="dv">10</span></span>
+<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a>ks <span class="op">=</span> np.linspace(<span class="op">-</span><span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">201</span>)</span>
+<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a>ivs <span class="op">=</span> sig_imp(ks)</span>
+<span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-10"><a href="#cb15-10" aria-hidden="true" tabindex="-1"></a><span class="co"># plot the implied vol curve</span></span>
+<span id="cb15-11"><a href="#cb15-11" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">9</span>, <span class="dv">6</span>))</span>
+<span id="cb15-12"><a href="#cb15-12" aria-hidden="true" tabindex="-1"></a>plt.plot(ks, ivs, color<span class="op">=</span><span class="st">'red'</span>)</span>
+<span id="cb15-13"><a href="#cb15-13" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="vs">r'logmoneyness'</span>, fontsize<span class="op">=</span><span class="dv">15</span>)</span>
+<span id="cb15-14"><a href="#cb15-14" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="vs">r'implied volatility'</span>, fontsize<span class="op">=</span><span class="dv">15</span>)<span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="NSD_Lec04-BlackMertonScholes-2_Summer2025_files/figure-html/cell-13-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<div id="cell-25" class="cell" data-execution_count="13">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co"># plot the call prices vs strikes</span></span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>Ks <span class="op">=</span> s<span class="op">*</span>exp(ks)</span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>cs <span class="op">=</span> bs_call(s<span class="op">=</span>s, K<span class="op">=</span>Ks, sigma<span class="op">=</span>ivs, t<span class="op">=</span><span class="dv">1</span>)[<span class="st">'c'</span>]</span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">9</span>, <span class="dv">6</span>))</span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a>plt.plot(Ks, cs, color<span class="op">=</span><span class="st">'blue'</span>)</span>
+<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'strikes'</span>, fontsize<span class="op">=</span><span class="dv">15</span>)</span>
+<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'call prices'</span>, fontsize<span class="op">=</span><span class="dv">15</span>)<span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="NSD_Lec04-BlackMertonScholes-2_Summer2025_files/figure-html/cell-14-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="resolutions-to-smile" class="level2">
+<h2 class="anchored" data-anchor-id="resolutions-to-smile">Resolutions to smile</h2>
+<p>Approaches to resolve the skew/smile problem</p>
+<ul>
+<li>Local volatility model
+<ul>
+<li>Assume the volatility is a function of the underlying asset and time.</li>
+<li>Market is complete.</li>
+<li>Volatility function is recoverable from the market data (Dupire formula) - easy to calibrate.</li>
+<li>Dupire (diffusion model), Derman-Kani(Markov chain model)</li>
+</ul></li>
+<li>Stochastic volatility model
+<ul>
+<li>Assume the volatility itself follows another stochastic process.</li>
+<li>Incomplete market.</li>
+<li>Volatility of volatility is unobservable</li>
+<li>Heston’s model, SABR model, Hull-White model, etc.</li>
+<li>Fractional volatility models</li>
+</ul></li>
+<li>Jump diffusion models (e.g.&nbsp;Merton jump diffusion), exponential Levy models (e.g.&nbsp;CGMY), etc.</li>
+</ul>
+</section>
+<section id="local-volatility-model" class="level2">
+<h2 class="anchored" data-anchor-id="local-volatility-model">Local volatility model</h2>
+<p>The local volatility model assumes that the evolution of the price <span class="math inline">\(S_t\)</span> of the underlying under risk neutral probability (with zero interest rate) is governed by the SDE <span class="math display">\[
+\frac{\mathrm{d}S_t}{S_t} =  \sigma_\ell (S_t,t) \mathrm{d}W_t.
+\]</span></p>
+<p><span class="math inline">\(\sigma_\ell\)</span> is referred to as the <em>local volatility function</em>. In other words, rather than taking the volatility as a constant as in the Black-Scholes model, the local volatility model allows the volatility to depend on, and only on, the underlying price <span class="math inline">\(s\)</span> and time <span class="math inline">\(t\)</span>.</p>
+<p>The associated pricing equation for the local volatility model (assume interest rate <span class="math inline">\(r=0\)</span>) is given by</p>
+<p><span class="math display">\[
+\frac{\p u}{\p t} + \frac{\sigma_\ell^2(s,t)}{2}s^2\frac{\p^2 u}{\p s^2} = 0.
+\]</span></p>
+<p>In addition to being a complete market, one fascinating feature of the local volatility model is that the local volatility function <span class="math inline">\(\sigma_\ell\)</span> ideally can be read off from the market data of vanilla calls by applying the Dupire’s formula</p>
+<p><span class="math display">\[
+\sigma^2_\ell(K,T) = \frac{\frac{\p C}{\p T}}{\frac12 K^2 \frac{\p^2 C}{\p K^2}}
+\]</span></p>
+<p>should one observe the premia of calls for all strikes <span class="math inline">\(K\)</span> and expiries <span class="math inline">\(T\)</span>. In practice, we have far less observed data; a method of interpolating/extrapolating the lacking call premia is required to determine the local volatility function <span class="math inline">\(\sigma_\ell\)</span>.</p>
+</section>
+<section id="example---bachelier-model" class="level2">
+<h2 class="anchored" data-anchor-id="example---bachelier-model">Example - Bachelier model</h2>
+<p>The Bachelier model can be regarded as a local volatility model with the local volatility function given by <span class="math inline">\(\displaystyle \sigma_\ell(s) = \frac{\sigma}s\)</span>. Hence, the model reads</p>
+<p><span class="math display">\[
+\mathrm{d}S_t = \sigma \mathrm{d}W_t \quad \Longleftrightarrow \quad S_t = S_0 + \sigma W_t.
+\]</span></p>
+<p>In other words, the price of the underlying evolves as a (shifted and rescaled) Brownian motion. The associated pricing equation in the Bachelier model reads</p>
+<p><span class="math display">\[
+\frac{\p u}{\p t} + \frac{\sigma^2}{2} \frac{\p^2 u}{\p s^2} = 0,
+\]</span></p>
+<p>which is the classical (backward) heat equation, and the premium <span class="math inline">\(c\)</span> of call struck at <span class="math inline">\(K\)</span> with time-to-expiry <span class="math inline">\(\tau\)</span> is given by</p>
+<p><span class="math display">\[
+c = \frac{\sigma\sqrt\tau}{\sqrt{2\pi}} \, e^{-\frac{(s - K)^2}{2\sigma^2\tau}} + (s - K) \, N\left(\frac{s - K}{\sigma\sqrt\tau}\right).
+\]</span></p>
+</section>
+<section id="louis-bachelier" class="level2">
+<h2 class="anchored" data-anchor-id="louis-bachelier">Louis Bachelier</h2>
+<h2 style="text-align: center;" class="anchored">
+<img src="https://upload.wikimedia.org/wikipedia/commons/3/3b/LouisBachelier.jpg" align="center" width="160">
+</h2>
+<p><br> Courtesy: Photo from Wikipedia <br></p>
+<p>Quotes from the <a href="https://en.wikipedia.org/wiki/Louis_Bachelier">Wikipage</a></p>
+<blockquote class="blockquote">
+<p>Louis Jean-Baptiste Alphonse Bachelier (French: [baʃəlje]; March 11, 1870 – April 28, 1946) was a French mathematician at the turn of the 20th century. He is credited with being the first person to model the stochastic process now called Brownian motion, as part of his PhD thesis The Theory of Speculation (Théorie de la spéculation, published 1900).</p>
+</blockquote>
+<blockquote class="blockquote">
+<p>Bachelier’s Doctoral thesis, which introduced for the first time a mathematical model of Brownian motion and its use for valuing stock options, is historically the first paper to use advanced mathematics in the study of finance. Thus, Bachelier is considered as the forefather of mathematical finance and a pioneer in the study of stochastic processes.</p>
+</blockquote>
+</section>
+<section id="example---cev-model" class="level2">
+<h2 class="anchored" data-anchor-id="example---cev-model">Example - CEV model</h2>
+<p>The constant elasticity of variance (CEV) model is a local volatility model with the local volatility function given by a power function in the price of the underlying. Specifically, the CEV model reads</p>
+<p><span class="math display">\[
+\frac{\mathrm{d}S_t}{S_t} = \alpha S_t^\beta \mathrm{d}W_t
+\]</span></p>
+<p>with <span class="math inline">\(\alpha &gt; 0\)</span> and <span class="math inline">\(\beta &gt; -1\)</span>. The associated pricing equation in the CEV model reads</p>
+<p><span class="math display">\[
+\frac{\p u}{\p t} + \frac{\alpha^2}2 s^{2 + 2\beta} \frac{\p^2 u}{\p s^2} = 0.
+\]</span></p>
+<section id="note-6" class="level3">
+<h3 class="anchored" data-anchor-id="note-6">Note</h3>
+<ul>
+<li><span class="math inline">\(\beta = -1\)</span> is the Bachelier model.</li>
+<li><span class="math inline">\(\beta &lt; 0\)</span> corresponds to leverage effect which is usually observed in equity markets.</li>
+<li><span class="math inline">\(\beta &gt; 0\)</span> corresponds to reverse leverage effect often observed in commodity markets</li>
+</ul>
+</section>
+</section>
+<section id="stochastic-volatility-model" class="level2">
+<h2 class="anchored" data-anchor-id="stochastic-volatility-model">Stochastic volatility model</h2>
+<p>Stochastic volatility models impose that the volatility (or equivalently the variance) <em>per se</em> is a stochastic process which may or may not be correlated to the driving Brownian motion of the underlying. A generic stochastic volatility model is of the form</p>
+<p><span class="math display">\[\begin{equation}
+\begin{aligned}
+   \frac{\mathrm{d}S_t}{S_t} &amp;= \sqrt{v_t} \, \mathrm{d}W_t, \\
+   \mathrm{d}v_t &amp;= a(t, v_t) \, \mathrm{d}t + b(t, v_t) \, \mathrm{d}Z_t,
+\end{aligned}
+\end{equation}\]</span></p>
+<p>where <span class="math inline">\(W_t\)</span> and <span class="math inline">\(Z_t\)</span> are correlated Brownian motions with correlation <span class="math inline">\(\rho\)</span>. The process <span class="math inline">\(v_t\)</span> is usually referred to as the <em>instantaneous variance</em> and its square root <span class="math inline">\(\sigma_t := \sqrt{v_t}\)</span> the <em>instantaneous volatility</em> of the underlying at time <span class="math inline">\(t\)</span>.</p>
+<p>Commonly used stochastic volatility models include</p>
+<ul>
+<li>Heston model</li>
+<li>Hull-White model</li>
+<li>Stochastic alpha-beta-rho (SABR) model</li>
+</ul>
+<section id="note-7" class="level3">
+<h3 class="anchored" data-anchor-id="note-7">Note</h3>
+<ul>
+<li>Incomplete market.</li>
+<li>Instantaneous volatility process is latent.</li>
+<li>Conditions on the functions <span class="math inline">\(a\)</span> and <span class="math inline">\(b\)</span> are required for the positivity of <span class="math inline">\(v_t\)</span>.</li>
+</ul>
+<div class="callout callout-style-default callout-note callout-titled" title="Complete market">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Complete market
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>In economics, a complete market is a market with two conditions:</p>
+<ul>
+<li>Negligible transaction costs and therefore also perfect information,</li>
+<li>Every asset in every possible state of the world has a price.</li>
+</ul>
+</div>
+</div>
+<p>为什么 Stochastic volatility models 不是 complete markets?</p>
+<ul>
+<li>因为 <span class="math inline">\(\sigma\)</span> 里有一个风险.</li>
+<li>市场上通常只有一个可交易资产 (如股票 <span class="math inline">\(S_t\)</span> 和一个无风险资产 (如债券).</li>
+<li>但市场有两个风险源 (股票价格的风险 + 波动率的风险), 而只能交易其中一个.</li>
+<li>我们没有足够多的可交易资产去完全对冲所有的不确定性.</li>
+</ul>
+</section>
+</section>
+<section id="numerical-and-approximate-solutions" class="level2">
+<h2 class="anchored" data-anchor-id="numerical-and-approximate-solutions">Numerical and approximate solutions</h2>
+<p>As opposed to Black-Scholes model, local volatility and stochastic volatility models generally admit no closed form expressions for vanilla options as simple as the Black-Scholes formula. One is required to resort to numerical or approximate solutions as practical applications are concerned. Commonly used methodologies include</p>
+<ul>
+<li>Monte Carlo simulation
+<ul>
+<li>Less sensitive to dimensionality</li>
+<li>More flexible for additional extra features for pricing problems</li>
+<li>Usually slower than numerical PDE though improved efficient schemes exist</li>
+</ul></li>
+<li>Numerical PDE solver
+<ul>
+<li>Faster than simulation but still slow for calibration</li>
+<li>More involved and technical in mathematics than Monte Carlo</li>
+</ul></li>
+<li>Asymptotic expansions
+<ul>
+<li>Approximate solution, not exact</li>
+<li>Fast enough for calibration</li>
+<li>Solution is up to an order of a small parameter, but in closed form</li>
+</ul></li>
+</ul>
+<p>现在: Machine learning 来解 PDE.</p>
+</section>
+<section id="example---the-heston-model" class="level2">
+<h2 class="anchored" data-anchor-id="example---the-heston-model">Example - the Heston model</h2>
+<p>The dynamic of Heston’s model under risk neutral probability with zero interest rate reads</p>
+<p><span class="math display">\[\begin{equation}
+\begin{aligned}
+   \frac{\mathrm{d} S_t}{S_t} &amp;= \sqrt{v_t} \, \mathrm{d}B_t,  \\
+   \mathrm{d}v_t &amp;= \lambda(m - v_t) \, \mathrm{d}t + \eta \sqrt{v_t} \, \mathrm{d}Z_t, \\
+   \mathbb{E}[\mathrm{d}B_t \, \mathrm{d}Z_t] &amp;= \rho \, \mathrm{d}t.
+\end{aligned}
+\end{equation}\]</span></p>
+<p>The pricing equation in Heston’s model reads</p>
+<p><span class="math display">\[
+\frac{\p u}{\p t} + \frac{s^2 v}{2}\frac{\p^2 u}{\p s^2} + \rho \eta s v \frac{\p^2 u}{\p s \p v} +  \frac{\eta^2 v}{2}\frac{\p^2 u}{\p v^2} + \lambda(m - v) \frac{\p u}{\p v} = 0
+\]</span></p>
+<p>and the premium <span class="math inline">\(c\)</span> of a call struck at <span class="math inline">\(K\)</span> has the following quasi-closed form (modulo a one-dimensional integral) expression</p>
+<p><span class="math display">\[
+c = K \,\left\{ e^x \,P_1(x,v,\tau ) - P_0(x ,v ,\tau)\right\},
+\]</span></p>
+<p>where <span class="math inline">\(x = \log s - \log K\)</span> and</p>
+<p><span class="math display">\[
+    P_j (x,v,\tau ) =\frac{1}{2} + \frac{1}{\pi }\,\int_0^\infty \,\mathop{Re} \left\{ {\frac{{\exp \{ C_j (u,\tau )\,\bar v + D_j(u,\tau )\,v + i\,u\,x\} }}{{i\,u}}} \right\} \, \mathrm{d}u, \quad j = 0,1.
+\]</span></p>
+<section id="note-8" class="level3">
+<h3 class="anchored" data-anchor-id="note-8">Note</h3>
+<ul>
+<li>The condition on the coefficients <span class="math inline">\(2\lambda m \geq \eta^2\)</span> guarantees that the variance process <span class="math inline">\(v_t\)</span> never hit zero. In practice, the condition is at times not met.</li>
+<li>Technical note: call premium from characteristic function</li>
+</ul>
+<p><span class="math display">\[
+c = S - \frac{\sqrt{SK}}\pi \, \int_0^\infty Re\left\{ e^{-iuk} \phi\left(u - \frac i2 \right) \right\} \frac{\mathrm{d}u}{u^2 + \frac14},
+\]</span></p>
+<p>where <span class="math inline">\(\phi\)</span> is the characteristic function of <span class="math inline">\(\log(S_T/S_0)\)</span>, <span class="math inline">\(k = \log(K/S_0)\)</span> denotes the logmoneyness, and <span class="math inline">\(i = \sqrt{-1}\)</span>.</p>
+<div id="cell-34" class="cell" data-execution_count="14">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co"># numerical integration in python</span></span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> scipy.integrate <span class="im">import</span> quad</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="cell-35" class="cell" data-execution_count="15">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>f <span class="op">=</span> <span class="kw">lambda</span> x: np.sin(x)</span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>quad(f, a<span class="op">=</span><span class="dv">0</span>, b<span class="op">=</span>np.pi)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="15">
+<pre><code>(2.0, 2.220446049250313e-14)</code></pre>
+</div>
+</div>
+<div id="cell-36" class="cell" data-execution_count="16">
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="co"># complex number in python</span></span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a><span class="ot">1j</span><span class="op">*</span><span class="ot">2j</span>, (<span class="dv">3</span><span class="op">+</span><span class="ot">2j</span>).real, (<span class="dv">5</span><span class="op">+</span><span class="ot">7j</span>).imag</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="16">
+<pre><code>((-2+0j), 3.0, 7.0)</code></pre>
+</div>
+</div>
+<div id="cell-37" class="cell" data-execution_count="17">
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Heston characteristic function</span></span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> phi_heston(lmda, rho, eta, vbar, v):</span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> _(u, t):</span>
+<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a>        al <span class="op">=</span> <span class="op">-</span>u<span class="op">*</span>u<span class="op">/</span><span class="dv">2</span> <span class="op">-</span> <span class="ot">1j</span><span class="op">*</span>u<span class="op">/</span><span class="dv">2</span></span>
+<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a>        bet <span class="op">=</span> lmda <span class="op">-</span> rho<span class="op">*</span>eta<span class="op">*</span><span class="ot">1j</span><span class="op">*</span>u</span>
+<span id="cb22-6"><a href="#cb22-6" aria-hidden="true" tabindex="-1"></a>        gam <span class="op">=</span> eta<span class="op">**</span><span class="dv">2</span><span class="op">/</span><span class="dv">2</span></span>
+<span id="cb22-7"><a href="#cb22-7" aria-hidden="true" tabindex="-1"></a>        d <span class="op">=</span> sqrt(bet<span class="op">*</span>bet <span class="op">-</span> <span class="dv">4</span><span class="op">*</span>al<span class="op">*</span>gam)</span>
+<span id="cb22-8"><a href="#cb22-8" aria-hidden="true" tabindex="-1"></a>        rp <span class="op">=</span> (bet <span class="op">+</span> d)<span class="op">/</span>(<span class="dv">2</span><span class="op">*</span>gam)</span>
+<span id="cb22-9"><a href="#cb22-9" aria-hidden="true" tabindex="-1"></a>        rm <span class="op">=</span> (bet <span class="op">-</span> d)<span class="op">/</span>(<span class="dv">2</span><span class="op">*</span>gam)</span>
+<span id="cb22-10"><a href="#cb22-10" aria-hidden="true" tabindex="-1"></a>        g <span class="op">=</span> rm<span class="op">/</span>rp</span>
+<span id="cb22-11"><a href="#cb22-11" aria-hidden="true" tabindex="-1"></a>        D <span class="op">=</span> rm<span class="op">*</span>(<span class="dv">1</span> <span class="op">-</span> exp(<span class="op">-</span>d<span class="op">*</span>t))<span class="op">/</span> (<span class="dv">1</span> <span class="op">-</span> g<span class="op">*</span>exp(<span class="op">-</span>d<span class="op">*</span>t))</span>
+<span id="cb22-12"><a href="#cb22-12" aria-hidden="true" tabindex="-1"></a>        C <span class="op">=</span> lmda <span class="op">*</span> (rm <span class="op">*</span> t <span class="op">-</span> <span class="dv">2</span><span class="op">/</span>eta<span class="op">**</span><span class="dv">2</span> <span class="op">*</span> log( (<span class="dv">1</span> <span class="op">-</span> g<span class="op">*</span>exp(<span class="op">-</span>(d<span class="op">*</span>t)))<span class="op">/</span>(<span class="dv">1</span> <span class="op">-</span> g) ) )</span>
+<span id="cb22-13"><a href="#cb22-13" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> exp(C<span class="op">*</span>vbar <span class="op">+</span> D<span class="op">*</span>v)</span>
+<span id="cb22-14"><a href="#cb22-14" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> _</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="cell-38" class="cell" data-execution_count="18">
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="co"># call price from chf </span></span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> call_option(phi, k, t):</span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>    integrand <span class="op">=</span> <span class="kw">lambda</span> u: (exp(<span class="op">-</span><span class="ot">1j</span><span class="op">*</span>u<span class="op">*</span>k)<span class="op">*</span>phi(u <span class="op">-</span> <span class="ot">1j</span><span class="op">/</span><span class="dv">2</span>, t)<span class="op">/</span>(u<span class="op">**</span><span class="dv">2</span> <span class="op">+</span> <span class="dv">1</span><span class="op">/</span><span class="dv">4</span>)).real</span>
+<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a>    tmp <span class="op">=</span> quad(integrand, a<span class="op">=</span><span class="dv">0</span>, b<span class="op">=</span>np.inf)[<span class="dv">0</span>]</span>
+<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="dv">1</span> <span class="op">-</span> exp(k<span class="op">/</span><span class="dv">2</span>)<span class="op">/</span>np.pi<span class="op">*</span>tmp</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="cell-39" class="cell" data-execution_count="19">
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="co"># parameters for Heston model</span></span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>lmda, rho, eta, vbar, v <span class="op">=</span> <span class="fl">0.6067</span>, <span class="op">-</span><span class="fl">0.7571</span>, <span class="fl">0.2928</span>, <span class="fl">0.0707</span>, <span class="fl">.0654</span></span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>call_option(phi_heston(lmda, rho, eta, vbar, v), <span class="dv">0</span>, <span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="19">
+<pre><code>0.09701405804263008</code></pre>
+</div>
+</div>
+<div id="cell-40" class="cell" data-execution_count="20">
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="co"># plot</span></span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> np.linspace(<span class="op">-</span><span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">201</span>)</span>
+<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a>_ <span class="op">=</span> <span class="kw">lambda</span> xx: call_option(phi_heston(lmda, rho, eta, vbar, v), xx, <span class="dv">1</span>)</span>
+<span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a>_ <span class="op">=</span> np.vectorize(_)</span>
+<span id="cb26-5"><a href="#cb26-5" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> _(x)</span>
+<span id="cb26-6"><a href="#cb26-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-7"><a href="#cb26-7" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">15</span>, <span class="dv">6</span>))</span>
+<span id="cb26-8"><a href="#cb26-8" aria-hidden="true" tabindex="-1"></a>plt.subplot(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">1</span>)</span>
+<span id="cb26-9"><a href="#cb26-9" aria-hidden="true" tabindex="-1"></a>plt.plot(x, y)</span>
+<span id="cb26-10"><a href="#cb26-10" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'logmoneyness'</span>, fontsize<span class="op">=</span><span class="dv">15</span>)</span>
+<span id="cb26-11"><a href="#cb26-11" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'call price'</span>, fontsize<span class="op">=</span><span class="dv">15</span>)</span>
+<span id="cb26-12"><a href="#cb26-12" aria-hidden="true" tabindex="-1"></a>plt.subplot(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">2</span>)</span>
+<span id="cb26-13"><a href="#cb26-13" aria-hidden="true" tabindex="-1"></a>plt.plot(exp(x), y)</span>
+<span id="cb26-14"><a href="#cb26-14" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'moneyness'</span>, fontsize<span class="op">=</span><span class="dv">15</span>)<span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="NSD_Lec04-BlackMertonScholes-2_Summer2025_files/figure-html/cell-21-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="heston-model-in-log-return" class="level2">
+<h2 class="anchored" data-anchor-id="heston-model-in-log-return">Heston model in log return</h2>
+<p>Denote by <span class="math inline">\(X_t = \log S_t - \log S_0\)</span> the logarithmic return. Then the Heston model can be recast as</p>
+<p><span class="math display">\[\begin{equation}
+\begin{aligned}
+   \mathrm{d}X_t &amp;= \sqrt{v_t} \, \mathrm{d}B_t - \frac{1}{2} v_t \, \mathrm{d}t, \\
+   \mathrm{d}v_t &amp;= \lambda(m - v_t) \, \mathrm{d}t + \eta \sqrt{v_t} \, \mathrm{d}Z_t,
+\end{aligned}
+\end{equation}\]</span></p>
+<p>where <span class="math inline">\(B_t = \rho Z_t + \bar\rho W_t\)</span> and <span class="math inline">\(W_t\)</span>, <span class="math inline">\(Z_t\)</span> are independent Brownian motions. <span class="math inline">\(\bar\rho = \sqrt{1 - \rho^2}\)</span>.</p>
+</section>
+<section id="joint-characteristic-function-for-log-return-and-integrated-variance" class="level2">
+<h2 class="anchored" data-anchor-id="joint-characteristic-function-for-log-return-and-integrated-variance">Joint characteristic function for log return and integrated variance</h2>
+<p>We are interested in determining the joint characteristic function for the logarithmic return <span class="math inline">\(X_T\)</span> and the integrated variance <span class="math inline">\(\int_0^T v_t \mathrm{d}t\)</span>. Namely,</p>
+<p><span class="math display">\[
+\Eof{e^{iu_1 X_T + iu_2 \int_0^T v_t \mathrm{d}t}},
+\]</span></p>
+<p>where <span class="math inline">\(u_1, u_2 \in \R\)</span> are parameters.</p>
+<p>Notice that we have</p>
+<p><span class="math display">\[\begin{equation}
+\begin{aligned}
+   X_T &amp;= X_t + \rho \int_t^T \sqrt{v_\tau} \, \mathrm{d}Z_\tau + \bar{\rho} \int_t^T \sqrt{v_\tau} \, \mathrm{d}W_\tau - \frac{1}{2} \int_t^T v_\tau \, \mathrm{d}\tau  \\
+       &amp;= X_t + \frac{\rho}{\eta} \left\{v_T - v_t - \int_t^T \lambda(m - v_\tau) \, \mathrm{d}\tau \right\} + \bar{\rho} \int_t^T \sqrt{v_\tau} \, \mathrm{d}W_\tau - \frac{1}{2} \int_t^T v_\tau \, \mathrm{d}\tau \\
+       &amp;= X_t - \frac{\rho}{\eta} \{v_t + \lambda m (T - t)\} + \frac{\rho}{\eta} v_T + \int_t^T \left(\frac{\lambda \rho}{\eta} - \frac{1}{2}\right) v_\tau \, \mathrm{d}\tau + \bar{\rho} \int_t^T \sqrt{v_\tau} \, \mathrm{d}W_\tau.
+\end{aligned}
+\end{equation}\]</span></p>
+<p>Thus,</p>
+<p><span class="math display">\[\begin{equation}
+\begin{aligned}
+   &amp;\mathbb{E}\left[ \left. e^{iu_1 X_T + iu_2\int_t^T v_\tau \, \mathrm{d}\tau} \right| X_t = x, v_t = v \right] \\
+   &amp;= \mathbb{E}\left[ \left. e^{iu_1 \left\{ X_t - \frac{\rho}{\eta} \{v_t + \lambda m (T - t)\} + \frac{\rho}{\eta} v_T + \int_t^T \left(\frac{\lambda \rho}{\eta} - \frac{1}{2}\right) v_\tau \, \mathrm{d}\tau + \bar{\rho} \int_t^T \sqrt{v_\tau} \, \mathrm{d}W_\tau \right\} + iu_2 \int_t^T v_\tau \, \mathrm{d}\tau} \right| v_t = v \right] \\
+   &amp;= e^{iu_1\left(x - \frac{\rho}{\eta} \{v + \lambda m (T - t)\}\right)} \mathbb{E}\left[ \left. e^{iu_1 \left\{\frac{\rho}{\eta} v_T + \int_t^T \left(\frac{\lambda \rho}{\eta} - \frac{1}{2}\right) v_\tau \, \mathrm{d}\tau + \bar{\rho} \int_t^T \sqrt{v_\tau} \, \mathrm{d}W_\tau \right\} + iu_2 \int_t^T v_\tau \, \mathrm{d}\tau} \right| v_t = v \right] \\
+   &amp;= e^{iu_1\left(x - \frac{\rho}{\eta} \{v + \lambda m (T - t)\}\right)} \mathbb{E}\left[ \left. e^{iu_1 \left\{\frac{\rho}{\eta} v_T + \int_t^T \left(\frac{\lambda \rho}{\eta} - \frac{1}{2} + \frac{\bar{\rho}^2}{2}\right) v_\tau \, \mathrm{d}\tau \right\} + iu_2 \int_t^T v_\tau \, \mathrm{d}\tau} \right| v_t = v \right] \\
+   &amp;= e^{iu_1\left(x - \frac{\rho}{\eta} \{v + \lambda m (T - t)\}\right)} \mathbb{E}\left[ \left. e^{ iu_1 \frac{\rho}{\eta} v_T + \int_t^T \left\{iu_1 \left(\frac{\lambda \rho}{\eta} - \frac{\rho^2}{2}\right) + iu_2 \right\} v_\tau \, \mathrm{d}\tau} \right| v_t = v \right]
+\end{aligned}
+\end{equation}\]</span></p>
+</section>
+<section id="feynman-kac-formula-again" class="level2">
+<h2 class="anchored" data-anchor-id="feynman-kac-formula-again">Feynman-Kac formula again</h2>
+<p>We proceed by applying the Feynman-Kac formula to evaluate the expectation.</p>
+<p>Let</p>
+<p><span class="math display">\[
+u(t, v) = \Eof{\left. e^{ c_1 v_T - \int_t^T c_2 v_\tau \mathrm{d}\tau} \right|v_t=v},
+\]</span></p>
+<p>where <span class="math inline">\(c_1 = iu_1\frac\rho\eta\)</span> and <span class="math inline">\(c_2 = -i\left\{u_1\left(\frac{\lambda\rho}\eta - \frac{\rho^2}2\right) + u_2\right\}\)</span>. Then <span class="math inline">\(u\)</span> is a solution to the (backward) PDE</p>
+<p><span class="math display">\[\begin{equation}
+\begin{aligned}
+  u_t + \frac{\eta^2 v}{2} u_{vv} + \lambda(m - v) u_v = c_2 v u
+\end{aligned}
+\end{equation}\]</span></p>
+<p>with terminal condition <span class="math inline">\(u(T, v) = e^{c_1 v}\)</span>.</p>
+</section>
+<section id="solving-the-terminal-value-problem" class="level2">
+<h2 class="anchored" data-anchor-id="solving-the-terminal-value-problem">Solving the terminal value problem</h2>
+<p>Assume the ansatz of exponential affine</p>
+<p><span class="math display">\[
+u(t, v) = e^{H_1 v + H_0}.
+\]</span></p>
+<p>The derivatives of <span class="math inline">\(u\)</span> are given by</p>
+<p><span class="math display">\[\begin{equation}
+\begin{aligned}
+  u_t &amp;= (\dot{H}_1 v + \dot{H}_0) u, \\
+  u_v &amp;= H_1 u, \\
+  u_{vv} &amp;= H_1^2 u.
+\end{aligned}
+\end{equation}\]</span></p>
+<p>Substuting the derivatives into the PDE yields</p>
+<p><span class="math display">\[
+\dot H_1 v + \dot H_0 + \frac{\eta^2}2 v H_1^2 + \lambda(m - v) H_1 = c_2 v.
+\]</span></p>
+<p>Compare the coefficients then we obtain the system of ODEs for <span class="math inline">\(H_1\)</span> and <span class="math inline">\(H_0\)</span></p>
+<p><span class="math display">\[\begin{equation}
+\begin{aligned}
+  v &amp;: \dot{H}_1 + \frac{\eta^2}{2} H_1^2 - \lambda H_1 = c_2, \\
+  1 &amp;: \dot{H}_0 + \lambda m H_1 = 0.
+\end{aligned}
+\end{equation}\]</span></p>
+<p>with terminal conditions <span class="math inline">\(H_1(T) = c_1\)</span> and <span class="math inline">\(H_0(T) = 0\)</span>.</p>
+</section>
+<section id="solution-to-system-of-odes" class="level2">
+<h2 class="anchored" data-anchor-id="solution-to-system-of-odes">Solution to system of ODEs</h2>
+<p>The solution to the ODEs is given (formally) by</p>
+<p><span class="math display">\[\begin{equation}
+\begin{aligned}
+  H_1(t) &amp;= \frac{\lambda}{\eta^2} + \frac{\Delta}{\eta^2} \tan \left( \arctan\left(\frac{c_1 \eta^2 - \lambda}{\Delta}\right) + \frac{\Delta}{2} (T - t) \right), \\
+  H_0(t) &amp;= \frac{2\lambda m}{\eta^2} \log \left(\cos \left( \arctan\left(\frac{c_1 \eta^2 - \lambda}{\Delta}\right) \right) \right) \\
+         &amp;\quad - \frac{2\lambda m}{\eta^2} \log \left(\cos \left( \frac{\Delta}{2} (t - T) - \arctan \left(\frac{c_1 \eta^2 - \lambda}{\Delta}\right) \right) \right)
+         + \frac{\lambda^2 m}{\eta^2} (T - t).
+\end{aligned}
+\end{equation}\]</span></p>
+<p>where <span class="math inline">\(\Delta = \sqrt{-2 c_2 \eta^2 - \lambda^2}\)</span>.</p>
+<section id="note-9" class="level4">
+<h4 class="anchored" data-anchor-id="note-9">Note</h4>
+<p>Note that some of the parameters are complex, it causes some troubles when evaluating logarithm etc.</p>
+<p>Thus, we can obtain the characteristic function for <span class="math inline">\(X_T\)</span> by simply setting <span class="math inline">\(u_2 = 0\)</span>.</p>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+        const codeEl = trigger.previousElementSibling.cloneNode(true);
+        for (const childEl of codeEl.children) {
+          if (isCodeAnnotation(childEl)) {
+            childEl.remove();
+          }
+        }
+        return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>
