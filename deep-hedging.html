@@ -20,7 +20,27 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-</style>
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+  margin-bottom: 0em;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
 
 
 <script src="site_libs/quarto-nav/quarto-nav.js"></script>
@@ -68,6 +88,35 @@ ul.task-list li input[type="checkbox"] {
   }
 }</script>
 
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 <link rel="stylesheet" href="styles.css">
 </head>
@@ -125,6 +174,10 @@ ul.task-list li input[type="checkbox"] {
     <a class="nav-link" href="./NSD_Lec07-MathInAMM_Summer2025.html"> 
 <span class="menu-text">Lecture 07</span></a>
   </li>  
+  <li class="nav-item">
+    <a class="nav-link active" href="./deep-hedging.html" aria-current="page"> 
+<span class="menu-text">Deep Hedging</span></a>
+  </li>  
 </ul>
           </div> <!-- /navcollapse -->
             <div class="quarto-navbar-tools">
@@ -141,7 +194,13 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#深度对冲-deep-hedging" id="toc-深度对冲-deep-hedging" class="nav-link active" data-scroll-target="#深度对冲-deep-hedging">深度对冲 (Deep Hedging)</a></li>
+  <li><a href="#深度对冲-deep-hedging" id="toc-深度对冲-deep-hedging" class="nav-link active" data-scroll-target="#深度对冲-deep-hedging">深度对冲 (Deep Hedging)</a>
+  <ul class="collapse">
+  <li><a href="#deep-hedging" id="toc-deep-hedging" class="nav-link" data-scroll-target="#deep-hedging">Deep Hedging</a>
+  <ul class="collapse">
+  <li><a href="#machine-learning-notation" id="toc-machine-learning-notation" class="nav-link" data-scroll-target="#machine-learning-notation">Machine Learning Notation</a></li>
+  </ul></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
@@ -170,11 +229,36 @@ ul.task-list li input[type="checkbox"] {
 <p>Last year, Buehler detailed the firm’s work using signatures – a way of encoding time series data that captures how the data evolves through time – to build a data generator that replicates features of real markets, including correlations.</p>
 <p>In another working paper also released last year, JP Morgen quants proposed a way to eliminate the ‘drift’ the machine would otherwise learn from observing a market that trends. Essentially, this is a way to stop the engine thinking markets that have drifted higher in the recent past always will. “You need to make sure the machine understands that’s an estimation error,” Buehler says.</p>
 </blockquote>
+<section id="deep-hedging" class="level2">
+<h2 class="anchored" data-anchor-id="deep-hedging">Deep Hedging</h2>
+<p>Bühler 提供了两种版本的 Deep Hedging 论文:</p>
+<ul>
+<li>使用 math finance notation 的版本: <span class="citation" data-cites="buehlerDeepHedging">(<a href="#ref-buehlerDeepHedging" role="doc-biblioref">Buehler, Gonon, Teichmann, and Wood n.d.</a>)</span></li>
+<li>使用 machine learning notation 的版本: <span class="citation" data-cites="buehlerDeepHedgingHedging">(<a href="#ref-buehlerDeepHedgingHedging" role="doc-biblioref">Buehler, Gonon, Teichmann, Wood, Mohan, et al. n.d.</a>)</span></li>
+</ul>
+<section id="machine-learning-notation" class="level3">
+<h3 class="anchored" data-anchor-id="machine-learning-notation">Machine Learning Notation</h3>
+<p>Modern quantitative finance has developed a rich toolkit for handling derivative pricing and risk management under the idealized “complete markets” assumption of perfect hedgability in the absence of any trading restrictions or cost. It has not yet succeeded in providing a scalable industrial approach under more realistic conditions which take into account such market frictions. As a consequence, the practical risk management of non-electronic over-the-counter derivatives is still to a large extent manual, driven by the trader’s intuitive understanding of the shortcomings of the existing derivative tools.</p>
+<p>In this article, we take a first step towards a more integrated, realistic and robust approach to automated derivative risk management by applying modern deep reinforcement learning policy search. In the context of derivatives risk management, a policy means a hedging strategy. We propose to use neural networks to represent our hedging strategies.</p>
+<p>The networks are trained on simulations of future states of the market, including all relevant hedging instruments. Designing a market simulator is not the focus of this paper, and we use toy simulators for the experiments presented here; an advantage of our approach is that the procedure for learning the optimal hedging policy is independent of the choice of market simulator. This is not the case for standard approaches to hedging derivatives.</p>
+<p>关于 Hedging Instrument 的假设: - it can be traded daily with sufficient liquidity (but not necessarily at zero cost) - our trading does not affect the price</p>
+<p>Notation: - <span class="math inline">\(d\)</span>: <span class="math inline">\(d\)</span> 种 hedging instruments are used in each time step. - <span class="math inline">\(\mathcal{S}_t\)</span>: The market observed at some point <span class="math inline">\(t\)</span> represents our state space <span class="math inline">\(\mathcal{S}_t\)</span>. - all current and past prices - cost estimates - news - anything else we might deem necessary for determining our risk management strategies - past trading decisions - the internal state of our policy - <span class="math inline">\(s_t \in \mathcal{S}_t\)</span>: the state of the market at time <span class="math inline">\(t\)</span>. - <span class="math inline">\(h_t \equiv h_t(s_t)\)</span>: Holding a hedging instrument will at some point trigger a cash flow, either positive (received) or negative (paid). These payments are denoted by the d-dimensional function vector <span class="math inline">\(h_t(s_t)\)</span>. - <span class="math inline">\(H_t \equiv H_t(s_t)\)</span>: the vector of observable mid-market prices at time <span class="math inline">\(t\)</span>. - <span class="math inline">\(\delta_t\)</span>: our current position in our hedging instruments.</p>
+<p>TODO: TO BE CONTINUED…</p>
+
 
 
 </section>
+</section>
+</section>
 
-</main> <!-- /main -->
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography" id="quarto-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
+<div id="ref-buehlerDeepHedging" class="csl-entry" role="listitem">
+Buehler, Hans, Lukas Gonon, Josef Teichmann, and Ben Wood. n.d. <span>“Deep Hedging.”</span> {{SSRN Scholarly Paper}}. Rochester, NY: Social Science Research Network. Accessed August 4, 2025.
+</div>
+<div id="ref-buehlerDeepHedgingHedging" class="csl-entry" role="listitem">
+Buehler, Hans, Lukas Gonon, Josef Teichmann, Ben Wood, Baranidharan Mohan, and Jonathan Kochems. n.d. <span>“Deep Hedging: Hedging Derivatives Under Generic Market Frictions Using Reinforcement Learning.”</span> {{SSRN Scholarly Paper}}. Rochester, NY: Social Science Research Network. Accessed August 4, 2025.
+</div>
+</div></section></div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
     const icon = "";
