@@ -1583,8 +1583,11 @@ y_t = \frac12 \int_0^{P_t} L(p)p^{-\frac12} \mathrm{d}p.
 <li>交易者 (Swapper) —— 按“曲线”与池子对换资产, 支付手续费</li>
 </ul></li>
 </ul></li>
-<li>常数函数做市 (CFMM) 框架<br>
-a 基本符号与记号
+<li>常数函数做市 (CFMM) 框架
+<ol type="a">
+<li>基本符号与记号<br>
+</li>
+</ol>
 <ul>
 <li><span class="math inline">\(x_t, y_t\)</span>: 池中两种资产数量<br>
 </li>
@@ -1633,56 +1636,53 @@ a 基本符号与记号
 <h3 class="anchored" data-anchor-id="去中心化市场核心优势与痛点">去中心化市场核心优势与痛点</h3>
 <p>中心化市场结构性缺陷</p>
 <ol type="1">
-<li>流动性垄断:</li>
-</ol>
+<li>流动性垄断:
 <ul>
 <li>传统模式: 依赖专业做市商 (如投行、券商) 提供报价<br>
 </li>
-<li>市场逻辑: 单一机构控制流动性 → 易发生单点故障 (如交易所服务器宕机)<br>
-</li>
-</ul>
-<ol start="2" type="1">
-<li>价格操纵风险：<br>
-</li>
-</ol>
+<li>市场逻辑: 单一机构控制流动性 → 易发生单点故障 (如交易所服务器宕机)</li>
+</ul></li>
+<li>价格操纵风险：
 <ul>
 <li>案例: 冷门资产因缺乏卖家导致买家无法成交 → 做市商可任意抬高报价<br>
 </li>
-</ul>
-<ol start="3" type="1">
-<li>参与门槛:</li>
-</ol>
+</ul></li>
+<li>参与门槛:
 <ul>
 <li>金融机构主导 → 普通用户无法分享流动性收益</li>
-</ul>
+</ul></li>
+</ol>
 <p>去中心化革新逻辑</p>
 <ol type="1">
-<li>自动化做市商 (AMM) 本质:<br>
-</li>
-</ol>
+<li>自动化做市商 (AMM) 本质:
 <ul>
 <li>用数学公式替代人工报价 → 解决信任与效率问题<br>
 </li>
-</ul>
-<ol start="2" type="1">
-<li>流动性池 (Liquidity Pools) 经济意义：<br>
-</li>
-</ol>
+</ul></li>
+<li>流动性池 (Liquidity Pools) 经济意义：
 <ul>
 <li>市场逻辑: 任何人可注入资金成为LP → 打破机构垄断<br>
 </li>
 <li>核心优势: 链上透明定价 + 抗审查 (如俄乌战争期间乌克兰使用 DeFi)</li>
-</ul>
+</ul></li>
+</ol>
 </section>
 <section id="恒定函数做市商-cfmm-模型解析" class="level3">
 <h3 class="anchored" data-anchor-id="恒定函数做市商-cfmm-模型解析">恒定函数做市商 (CFMM) 模型解析</h3>
-<p>CPMM机制与市场动态<br>
-1. 核心公式: <span class="math display">\[
+<p>CPMM机制与市场动态</p>
+<ol type="1">
+<li>核心公式: <span class="math display">\[
 x \times y = k \quad \text{(\textit{x, y} : 池中资产数量; \textit{k} : 恒定乘积)}
 \]</span><br>
-2. 价格形成逻辑:<br>
-- 代币价格由池内比例决定: <span class="math inline">\(\text{Price}_A = y / x\)</span><br>
-- 市场行为: 买入A导致 <span class="math inline">\(x \downarrow\)</span> → 价格上升 (动态供需平衡) 3. 滑点成本机制:</p>
+</li>
+<li>价格形成逻辑:
+<ul>
+<li>代币价格由池内比例决定: <span class="math inline">\(\text{Price}_A = y / x\)</span><br>
+</li>
+<li>市场行为: 买入A导致 <span class="math inline">\(x \downarrow\)</span> → 价格上升 (动态供需平衡)</li>
+</ul></li>
+<li>滑点成本机制:</li>
+</ol>
 <table class="caption-top table">
 <thead>
 <tr class="header">
@@ -1722,9 +1722,7 @@ x \times y = k \quad \text{(\textit{x, y} : 池中资产数量; \textit{k} : 恒
 <h3 class="anchored" data-anchor-id="集中流动性-concentrated-liquidity-进阶模型">集中流动性 (Concentrated Liquidity) 进阶模型</h3>
 <p>解决传统AMM资本效率问题</p>
 <ol type="1">
-<li>核心创新:<br>
-</li>
-</ol>
+<li>核心创新:
 <ul>
 <li>LP可指定价格区间提供流动性 (如 ETH/USDC 在 $1,800-$2,000)<br>
 </li>
@@ -1735,13 +1733,10 @@ x \times y = k \quad \text{(\textit{x, y} : 池中资产数量; \textit{k} : 恒
 <li>集中流动性: 资金利用率提升 100-1000 倍 (Uniswap V3数据)<br>
 </li>
 </ul></li>
-</ul>
-<ol start="2" type="1">
+</ul></li>
 <li>数学模型优化: <span class="math display">\[
 L = \frac{\Delta y}{\sqrt{P}} + \frac{\Delta x}{\sqrt{P}} \quad \text{(\textit{L} : 流动性浓度)}
-\]</span><br>
-</li>
-</ol>
+\]</span>
 <ul>
 <li>参数经济意义:
 <ul>
@@ -1749,7 +1744,8 @@ L = \frac{\Delta y}{\sqrt{P}} + \frac{\Delta x}{\sqrt{P}} \quad \text{(\textit{L
 </li>
 <li><span class="math inline">\(\Delta x, \Delta y\)</span>: 在价格区间内动态调整的资产量</li>
 </ul></li>
-</ul>
+</ul></li>
+</ol>
 <p>案例: Uniswap V3 的实践影响</p>
 <ul>
 <li>LP 在 $1,900-$2,100 区间提供 ETH/USDC<br>
@@ -1767,47 +1763,101 @@ L = \frac{\Delta y}{\sqrt{P}} + \frac{\Delta x}{\sqrt{P}} \quad \text{(\textit{L
 <p>收益来源与量化模型</p>
 <ol type="1">
 <li>手续费收益公式: <span class="math display">\[
-\text{年化收益} = \frac{\text{日交易量} \times \text{手续费率} \times 365}{\text{池总价值}}\]</span><br>
-</li>
-</ol>
+\text{年化收益} = \frac{\text{日交易量} \times \text{手续费率} \times 365}{\text{池总价值}}\]</span>
 <ul>
 <li>示例: 池规模 $1M, 日交易量 $100K, 费率 0.3% → 年化收益 10.95%<br>
 </li>
 <li>市场逻辑: 高波动资产池交易量大→但伴随更高无常损失风险</li>
-</ul>
-<p>无常损失 (Impermanent Loss) 本质<br>
-1. 数学本质与公式: <span class="math display">\[
-\text{IL} = \frac{2 \sqrt{r}}{1+r} - 1 \quad (r = \text{代币价格变化率})\]</span><br>
-- 情景模拟：<br>
-| 价格变化 | IL 幅度 | 套利机制 | | — | — | — | | <span class="math inline">\(r=1\)</span> (无变化) | <span class="math inline">\(0\%\)</span> | 池内外无价差 | | <span class="math inline">\(r=2\)</span> (涨2倍) | <span class="math inline">\(-5.7\%\)</span> | 套利者低价从池中买入 A → 剥削 LP 资产 | | <span class="math inline">\(r=0.5\)</span> (腰斩) | <span class="math inline">\(-5.7\%\)</span> | 套利者向池中倾销低价 A → 稀释 LP 份额 |</p>
-<ol start="2" type="1">
-<li>风险对冲逻辑:<br>
-</li>
+</ul></li>
 </ol>
+<p>无常损失 (Impermanent Loss) 本质</p>
+<ol type="1">
+<li>数学本质与公式: <span class="math display">\[
+\text{IL} = \frac{2 \sqrt{r}}{1+r} - 1 \quad (r = \text{代币价格变化率})\]</span>
+<ul>
+<li>情景模拟：</li>
+</ul></li>
+</ol>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>价格变化</th>
+<th>IL 幅度</th>
+<th>套利机制</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><span class="math inline">\(r=1\)</span> (无变化)</td>
+<td><span class="math inline">\(0\%\)</span></td>
+<td>池内外无价差</td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(r=2\)</span> (涨2倍)</td>
+<td><span class="math inline">\(-5.7\%\)</span></td>
+<td>套利者低价从池中买入 A → 剥削 LP 资产</td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(r=0.5\)</span> (腰斩)</td>
+<td><span class="math inline">\(-5.7\%\)</span></td>
+<td>套利者向池中倾销低价 A → 稀释 LP 份额</td>
+</tr>
+</tbody>
+</table>
+<ol start="2" type="1">
+<li>风险对冲逻辑:
 <ul>
 <li>LP收益需覆盖”无常损失 + 机会成本”才盈利 → 高手续费代币池更具吸引力</li>
-</ul>
+</ul></li>
+</ol>
 </section>
 <section id="技术实现与市场挑战" class="level3">
 <h3 class="anchored" data-anchor-id="技术实现与市场挑战">技术实现与市场挑战</h3>
-<p>区块链性能瓶颈<br>
-1. 延迟问题:<br>
-- 以太坊确认时间 ≥3 秒 → 高频套利者无法运作 (对比中心化交易所 &lt;1ms)<br>
-- 解决方案: Layer2 (如Optimistic Rollups) 将延迟压缩至毫秒级<br>
-2. 预言机风险:<br>
-- 案例: 2022 年 LUNA 崩盘时, Chainlink 暂停报价 → 衍生品协议清算失败</p>
-<p>多资产与稳定币优化 1. Balancer 多资产池逻辑:<br>
-- 支持自定义权重 (如 BTC/ETH/USDC=50%/30%/20%)<br>
-- 市场优势: LP可构建个性化指数基金<br>
-2. Curve 稳定币模型: - 公式：<span class="math inline">\(A \cdot (x + y) + xy = k\)</span> (<span class="math inline">\(A\)</span>=放大系数)<br>
-- 设计逻辑: - 当 <span class="math inline">\(x\approx y\)</span> 时 (稳定币锚定 1:1), 公式退化为 <span class="math inline">\(x + y = \text{const}\)</span> → 接近零滑点</p>
+<p>区块链性能瓶颈</p>
+<ol type="1">
+<li>延迟问题:
+<ul>
+<li>以太坊确认时间 ≥3 秒 → 高频套利者无法运作 (对比中心化交易所 &lt;1ms)<br>
+</li>
+<li>解决方案: Layer2 (如Optimistic Rollups) 将延迟压缩至毫秒级<br>
+</li>
+</ul></li>
+<li>预言机风险:
+<ul>
+<li>案例: 2022 年 LUNA 崩盘时, Chainlink 暂停报价 → 衍生品协议清算失败</li>
+</ul></li>
+</ol>
+<p>多资产与稳定币优化</p>
+<ol type="1">
+<li>Balancer 多资产池逻辑:
+<ul>
+<li>支持自定义权重 (如 BTC/ETH/USDC=50%/30%/20%)<br>
+</li>
+<li>市场优势: LP可构建个性化指数基金<br>
+</li>
+</ul></li>
+<li>Curve 稳定币模型:
+<ul>
+<li>公式：<span class="math inline">\(A \cdot (x + y) + xy = k\)</span> (<span class="math inline">\(A\)</span>=放大系数)<br>
+</li>
+<li>设计逻辑:
+<ul>
+<li>当 <span class="math inline">\(x\approx y\)</span> 时 (稳定币锚定 1:1), 公式退化为 <span class="math inline">\(x + y = \text{const}\)</span> → 接近零滑点</li>
+</ul></li>
+</ul></li>
+</ol>
 </section>
 <section id="行业现实挑战与应对" class="level3">
 <h3 class="anchored" data-anchor-id="行业现实挑战与应对">行业现实挑战与应对</h3>
-<p>冷启动问题解决方案<br>
-1. 流动性挖矿机制:<br>
-- 协议发行治理代币激励早期 LP (如 SushiSwap 用 SUSHI 奖励吸走 Uniswap 流动性)<br>
-- 经济逻辑: 代币未来价值预期 → 覆盖短期无常损失风险</p>
+<p>冷启动问题解决方案</p>
+<ol type="1">
+<li>流动性挖矿机制:
+<ul>
+<li>协议发行治理代币激励早期 LP (如 SushiSwap 用 SUSHI 奖励吸走 Uniswap 流动性)<br>
+</li>
+<li>经济逻辑: 代币未来价值预期 → 覆盖短期无常损失风险</li>
+</ul></li>
+</ol>
 <p>信息不对称博弈 1. MEV (矿工可提取价值):<br>
 - 套利机器人监控链上交易 → 抢先大额订单获利<br>
 - 案例: 三明治攻击 (Sandwich Attack) 单笔套利超 $10 万<br>
