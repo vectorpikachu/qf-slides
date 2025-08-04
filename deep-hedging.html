@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Topics in QF</title>
+<title>deep-hedging – Topics in QF</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -90,7 +90,7 @@ ul.task-list li input[type="checkbox"] {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link active" href="./index.html" aria-current="page"> 
+    <a class="nav-link" href="./index.html"> 
 <span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item">
@@ -136,44 +136,43 @@ ul.task-list li input[type="checkbox"] {
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#深度对冲-deep-hedging" id="toc-深度对冲-deep-hedging" class="nav-link active" data-scroll-target="#深度对冲-deep-hedging">深度对冲 (Deep Hedging)</a></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
-<main class="content column-page" id="quarto-document-content">
+<main class="content column-page-left" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"></header>
 
-<header id="title-block-header" class="quarto-title-block default">
-<div class="quarto-title">
-<h1 class="title">Topics in QF</h1>
+
+
+
+<section id="深度对冲-deep-hedging" class="level1">
+<h1>深度对冲 (Deep Hedging)</h1>
+<p>Quotes from <a href="https://zhuanlan.zhihu.com/p/551266465">知乎</a>:</p>
+<blockquote class="blockquote">
+<p>早在2008年，摩根大通（J.P. Morgan）量化策略分析师 Hans Buehler 就开始考虑用一种新方法来做衍生品对冲，并认为这种方法颠覆了现代大部分量化金融理论。他认为依靠机器学习技术，可以根据过去有效的方法来确定未来的哪些对冲可能有效。银行可以仅使用基于数据的方法来对冲衍生品，而不是用传统的 Black-Scholes、Heston 模型。</p>
+</blockquote>
+<div style="text-align: center;">
+<pre><code>&lt;img src="https://www.risk.net/sites/default/files/styles/landscape_750_463/public/2022-02/Hans%20Buehler%203.jpg.webp?h=3a282f46&amp;itok=u9WO0AZL" alt="Hans Buehler" width="400"&gt;
+&lt;p&gt;Hans Buehler. Source: &lt;a href="https://www.risk.net/awards/7926411/quant-of-the-year-hans-buehler#cxrecs_s"&gt;Risk.net&lt;/a&gt;&lt;/p&gt;</code></pre>
 </div>
+<p>Quotes from <a href="https://www.risk.net/awards/7926411/quant-of-the-year-hans-buehler#cxrecs_s">Risk.net</a>:</p>
+<blockquote class="blockquote">
+<p>Statistical hedging was only a forerunner, though, to Buehler’s true objective: a machine that could learn how to form replicating portfolios for complex over-the-counter derivatives, for which payoffs might be path-dependent and data scarce.</p>
+<p>Buehler dubbed it “deep hedging” – and he went on to describe such a machine in a 2019 paper of that title. The paper has garnered more than 10,000 views and downloads across different sites since publication. A LinkedIn post of a presentation he gave on the topic last year was viewed 33,000 times.</p>
+<p>To apply deep hedging required one additional step, however.</p>
+<p>The neural network demands far more data for training than exists. So, Buehler and his JP Morgan colleagues built a market generator to create simulated but realistic market data to train the model on.</p>
+<p>Last year, Buehler detailed the firm’s work using signatures – a way of encoding time series data that captures how the data evolves through time – to build a data generator that replicates features of real markets, including correlations.</p>
+<p>In another working paper also released last year, JP Morgen quants proposed a way to eliminate the ‘drift’ the machine would otherwise learn from observing a market that trends. Essentially, this is a way to stop the engine thinking markets that have drifted higher in the recent past always will. “You need to make sure the machine understands that’s an estimation error,” Buehler says.</p>
+</blockquote>
 
 
-
-<div class="quarto-title-meta column-page">
-
-    
-  
-    
-  </div>
-  
-
-
-</header>
-
-
-<p>Here are the <em>Topics in Quantitative Finance</em> slides.</p>
-<ul>
-<li><a href="./NSD_Lec01-FinancialEngineering_Summer2025.html">Lec 01 Financial Engineering</a></li>
-<li><a href="./NSD_Lec02-StochCal_Summer2025.html">Lec 02 Stochastic Calculus</a></li>
-<li><a href="./NSD_Lec03-BlackMertonScholes-1_Summer2025.html">Lec 03 Black-Scholes Model I</a></li>
-<li><a href="./NSD_Lec04_Summer2025/NSD_Lec04-BlackMertonScholes-2_Summer2025.html">Lec 04 Black-Scholes Model II</a></li>
-<li><a href="./NSD_Lec05_Summer2025/NSD_Lec05-Volatility_Summer2025.html">Lec 05 Volatility</a></li>
-<li><a href="./NSD_Lec06-OptimalOrderExecution_Summer2025.html">Lec 06 Optimal Order Execution</a></li>
-<li><a href="./NSD_Lec07-MathInAMM_Summer2025.html">Lec 07 Math in AMM</a></li>
-<li><a href="./deep-hedging.html">Deep Hedging</a></li>
-</ul>
-
-
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
